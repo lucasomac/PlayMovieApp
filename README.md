@@ -30,6 +30,7 @@
   [![Autor](https://img.shields.io/badge/autor-Sarah%20Carneiro-920638?style=flat-square)](https://github.com/carneirosarah)
 
   </div>
+
 ![Linguagens](https://img.shields.io/github/languages/count/lucasomac/PlayMovieApp?color=920629&style=flat-square)
 [![Stars](https://img.shields.io/github/stars/lucasomac/PlayMovieApp?color=920629&style=flat-square)](https://github.com/lucasomac/PlayMovieApp/stargazers)
 [![Forks](https://img.shields.io/github/forks/lucasomac/PlayMovieApp?color=920629&style=flat-square)](https://github.com/lucasomac/PlayMovieApp/network/members)
@@ -90,22 +91,9 @@ Abra o projeto com o Android Studio e acione o comando para executar em seu apar
 
 ## 👨‍💻👩‍💻 Autores
 
-<div align="center"> 
 
-[Lucas de Oliveira Macedo](https://github.com/lucasomac "Lucas de Oliveira Macedo")*
 
-</div>
-
-<div align="center">
-
-[![Lucas Macedo Linkedin](https://img.shields.io/badge/LinkedIn-lucasomac-blue?logo=linkedin "linkedin")](https://www.linkedin.com/in/lucasomac)
-[![Lucas Macedo Github](https://img.shields.io/badge/GitHub-lucasomac-lightgrey?logo=github "github")](https://github.com/lucasomac)
-
-</div>
-
-<div align="center"> 
-
-[Camila Pelegrina](https://github.com/CamilaPelegrina "Camila Pelegrina")*
+*[Camila Pelegrina](https://github.com/CamilaPelegrina "Camila Pelegrina")*
 
 </div>
 
@@ -120,20 +108,7 @@ Abra o projeto com o Android Studio e acione o comando para executar em seu apar
 
 <div align="center"> 
 
-[Rodrigo Felipe](https://github.com/rodrigofelipejr "Rodrigo Felipe")*
-
-</div>
-
-<div align="center">
-
-[![Rodrigo Felipe Linkedin](https://img.shields.io/badge/LinkedIn-rodrigofelipejr-blue?logo=linkedin "linkedin")](https://www.linkedin.com/in/rodrigofelipejr)
-[![Rodrigo Felipe Github](https://img.shields.io/badge/GitHub-rodrigofelipejr-lightgrey?logo=github "github")](https://github.com/rodrigofelipejr)
-
-</div>
-
-<div align="center"> 
-
-[Danilo Augusto Moreira](https://github.com/damorei "Danilo Augusto Moreira")*
+*[Danilo Augusto Moreira](https://github.com/damorei "Danilo Augusto Moreira")*
 
 </div>
 
@@ -146,7 +121,37 @@ Abra o projeto com o Android Studio e acione o comando para executar em seu apar
 
 <div align="center"> 
 
-[Sarah Carneiro](https://github.com/carneirosarah "Sarah Carneiro")*
+*[Lucas de Oliveira Macedo](https://github.com/lucasomac "Lucas de Oliveira Macedo")*
+
+</div>
+
+<div align="center">
+
+[![Lucas Macedo Linkedin](https://img.shields.io/badge/LinkedIn-lucasomac-blue?logo=linkedin "linkedin")](https://www.linkedin.com/in/lucasomac)
+[![Lucas Macedo Github](https://img.shields.io/badge/GitHub-lucasomac-lightgrey?logo=github "github")](https://github.com/lucasomac)
+
+</div>
+
+<div align="center"> 
+
+<div align="center"> 
+
+*[Rodrigo Felipe](https://github.com/rodrigofelipejr "Rodrigo Felipe")*
+
+</div>
+
+<div align="center">
+
+[![Rodrigo Felipe Linkedin](https://img.shields.io/badge/LinkedIn-rodrigofelipejr-blue?logo=linkedin "linkedin")](https://www.linkedin.com/in/rodrigofelipejr)
+[![Rodrigo Felipe Github](https://img.shields.io/badge/GitHub-rodrigofelipejr-lightgrey?logo=github "github")](https://github.com/rodrigofelipejr)
+
+</div>
+
+
+
+<div align="center"> 
+
+*[Sarah Carneiro](https://github.com/carneirosarah "Sarah Carneiro")*
 
 </div>
 

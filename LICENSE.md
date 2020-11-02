@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2020 Lucas de Oliveira Macedo
+Copyright (c) 2020 Camila Pelegrina, Danilo Augusto Moreira, Lucas de Oliveira Macedo, Rodrigo Felipe, Sarah Carneiro
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
