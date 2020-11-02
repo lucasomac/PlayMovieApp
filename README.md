@@ -1,11 +1,11 @@
 <div>
 
-![github](assets/github.png "github")
+![github](assets/playmovieapp.jpeg "playmovieapp")
 </div>
 
 <div align="center">
 
-# Readme template para repositórios do GitHub
+# PlayMovieApp seu game de filmes e app de nóticias do TheMovieDB
 
 </div>
 <div align="center">
@@ -16,45 +16,49 @@
   [Como contribuir](#-como-contribuir) | 
   [Executar esse projeto](#-executar-esse-projeto) | 
   [Licença](#-licença)
+  [Autores](#-autores)
   
 </div>
 
 <div align="center">
+  <div align="center">
 
-[![Autor](https://img.shields.io/badge/autor-Lucas%20de%20Oliveira%20Macedo-920629?style=flat-square)](https://github.com/lucasomac)
-![Linguagens](https://img.shields.io/github/languages/count/lucasomac/readme?color=920629&style=flat-square)
-[![Stars](https://img.shields.io/github/stars/lucasomac/readme?color=920629&style=flat-square)](https://github.com/lucasomac/readme/stargazers)
-[![Forks](https://img.shields.io/github/forks/lucasomac/readme?color=920629&style=flat-square)](https://github.com/lucasomac/readme/network/members)
-![Tamanho do código em bytes](https://img.shields.io/github/repo-size/lucasomac/readme?color=920629&style=flat-square)
-[![Last commit](https://img.shields.io/github/last-commit/lucasomac/readme?color=920629&style=flat-square)](https://github.com/lucasomac/readme/commits/master)
-[![Downloads](https://img.shields.io/github/downloads/lucasomac/readme/total?color=920629&style=flat-square)](https://github.com/lucasomac/readme/releases)
+  [![Autor](https://img.shields.io/badge/autor-Camila%20Pelegrina-920632?style=flat-square)](https://github.com/CamilaPelegrina)
+  [![Autor](https://img.shields.io/badge/autor-Danilo%20Moreira-920636?style=flat-square)](https://github.com/damorei)
+  [![Autor](https://img.shields.io/badge/autor-Lucas%20Macedo-920630?style=flat-square)](https://github.com/lucasomac)
+  [![Autor](https://img.shields.io/badge/autor-Rodrigo%20Felipe-920634?style=flat-square)](https://github.com/rodrigofelipejr)
+  [![Autor](https://img.shields.io/badge/autor-Sarah%20Carneiro-920638?style=flat-square)](https://github.com/carneirosarah)
+
+  </div>
+![Linguagens](https://img.shields.io/github/languages/count/lucasomac/PlayMovieApp?color=920629&style=flat-square)
+[![Stars](https://img.shields.io/github/stars/lucasomac/PlayMovieApp?color=920629&style=flat-square)](https://github.com/lucasomac/PlayMovieApp/stargazers)
+[![Forks](https://img.shields.io/github/forks/lucasomac/PlayMovieApp?color=920629&style=flat-square)](https://github.com/lucasomac/PlayMovieApp/network/members)
+![Tamanho do código em bytes](https://img.shields.io/github/repo-size/lucasomac/PlayMovieApp?color=920629&style=flat-square)
+[![Last commit](https://img.shields.io/github/last-commit/lucasomac/PlayMovieApp?color=920629&style=flat-square)](https://github.com/lucasomac/PlayMovieApp/commits/master)
+[![Downloads](https://img.shields.io/github/downloads/lucasomac/PlayMovieApp/total?color=920629&style=flat-square)](https://github.com/lucasomac/PlayMovieApp/releases)
 
 </div>
 
 ## 💻 Projeto
 
-Este projeto foi desenvolvido para servir de template para criação de repositórios no Github. Desta forma é possivel termos um readme padrão e pré customizado para os nossos repositórios
+Este projeto foi desenvolvido como projeto integrador do curso de desenvolvimento android com Kotlin da DigitalHouse
 
 ## ⚙ Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-- [Node.js](https://nodejs.org/en/)
-- [React](https://reactjs.org)
-- [React Native](https://facebook.github.io/react-native/)
-- [Expo](https://expo.io/)
+- [Android JetPack](https://developer.android.com/jetpack)
+- [Kotlin](https://kotlinlang.org/)
+- [Material Design](https://material.io/)
 
 ## ⛏ Ferramentas:
 
 Esse projeto foi desenvolvido com o uso das seguintes ferramentas/IDE:
 
-- [Visual Studio](https://visualstudio.microsoft.com/vs/)
-- [Visual Studio Code](https://code.visualstudio.com/)
 - [Android Studio](https://developer.android.com/studio)
-- [WebStorm](https://www.jetbrains.com/pt-br/webstorm/)
-- [PyCharm](https://www.jetbrains.com/pt-br/pycharm/)
-- [DataGrip](https://www.jetbrains.com/pt-br/datagrip/)
-- [IntelliJIDEA](https://www.jetbrains.com/pt-br/idea/)
+- [Figma](https://www.figma.com/)
+- [Trello](https://trello.com/)
+- [Visual Studio Code](https://code.visualstudio.com/)
 
 ## 🤔 Como contribuir {#contribuir}
 
@@ -70,21 +74,9 @@ Para executar esse projeto na sua máquina,
 clone no repositório:
 
 ```bash
-$ git clone https://github.com/lucasomac/readme.git
+$ git clone https://github.com/lucasomac/PlayMovieApp.git
 ```
-#### ⚒ Back-End
-Run ```yarn install``` in the server folder;
-Run ```yarn run server``` to up the server;
-Open Insomnia or Postman and import the Insomnia.json workspace file at backend folder.
-
-#### 🌐 Front-End
-Run ```yarn install``` in the web folder;
-Run ```yarn start``` to up the project;
-
-#### 📲 Mobile
-Run ```npm install``` in the mobile folder
-Update the baseURL at ```src/services/api.js```.
-Run ```expo start``` to up the project.
+Abra o projeto com o Android Studio e acione o comando para executar em seu aparelho ou emullador android
 
 ## 📜 [Licença](/LICENSE.md)
 
@@ -96,11 +88,11 @@ Run ```expo start``` to up the project.
 
 </div>
 
----
+## 👨‍💻👩‍💻 Autores
 
 <div align="center"> 
 
-### *Autor: [Lucas de Oliveira Macedo](https://github.com/lucasomac "Lucas de Oliveira Macedo")*
+[Lucas de Oliveira Macedo](https://github.com/lucasomac "Lucas de Oliveira Macedo")*
 
 </div>
 
@@ -108,8 +100,59 @@ Run ```expo start``` to up the project.
 
 [![Lucas Macedo Linkedin](https://img.shields.io/badge/LinkedIn-lucasomac-blue?logo=linkedin "linkedin")](https://www.linkedin.com/in/lucasomac)
 [![Lucas Macedo Github](https://img.shields.io/badge/GitHub-lucasomac-lightgrey?logo=github "github")](https://github.com/lucasomac)
-[![Lucas Macedo Twitter](https://img.shields.io/badge/Twitter-_lucasomac-blue?logo=twitter "twitter")](https://twitter.com/lucasomac)
-[![Lucas Macedo Instagram](https://img.shields.io/badge/Instragram-lucasomac-E10979?logo=instagram "instagram")](https://instagram.com/lucasomac)
-[![Lucas Macedo Facebook](https://img.shields.io/badge/Facebook-lucasomac-blue?logo=facebook "facebook")](https://facebook.com/lucasomac)
+
+</div>
+
+<div align="center"> 
+
+[Camila Pelegrina](https://github.com/CamilaPelegrina "Camila Pelegrina")*
+
+</div>
+
+<div align="center">
+
+[![Camila Pelegrina Linkedin](https://img.shields.io/badge/LinkedIn-CamilaPelegrina-blue?logo=linkedin "linkedin")](https://www.linkedin.com/in/CamilaPelegrina)
+[![Camila Pelegrina Github](https://img.shields.io/badge/GitHub-CamilaPelegrina-lightgrey?logo=github "github")](https://github.com/CamilaPelegrina)
+
+</div>
+
+</div>
+
+<div align="center"> 
+
+[Rodrigo Felipe](https://github.com/rodrigofelipejr "Rodrigo Felipe")*
+
+</div>
+
+<div align="center">
+
+[![Rodrigo Felipe Linkedin](https://img.shields.io/badge/LinkedIn-rodrigofelipejr-blue?logo=linkedin "linkedin")](https://www.linkedin.com/in/rodrigofelipejr)
+[![Rodrigo Felipe Github](https://img.shields.io/badge/GitHub-rodrigofelipejr-lightgrey?logo=github "github")](https://github.com/rodrigofelipejr)
+
+</div>
+
+<div align="center"> 
+
+[Danilo Augusto Moreira](https://github.com/damorei "Danilo Augusto Moreira")*
+
+</div>
+
+<div align="center">
+
+[![Danilo Augusto Moreira Linkedin](https://img.shields.io/badge/LinkedIn-damorei-blue?logo=linkedin "linkedin")](https://www.linkedin.com/in/damorei)
+[![Danilo Augusto Moreira Github](https://img.shields.io/badge/GitHub-damorei-lightgrey?logo=github "github")](https://github.com/damorei)
+
+</div>
+
+<div align="center"> 
+
+[Sarah Carneiro](https://github.com/carneirosarah "Sarah Carneiro")*
+
+</div>
+
+<div align="center">
+
+[![Sarah Carneiro Linkedin](https://img.shields.io/badge/LinkedIn-carneirosarah-blue?logo=linkedin "linkedin")](https://www.linkedin.com/in/carneirosarah)
+[![Sarah Carneiro Github](https://img.shields.io/badge/GitHub-carneirosarah-lightgrey?logo=github "github")](https://github.com/carneirosarah)
 
 </div>
