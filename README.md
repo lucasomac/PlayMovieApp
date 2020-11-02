@@ -1,4 +1,4 @@
-<div>
+<div align="center">
 
 ![github](assets/playmovieapp.jpeg "playmovieapp")
 </div>
@@ -52,7 +52,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Kotlin](https://kotlinlang.org/)
 - [Material Design](https://material.io/)
 
-## ⛏ Ferramentas:
+## ⛏ Ferramentas
 
 Esse projeto foi desenvolvido com o uso das seguintes ferramentas/IDE:
 
@@ -61,7 +61,7 @@ Esse projeto foi desenvolvido com o uso das seguintes ferramentas/IDE:
 - [Trello](https://trello.com/)
 - [Visual Studio Code](https://code.visualstudio.com/)
 
-## 🤔 Como contribuir {#contribuir}
+## 🤔 Como contribuir
 
 - Faça um fork desse repositório;
 - Cria uma branch com a sua feature: `git checkout -b minha-feature`;
@@ -91,7 +91,7 @@ Abra o projeto com o Android Studio e acione o comando para executar em seu apar
 
 ## 👨‍💻👩‍💻 Autores
 
-
+<div align="center">
 
 *[Camila Pelegrina](https://github.com/CamilaPelegrina "Camila Pelegrina")*
 
