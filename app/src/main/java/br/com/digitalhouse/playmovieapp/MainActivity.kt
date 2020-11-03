@@ -1,4 +1,4 @@
-package br.com.lucolimac.playmovieapp
+package br.com.digitalhouse.playmovieapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

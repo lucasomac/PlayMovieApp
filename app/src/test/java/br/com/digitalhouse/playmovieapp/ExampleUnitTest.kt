@@ -1,4 +1,4 @@
-package br.com.lucolimac.playmovieapp
+package br.com.digitalhouse.playmovieapp
 
 import org.junit.Test
 
