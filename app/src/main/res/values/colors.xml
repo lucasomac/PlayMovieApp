@@ -7,4 +7,13 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--    Paleta de cores-->
+    <color name="primary">#16213E</color>
+    <color name="secondary">#E94560</color>
+    <color name="background_filme_dia">#BBBFCA</color>
+    <color name="background_card_filme">#1A1A2E</color>
+    <color name="white_settings">#F4F4F2</color>
+    <color name="gray">#495464</color>
+    <color name="blue">#0F3460</color>
 </resources>

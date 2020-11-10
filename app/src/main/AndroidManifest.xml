@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PlayMovieApp">
-        <activity android:name="br.com.digitalhouse.playmovieapp.MainActivity">
+        <activity android:name="br.com.digitalhouse.playmovieapp.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
