@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">PlayMovieApp</string>
+    <string name="email">E-mail</string>
+    <string name="senha">Senha</string>
+    <string name="entrar">Entrar</string>
+    <string name="tv_info">Ou entrar com:</string>
+    <string name="facebook">facebook</string>
+    <string name="twitter">twitter</string>
+    <string name="google">google</string>
+    <string name="criar_nova_conta">Criar nova conta</string>
+    <string name="varsao">v1.0.1</string>
 </resources>
