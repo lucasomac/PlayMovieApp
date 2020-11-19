@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/blue">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/interesseIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_bomb"
+            android:layout_margin="5dp"/>
+
+        <TextView
+            android:id="@+id/interesseDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ação"
+            android:textSize="18dp"
+            android:layout_margin="5dp"
+            android:textColor="@color/white"/>
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/interesseAtivo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
