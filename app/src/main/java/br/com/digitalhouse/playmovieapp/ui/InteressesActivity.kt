@@ -1,11 +1,14 @@
 package br.com.digitalhouse.playmovieapp.ui
 
 import android.os.Bundle
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.adapters.InteresseAdapter
 import br.com.digitalhouse.playmovieapp.domain.Interesse
+import com.google.android.material.switchmaterial.SwitchMaterial
 import kotlinx.android.synthetic.main.activity_interesses.*
 import kotlinx.android.synthetic.main.item_interesse.*
 
@@ -31,8 +34,15 @@ class InteressesActivity : AppCompatActivity(), InteresseAdapter.OnClickInteress
 
     }
 
-    override fun onClickInteresse(position: Int) {
-        var interesse = interesses.get(position)
-        Toast.makeText(this,interesse.descricao, Toast.LENGTH_SHORT).show()
+    override fun onClickInteresse(isChecked: Boolean, interesseIcon: ImageView, interesseDesc: TextView) {
+
+        if (isChecked) {
+            interesseDesc.setTextColor(getResources().getColor(R.color.secondary))
+            interesseIcon.setColorFilter(getResources().getColor(R.color.secondary))
+        } else {
+            interesseDesc.setTextColor(getResources().getColor(R.color.white))
+            interesseIcon.setColorFilter(getResources().getColor(R.color.white))
+
+        }
     }
 }
