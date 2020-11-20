@@ -24,7 +24,7 @@
             android:label="@string/title_activity_interesses">
         </activity>
         <activity android:name=".LoginActivity" />
-        <activity android:name=".SplashActivity">
+        <activity android:name=".SplashActivity" android:theme="@style/Theme.PlayMovieApp.Fullscreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
