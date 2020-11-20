@@ -12,17 +12,17 @@ import com.google.android.material.switchmaterial.SwitchMaterial
 import kotlinx.android.synthetic.main.activity_interesses.*
 import kotlinx.android.synthetic.main.item_interesse.*
 
-class InteressesActivity : AppCompatActivity(), InteresseAdapter.OnClickInteresseListener {
+class InteressesActivity : AppCompatActivity(), InteresseAdapter.InteresseListener {
 
     val interesses = arrayListOf<Interesse>(
-        Interesse(1, "Sci-fi", false, R.drawable.ic_robot),
+        Interesse(1, "Sci-fi", true, R.drawable.ic_robot),
         Interesse(2, "Familia", false, R.drawable.ic_people),
         Interesse(3, "Terror", false, R.drawable.ic_ghost),
         Interesse(4, "Ação", false, R.drawable.ic_bomb),
         Interesse(5, "Romance", false, R.drawable.ic__heart),
         Interesse(6, "Documentário", false, R.drawable.ic_book),
         Interesse(7, "Suspense", false, R.drawable.ic_mask),
-        Interesse(8, "Quadrinhos", false, R.drawable.ic_robot)
+        Interesse(8, "Quadrinhos", true, R.drawable.ic_comics)
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,5 +44,10 @@ class InteressesActivity : AppCompatActivity(), InteresseAdapter.OnClickInteress
             interesseIcon.setColorFilter(getResources().getColor(R.color.white))
 
         }
+    }
+
+    override fun changeColor(interesseIcon: ImageView, interesseDesc: TextView) {
+        interesseDesc.setTextColor(getResources().getColor(R.color.secondary))
+        interesseIcon.setColorFilter(getResources().getColor(R.color.secondary))
     }
 }

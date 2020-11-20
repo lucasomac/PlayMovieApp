@@ -15,12 +15,13 @@ import java.security.AccessController.getContext
 
 class InteresseAdapter(
     private val listaInteresses: ArrayList<Interesse>,
-    val listener: OnClickInteresseListener
+    val listener: InteresseListener
 ): RecyclerView.Adapter<InteresseAdapter.InteresseViewHolder>(){
 
-    interface OnClickInteresseListener {
+    interface InteresseListener {
 
         fun onClickInteresse(isChecked: Boolean, interesseIcon: ImageView, interesseDesc: TextView)
+        fun changeColor(interesseIcon: ImageView, interesseDesc: TextView)
     }
 
     override fun onCreateViewHolder(
@@ -42,6 +43,10 @@ class InteresseAdapter(
         holder.interesseIcon.setImageResource(interesse.icon)
         holder.interesseDesc.text = interesse.descricao
         holder.interesseAtivo.setChecked(interesse.ativo)
+        
+        if (interesse.ativo) {
+            listener.changeColor(holder.interesseIcon, holder.interesseDesc)
+        }
         
         holder.interesseAtivo.setOnCheckedChangeListener { buttonView, isChecked ->
             listener.onClickInteresse(isChecked, holder.interesseIcon, holder.interesseDesc)
