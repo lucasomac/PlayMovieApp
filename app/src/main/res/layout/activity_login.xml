@@ -16,8 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -30,4 +28,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <include layout="@layout/layout_loading"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
