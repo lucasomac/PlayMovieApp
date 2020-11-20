@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:backgroundTint="@color/blue">
+    android:backgroundTint="@color/primary">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
