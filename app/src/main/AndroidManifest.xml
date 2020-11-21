@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PlayMovieApp">
-
+        <activity android:name=".HomeActivity"></activity>
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.
@@ -21,10 +21,11 @@
 
         <activity
             android:name=".ui.InteressesActivity"
-            android:label="@string/title_activity_interesses">
-        </activity>
+            android:label="@string/title_activity_interesses"></activity>
         <activity android:name=".LoginActivity" />
-        <activity android:name=".SplashActivity" android:theme="@style/Theme.PlayMovieApp.Fullscreen" >
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/Theme.PlayMovieApp.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
