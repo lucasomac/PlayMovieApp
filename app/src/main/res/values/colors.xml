@@ -12,6 +12,7 @@
     <color name="primary">#16213E</color>
     <color name="secondary">#E94560</color>
     <color name="background_filme_dia">#BBBFCA</color>
+    <color name="background_filme_dia_opacity">#33FFFFFF</color>
     <color name="background_card_filme">#1A1A2E</color>
     <color name="white_settings">#F4F4F2</color>
     <color name="gray">#495464</color>

@@ -113,7 +113,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_share" />
+                android:src="@drawable/ic_share_16_px" />
 
             <ImageView
                 android:layout_width="wrap_content"
