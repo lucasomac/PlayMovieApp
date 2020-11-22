@@ -17,8 +17,8 @@
         android:id="@+id/rv_interesses"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:theme="@style/Switch"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_interesse"
-        android:theme="@style/Switch"/>
+        tools:listitem="@layout/item_interesse" />
 
 </LinearLayout>
