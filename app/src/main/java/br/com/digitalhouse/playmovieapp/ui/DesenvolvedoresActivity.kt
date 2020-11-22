@@ -1,5 +1,6 @@
 package br.com.digitalhouse.playmovieapp.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -62,7 +63,10 @@ class DesenvolvedoresActivity : AppCompatActivity(), DesenvolvedorAdapter.Desenv
     }
 
     override fun onClickDesenvolvedor(item: Int) {
+
         var desenvolvedor = desenvolvedores.get(item)
-        Toast.makeText(this, desenvolvedor.nome, Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, DetalhesDesenvolvedorActivity::class.java)
+        intent.putExtra("desenvolvedor", desenvolvedor)
+        startActivity(intent)
     }
 }
