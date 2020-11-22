@@ -10,16 +10,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PlayMovieApp">
-        </activity>
-            android:theme="@style/Theme.PlayMovieApp">
-        <activity android:name=".ui.view.ConfiguracoesActivity"
-        <activity android:name=".HomeActivity"></activity>
+        <activity
+            android:name=".ui.view.ConfiguracoesActivity"
+            android:theme="@style/Theme.PlayMovieApp" />
+        <activity android:name=".HomeActivity"/>
         <meta-data
             android:name="com.google.android.wearable.standalone"
             android:value="true" />
         <activity
             android:name=".ui.InteressesActivity"
-            android:label="@string/title_activity_interesses"></activity>
+            android:label="@string/title_activity_interesses" />
         <activity android:name=".LoginActivity" />
         <activity
             android:name=".SplashActivity"
