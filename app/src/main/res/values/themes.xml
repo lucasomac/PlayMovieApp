@@ -5,6 +5,8 @@
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryVariant">@color/secondary</item>
         <item name="colorOnPrimary">@color/white</item>
+        <item name="background">@color/primary</item>
+        <item name="android:windowBackground">@color/primary</item>
 
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/primary</item>
@@ -19,11 +21,54 @@
         <item name="android:windowContentOverlay">@null</item>
     </style>
 
-    /* TextView - Carregando */
+    /* Body1 */
 
-    <style name="Custom.TextView.Carregando" parent="Theme.PlayMovieApp">
+    <style name="Custom.Body1" parent="Theme.PlayMovieApp">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Custom.Body1.400" parent="Custom.Body1">
+        <item name="android:fontFamily">@font/opensans_regular</item>
         <item name="android:textStyle">normal</item>
     </style>
+
+    <style name="Custom.Body1.500" parent="Custom.Body1">
+        <item name="android:fontFamily">@font/opensans_semibold</item>
+    </style>
+
+    <style name="Custom.Body1.700" parent="Custom.Body1">
+        <item name="android:fontFamily">@font/opensans_bold</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    /* Caption */
+
+    <style name="Custom.caption" parent="Theme.PlayMovieApp">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Custom.caption.400" parent="Custom.caption">
+        <item name="android:fontFamily">@font/opensans_regular</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    /*
+    NAME       SIZE
+    headline1  112.0
+    headline2  56.0
+    headline3  45.0
+    headline4  34.0
+    headline5  24.0
+    headline6  20.0
+    subtitle1  16.0
+    body2      16.0
+    body1      14.0
+    caption    12.0
+    button     14.0
+    subtitle2  14.0
+    overline   10.0
+    */
+
 </resources>
