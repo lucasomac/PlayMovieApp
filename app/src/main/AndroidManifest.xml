@@ -3,6 +3,7 @@
     package="br.com.digitalhouse.playmovieapp">
 
     <application
+
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:icon="@drawable/ic_logo"
