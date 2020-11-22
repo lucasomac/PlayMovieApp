@@ -14,4 +14,11 @@
     <string name="todo">TODO</string>
     <string name="politica_de_privacidade"><![CDATA[Termos e Política de Privacidade]]></string>
     <string name="carregando">Carregando…</string>
+    <string name="criar_conta">Criar Conta</string>
+    <string name="confirmar_senha">Confirmar Senha</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="parabens">Parabéns você passou para o próximo nível!</string>
+    <string name="tempo_gasto">"Tempo gasto: "</string>
+    <string name="proximo_nivel">Próximo</string>
 </resources>
