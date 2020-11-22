@@ -10,11 +10,9 @@
     <string name="criar_nova_conta">Criar nova conta</string>
     <string name="title_activity_interesses">InteressesActivity</string>
     <string name="varsao">v1.0.0</string>
+    <string name="titulo_configuracoes">Configurações</string>
+    <string name="todo">TODO</string>
+    <string name="politica_de_privacidade"><![CDATA[Termos e Política de Privacidade]]></string>
     <string name="carregando">Carregando…</string>
-    <string name="title_activity_detalhes_desenvolvedor">DetalhesDesenvolvedorActivity</string>
-    <!--
-    This string is used for square devices and overridden by hello_world in
-    values-round/strings.xml for round devices.
-    -->
-    <string name="hello_world">Hello Square World!</string>
+    <string name="perguntas">Perguntas</string>
 </resources>

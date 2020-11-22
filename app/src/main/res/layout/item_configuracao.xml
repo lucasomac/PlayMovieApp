@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_tiny"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardBackgroundColor="@android:color/transparent"
+    app:cardElevation="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout_item_config"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/padding_medium"
+        android:paddingVertical="@dimen/padding_small">
+
+        <ImageView
+            android:id="@+id/imageView_config"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:contentDescription="@string/todo"
+            app:layout_constraintBottom_toBottomOf="@id/constraintLayout_item_config"
+            app:layout_constraintStart_toStartOf="@id/constraintLayout_item_config"
+            app:layout_constraintTop_toTopOf="@id/constraintLayout_item_config"
+            tools:src="@drawable/ic_config_som" />
+
+        <TextView
+            android:id="@+id/textView_descricao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:theme="@style/Custom.Body1.500"
+            app:layout_constraintBottom_toTopOf="@id/textView_complemento"
+            app:layout_constraintStart_toEndOf="@id/imageView_config"
+            app:layout_constraintTop_toTopOf="@id/imageView_config"
+            tools:text="Sons e Efeitos" />
+
+        <TextView
+            android:id="@+id/textView_complemento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:alpha="0.6"
+            android:theme="@style/Custom.Body1.400"
+            app:layout_constraintBottom_toBottomOf="@id/imageView_config"
+            app:layout_constraintStart_toEndOf="@id/imageView_config"
+            app:layout_constraintTop_toBottomOf="@id/textView_descricao"
+            tools:text="Ligar ou desligar sons das teclas" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
