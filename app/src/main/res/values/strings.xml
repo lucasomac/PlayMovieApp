@@ -11,4 +11,5 @@
     <string name="title_activity_interesses">InteressesActivity</string>
     <string name="varsao">v1.0.0</string>
     <string name="carregando">Carregando…</string>
+    <string name="perguntas">Perguntas</string>
 </resources>
