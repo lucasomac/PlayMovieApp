@@ -19,6 +19,18 @@
             android:theme="@style/Theme.PlayMovieApp" />
         <activity android:name=".HomeActivity"/>
         <activity
+            android:name=".ui.DetalhesDesenvolvedorActivity"
+            android:label="@string/title_activity_detalhes_desenvolvedor">
+        </activity>
+        <activity android:name=".ui.DesenvolvedoresActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".HomeActivity" />
+        <activity
             android:name=".ui.InteressesActivity"
             android:label="@string/title_activity_interesses" />
         <activity android:name=".LoginActivity" />
