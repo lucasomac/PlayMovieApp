@@ -15,4 +15,6 @@
     <string name="politica_de_privacidade"><![CDATA[Termos e Política de Privacidade]]></string>
     <string name="carregando">Carregando…</string>
     <string name="perguntas">Perguntas</string>
+    <string name="search">Buscar</string>
+    <string name="aleatorio">Aleatório</string>
 </resources>
