@@ -8,6 +8,12 @@
         android:title="@string/search"
         app:showAsAction="ifRoom" />
     <item
+        android:id="@+id/btPlay"
+        android:enabled="true"
+        android:icon="@drawable/ic_botao_jogar"
+        android:title="@string/jogar"
+        app:showAsAction="ifRoom" />
+    <item
         android:id="@+id/btAleatorio"
         android:enabled="true"
         android:icon="@drawable/ic_video_aleatorio"
