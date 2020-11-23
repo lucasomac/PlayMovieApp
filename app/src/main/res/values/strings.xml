@@ -17,4 +17,5 @@
     <string name="perguntas">Perguntas</string>
     <string name="search">Buscar</string>
     <string name="aleatorio">Aleatório</string>
+    <string name="title_activity_detalhes_desenvolvedor">Desenvolvedor</string>
 </resources>
