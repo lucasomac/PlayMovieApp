@@ -1,7 +1,8 @@
-package br.com.digitalhouse.playmovieapp
+package br.com.digitalhouse.playmovieapp.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.adapters.NivelAdapter
 import br.com.digitalhouse.playmovieapp.domain.Nivel
 import kotlinx.android.synthetic.main.activity_niveis.*
