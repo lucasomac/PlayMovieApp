@@ -16,6 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/appBarHome"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/primary"
@@ -35,135 +36,129 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
-    <!--    <androidx.viewpager2.widget.ViewPager2-->
+    <!--    <androidx.viewpager.widget.ViewPager-->
+    <!--        android:id="@+id/vpHome"-->
+    <!--        android:layout_width="350dp"-->
+    <!--        android:layout_height="330dp"-->
+    <!--        android:layout_marginTop="16dp"-->
+    <!--        android:background="@drawable/round_outline_filme_dia"-->
+    <!--        android:clipToPadding="false"-->
+    <!--        android:foregroundGravity="center"-->
+    <!--        android:overScrollMode="never"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/include" />-->
+
+    <include
+        layout="@layout/layout_slide_home_filme_dia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include" />
+
+    <!--    <LinearLayout-->
+    <!--        android:id="@+id/linearLayout"-->
     <!--        android:layout_width="wrap_content"-->
     <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="16dp"-->
+    <!--        android:background="@drawable/round_outline_filme_dia"-->
+    <!--        android:orientation="vertical"-->
     <!--        app:layout_constraintEnd_toEndOf="parent"-->
     <!--        app:layout_constraintStart_toStartOf="parent"-->
     <!--        app:layout_constraintTop_toBottomOf="@+id/include">-->
 
-    <!--        <androidx.viewpager.widget.PagerTabStrip-->
-    <!--            android:id="@+id/pager_header"-->
+    <!--        <LinearLayout-->
     <!--            android:layout_width="wrap_content"-->
     <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_gravity="top"-->
-    <!--            android:paddingTop="4dp"-->
-    <!--            android:paddingBottom="4dp" />-->
-    <!--    </androidx.viewpager2.widget.ViewPager2>-->
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/vpHome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_outline_filme_dia"
-        android:clipToPadding="false"
-        android:foregroundGravity="center"
-        android:overScrollMode="never"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!--            android:orientation="horizontal"-->
+    <!--            android:paddingStart="@dimen/pading_car_home"-->
+    <!--            android:paddingTop="16dp"-->
+    <!--            android:paddingBottom="16dp">-->
 
-<!--    <LinearLayout-->
-<!--        android:id="@+id/linearLayout"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:background="@drawable/round_outline_filme_dia"-->
-<!--        android:orientation="vertical"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/include">-->
+    <!--            <ImageView-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:src="@drawable/ic_calendar" />-->
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="horizontal"-->
-<!--            android:paddingStart="@dimen/pading_car_home"-->
-<!--            android:paddingTop="16dp"-->
-<!--            android:paddingBottom="16dp">-->
+    <!--            <TextView-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginStart="8dp"-->
+    <!--                android:text="FILME DO DIA"-->
+    <!--                android:textColor="@color/white"-->
+    <!--                android:textSize="14sp"-->
+    <!--                android:textStyle="bold" />-->
+    <!--        </LinearLayout>-->
 
-<!--            <ImageView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:src="@drawable/ic_calendar" />-->
+    <!--        <androidx.cardview.widget.CardView-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_gravity="center"-->
+    <!--            app:cardCornerRadius="8dp">-->
 
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="8dp"-->
-<!--                android:text="FILME DO DIA"-->
-<!--                android:textColor="@color/white"-->
-<!--                android:textSize="14sp"-->
-<!--                android:textStyle="bold" />-->
-<!--        </LinearLayout>-->
+    <!--            <ImageView-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:src="@drawable/filme_dia" />-->
+    <!--        </androidx.cardview.widget.CardView>-->
 
-<!--        <androidx.cardview.widget.CardView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center"-->
-<!--            app:cardCornerRadius="8dp">-->
+    <!--        <TextView-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:paddingStart="@dimen/pading_car_home"-->
+    <!--            android:paddingTop="16dp"-->
+    <!--            android:text="Clueless"-->
+    <!--            android:textColor="@color/white"-->
+    <!--            android:textSize="20sp"-->
+    <!--            android:textStyle="bold" />-->
 
-<!--            <ImageView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:src="@drawable/filme_dia" />-->
-<!--        </androidx.cardview.widget.CardView>-->
+    <!--        <TextView-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:paddingStart="@dimen/pading_car_home"-->
+    <!--            android:text="1995- - Romance/Comédia - 1h 40m"-->
+    <!--            android:textSize="12sp" />-->
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:paddingStart="@dimen/pading_car_home"-->
-<!--            android:paddingTop="16dp"-->
-<!--            android:text="Clueless"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textSize="20sp"-->
-<!--            android:textStyle="bold" />-->
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content">-->
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:paddingStart="@dimen/pading_car_home"-->
-<!--            android:text="1995- - Romance/Comédia - 1h 40m"-->
-<!--            android:textSize="12sp" />-->
+    <!--        </LinearLayout>-->
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content">-->
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:paddingStart="@dimen/pading_car_home">-->
 
-<!--        </LinearLayout>-->
+    <!--            <ImageView-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:src="@drawable/ic_share_16_px" />-->
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:paddingStart="@dimen/pading_car_home">-->
+    <!--            <ImageView-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginStart="8dp"-->
+    <!--                android:layout_marginEnd="8dp"-->
+    <!--                android:src="@drawable/ic_baseline_star_16" />-->
 
-<!--            <ImageView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:src="@drawable/ic_share_16_px" />-->
+    <!--            <TextView-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:text="6,8"-->
+    <!--                android:textColor="@color/white" />-->
+    <!--        </LinearLayout>-->
 
-<!--            <ImageView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="8dp"-->
-<!--                android:layout_marginEnd="8dp"-->
-<!--                android:src="@drawable/ic_baseline_star_16" />-->
-
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="6,8"-->
-<!--                android:textColor="@color/white" />-->
-<!--        </LinearLayout>-->
-
-<!--        <ImageView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="end"-->
-<!--            android:layout_marginEnd="24dp"-->
-<!--            android:contentDescription="@string/tv_info"-->
-<!--            android:src="@drawable/ic_three_points" />-->
-<!--    </LinearLayout>-->
+    <!--        <ImageView-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_gravity="end"-->
+    <!--            android:layout_marginEnd="24dp"-->
+    <!--            android:contentDescription="@string/tv_info"-->
+    <!--            android:src="@drawable/ic_three_points" />-->
+    <!--    </LinearLayout>-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
