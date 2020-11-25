@@ -12,6 +12,8 @@ class NivelActivity : AppCompatActivity(), NivelAdapter.NivelListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_niveis)
         rvNiveis.adapter = adapter
+        setSupportActionBar(findViewById(R.id.appBarNivel))
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     fun getNiveis(): ArrayList<Nivel> {

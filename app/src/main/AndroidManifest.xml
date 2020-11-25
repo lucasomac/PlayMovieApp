@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PlayMovieApp">
         <activity
+            android:name=".NivelActivity"
+            android:parentActivityName=".HomeActivity" />
+        <activity
             android:name=".ui.view.JogoActivity"
             android:parentActivityName=".ui.view.SubNiveisActivity"
             android:theme="@style/Theme.PlayMovieApp"/>
