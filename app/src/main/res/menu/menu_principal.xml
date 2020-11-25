@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/btLupa"
+        android:enabled="true"
+        android:icon="@drawable/ic_lupa"
+        android:title="@string/search"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/btPlay"
+        android:enabled="true"
+        android:icon="@drawable/ic_botao_jogar"
+        android:title="@string/jogar"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/btAleatorio"
+        android:enabled="true"
+        android:icon="@drawable/ic_video_aleatorio"
+        android:title="@string/aleatorio"
+        app:showAsAction="ifRoom" />
+</menu>
