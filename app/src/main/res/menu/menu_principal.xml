@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/btLupa"
+        android:enabled="true"
+        android:icon="@drawable/ic_lupa"
+        android:title="@string/search" />
+    <item
+        android:id="@+id/btAleatorio"
+        android:enabled="true"
+        android:icon="@drawable/ic_video_aleatorio"
+        android:title="@string/aleatorio" />
+</menu>
