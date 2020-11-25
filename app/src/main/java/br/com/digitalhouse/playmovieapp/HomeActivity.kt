@@ -70,5 +70,8 @@ class HomeActivity : AppCompatActivity(), NivelResumeAdapter.NivelResumeListener
             }
         }
         return true
+//        btnPlay.setOnClickListener {
+//            startActivity(Intent(this, NivelActivity::class.java))
+//        }
     }
 }

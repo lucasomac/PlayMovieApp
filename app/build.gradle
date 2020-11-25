@@ -50,4 +50,7 @@ dependencies {
 
     // fragment-ktx
     implementation "androidx.fragment:fragment-ktx:$fragment_ktx"
+
+    // Glide
+    implementation 'com.github.bumptech.glide:recyclerview-integration:4.11.0'
 }
