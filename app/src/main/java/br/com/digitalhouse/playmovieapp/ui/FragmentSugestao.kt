@@ -111,10 +111,10 @@ class FragmentSugestao : Fragment() {
         bundle.putString("categoriaSelecionada", categoriaSelecionada)
         bundle.putString("notaSelecionada", notaSelecionada)
         bundle.putString("anoSelecionado", anoSelecionado)
-        val fragMovieDetail = fragmentMovieDetail()
-        fragMovieDetail.arguments = bundle
-        SugestaoActivity.fm.beginTransaction().replace(R.id.fragmentContainerSugestao, fragMovieDetail, null)
-            .addToBackStack(null).commit()
+//        val fragMovieDetail = fragmentMovieDetail()
+//        fragMovieDetail.arguments = bundle
+//        SugestaoActivity.fm.beginTransaction().replace(R.id.fragmentContainerSugestao, fragMovieDetail, null)
+//            .addToBackStack(null).commit()
     }
 
 }

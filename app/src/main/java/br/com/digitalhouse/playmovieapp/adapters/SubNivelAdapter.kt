@@ -4,13 +4,10 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
-import androidx.recyclerview.widget.RecyclerView
+import android.widget.BaseAdapter
+import android.widget.ImageView
 import br.com.digitalhouse.playmovieapp.R
-import br.com.digitalhouse.playmovieapp.domain.Nivel
 import br.com.digitalhouse.playmovieapp.domain.SubNivel
-import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.item_grid_sub_nivel.view.*
 
 internal class SubNivelAdapter(
     private val context: Context,

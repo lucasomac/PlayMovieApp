@@ -1,11 +1,18 @@
 package br.com.digitalhouse.playmovieapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.app_toolbar.*
 
 class activity_cadastro : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro)
+        setSupportActionBar(findViewById(R.id.material_toolbar))
+        supportActionBar?.setTitle("")
+        supportActionBar?.setHomeButtonEnabled(true)
+//        material_toolbar.setNavigationOnClickListener {
+//            finish()
+//        }
     }
 }

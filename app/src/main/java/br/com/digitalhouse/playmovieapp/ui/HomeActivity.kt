@@ -2,35 +2,32 @@ package br.com.digitalhouse.playmovieapp.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.adapters.NivelResumeAdapter
 import br.com.digitalhouse.playmovieapp.domain.Nivel
 import br.com.digitalhouse.playmovieapp.domain.Resumo
-import br.com.digitalhouse.playmovieapp.domain.ResumoAdapter
-import br.com.digitalhouse.playmovieapp.ui.view.ConfiguracoesActivity
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity(), NivelResumeAdapter.NivelResumeListener {
-//    lateinit var list: ArrayList<Resumo>
-    lateinit var adapter: ResumoAdapter
-
-    //    val adapterResume = NivelResumeAdapter(getNiveis(), this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         btnPlay.setOnClickListener {
             startActivity(Intent(this, NivelActivity::class.java))
         }
+        //        getSupportActionBar()
         setSupportActionBar(findViewById(R.id.appBarHome))
         supportActionBar?.setTitle("")
         supportActionBar?.setHomeButtonEnabled(true)
 
-//        list = getResumos()
-//        adapter = ResumoAdapter(this, list)
-//        vpHome.adapter = adapter
-//        rvNiveisResume.adapter = adapterResume
+//        ivLupa.setOnClickListener {
+//            startActivity(Intent(this, SugestaoActivity::class.java))
+//        }
+
+        ivSugestao.setOnClickListener {
+            startActivity(Intent(this, SugestaoActivity::class.java))
+        }
     }
 
     fun getResumos(): ArrayList<Resumo> {
@@ -55,23 +52,20 @@ class HomeActivity : AppCompatActivity(), NivelResumeAdapter.NivelResumeListener
         TODO("Not yet implemented")
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean { //Botão adicional na ToolBar
-        when (item.getItemId()) {
-            android.R.id.home -> {
-                startActivity(
-                    Intent(
-                        this,
-                        ConfiguracoesActivity::class.java
-                    )
-                ) //O efeito ao ser pressionado do botão (no caso abre a activity)
-                finishAffinity() //Método para matar a activity e não deixa-lá indexada na pilhagem
-            }
-            else -> {
-            }
-        }
-        return true
-//        btnPlay.setOnClickListener {
-//            startActivity(Intent(this, NivelActivity::class.java))
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean { //Botão adicional na ToolBar
+//        when (item.getItemId()) {
+//            R.id.stProfile -> {
+//                startActivity(
+//                    Intent(
+//                        this,
+//                        InteressesActivity::class.java
+//                    )
+//                ) //O efeito ao ser pressionado do botão (no caso abre a activity)
+//                finishAffinity() //Método para matar a activity e não deixa-lá indexada na pilhagem
+//            }
+//            else -> {
+//            }
 //        }
-    }
+//        return true
+//    }
 }

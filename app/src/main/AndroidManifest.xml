@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PlayMovieApp">
-        <activity android:name=".activity_cadastro" />
+        <activity
+            android:name=".activity_cadastro"
+            android:parentActivityName=".ui.HomeActivity" />
         <activity
             android:name=".ui.NivelActivity"
             android:parentActivityName=".ui.HomeActivity" />
