@@ -16,8 +16,56 @@
     <string name="todo">TODO</string>
     <string name="politica_de_privacidade"><![CDATA[Termos e Política de Privacidade]]></string>
     <string name="carregando">Carregando…</string>
+
+    <string name="SynopsesFillIn">Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusant doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis. Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusant doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis. Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusant doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis. Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusant doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis. Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusant doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis. Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusant doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis. Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusant doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis. Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusant doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis. Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusant doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis. Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusant doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis.</string>
+    <string name="generos">Gêneros</string>
+    <string name="categoria">Categoria</string>
+    <string name="nota_imdb">Nota IMDb</string>
+    <string name="ano">Ano</string>
+    <string name="limpar_filtros">Limpar filtros</string>
+
+    <string-array name="generos">
+        <item>Comédia</item>
+        <item>Drama</item>
+        <item>Ação</item>
+        <item>Romance</item>
+        <item>Terror</item>
+        <item>Documentário</item>
+        <item>Família</item>
+        <item>Ficção Científica</item>
+        <item>Fantasia</item>
+        <item>Qualquer gênero</item>
+    </string-array>
+
+    <string-array name="categorias">
+        <item>Filme</item>
+        <item>Série</item>
+        <item>Qualquer categoria</item>
+    </string-array>
+
+    <string-array name="anos">
+        <item>Qualquer ano</item>
+        <item>2020</item>
+        <item>2010</item>
+        <item>2000</item>
+        <item>1990</item>
+        <item>1980</item>
+        <item>1970</item>
+        <item>Até 1960</item>
+    </string-array>
+
+    <string-array name="notas">
+        <item>Qualquer nota</item>
+        <item>Maior que 9</item>
+        <item>Maior que 8</item>
+        <item>Maior que 7</item>
+        <item>Maior que 6</item>
+        <item>Maior que 5</item>
+    </string-array>
+
     <string name="perguntas">Perguntas</string>
     <string name="search">Buscar</string>
     <string name="aleatorio">Aleatório</string>
     <string name="title_activity_detalhes_desenvolvedor">DetalhesDesenvolvedorActivity</string>
+
 </resources>
