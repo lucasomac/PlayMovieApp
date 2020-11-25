@@ -108,11 +108,12 @@
             android:textSize="14sp"
             android:layout_gravity="bottom"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/btnSugestao"
             android:layout_width="65dp"
             android:layout_height="match_parent"
-            android:background="@drawable/ic_botao_sugestao"/>
+            android:background="@drawable/ic_botao_sugestao"
+            android:src="@drawable/ic_random_solid"/>
 
     </LinearLayout>
 
