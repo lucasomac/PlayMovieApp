@@ -18,12 +18,10 @@
         <activity
             android:name=".ui.view.JogoActivity"
             android:parentActivityName=".ui.view.SubNiveisActivity"
-            android:theme="@style/Theme.PlayMovieApp"/>
+            android:theme="@style/Theme.PlayMovieApp" />
         <activity
             android:name=".ui.view.SubNiveisActivity"
-            android:theme="@style/Theme.PlayMovieApp">
-        </activity>
-        <activity android:name=".NivelActivity" />
+            android:theme="@style/Theme.PlayMovieApp" />
         <activity android:name=".HomeActivity" />
         <activity
             android:name=".ui.view.ConfiguracoesActivity"
@@ -39,10 +37,10 @@
         <activity
             android:name=".SplashActivity"
             android:theme="@style/Theme.PlayMovieApp.Fullscreen">
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
