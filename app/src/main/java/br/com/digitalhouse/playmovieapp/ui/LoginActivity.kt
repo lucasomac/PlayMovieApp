@@ -1,8 +1,9 @@
-package br.com.digitalhouse.playmovieapp
+package br.com.digitalhouse.playmovieapp.ui
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import br.com.digitalhouse.playmovieapp.R
 import kotlinx.android.synthetic.main.form_login.*
 
 

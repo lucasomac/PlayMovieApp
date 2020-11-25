@@ -1,11 +1,11 @@
-package br.com.digitalhouse.playmovieapp
+package br.com.digitalhouse.playmovieapp.ui
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.adapters.NivelResumeAdapter
-import br.com.digitalhouse.playmovieapp.domain.Configuracao
 import br.com.digitalhouse.playmovieapp.domain.Nivel
 import br.com.digitalhouse.playmovieapp.domain.Resumo
 import br.com.digitalhouse.playmovieapp.domain.ResumoAdapter
