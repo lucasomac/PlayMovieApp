@@ -14,10 +14,6 @@ class DesenvolvedorAdapter(
     val listener: DesenvolvedorListener
 ): RecyclerView.Adapter<DesenvolvedorAdapter.DesenvolvedorViewHolder>() {
 
-    interface DesenvolvedorListener {
-        fun onClickDesenvolvedor(item: Int)
-    }
-
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -40,6 +36,10 @@ class DesenvolvedorAdapter(
     }
 
     override fun getItemCount(): Int = listaDesenvolvedores.size
+
+    interface DesenvolvedorListener {
+        fun onClickDesenvolvedor(item: Int)
+    }
 
     inner class DesenvolvedorViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView), View.OnClickListener {
 

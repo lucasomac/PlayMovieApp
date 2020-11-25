@@ -11,7 +11,7 @@ import br.com.digitalhouse.playmovieapp.domain.Nivel
 
 class NivelAdapter(
     private val listaNiveis: ArrayList<Nivel>,
-    val listener: NivelAdapter.NivelListener
+    val listener: NivelListener
 ) : RecyclerView.Adapter<NivelAdapter.NivelViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -38,17 +38,31 @@ class NivelAdapter(
 //        }
     }
 
-    override fun getItemCount(): Int {
-        return listaNiveis.size
+    override fun getItemCount(): Int = listaNiveis.size
+
+    interface NivelListener {
+        fun onClickNivel(item: Int)
     }
 
-    class NivelViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+    inner class NivelViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        View.OnClickListener {
+
         var nivelProgressBar: ProgressBar = itemView.findViewById(R.id.pgProgressNivel)
         var nivelTextViewContagem: TextView = itemView.findViewById(R.id.tvContagemPerguntas)
         var nivelTextViewNivel: TextView = itemView.findViewById(R.id.tvNivel)
+
+        init {
+            itemView.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+
+            val position = adapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                listener.onClickNivel(position)
+            }
+        }
     }
 
-    interface NivelListener {
-        fun onClickNivel()
-    }
 }
