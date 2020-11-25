@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PlayMovieApp">
-        <activity android:name=".activity_cadastro"></activity>
+        <activity android:name=".activity_cadastro" />
         <activity
             android:name=".NivelActivity"
             android:parentActivityName=".HomeActivity" />
@@ -27,11 +27,12 @@
         <activity
             android:name=".ui.view.ConfiguracoesActivity"
             android:theme="@style/Theme.PlayMovieApp" />
-        <activity android:name=".HomeActivity" />
+
 
         <meta-data
             android:name="com.google.android.wearable.standalone"
             android:value="true" />
+
         <activity
             android:name=".ui.DetalhesDesenvolvedorActivity"
             android:label="@string/title_activity_detalhes_desenvolvedor" />
