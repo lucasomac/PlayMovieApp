@@ -10,8 +10,8 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        btnPlay.setOnClickListener {
-            startActivity(Intent(this, NivelActivity::class.java))
-        }
+//        btnPlay.setOnClickListener {
+//            startActivity(Intent(this, NivelActivity::class.java))
+//        }
     }
 }

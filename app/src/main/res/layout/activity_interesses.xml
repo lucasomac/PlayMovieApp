@@ -21,7 +21,7 @@
             android:background="@color/primary"
             app:title="Meus interesses"
             app:titleTextColor="@color/white"
-            app:navigationIcon="@drawable/ic_baseline_arrow_back_24" />
+            app:navigationIcon="@drawable/ic_arrow_back" />
 
         <View
             android:layout_width="match_parent"
