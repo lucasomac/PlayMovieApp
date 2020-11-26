@@ -21,6 +21,13 @@
         <item name="android:windowContentOverlay">@null</item>
     </style>
 
+    /* Custom title - MaterialToolbar */
+    <style name="Custom.Title.MaterialToolbar" parent="Theme.PlayMovieApp">
+        <item name="android:fontFamily">@font/opensans_semibold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
     /* Body1 */
 
     <style name="Custom.Body1" parent="Theme.PlayMovieApp">

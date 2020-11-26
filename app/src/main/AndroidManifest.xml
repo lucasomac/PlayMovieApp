@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.digitalhouse.playmovieapp">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
@@ -14,52 +15,64 @@
         <activity
             android:name=".ui.view.SubNiveisActivity"
             android:theme="@style/Theme.PlayMovieApp">
-        </activity>
-
-        <activity
-            android:name=".activity_cadastro"
-            android:parentActivityName=".ui.HomeActivity" />
-
-        <activity
-            android:name=".ui.NivelActivity"
-            android:parentActivityName=".ui.HomeActivity"/>
-
-        <activity
-            android:name=".ui.view.JogoActivity"
-            android:parentActivityName=".ui.view.SubNiveisActivity"
-            android:theme="@style/Theme.PlayMovieApp" />
-
-        <activity android:name=".ui.HomeActivity" />
-
-        <activity
-            android:name=".ui.view.ConfiguracoesActivity"
-            android:theme="@style/Theme.PlayMovieApp" />
-
-        <meta-data
-            android:name="com.google.android.wearable.standalone"
-            android:value="true" />
-
-        <activity
-            android:name=".ui.DetalhesDesenvolvedorActivity"
-            android:label="@string/title_activity_detalhes_desenvolvedor" />
-
-        <activity android:name=".ui.DesenvolvedoresActivity" />
-
-        <activity
-            android:name=".ui.InteressesActivity"
-            android:label="@string/title_activity_interesses" />
-
-        <activity android:name=".ui.LoginActivity" />
-
-        <activity
-            android:name=".SplashActivity"
-            android:theme="@style/Theme.PlayMovieApp.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".activity_cadastro"
+            android:parentActivityName=".ui.HomeActivity"
+            android:theme="@style/Theme.PlayMovieApp" />
+
+        <activity
+            android:name=".ui.NivelActivity"
+            android:parentActivityName=".ui.HomeActivity"
+            android:theme="@style/Theme.PlayMovieApp" />
+
+        <activity
+            android:name=".ui.view.JogoActivity"
+            android:parentActivityName=".ui.view.SubNiveisActivity"
+            android:theme="@style/Theme.PlayMovieApp" />
+
+        <activity
+            android:name=".ui.HomeActivity"
+            android:theme="@style/Theme.PlayMovieApp" />
+
+        <activity
+            android:name=".ui.view.ConfiguracoesActivity"
+            android:theme="@style/Theme.PlayMovieApp" />
+
+        <activity
+            android:name=".ui.DetalhesDesenvolvedorActivity"
+            android:label="@string/title_activity_detalhes_desenvolvedor"
+            android:theme="@style/Theme.PlayMovieApp" />
+
+        <activity
+            android:name=".ui.DesenvolvedoresActivity"
+            android:theme="@style/Theme.PlayMovieApp" />
+
+        <activity
+            android:name=".ui.InteressesActivity"
+            android:label="@string/title_activity_interesses"
+            android:theme="@style/Theme.PlayMovieApp" />
+
+        <activity
+            android:name=".ui.LoginActivity"
+            android:theme="@style/Theme.PlayMovieApp" />
+
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/Theme.PlayMovieApp.Fullscreen">
+
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.wearable.standalone"
+            android:value="true" />
+
     </application>
 
 </manifest>

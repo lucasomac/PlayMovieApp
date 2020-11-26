@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.AdapterView
+import android.widget.TextView
 import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.adapters.SubNivelAdapter
 import br.com.digitalhouse.playmovieapp.domain.SubNivel
@@ -20,9 +21,10 @@ class SubNiveisActivity : AppCompatActivity() {
     }
 
     private fun initToolbar() {
-        val toolbar = material_toolbar
-        setSupportActionBar(toolbar)
-        setTitle(R.string.titulo_sub_nivel) // TODO provisório
+        setSupportActionBar(material_toolbar)
+        // TODO deve ser dinâmico provisório
+        setTitle("") // para não pegar o padrão
+        textView_title_custom.text = "Nível 01"
     }
 
     private fun setValuesGridView() {
@@ -33,7 +35,7 @@ class SubNiveisActivity : AppCompatActivity() {
                 SubNivel(
                     99,
                     1,
-                    i % 2 == 0,
+                    i < 5,
                     R.drawable.sample_filme_cover
                 )
             )
@@ -45,7 +47,7 @@ class SubNiveisActivity : AppCompatActivity() {
         gridViewSubNiveis.onItemClickListener =
             AdapterView.OnItemClickListener { parent, view, position, id ->
                 val intent = Intent(this@SubNiveisActivity, JogoActivity::class.java)
-//                intent.putExtra("EXTRA_DISH", restaurant.dishes[position])
+                //intent.putExtra("EXTRA_SUBNIVEL", restaurant.dishes[position])
                 startActivity(intent)
             }
     }
