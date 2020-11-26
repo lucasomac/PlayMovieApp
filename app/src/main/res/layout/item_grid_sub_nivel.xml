@@ -5,9 +5,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardView_sub_nivel"
-    android:layout_width="130dp"
-    android:layout_height="130dp"
+    android:layout_width="@dimen/size_item_grid_subvivel"
+    android:layout_height="@dimen/size_item_grid_subvivel"
     app:cardCornerRadius="20dp"
+    android:layout_marginVertical="@dimen/margin_tiny"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -19,8 +20,8 @@
 
         <ImageView
             android:id="@+id/imageView_sub_nivel"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
+            android:layout_width="@dimen/size_item_grid_subvivel"
+            android:layout_height="@dimen/size_item_grid_subvivel"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

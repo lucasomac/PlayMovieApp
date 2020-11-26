@@ -6,64 +6,67 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
+import androidx.recyclerview.widget.RecyclerView
 import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.domain.SubNivel
+import kotlinx.android.synthetic.main.item_grid_sub_nivel.view.*
 
 internal class SubNivelAdapter(
-    private val context: Context,
     private val listSubNiveis: List<SubNivel>,
-) : BaseAdapter() {
+    val onClickListener: SubNivelListener
+) : RecyclerView.Adapter<SubNivelAdapter.SubNivelViewHolder>() {
 
-    private var layoutInflater: LayoutInflater? = null
-    private lateinit var imageViewSubNivel: ImageView
-    private lateinit var imageViewSubNivelOverlay: ImageView
-    private lateinit var imageViewSubNivelCheck: ImageView
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): SubNivelViewHolder {
 
-    override fun getCount(): Int = listSubNiveis.size
-
-    override fun getItem(position: Int): Any? {
-        return null
+        val itemView = LayoutInflater.from(parent.context).inflate(
+            R.layout.item_grid_sub_nivel,
+            parent,
+            false
+        )
+        return SubNivelViewHolder(itemView)
     }
 
-    override fun getItemId(position: Int): Long {
-        return 0
-    }
+    override fun onBindViewHolder(holder: SubNivelViewHolder, position: Int) {
+        var subNivel = listSubNiveis.get(position)
 
-    override fun getView(
-        position: Int,
-        convertView: View?,
-        parent: ViewGroup
-    ): View? {
-        var convertView = convertView
-        val subNivel = listSubNiveis[position]
-
-        if (layoutInflater == null) {
-            layoutInflater =
-                context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        }
-
-        if (convertView == null) {
-            convertView = layoutInflater!!.inflate(R.layout.item_grid_sub_nivel, null)
-        }
-
-        imageViewSubNivel = convertView!!.findViewById(R.id.imageView_sub_nivel)
-        imageViewSubNivelOverlay = convertView!!.findViewById(R.id.imageView_sub_nivel_overlay)
-        imageViewSubNivelCheck = convertView!!.findViewById(R.id.imageView_sub_nivel_check)
-
-        imageViewSubNivel.setImageResource(subNivel.urlImage)
+        holder.imageViewSubNivel.setImageResource(subNivel.urlImage)
 
         if (subNivel.isComplete) {
-            imageViewSubNivelOverlay.visibility = View.VISIBLE;
-            imageViewSubNivelCheck.visibility = View.VISIBLE;
+            holder.imageViewSubNivelOverlay.visibility = View.VISIBLE;
+            holder.imageViewSubNivelCheck.visibility = View.VISIBLE;
         } else {
-            imageViewSubNivelOverlay.visibility = View.GONE;
-            imageViewSubNivelCheck.visibility = View.GONE;
+            holder.imageViewSubNivelOverlay.visibility = View.GONE;
+            holder.imageViewSubNivelCheck.visibility = View.GONE;
+        }
+    }
+
+    override fun getItemCount(): Int = listSubNiveis.size
+
+    interface SubNivelListener {
+        fun onClickListener(item: Int)
+    }
+
+    inner class SubNivelViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        View.OnClickListener {
+
+        init {
+            itemView.setOnClickListener(this)
         }
 
-//        Glide.with(convertView.context).asBitmap()
-//            .load(listSubNiveis[position].urlImage)
-//            .into(imageViewSubNivel)
+        var imageViewSubNivel: ImageView = itemView.findViewById(R.id.imageView_sub_nivel)
+        var imageViewSubNivelOverlay: ImageView =
+            itemView.findViewById(R.id.imageView_sub_nivel_overlay)
+        var imageViewSubNivelCheck: ImageView =
+            itemView.findViewById(R.id.imageView_sub_nivel_check)
 
-        return convertView
+        override fun onClick(v: View?) {
+            val position = adapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                onClickListener.onClickListener(position)
+            }
+        }
     }
 }
