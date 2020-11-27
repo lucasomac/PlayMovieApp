@@ -27,7 +27,7 @@ class SubNiveisActivity : AppCompatActivity(), SubNivelAdapter.SubNivelListener 
         setSupportActionBar(material_toolbar)
         // TODO deve ser dinâmico provisório
         setTitle("") // para não pegar o padrão
-        textView_title_custom.text = "Nível 01"
+        textView_title_toolbar_custom.text = "Nível 01"
     }
 
     private fun setValuesGridView() {

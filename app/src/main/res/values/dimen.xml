@@ -12,4 +12,9 @@
 
     <dimen name="size_item_grid_subvivel">110dp</dimen>
 
+    <dimen name="size_buttom_icon_1">48dp</dimen>
+    <dimen name="size_buttom_icon_2">52dp</dimen>
+    <dimen name="size_buttom_icon_3">62dp</dimen>
+
+
 </resources>

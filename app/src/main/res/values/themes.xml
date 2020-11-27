@@ -22,6 +22,7 @@
     </style>
 
     /* Custom title - MaterialToolbar */
+
     <style name="Custom.Title.MaterialToolbar" parent="Theme.PlayMovieApp">
         <item name="android:fontFamily">@font/opensans_semibold</item>
         <item name="android:textColor">@color/white</item>
@@ -61,21 +62,35 @@
         <item name="android:textStyle">normal</item>
     </style>
 
+    /* Button - Icon-only */
+
+    <style name="Custom.Buttom.IconOnly" parent="Theme.PlayMovieApp">
+        <item name="android:insetLeft">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="iconGravity">textStart</item>
+        <item name="android:insetRight">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingRight">0dp</item>
+        <item name="iconPadding">0dp</item>
+        <item name="elevation">0dp</item>
+    </style>
+
     /*
-    NAME       SIZE
-    headline1  112.0
-    headline2  56.0
-    headline3  45.0
-    headline4  34.0
-    headline5  24.0
-    headline6  20.0
-    subtitle1  16.0
-    body2      16.0
-    body1      14.0
-    caption    12.0
-    button     14.0
-    subtitle2  14.0
-    overline   10.0
+    NAME SIZE
+    headline1 112.0
+    headline2 56.0
+    headline3 45.0
+    headline4 34.0
+    headline5 24.0
+    headline6 20.0
+    subtitle1 16.0
+    body2 16.0
+    body1 14.0
+    caption 12.0
+    button 14.0
+    subtitle2 14.0
+    overline 10.0
     */
 
 </resources>
