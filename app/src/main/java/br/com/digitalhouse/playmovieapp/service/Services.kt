@@ -1,5 +1,6 @@
 package br.com.digitalhouse.playmovieapp.service
 
+import br.com.digitalhouse.playmovieapp.API_MARVEL_URL
 import br.com.digitalhouse.playmovieapp.domain.Entities
 import br.com.digitalhouse.playmovieapp.domain.Movie
 import retrofit2.Retrofit
@@ -7,8 +8,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
-
-val apiMarvelUrl = "https://gateway.marvel.com/v1/public/"
 
 interface Services {
     @GET("/search/movie")
@@ -37,7 +36,7 @@ interface Services {
 }
 
 val retrofit = Retrofit.Builder()
-    .baseUrl(apiMarvelUrl)
+    .baseUrl(API_MARVEL_URL)
     .addConverterFactory(GsonConverterFactory.create())
     .build()
 val repository: Services = retrofit.create(Services::class.java)
