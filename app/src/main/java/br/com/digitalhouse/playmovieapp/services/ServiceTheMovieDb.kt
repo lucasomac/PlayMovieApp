@@ -1,4 +1,4 @@
-package br.com.digitalhouse.playmovieapp.service
+package br.com.digitalhouse.playmovieapp.services
 
 import br.com.digitalhouse.playmovieapp.API_MARVEL_URL
 import br.com.digitalhouse.playmovieapp.domain.Entities
