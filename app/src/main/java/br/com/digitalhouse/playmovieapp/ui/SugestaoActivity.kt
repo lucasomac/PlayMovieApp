@@ -5,9 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import br.com.digitalhouse.playmovieapp.R
 
-class SugestaoActivity: AppCompatActivity() {
-    companion object{
-        lateinit var fm : FragmentManager
+class SugestaoActivity : AppCompatActivity() {
+    companion object {
+        lateinit var fm: FragmentManager
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

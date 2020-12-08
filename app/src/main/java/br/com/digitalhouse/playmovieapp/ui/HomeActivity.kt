@@ -9,21 +9,17 @@ import br.com.digitalhouse.playmovieapp.domain.Nivel
 import br.com.digitalhouse.playmovieapp.domain.Resumo
 import kotlinx.android.synthetic.main.activity_home.*
 
-class HomeActivity : AppCompatActivity(), NivelResumeAdapter.NivelResumeListener {
+class HomeActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         btnPlay.setOnClickListener {
             startActivity(Intent(this, NivelActivity::class.java))
         }
-        //        getSupportActionBar()
+        getSupportActionBar()
         setSupportActionBar(findViewById(R.id.appBarHome))
         supportActionBar?.setTitle("")
         supportActionBar?.setHomeButtonEnabled(true)
-
-//        ivLupa.setOnClickListener {
-//            startActivity(Intent(this, SugestaoActivity::class.java))
-//        }
 
         ivSugestao.setOnClickListener {
             startActivity(Intent(this, SugestaoActivity::class.java))
@@ -47,10 +43,10 @@ class HomeActivity : AppCompatActivity(), NivelResumeAdapter.NivelResumeListener
             Nivel(6, 5, 15)
         )
     }
-
-    override fun onClickNivelResume() {
-        TODO("Not yet implemented")
-    }
+//
+//    override fun onClickNivelResume() {
+//        TODO("Not yet implemented")
+//    }
 
 //    override fun onOptionsItemSelected(item: MenuItem): Boolean { //Botão adicional na ToolBar
 //        when (item.getItemId()) {

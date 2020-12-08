@@ -46,6 +46,7 @@
             app:cardCornerRadius="8dp">
 
             <ImageView
+                android:id="@+id/filme_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/filme_dia" />
