@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/filmeDiaFragment">
+
+    <fragment
+        android:id="@+id/filmeDiaFragment"
+        android:name="br.com.digitalhouse.playmovieapp.FilmeDiaFragment"
+        android:label="fragment_filme_dia_home"
+        tools:layout="@layout/fragment_filme_dia_home" >
+        <action
+            android:id="@+id/action_filmeDiaFragment_to_resumoNivelFragment"
+            app:destination="@id/resumoNivelFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resumoNivelFragment"
+        android:name="br.com.digitalhouse.playmovieapp.ResumoNivelFragment"
+        android:label="resumo_nivel_fragment"
+        tools:layout="@layout/resumo_nivel_fragment" >
+        <action
+            android:id="@+id/action_resumoNivelFragment_to_filmeDiaFragment"
+            app:destination="@id/filmeDiaFragment" />
+    </fragment>
+</navigation>
