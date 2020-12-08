@@ -7,17 +7,25 @@
     android:background="@color/primary"
     tools:context=".CadastroActivity">
 
+    <!--    <include-->
+    <!--        android:id="@+id/include_config_toolbar"-->
+    <!--        layout="@layout/app_toolbar"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="4dp"-->
+    <!--        android:text="@string/criar_nova_conta"-->
+    <!--        android:textAlignment="viewStart"-->
+    <!--        android:textDirection="firstStrongRtl"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.0"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
     <include
         android:id="@+id/include_config_toolbar"
         layout="@layout/app_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="@string/criar_nova_conta"
-        android:textAlignment="viewStart"
-        android:textDirection="firstStrongRtl"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -9,10 +9,16 @@ class CadastroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro)
         setSupportActionBar(findViewById(R.id.material_toolbar))
-        supportActionBar?.setTitle("")
+//        supportActionBar?.setTitle("")
+//        supportActionBar?.setHomeButtonEnabled(true)
+        initToolbar()
+    }
+
+    private fun initToolbar() {
+        val toolbar = material_toolbar
+        setSupportActionBar(toolbar)
+        supportActionBar?.setTitle("Criar nova conta")
+        supportActionBar?.setDisplayHomeAsUpEnabled(true); //Mostrar o botão
         supportActionBar?.setHomeButtonEnabled(true)
-//        material_toolbar.setNavigationOnClickListener {
-//            finish()
-//        }
     }
 }

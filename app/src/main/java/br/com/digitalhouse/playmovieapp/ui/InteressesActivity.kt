@@ -3,14 +3,13 @@ package br.com.digitalhouse.playmovieapp.ui
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.adapters.InteresseAdapter
 import br.com.digitalhouse.playmovieapp.domain.Interesse
-import com.google.android.material.switchmaterial.SwitchMaterial
 import kotlinx.android.synthetic.main.activity_interesses.*
-import kotlinx.android.synthetic.main.item_interesse.*
+import kotlinx.android.synthetic.main.app_toolbar.*
 
 class InteressesActivity : AppCompatActivity(), InteresseAdapter.InteresseListener {
 
@@ -28,26 +27,38 @@ class InteressesActivity : AppCompatActivity(), InteresseAdapter.InteresseListen
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_interesses)
-
+        initToolbar()
         val adapter = InteresseAdapter(interesses, this)
         rv_interesses.adapter = adapter
 
     }
 
-    override fun onClickInteresse(isChecked: Boolean, interesseIcon: ImageView, interesseDesc: TextView) {
+    override fun onClickInteresse(
+        isChecked: Boolean,
+        interesseIcon: ImageView,
+        interesseDesc: TextView
+    ) {
 
         if (isChecked) {
-            interesseDesc.setTextColor(getResources().getColor(R.color.secondary))
-            interesseIcon.setColorFilter(getResources().getColor(R.color.secondary))
+            interesseDesc.setTextColor(ContextCompat.getColor(this, R.color.secondary))
+            interesseIcon.setColorFilter(ContextCompat.getColor(this, R.color.secondary))
         } else {
-            interesseDesc.setTextColor(getResources().getColor(R.color.white))
-            interesseIcon.setColorFilter(getResources().getColor(R.color.white))
+            interesseDesc.setTextColor(ContextCompat.getColor(this, R.color.white))
+            interesseIcon.setColorFilter(ContextCompat.getColor(this, R.color.white))
 
         }
     }
 
     override fun changeColor(interesseIcon: ImageView, interesseDesc: TextView) {
-        interesseDesc.setTextColor(getResources().getColor(R.color.secondary))
-        interesseIcon.setColorFilter(getResources().getColor(R.color.secondary))
+        interesseDesc.setTextColor(ContextCompat.getColor(this, R.color.secondary))
+        interesseIcon.setColorFilter(ContextCompat.getColor(this, R.color.secondary))
+    }
+
+    private fun initToolbar() {
+        val toolbar = material_toolbar
+        setSupportActionBar(toolbar)
+        supportActionBar?.setTitle("Interesses")
+        supportActionBar?.setDisplayHomeAsUpEnabled(true); //Mostrar o botão
+        supportActionBar?.setHomeButtonEnabled(true)
     }
 }

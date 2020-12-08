@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.digitalhouse.playmovieapp">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
@@ -13,8 +14,7 @@
 
         <activity
             android:name=".ui.view.SubNiveisActivity"
-            android:theme="@style/Theme.PlayMovieApp">
-        </activity>
+            android:theme="@style/Theme.PlayMovieApp" />
 
         <activity
             android:name=".CadastroActivity"
@@ -22,22 +22,24 @@
 
         <activity
             android:name=".ui.NivelActivity"
-            android:parentActivityName=".ui.HomeActivity"/>
+            android:parentActivityName=".ui.HomeActivity" />
 
         <activity
             android:name=".ui.view.JogoActivity"
             android:parentActivityName=".ui.view.SubNiveisActivity"
             android:theme="@style/Theme.PlayMovieApp" />
 
-        <activity android:name=".ui.HomeActivity" />
+        <activity
+            android:name=".ui.HomeActivity"
+            android:parentActivityName=".ui.view.ConfiguracoesActivity" />
 
         <activity
             android:name=".ui.view.ConfiguracoesActivity"
             android:theme="@style/Theme.PlayMovieApp" />
 
-        <meta-data
-            android:name="com.google.android.wearable.standalone"
-            android:value="true" />
+                <meta-data
+                    android:name="com.google.android.wearable.standalone"
+                    android:value="true" />
 
         <activity
             android:name=".ui.DetalhesDesenvolvedorActivity"
@@ -47,7 +49,8 @@
 
         <activity
             android:name=".ui.InteressesActivity"
-            android:label="@string/title_activity_interesses" />
+            android:label="@string/title_activity_interesses"
+            android:parentActivityName=".ui.HomeActivity" />
 
         <activity android:name=".ui.LoginActivity" />
 

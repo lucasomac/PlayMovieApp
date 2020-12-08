@@ -24,10 +24,13 @@ class ConfiguracoesActivity : AppCompatActivity() {
         initAlertaPoliticaPrivacidade()
     }
 
+
     private fun initToolbar() {
         val toolbar = material_toolbar
         setSupportActionBar(toolbar)
-        setTitle(R.string.titulo_configuracoes)
+        supportActionBar?.setTitle("Configurações")
+        supportActionBar?.setDisplayHomeAsUpEnabled(true); //Mostrar o botão
+        supportActionBar?.setHomeButtonEnabled(true)
     }
 
     private fun initRecyclerConfiguracoes() {
