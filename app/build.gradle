@@ -7,6 +7,9 @@ plugins {
 android {
     compileSdkVersion 30
     buildToolsVersion '30.0.2'
+    buildFeatures {
+        viewBinding true
+    }
 
     defaultConfig {
         applicationId "br.com.digitalhouse.playmovieapp"
@@ -35,6 +38,10 @@ android {
 
 dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.2'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     def fragment_ktx = "1.2.5"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}"
