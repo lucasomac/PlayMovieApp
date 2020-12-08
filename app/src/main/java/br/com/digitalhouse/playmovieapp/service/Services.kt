@@ -24,6 +24,16 @@ interface Services {
         page: Int,
     ): Entities
 
+    @GET("/movie/popular")
+    suspend fun searchPopularMovies(
+        @Query("api_key")
+        apikey: String,
+        @Query("language")
+        language: String,
+        @Query("page")
+        page: Int,
+    ): Entities
+
     @GET("/search/{movie_id}")
     suspend fun searchMovieDetail(
         @Query("api_key")
@@ -35,8 +45,7 @@ interface Services {
 
 }
 
-val retrofit = Retrofit.Builder()
-    .baseUrl(API_MARVEL_URL)
-    .addConverterFactory(GsonConverterFactory.create())
-    .build()
+val retrofit =
+    Retrofit.Builder().baseUrl(API_MARVEL_URL).addConverterFactory(GsonConverterFactory.create())
+        .build()
 val repository: Services = retrofit.create(Services::class.java)
