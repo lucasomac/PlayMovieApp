@@ -10,10 +10,9 @@ import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.domain.Interesse
 import com.google.android.material.switchmaterial.SwitchMaterial
 
-class InteresseAdapter(
-    private val listaInteresses: ArrayList<Interesse>,
-    val listener: InteresseListener
-): RecyclerView.Adapter<InteresseAdapter.InteresseViewHolder>(){
+class InteresseAdapter(val listener: InteresseListener): RecyclerView.Adapter<InteresseAdapter.InteresseViewHolder>(){
+
+    var listaInteresses = arrayListOf<Interesse>()
 
     interface InteresseListener {
 
@@ -58,5 +57,10 @@ class InteresseAdapter(
         var interesseIcon: ImageView = itemView.findViewById(R.id.interesseIcon)
         var interesseDesc: TextView = itemView.findViewById(R.id.interesseDesc)
         var interesseAtivo: SwitchMaterial = itemView.findViewById(R.id.interesseAtivo)
+    }
+
+    fun addInteresses (interesses: ArrayList<Interesse>) {
+        listaInteresses = interesses
+        notifyDataSetChanged()
     }
 }
