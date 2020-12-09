@@ -8,11 +8,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.domain.Desenvolvedor
+import br.com.digitalhouse.playmovieapp.domain.Interesse
 
-class DesenvolvedorAdapter(
-    private val listaDesenvolvedores: ArrayList<Desenvolvedor>,
-    val listener: DesenvolvedorListener
-): RecyclerView.Adapter<DesenvolvedorAdapter.DesenvolvedorViewHolder>() {
+class DesenvolvedorAdapter(val listener: DesenvolvedorListener): RecyclerView.Adapter<DesenvolvedorAdapter.DesenvolvedorViewHolder>() {
+
+    var listaDesenvolvedores = arrayListOf<Desenvolvedor>()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -58,5 +58,10 @@ class DesenvolvedorAdapter(
                 listener.onClickDesenvolvedor(position)
             }
         }
+    }
+
+    fun addDesenvolvedores (desenvolvedores: ArrayList<Desenvolvedor>) {
+        listaDesenvolvedores = desenvolvedores
+        notifyDataSetChanged()
     }
 }
