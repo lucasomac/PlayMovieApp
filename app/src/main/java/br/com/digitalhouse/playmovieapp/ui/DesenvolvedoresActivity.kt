@@ -4,67 +4,35 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.viewModels
 import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.adapters.DesenvolvedorAdapter
 import br.com.digitalhouse.playmovieapp.domain.Desenvolvedor
+import br.com.digitalhouse.playmovieapp.ui.viewModel.DesenvolvedoresViewModel
+import br.com.digitalhouse.playmovieapp.ui.viewModel.InteressesViewModel
 import kotlinx.android.synthetic.main.activity_desenvolvedores.*
 
 class DesenvolvedoresActivity : AppCompatActivity(), DesenvolvedorAdapter.DesenvolvedorListener {
 
-    val desenvolvedores = arrayListOf<Desenvolvedor>(
-        Desenvolvedor(
-            1,
-            "Camila Pelegrina",
-            "176 xícaras de café",
-            23,
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            R.drawable.perfil
-        ),
-        Desenvolvedor(
-            2,
-            "Danilo Augusto",
-            "789 xícaras de café",
-            23,
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            R.drawable.perfil
-        ),
-        Desenvolvedor(
-            3,
-            "Lucas Oliveira",
-            "462 xícaras de café",
-            23,
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            R.drawable.perfil
-        ),
-        Desenvolvedor(
-            4,
-            "Rodrigo Felipe",
-            "178 xícaras de café",
-            23,
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            R.drawable.perfil
-        ),
-        Desenvolvedor(
-            4,
-            "Sarah Carneiro",
-            "498 xícaras de café",
-            23,
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            R.drawable.perfil
-        )
-    )
+    val viewModel: DesenvolvedoresViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_desenvolvedores)
 
-        val adapter = DesenvolvedorAdapter(desenvolvedores, this)
+        val adapter = DesenvolvedorAdapter(this)
         rv_desenvolvedores.adapter = adapter
+
+        viewModel.desenvolvedores.observe(this) {
+            adapter.addDesenvolvedores(it)
+        }
+
+        viewModel.setDesenvolvedores()
     }
 
     override fun onClickDesenvolvedor(item: Int) {
 
-        var desenvolvedor = desenvolvedores.get(item)
+        var desenvolvedor = viewModel.desenvolvedores.value?.get(item)
         val intent = Intent(this, DetalhesDesenvolvedorActivity::class.java)
         intent.putExtra("desenvolvedor", desenvolvedor)
         startActivity(intent)
