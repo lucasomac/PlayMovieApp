@@ -39,8 +39,45 @@ interface Repository {
         @Query("api_key")
         apikey: String,
         @Query("language")
+        language: String,
         @Path("movie_id")
         movie_id: Int
+    ): Movie
+
+    @GET("genre/movie/list")
+    suspend fun searchGenre(
+        @Query("api_key")
+        apikey: String,
+        @Query("language")
+        language: String,
+    ): Movie
+
+    @GET("discover/movie")
+    suspend fun searchSugestionMovie(
+        @Query("api_key")
+        apikey: String,
+        @Query("language")
+        language: String,
+        @Query("with_genres")
+        with_genres: Int,
+        @Query("year")
+        year: Int,
+        @Query("vote_average.gte")
+        vote_average: Double,
+    ): Movie
+
+    @GET("discover/tv")
+    suspend fun searchSugestionTv(
+        @Query("api_key")
+        apikey: String,
+        @Query("language")
+        language: String,
+        @Query("with_genres")
+        with_genres: Int,
+        @Query("year")
+        year: Int,
+        @Query("vote_average.gte")
+        vote_average: Double,
     ): Movie
 
 }
