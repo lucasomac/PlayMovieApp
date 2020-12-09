@@ -6,38 +6,33 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import br.com.digitalhouse.playmovieapp.R
-import br.com.digitalhouse.playmovieapp.databinding.ActivityHomeBinding
+import br.com.digitalhouse.playmovieapp.ui.view.ConfiguracoesActivity
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_toolbar.*
 
 
 class HomeActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityHomeBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityHomeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        binding.ivLupa.setOnClickListener {
-            startActivity(Intent(this, SugestaoActivity::class.java))
-        }
-        binding.btnPlay.setOnClickListener {
+        setContentView(R.layout.activity_home)
+        btnPlay.setOnClickListener {
             startActivity(Intent(this, NivelActivity::class.java))
         }
-        initToolbar()
 
-        binding.ivSugestao.setOnClickListener {
+        ivLupa.setOnClickListener {
             startActivity(Intent(this, SugestaoActivity::class.java))
         }
-    }
 
-    private fun initToolbar() {
-        val toolbar = binding.includeConfigToolbar.materialToolbar
-        setSupportActionBar(toolbar)
-        supportActionBar?.apply {
-            setDisplayHomeAsUpEnabled(true)
-            setHomeButtonEnabled(true)
-            setHomeAsUpIndicator(R.drawable.ic_baseline_settings_24)
-            setTitle("")
+        ivSugestao.setOnClickListener {
+            startActivity(Intent(this, SugestaoActivity::class.java))
+        }
+
+        btn_Configs.setOnClickListener{
+            startActivity(Intent(this, ConfiguracoesActivity::class.java))
+        }
+
+        btn_Ajustes.setOnClickListener{
+            startActivity(Intent(this, InteressesActivity::class.java))
         }
     }
 
@@ -47,14 +42,14 @@ class HomeActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean { //Botão adicional na ToolBar
-        when (item.getItemId()) {
-            R.id.stProfile -> {
-                startActivity(Intent(this, InteressesActivity::class.java))
-            }
-            else -> {
-            }
-        }
-        return true
-    }
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean { //Botão adicional na ToolBar
+//        when (item.getItemId()) {
+//            R.id.stProfile -> {
+//                startActivity(Intent(this, InteressesActivity::class.java))
+//            }
+//            else -> {
+//            }
+//        }
+//        return true
+//    }
 }
