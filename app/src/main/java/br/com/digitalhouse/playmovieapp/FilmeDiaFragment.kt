@@ -13,7 +13,9 @@ import androidx.navigation.fragment.findNavController
 import br.com.digitalhouse.playmovieapp.databinding.FragmentFilmeDiaHomeBinding
 import br.com.digitalhouse.playmovieapp.domain.Result
 import br.com.digitalhouse.playmovieapp.services.repository
+import br.com.digitalhouse.playmovieapp.ui.viewModel.FilmeDiaViewModel
 import com.bumptech.glide.Glide
+import java.util.*
 
 class FilmeDiaFragment : Fragment() {
     private var _binding: FragmentFilmeDiaHomeBinding? = null
@@ -49,12 +51,16 @@ class FilmeDiaFragment : Fragment() {
         viewModel.searchPopularMovie()
         viewModel.popularMovie.observe(viewLifecycleOwner) {
             filme = it
-            Log.i("DADOS", it.toString())
-            Glide.with(this).asBitmap()
-                .load(BASE_URL_IMAGE + "original" + filme.poster_path)
-                .into(binding.filmeImage)
+            if (!filme.backdrop_path.toString().isBlank())
+                Glide.with(this).asBitmap()
+                    .load(BASE_URL_IMAGE + "original" + filme.backdrop_path)
+                    .into(binding.filmeImage)
+            else
+                Glide.with(this).asBitmap()
+                    .load(BASE_URL_IMAGE + "original" + filme.poster_path)
+                    .into(binding.filmeImage)
             binding.tvNomeFilme.text = filme.title
-            binding.tvAnoFilme.text = filme.release_date
+            binding.tvAnoFilme.text = filme.release_date.substring(0,4) + filme.genre_ids
             binding.tvNotaFilme.text = filme.vote_average.toString()
         }
     }
