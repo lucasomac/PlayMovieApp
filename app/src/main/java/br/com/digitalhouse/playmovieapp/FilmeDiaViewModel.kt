@@ -1,7 +1,19 @@
 package br.com.digitalhouse.playmovieapp
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import br.com.digitalhouse.playmovieapp.domain.Result
+import br.com.digitalhouse.playmovieapp.services.Repository
+import kotlinx.coroutines.launch
 
-class FilmeDiaViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class FilmeDiaViewModel(val repository: Repository) : ViewModel() {
+    var popularMovie = MutableLiveData<Result>()
+    fun searchPopularMovie() {
+        viewModelScope.launch {
+            repository.searchPopularMovies(API_KEY, LANGUAGE, 1).results.get(0).also {
+                popularMovie.postValue(it)
+            }
+        }
+    }
 }

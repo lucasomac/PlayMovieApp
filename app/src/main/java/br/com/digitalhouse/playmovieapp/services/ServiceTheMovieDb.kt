@@ -9,8 +9,8 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface Services {
-    @GET("/search/movie")
+interface Repository {
+    @GET("search/movie")
     suspend fun searchMovies(
         @Query("api_key")
         apikey: String,
@@ -24,7 +24,7 @@ interface Services {
         page: Int,
     ): Entities
 
-    @GET("/movie/popular")
+    @GET("movie/popular")
     suspend fun searchPopularMovies(
         @Query("api_key")
         apikey: String,
@@ -34,7 +34,7 @@ interface Services {
         page: Int,
     ): Entities
 
-    @GET("/search/{movie_id}")
+    @GET("search/{movie_id}")
     suspend fun searchMovieDetail(
         @Query("api_key")
         apikey: String,
@@ -48,4 +48,4 @@ interface Services {
 val retrofit =
     Retrofit.Builder().baseUrl(API_MARVEL_URL).addConverterFactory(GsonConverterFactory.create())
         .build()
-val repository: Services = retrofit.create(Services::class.java)
+val repository: Repository = retrofit.create(Repository::class.java)

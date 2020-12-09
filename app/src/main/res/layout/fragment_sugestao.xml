@@ -27,7 +27,7 @@
 
     <Spinner
         android:id="@+id/spinnerGeneros"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="7dp"
@@ -46,7 +46,7 @@
 
     <Spinner
         android:id="@+id/spinnerCategorias"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="7dp"
@@ -65,7 +65,7 @@
 
     <Spinner
         android:id="@+id/spinnerNota"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="7dp"
@@ -84,7 +84,7 @@
 
     <Spinner
         android:id="@+id/spinnerAno"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="7dp"
@@ -108,7 +108,7 @@
             android:textSize="14sp"
             android:layout_gravity="bottom"/>
 
-        <ImageButton
+        <ImageView
             android:id="@+id/btnSugestao"
             android:layout_width="65dp"
             android:layout_height="match_parent"

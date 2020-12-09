@@ -6,30 +6,39 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import br.com.digitalhouse.playmovieapp.R
-import kotlinx.android.synthetic.main.activity_home.*
+import br.com.digitalhouse.playmovieapp.databinding.ActivityHomeBinding
 import kotlinx.android.synthetic.main.app_toolbar.*
 
 
 class HomeActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityHomeBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
-        btnPlay.setOnClickListener {
+        binding = ActivityHomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        binding.ivLupa.setOnClickListener {
+            startActivity(Intent(this, SugestaoActivity::class.java))
+        }
+        binding.btnPlay.setOnClickListener {
             startActivity(Intent(this, NivelActivity::class.java))
         }
         initToolbar()
 
-        ivSugestao.setOnClickListener {
+        binding.ivSugestao.setOnClickListener {
             startActivity(Intent(this, SugestaoActivity::class.java))
         }
     }
 
     private fun initToolbar() {
-        val toolbar = material_toolbar
+        val toolbar = binding.includeConfigToolbar.materialToolbar
         setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true); //Mostrar o botão
-        supportActionBar?.setHomeButtonEnabled(true)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_settings_24)
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setHomeButtonEnabled(true)
+            setHomeAsUpIndicator(R.drawable.ic_baseline_settings_24)
+            setTitle("")
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

@@ -43,6 +43,7 @@
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardMovie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -50,12 +51,14 @@
 
             <ImageView
                 android:id="@+id/filme_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
                 android:src="@drawable/filme_dia" />
         </androidx.cardview.widget.CardView>
 
         <TextView
+            android:id="@+id/tvNomeFilme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/pading_car_home"
@@ -67,6 +70,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/tvAnoFilme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/pading_car_home"
@@ -99,6 +103,7 @@
                 android:src="@drawable/ic_baseline_star_16" />
 
             <TextView
+                android:id="@+id/tvNotaFilme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="6,8"

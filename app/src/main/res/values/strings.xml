@@ -31,16 +31,25 @@
     <string name="limpar_filtros">Limpar filtros</string>
 
     <string-array name="generos">
-        <item>Comédia</item>
-        <item>Drama</item>
         <item>Ação</item>
-        <item>Romance</item>
-        <item>Terror</item>
+        <item>Aventura</item>
+        <item>Animação</item>
+        <item>Comédia</item>
+        <item>Crime</item>
         <item>Documentário</item>
+        <item>Drama</item>
         <item>Família</item>
-        <item>Ficção Científica</item>
         <item>Fantasia</item>
-        <item>Qualquer gênero</item>
+        <item>História</item>
+        <item>Terror</item>
+        <item>Música</item>
+        <item>Mistério</item>
+        <item>Romance</item>
+        <item>Ficção Científica</item>
+        <item>Cinema TV</item>
+        <item>Thriller</item>
+        <item>Guerra</item>
+        <item>Faroeste</item>
     </string-array>
 
     <string-array name="categorias">
