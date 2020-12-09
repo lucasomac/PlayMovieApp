@@ -31,6 +31,7 @@
     <string name="limpar_filtros">Limpar filtros</string>
 
     <string-array name="generos">
+        <item>Qualquer Gênero</item>
         <item>Comédia</item>
         <item>Drama</item>
         <item>Ação</item>
@@ -40,17 +41,16 @@
         <item>Família</item>
         <item>Ficção Científica</item>
         <item>Fantasia</item>
-        <item>Qualquer gênero</item>
     </string-array>
 
     <string-array name="categorias">
+        <item>Qualquer Categoria</item>
         <item>Filme</item>
         <item>Série</item>
-        <item>Qualquer categoria</item>
     </string-array>
 
     <string-array name="anos">
-        <item>Qualquer ano</item>
+        <item>Qualquer Ano</item>
         <item>2020</item>
         <item>2010</item>
         <item>2000</item>
@@ -61,7 +61,7 @@
     </string-array>
 
     <string-array name="notas">
-        <item>Qualquer nota</item>
+        <item>Qualquer Nota</item>
         <item>Maior que 9</item>
         <item>Maior que 8</item>
         <item>Maior que 7</item>

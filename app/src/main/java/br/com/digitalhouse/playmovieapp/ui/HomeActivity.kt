@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import br.com.digitalhouse.playmovieapp.R
+import br.com.digitalhouse.playmovieapp.ui.view.ConfiguracoesActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_toolbar.*
 
@@ -17,19 +18,22 @@ class HomeActivity : AppCompatActivity() {
         btnPlay.setOnClickListener {
             startActivity(Intent(this, NivelActivity::class.java))
         }
-        initToolbar()
+
+        ivLupa.setOnClickListener {
+            startActivity(Intent(this, SugestaoActivity::class.java))
+        }
 
         ivSugestao.setOnClickListener {
             startActivity(Intent(this, SugestaoActivity::class.java))
         }
-    }
 
-    private fun initToolbar() {
-        val toolbar = material_toolbar
-        setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true); //Mostrar o botão
-        supportActionBar?.setHomeButtonEnabled(true)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_settings_24)
+        btn_Configs.setOnClickListener{
+            startActivity(Intent(this, ConfiguracoesActivity::class.java))
+        }
+
+        btn_Ajustes.setOnClickListener{
+            startActivity(Intent(this, InteressesActivity::class.java))
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -38,14 +42,14 @@ class HomeActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean { //Botão adicional na ToolBar
-        when (item.getItemId()) {
-            R.id.stProfile -> {
-                startActivity(Intent(this, InteressesActivity::class.java))
-            }
-            else -> {
-            }
-        }
-        return true
-    }
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean { //Botão adicional na ToolBar
+//        when (item.getItemId()) {
+//            R.id.stProfile -> {
+//                startActivity(Intent(this, InteressesActivity::class.java))
+//            }
+//            else -> {
+//            }
+//        }
+//        return true
+//    }
 }
