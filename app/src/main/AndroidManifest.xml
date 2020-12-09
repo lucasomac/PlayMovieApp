@@ -15,6 +15,9 @@
         <activity
             android:name=".ui.view.SubNiveisActivity"
             android:theme="@style/Theme.PlayMovieApp" />
+        <activity
+            android:name=".ui.SugestaoActivity"
+            android:theme="@style/Theme.PlayMovieApp" />
 
         <activity
             android:name=".CadastroActivity"
@@ -36,10 +39,6 @@
         <activity
             android:name=".ui.view.ConfiguracoesActivity"
             android:theme="@style/Theme.PlayMovieApp" />
-
-                <meta-data
-                    android:name="com.google.android.wearable.standalone"
-                    android:value="true" />
 
         <activity
             android:name=".ui.DetalhesDesenvolvedorActivity"

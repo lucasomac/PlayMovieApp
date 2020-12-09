@@ -33,7 +33,7 @@ internal class SubNivelAdapter(
         position: Int,
         convertView: View?,
         parent: ViewGroup
-    ): View? {
+    ): View {
         var convertView = convertView
         val subNivel = listSubNiveis[position]
 
@@ -47,8 +47,8 @@ internal class SubNivelAdapter(
         }
 
         imageViewSubNivel = convertView!!.findViewById(R.id.imageView_sub_nivel)
-        imageViewSubNivelOverlay = convertView!!.findViewById(R.id.imageView_sub_nivel_overlay)
-        imageViewSubNivelCheck = convertView!!.findViewById(R.id.imageView_sub_nivel_check)
+        imageViewSubNivelOverlay = convertView.findViewById(R.id.imageView_sub_nivel_overlay)
+        imageViewSubNivelCheck = convertView.findViewById(R.id.imageView_sub_nivel_check)
 
         imageViewSubNivel.setImageResource(subNivel.urlImage)
 

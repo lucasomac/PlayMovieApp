@@ -31,26 +31,35 @@
     <string name="limpar_filtros">Limpar filtros</string>
 
     <string-array name="generos">
-        <item>Qualquer Gênero</item>
-        <item>Comédia</item>
-        <item>Drama</item>
         <item>Ação</item>
-        <item>Romance</item>
-        <item>Terror</item>
+        <item>Aventura</item>
+        <item>Animação</item>
+        <item>Comédia</item>
+        <item>Crime</item>
         <item>Documentário</item>
+        <item>Drama</item>
         <item>Família</item>
-        <item>Ficção Científica</item>
         <item>Fantasia</item>
+        <item>História</item>
+        <item>Terror</item>
+        <item>Música</item>
+        <item>Mistério</item>
+        <item>Romance</item>
+        <item>Ficção Científica</item>
+        <item>Cinema TV</item>
+        <item>Thriller</item>
+        <item>Guerra</item>
+        <item>Faroeste</item>
     </string-array>
 
     <string-array name="categorias">
-        <item>Qualquer Categoria</item>
         <item>Filme</item>
         <item>Série</item>
+        <item>Qualquer categoria</item>
     </string-array>
 
     <string-array name="anos">
-        <item>Qualquer Ano</item>
+        <item>Qualquer ano</item>
         <item>2020</item>
         <item>2010</item>
         <item>2000</item>
@@ -61,7 +70,7 @@
     </string-array>
 
     <string-array name="notas">
-        <item>Qualquer Nota</item>
+        <item>Qualquer nota</item>
         <item>Maior que 9</item>
         <item>Maior que 8</item>
         <item>Maior que 7</item>
@@ -76,5 +85,6 @@
     <string name="jogar">Jogar</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="more">more</string>
+    <string name="more">more</string>{
+
 </resources>
