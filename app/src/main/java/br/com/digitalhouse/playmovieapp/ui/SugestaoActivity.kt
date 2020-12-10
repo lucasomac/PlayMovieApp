@@ -6,16 +6,16 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import br.com.digitalhouse.playmovieapp.R
+import br.com.digitalhouse.playmovieapp.ui.viewModel.NivelViewModel
+import br.com.digitalhouse.playmovieapp.ui.viewModel.SugestaoViewModel
 import kotlinx.android.synthetic.main.activity_sugestao.*
 
 class SugestaoActivity : AppCompatActivity() {
 
-    private lateinit var generoSelecionado: String
-    private lateinit var categoriaSelecionada: String
-    private lateinit var notaSelecionada: String
-    private lateinit var anoSelecionado: String
+    val viewModel: SugestaoViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +44,7 @@ class SugestaoActivity : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                anoSelecionado = anos[position]
+                viewModel.setAnoSelecionado(anos[position])
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -66,7 +66,7 @@ class SugestaoActivity : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                generoSelecionado = generos[position]
+                viewModel.setGeneroSelecionado(generos[position])
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -88,7 +88,7 @@ class SugestaoActivity : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                categoriaSelecionada = categorias[position]
+                viewModel.setCategoriaSelecionada(categorias[position])
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -110,7 +110,7 @@ class SugestaoActivity : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                notaSelecionada = notas[position]
+                viewModel.setNotaSelecionada(notas[position])
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -120,10 +120,10 @@ class SugestaoActivity : AppCompatActivity() {
 
     fun openMovieDetail(): View.OnClickListener? = View.OnClickListener {
         val bundle = Bundle()
-        bundle.putString("generoSelecionado", generoSelecionado)
-        bundle.putString("categoriaSelecionada", categoriaSelecionada)
-        bundle.putString("notaSelecionada", notaSelecionada)
-        bundle.putString("anoSelecionado", anoSelecionado)
+        bundle.putString("generoSelecionado", viewModel.generoSelecionado.value)
+        bundle.putString("categoriaSelecionada", viewModel.categoriaSelecionada.value)
+        bundle.putString("notaSelecionada", viewModel.notaSelecionada.value)
+        bundle.putString("anoSelecionado", viewModel.anoSelecionado.value)
         startActivity(Intent(this, DetalhesActivity::class.java))
     }
 }
