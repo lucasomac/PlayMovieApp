@@ -7,12 +7,15 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.digitalhouse.playmovieapp.R
+import br.com.digitalhouse.playmovieapp.domain.Desenvolvedor
 import br.com.digitalhouse.playmovieapp.domain.Nivel
 
 class NivelAdapter(
-    private val listaNiveis: ArrayList<Nivel>,
     val listener: NivelListener
 ) : RecyclerView.Adapter<NivelAdapter.NivelViewHolder>() {
+
+    private var listaNiveis = arrayListOf<Nivel>()
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -63,6 +66,11 @@ class NivelAdapter(
                 listener.onClickNivel(position)
             }
         }
+    }
+
+    fun addNiveis (niveis: ArrayList<Nivel>) {
+        listaNiveis = niveis
+        notifyDataSetChanged()
     }
 
 }
