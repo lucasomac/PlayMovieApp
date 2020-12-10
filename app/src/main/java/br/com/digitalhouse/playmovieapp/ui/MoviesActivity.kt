@@ -1,0 +1,56 @@
+package br.com.digitalhouse.playmovieapp.ui
+
+import android.os.Bundle
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import br.com.digitalhouse.playmovieapp.adapters.MovieAdapter
+import br.com.digitalhouse.playmovieapp.databinding.ActivityMoviesBinding
+import br.com.digitalhouse.playmovieapp.services.repository
+import br.com.digitalhouse.playmovieapp.ui.viewModel.MoviesActivityViewModel
+import kotlinx.android.synthetic.main.app_toolbar.*
+
+class MoviesActivity : AppCompatActivity(), MovieAdapter.MovieListener {
+    private lateinit var binding: ActivityMoviesBinding
+    private lateinit var adapterMovie: MovieAdapter
+    private lateinit var linearLayoutManager: LinearLayoutManager
+    var page = 1
+    val viewModel by viewModels<MoviesActivityViewModel> {
+        object : ViewModelProvider.Factory {
+            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+                return MoviesActivityViewModel(repository) as T
+            }
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityMoviesBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        initToolbar()
+        adapterMovie = MovieAdapter(this)
+        linearLayoutManager = LinearLayoutManager(this)
+        binding.rvMovies.adapter = adapterMovie
+        binding.rvMovies.layoutManager = linearLayoutManager
+        binding.rvMovies.hasFixedSize()
+        viewModel.searchMoviesFilter(page, 878, 2020, 8.0)
+        viewModel.listResults.observe(this) {
+            adapterMovie.addMovie(it)
+        }
+
+    }
+
+    private fun initToolbar() {
+        val toolbar = material_toolbar
+        setSupportActionBar(toolbar)
+        supportActionBar?.setTitle("Busca")
+        supportActionBar?.setDisplayHomeAsUpEnabled(true); //Mostrar o botão
+        supportActionBar?.setHomeButtonEnabled(true)
+    }
+
+    override fun onClickMovie(item: Int) {
+        TODO("Not yet implemented")
+    }
+}

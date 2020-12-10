@@ -124,6 +124,6 @@ class SugestaoActivity : AppCompatActivity() {
         bundle.putString("categoriaSelecionada", viewModel.categoriaSelecionada.value)
         bundle.putString("notaSelecionada", viewModel.notaSelecionada.value)
         bundle.putString("anoSelecionado", viewModel.anoSelecionado.value)
-        startActivity(Intent(this, DetalhesActivity::class.java))
+        startActivity(Intent(this, MoviesActivity::class.java))
     }
 }

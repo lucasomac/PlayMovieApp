@@ -1,7 +1,6 @@
 package br.com.digitalhouse.playmovieapp
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +14,6 @@ import br.com.digitalhouse.playmovieapp.domain.Result
 import br.com.digitalhouse.playmovieapp.services.repository
 import br.com.digitalhouse.playmovieapp.ui.viewModel.FilmeDiaViewModel
 import com.bumptech.glide.Glide
-import java.util.*
 
 class FilmeDiaFragment : Fragment() {
     private var _binding: FragmentFilmeDiaHomeBinding? = null
@@ -45,9 +43,9 @@ class FilmeDiaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.root.setOnClickListener {
-            findNavController().navigate(R.id.action_filmeDiaFragment_to_resumoNivelFragment)
-        }
+//        binding.root.setOnClickListener {
+//            findNavController().navigate(R.id.action_filmeDiaFragment_to_resumoNivelFragment)
+//        }
         viewModel.searchPopularMovie()
         viewModel.popularMovie.observe(viewLifecycleOwner) {
             filme = it
@@ -60,7 +58,7 @@ class FilmeDiaFragment : Fragment() {
                     .load(BASE_URL_IMAGE + "original" + filme.poster_path)
                     .into(binding.filmeImage)
             binding.tvNomeFilme.text = filme.title
-            binding.tvAnoFilme.text = filme.release_date.substring(0,4) + filme.genre_ids
+            binding.tvAnoFilme.text = filme.release_date.substring(0, 4) + filme.genre_ids
             binding.tvNotaFilme.text = filme.vote_average.toString()
         }
     }

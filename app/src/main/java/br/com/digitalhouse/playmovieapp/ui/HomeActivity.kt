@@ -35,21 +35,4 @@ class HomeActivity : AppCompatActivity() {
             startActivity(Intent(this, InteressesActivity::class.java))
         }
     }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.action_menu, menu)
-        return true
-    }
-
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean { //Botão adicional na ToolBar
-//        when (item.getItemId()) {
-//            R.id.stProfile -> {
-//                startActivity(Intent(this, InteressesActivity::class.java))
-//            }
-//            else -> {
-//            }
-//        }
-//        return true
-//    }
 }

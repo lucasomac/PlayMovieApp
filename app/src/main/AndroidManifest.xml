@@ -3,6 +3,7 @@
     package="br.com.digitalhouse.playmovieapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:fullBackupContent="true"
@@ -11,45 +12,37 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PlayMovieApp">
-
+        <activity
+            android:name=".ui.MoviesActivity"
+            android:parentActivityName=".ui.SugestaoActivity" />
         <activity
             android:name=".ui.view.SubNiveisActivity"
             android:theme="@style/Theme.PlayMovieApp" />
-
         <activity
             android:name=".CadastroActivity"
             android:parentActivityName=".ui.HomeActivity" />
-
         <activity
             android:name=".ui.NivelActivity"
             android:parentActivityName=".ui.HomeActivity" />
-
         <activity
             android:name=".ui.view.JogoActivity"
             android:parentActivityName=".ui.view.SubNiveisActivity"
             android:theme="@style/Theme.PlayMovieApp" />
-
         <activity
             android:name=".ui.HomeActivity"
             android:parentActivityName=".ui.view.ConfiguracoesActivity" />
-
         <activity
             android:name=".ui.view.ConfiguracoesActivity"
             android:theme="@style/Theme.PlayMovieApp" />
-
         <activity
             android:name=".ui.DetalhesDesenvolvedorActivity"
             android:label="@string/title_activity_detalhes_desenvolvedor" />
-
-        <activity android:name=".ui.DesenvolvedoresActivity" ></activity>
-
+        <activity android:name=".ui.DesenvolvedoresActivity" />
         <activity
             android:name=".ui.InteressesActivity"
             android:label="@string/title_activity_interesses"
             android:parentActivityName=".ui.HomeActivity" />
-
         <activity android:name=".ui.LoginActivity" />
-
         <activity
             android:name=".SplashActivity"
             android:theme="@style/Theme.PlayMovieApp.Fullscreen">
@@ -59,10 +52,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.SugestaoActivity"
-            android:parentActivityName=".ui.HomeActivity" />
+            android:parentActivityName=".ui.HomeActivity"
+            android:theme="@style/Theme.PlayMovieApp" />
+        <activity
+            android:name=".ui.DetalhesActivity"
+            android:parentActivityName=".ui.SugestaoActivity"
+            android:theme="@style/Theme.PlayMovieApp" />
     </application>
 
 </manifest>

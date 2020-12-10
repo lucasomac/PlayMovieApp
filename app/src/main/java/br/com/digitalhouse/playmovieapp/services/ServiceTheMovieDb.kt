@@ -58,13 +58,15 @@ interface Repository {
         apikey: String,
         @Query("language")
         language: String,
+        @Query("page")
+        page: Int,
         @Query("with_genres")
         with_genres: Int,
         @Query("year")
         year: Int,
         @Query("vote_average.gte")
         vote_average: Double,
-    ): Movie
+    ): Entities
 
     @GET("discover/tv")
     suspend fun searchSugestionTv(
