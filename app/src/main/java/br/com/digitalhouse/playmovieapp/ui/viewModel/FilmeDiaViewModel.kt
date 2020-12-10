@@ -13,7 +13,7 @@ class FilmeDiaViewModel(val repository: Repository) : ViewModel() {
     var popularMovie = MutableLiveData<Result>()
     fun searchPopularMovie() {
         viewModelScope.launch {
-            repository.searchPopularMovies(API_KEY, LANGUAGE, 1).results.get(1).also {
+            repository.searchPopularMovies(API_KEY, LANGUAGE, 1).results.get(0).also {
                 popularMovie.postValue(it)
             }
         }

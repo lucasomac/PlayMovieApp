@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import br.com.digitalhouse.playmovieapp.adapters.NivelResumeAdapter
 import br.com.digitalhouse.playmovieapp.databinding.ResumoNivelFragmentBinding
-import br.com.digitalhouse.playmovieapp.domain.Nivel
+import br.com.digitalhouse.playmovieapp.ui.viewModel.ResumoNivelViewModel
 
 class ResumoNivelFragment : Fragment(), NivelResumeAdapter.NivelResumeListener {
     private var _binding: ResumoNivelFragmentBinding? = null

@@ -6,7 +6,7 @@ import br.com.digitalhouse.playmovieapp.domain.Nivel
 val API_KEY = "e9e3353941b599fd1f05fc8257a975d8"
 
 //val API_KEY = System.getenv("apikey")
-val API_MARVEL_URL = "https://api.themoviedb.org/3/"
+val API_TMDB_URL = "https://api.themoviedb.org/3/"
 val BASE_URL_IMAGE = "https://image.tmdb.org/t/p/"
 val LANGUAGE = "pt-BR"
 val INCLUDE_ADULT = true
@@ -52,4 +52,6 @@ fun getGenres(): ArrayList<Genre> {
         Genre(10767, "Talk"),
         Genre(10768, "War & Politics")
     )
+
+
 }

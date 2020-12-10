@@ -1,6 +1,6 @@
 package br.com.digitalhouse.playmovieapp.services
 
-import br.com.digitalhouse.playmovieapp.API_MARVEL_URL
+import br.com.digitalhouse.playmovieapp.API_TMDB_URL
 import br.com.digitalhouse.playmovieapp.domain.Entities
 import br.com.digitalhouse.playmovieapp.domain.Movie
 import retrofit2.Retrofit
@@ -11,7 +11,7 @@ import retrofit2.http.Query
 
 interface Repository {
     @GET("search/movie")
-    suspend fun searchMovies(
+    suspend fun searchMovie(
         @Query("api_key")
         apikey: String,
         @Query("language")
@@ -36,12 +36,12 @@ interface Repository {
 
     @GET("search/{movie_id}")
     suspend fun searchMovieDetail(
+        @Path("movie_id")
+        movie_id: Int,
         @Query("api_key")
         apikey: String,
         @Query("language")
-        language: String,
-        @Path("movie_id")
-        movie_id: Int
+        language: String
     ): Movie
 
     @GET("genre/movie/list")
@@ -85,6 +85,6 @@ interface Repository {
 }
 
 val retrofit =
-    Retrofit.Builder().baseUrl(API_MARVEL_URL).addConverterFactory(GsonConverterFactory.create())
+    Retrofit.Builder().baseUrl(API_TMDB_URL).addConverterFactory(GsonConverterFactory.create())
         .build()
 val repository: Repository = retrofit.create(Repository::class.java)

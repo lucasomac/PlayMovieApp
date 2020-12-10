@@ -2,9 +2,10 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-android-extensions'
-    id 'androidx.navigation.safeargs'
+//    id 'androidx.navigation.safeargs'
     id 'kotlin-kapt'
 }
+apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
     compileSdkVersion 30
