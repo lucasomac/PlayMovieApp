@@ -1,4 +1,4 @@
-package br.com.digitalhouse.playmovieapp.ui
+package br.com.digitalhouse.playmovieapp.ui.view
 
 import android.content.Intent
 import android.os.Bundle

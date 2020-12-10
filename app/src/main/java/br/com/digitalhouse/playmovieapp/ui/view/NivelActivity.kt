@@ -1,4 +1,4 @@
-package br.com.digitalhouse.playmovieapp.ui
+package br.com.digitalhouse.playmovieapp.ui.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,6 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.adapters.NivelAdapter
-import br.com.digitalhouse.playmovieapp.ui.view.SubNiveisActivity
 import br.com.digitalhouse.playmovieapp.ui.viewModel.NivelViewModel
 import kotlinx.android.synthetic.main.activity_niveis.*
 

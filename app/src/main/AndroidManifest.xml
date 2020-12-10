@@ -13,38 +13,38 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PlayMovieApp">
         <activity
-            android:name=".ui.MoviesActivity"
-            android:parentActivityName=".ui.SugestaoActivity" />
+            android:name=".ui.view.MoviesActivity"
+            android:parentActivityName=".ui.view.SugestaoActivity" />
         <activity
             android:name=".ui.view.SubNiveisActivity"
             android:theme="@style/Theme.PlayMovieApp" />
         <activity
-            android:name=".CadastroActivity"
-            android:parentActivityName=".ui.HomeActivity" />
+            android:name=".ui.view.CadastroActivity"
+            android:parentActivityName=".ui.view.HomeActivity" />
         <activity
-            android:name=".ui.NivelActivity"
-            android:parentActivityName=".ui.HomeActivity" />
+            android:name=".ui.view.NivelActivity"
+            android:parentActivityName=".ui.view.HomeActivity" />
         <activity
             android:name=".ui.view.JogoActivity"
             android:parentActivityName=".ui.view.SubNiveisActivity"
             android:theme="@style/Theme.PlayMovieApp" />
         <activity
-            android:name=".ui.HomeActivity"
+            android:name=".ui.view.HomeActivity"
             android:parentActivityName=".ui.view.ConfiguracoesActivity" />
         <activity
             android:name=".ui.view.ConfiguracoesActivity"
             android:theme="@style/Theme.PlayMovieApp" />
         <activity
-            android:name=".ui.DetalhesDesenvolvedorActivity"
+            android:name=".ui.view.DetalhesDesenvolvedorActivity"
             android:label="@string/title_activity_detalhes_desenvolvedor" />
-        <activity android:name=".ui.DesenvolvedoresActivity" />
+        <activity android:name=".ui.view.DesenvolvedoresActivity" />
         <activity
-            android:name=".ui.InteressesActivity"
+            android:name=".ui.view.InteressesActivity"
             android:label="@string/title_activity_interesses"
-            android:parentActivityName=".ui.HomeActivity" />
-        <activity android:name=".ui.LoginActivity" />
+            android:parentActivityName=".ui.view.HomeActivity" />
+        <activity android:name=".ui.view.LoginActivity" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".ui.view.SplashActivity"
             android:theme="@style/Theme.PlayMovieApp.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -53,12 +53,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.SugestaoActivity"
-            android:parentActivityName=".ui.HomeActivity"
+            android:name=".ui.view.SugestaoActivity"
+            android:parentActivityName=".ui.view.HomeActivity"
             android:theme="@style/Theme.PlayMovieApp" />
         <activity
-            android:name=".ui.DetalhesActivity"
-            android:parentActivityName=".ui.SugestaoActivity"
+            android:name=".ui.view.DetalhesActivity"
+            android:parentActivityName=".ui.view.SugestaoActivity"
             android:theme="@style/Theme.PlayMovieApp" />
     </application>
 

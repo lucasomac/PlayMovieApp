@@ -2,7 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-android-extensions'
-//    id 'androidx.navigation.safeargs'
+    //id 'androidx.navigation.safeargs'
     id 'kotlin-kapt'
 }
 apply plugin: "androidx.navigation.safeargs.kotlin"
@@ -10,6 +10,7 @@ apply plugin: "androidx.navigation.safeargs.kotlin"
 android {
     compileSdkVersion 30
     buildToolsVersion '30.0.2'
+
     buildFeatures {
         viewBinding true
     }
@@ -30,10 +31,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    
     compileOptions {
         sourceCompatibility "1.8"
         targetCompatibility "1.8"
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
         useIR = true

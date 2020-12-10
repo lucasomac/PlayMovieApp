@@ -1,17 +1,18 @@
-package br.com.digitalhouse.playmovieapp
+package br.com.digitalhouse.playmovieapp.ui.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import br.com.digitalhouse.playmovieapp.BASE_URL_IMAGE
 import br.com.digitalhouse.playmovieapp.databinding.FragmentFilmeDiaHomeBinding
 import br.com.digitalhouse.playmovieapp.domain.Result
+import br.com.digitalhouse.playmovieapp.getGenres
 import br.com.digitalhouse.playmovieapp.services.repository
 import br.com.digitalhouse.playmovieapp.ui.viewModel.FilmeDiaViewModel
 import com.bumptech.glide.Glide
