@@ -54,7 +54,7 @@ class DetalhesActivity : AppCompatActivity() {
                     '[',
                     ']'
                 )
-            } - ${movie.runtime}".also { binding.txtDetalhesFilme.text = it }
+            } - ${movie.runtime}min".also { binding.txtDetalhesFilme.text = it }
         }
     }
 

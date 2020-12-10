@@ -30,14 +30,31 @@ class MoviesActivity : AppCompatActivity(), MovieAdapter.MovieListener {
         binding = ActivityMoviesBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initToolbar()
+        val genero =
+            intent.getStringExtra("generoSelecionado")
+        val categoria =
+            intent.getStringExtra("categoriaSelecionada")
+        val nota =
+            intent.getStringExtra("notaSelecionada")?.let { it.get(it.length - 1) }
+        val ano =
+            intent.getStringExtra("anoSelecionado")?.let { it.substring(it.length - 4) }
         adapterMovie = MovieAdapter(this)
         linearLayoutManager = LinearLayoutManager(this)
         binding.rvMovies.adapter = adapterMovie
         binding.rvMovies.layoutManager = linearLayoutManager
         binding.rvMovies.hasFixedSize()
-        viewModel.searchMoviesFilter(page, 878, 2020, 8.0)
-        viewModel.listResults.observe(this) {
-            adapterMovie.addMovie(it)
+        when (categoria) {
+            "Filme" -> {
+                viewModel.searchMoviesFilter(
+                    page,
+                    genero.toString(),
+                    ano.toString(),
+                    nota.toString()
+                )
+                viewModel.listResults.observe(this) {
+                    adapterMovie.addMovie(it)
+                }
+            }
         }
 
     }
@@ -52,5 +69,15 @@ class MoviesActivity : AppCompatActivity(), MovieAdapter.MovieListener {
 
     override fun onClickMovie(item: Int) {
         TODO("Not yet implemented")
+    }
+
+    fun primeiroDigitoEhUmNumero(entrada: String): Boolean {
+        val primeiroDigito = entrada[0].toString() + ""
+        return try {
+            primeiroDigito.toInt()
+            true
+        } catch (e: NumberFormatException) {
+            false
+        }
     }
 }

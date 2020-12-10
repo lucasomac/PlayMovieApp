@@ -34,7 +34,7 @@ interface Repository {
         page: Int,
     ): Entities
 
-    @GET("search/{movie_id}")
+    @GET("movie/{movie_id}")
     suspend fun searchMovieDetail(
         @Path("movie_id")
         movie_id: Int,
@@ -61,11 +61,11 @@ interface Repository {
         @Query("page")
         page: Int,
         @Query("with_genres")
-        with_genres: Int,
+        with_genres: String,
         @Query("year")
-        year: Int,
+        year: String,
         @Query("vote_average.gte")
-        vote_average: Double,
+        vote_average: String,
     ): Entities
 
     @GET("discover/tv")

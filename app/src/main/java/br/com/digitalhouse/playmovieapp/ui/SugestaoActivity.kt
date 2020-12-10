@@ -26,8 +26,18 @@ class SugestaoActivity : AppCompatActivity() {
         InitSpinnerGeneros()
         InitSpinnerCategorias()
         InitSpinnerNotas()
+        when (viewModel.categoriaSelecionada.value.toString()) {
+            "Filme" -> {
 
+
+            }
+            "Série" -> {
+
+            }
+        }
         btnSugestao.setOnClickListener(openMovieDetail())
+
+
     }
 
     fun InitSpinnerAnos() {
@@ -119,18 +129,30 @@ class SugestaoActivity : AppCompatActivity() {
     }
 
     fun openMovieDetail(): View.OnClickListener = View.OnClickListener {
-        val bundle = Bundle()
-        bundle.putString(
-            "generoSelecionado",
-            viewModel.generoSelecionado.value?.let { it -> retornaId(it).toString() }
-        )
-        bundle.putString("categoriaSelecionada", viewModel.categoriaSelecionada.value)
-        bundle.putString("notaSelecionada", viewModel.notaSelecionada.value)
-        bundle.putString("anoSelecionado", viewModel.anoSelecionado.value)
-        startActivity(Intent(this, MoviesActivity::class.java))
+//        val bundle = Bundle()
+        val intent = Intent(
+            this,
+            MoviesActivity::class.java
+        ).apply {
+            putExtra("generoSelecionado",
+                viewModel.generoSelecionado.value?.let { it -> retornaId(it).toString() })
+            putExtra("categoriaSelecionada", viewModel.categoriaSelecionada.value)
+            putExtra("notaSelecionada", viewModel.notaSelecionada.value)
+            putExtra("anoSelecionado", viewModel.anoSelecionado.value)
+        }
+//        with(bundle) {
+//            putString(
+//                "generoSelecionado",
+//                viewModel.generoSelecionado.value?.let { it -> retornaId(it).toString() }
+//            )
+//            putString("categoriaSelecionada", viewModel.categoriaSelecionada.value)
+//            putString("notaSelecionada", viewModel.notaSelecionada.value)
+//            putString("anoSelecionado", viewModel.anoSelecionado.value)
+//        }
+        startActivity(intent)
     }
 
-    fun retornaId(genre: String): Int {
+    private fun retornaId(genre: String): Int {
         return getGenres().sortedBy { it.name }.filter { it.name == genre }[0].id
     }
 }

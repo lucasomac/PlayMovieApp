@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 
 class MoviesActivityViewModel(val repository: Repository) : ViewModel() {
     var listResults = MutableLiveData<ArrayList<Result>>()
-    fun searchMoviesFilter(page: Int, genre: Int, year: Int, vote_average: Double) {
+    fun searchMoviesFilter(page: Int, genre: String, year: String, vote_average: String) {
         viewModelScope.launch {
             repository.searchSugestionMovie(
                 API_KEY,

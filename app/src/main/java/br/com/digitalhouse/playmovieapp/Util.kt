@@ -52,6 +52,9 @@ fun getGenres(): ArrayList<Genre> {
         Genre(10767, "Talk"),
         Genre(10768, "War & Politics")
     )
-
+    @Suppress("UNREACHABLE_CODE")
+    fun retornaId(genre: String): Int {
+        return getGenres().sortedBy { it.name }.filter { it.name == genre }[0].id
+    }
 
 }
