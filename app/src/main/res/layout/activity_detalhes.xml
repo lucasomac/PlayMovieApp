@@ -4,18 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="60dp"
+    android:background="@color/primary"
     android:orientation="vertical"
-    app:layout_constraintTop_toBottomOf="@+id/imgCapaFilme"
-    tools:layout_editor_absoluteX="64dp"
-    android:background="@color/primary">
+    app:layout_constraintTop_toBottomOf="@+id/imgCapaFilme">
+
+    <include
+        android:id="@+id/include_config_toolbar"
+        layout="@layout/app_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imgCapaFilme"
         android:layout_width="260dp"
         android:layout_height="260dp"
-        android:layout_marginTop="36dp"
         android:layout_gravity="center"
+        android:layout_marginTop="36dp"
         android:background="@drawable/round_outline"
         android:outlineProvider="background"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,40 +34,40 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
         app:layout_constraintTop_toBottomOf="@+id/imgCapaFilme"
-        tools:layout_editor_absoluteX="64dp"
-        android:layout_marginTop="36dp">
+        tools:layout_editor_absoluteX="64dp">
 
-            <TextView
-                android:id="@+id/txtNomeFilme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#FFFFFF"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:layout_weight="1"
-                android:layout_marginStart="28dp"
-                app:layout_constraintTop_toBottomOf="@+id/imageView"
-                tools:layout_editor_absoluteX="16dp"
-                tools:text="Nome Filme"/>
+        <TextView
+            android:id="@+id/txtNomeFilme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_weight="1"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            tools:layout_editor_absoluteX="16dp"
+            tools:text="Nome Filme" />
 
-            <TextView
-                android:id="@+id/txtNotaFilme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textAlignment="textEnd"
-                android:layout_marginEnd="28dp"
-                android:layout_weight="1"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:drawableEndCompat="@drawable/ic_baseline_star_24"
-                android:drawablePadding="5dp"
-                app:layout_constraintTop_toBottomOf="@+id/imageView"
-                tools:layout_editor_absoluteX="16dp"
-                tools:text="Nota"
-                tools:ignore="RtlCompat"/>
+        <TextView
+            android:id="@+id/txtNotaFilme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="28dp"
+            android:layout_weight="1"
+            android:drawablePadding="5dp"
+            android:textAlignment="textEnd"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:drawableEndCompat="@drawable/ic_baseline_star_24"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            tools:ignore="RtlCompat"
+            tools:layout_editor_absoluteX="16dp"
+            tools:text="Nota" />
     </LinearLayout>
 
     <TextView
@@ -68,8 +75,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="4dp"
         android:layout_marginStart="28dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="28dp"
         android:textAlignment="textStart"
         android:textColor="#FFFFFF"
@@ -78,13 +85,13 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         tools:ignore="RtlCompat"
         tools:layout_editor_absoluteX="16dp"
-        tools:text="Ano - Classificação - Duração"/>
+        tools:text="Ano - Classificação - Duração" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:layout_marginTop="36dp"
+        android:orientation="vertical"
         android:scrollbarDefaultDelayBeforeFade="2">
 
         <TextView
