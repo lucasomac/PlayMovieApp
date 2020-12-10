@@ -22,7 +22,7 @@ fun getNiveis(): ArrayList<Nivel> {
     )
 }
 
-fun getGenres() {
+fun getGenres(): ArrayList<Genre> {
     return arrayListOf<Genre>(
         Genre(28, "Ação"),
         Genre(12, "Ação"),
@@ -51,5 +51,5 @@ fun getGenres() {
         Genre(10766, "Soap"),
         Genre(10767, "Talk"),
         Genre(10768, "War & Politics")
-    ).sortBy { it.id }
+    )
 }

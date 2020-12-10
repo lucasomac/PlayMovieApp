@@ -9,7 +9,7 @@ import android.widget.Spinner
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import br.com.digitalhouse.playmovieapp.R
-import br.com.digitalhouse.playmovieapp.ui.viewModel.NivelViewModel
+import br.com.digitalhouse.playmovieapp.getGenres
 import br.com.digitalhouse.playmovieapp.ui.viewModel.SugestaoViewModel
 import kotlinx.android.synthetic.main.activity_sugestao.*
 
@@ -118,12 +118,19 @@ class SugestaoActivity : AppCompatActivity() {
         }
     }
 
-    fun openMovieDetail(): View.OnClickListener? = View.OnClickListener {
+    fun openMovieDetail(): View.OnClickListener = View.OnClickListener {
         val bundle = Bundle()
-        bundle.putString("generoSelecionado", viewModel.generoSelecionado.value)
+        bundle.putString(
+            "generoSelecionado",
+            viewModel.generoSelecionado.value?.let { it -> retornaId(it).toString() }
+        )
         bundle.putString("categoriaSelecionada", viewModel.categoriaSelecionada.value)
         bundle.putString("notaSelecionada", viewModel.notaSelecionada.value)
         bundle.putString("anoSelecionado", viewModel.anoSelecionado.value)
         startActivity(Intent(this, MoviesActivity::class.java))
+    }
+
+    fun retornaId(genre: String): Int {
+        return getGenres().sortedBy { it.name }.filter { it.name == genre }[0].id
     }
 }
