@@ -41,7 +41,13 @@
             android:name=".ui.DetalhesDesenvolvedorActivity"
             android:label="@string/title_activity_detalhes_desenvolvedor" />
 
-        <activity android:name=".ui.DesenvolvedoresActivity" />
+        <activity android:name=".ui.DesenvolvedoresActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:name=".ui.InteressesActivity"
