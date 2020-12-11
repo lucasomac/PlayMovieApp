@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PlayMovieApp">
+        <activity android:name=".ui.DetalhesActivitySerie"></activity>
         <activity
             android:name=".SeriesActivity"
             android:parentActivityName=".ui.SugestaoActivity"
@@ -62,7 +63,7 @@
             android:theme="@style/Theme.PlayMovieApp" />
         <activity
             android:name=".ui.DetalhesActivityMovie"
-            android:parentActivityName=".ui.SugestaoActivity"
+            android:parentActivityName=".ui.MoviesActivity"
             android:theme="@style/Theme.PlayMovieApp" />
         <activity
             android:name=".ui.PesquisaActivity"

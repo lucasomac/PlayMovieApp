@@ -32,7 +32,6 @@ class DetalhesActivityMovie : AppCompatActivity() {
         binding = ActivityDetalhesMovieBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initToolbar()
-//        val movie_id = savedInstanceState?.getInt("idMovie")
         val args: DetalhesActivityMovieArgs by navArgs()
         val movie_id = args.idMovie
         Log.i("TAG", movie_id.toString())
@@ -40,7 +39,7 @@ class DetalhesActivityMovie : AppCompatActivity() {
         viewModel.movie.observe(this) {
             movie = it
             Glide.with(this).asBitmap().load(
-                "${BASE_URL_IMAGE}original${movie.poster_path}"
+                "${BASE_URL_IMAGE}original${movie.backdrop_path}"
             ).into(binding.imgCapaFilme)
             binding.txtSinopseFilme.text = movie.overview
             binding.txtNomeFilme.text = movie.title

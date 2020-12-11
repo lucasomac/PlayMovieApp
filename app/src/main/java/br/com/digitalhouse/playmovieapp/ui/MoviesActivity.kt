@@ -1,5 +1,6 @@
 package br.com.digitalhouse.playmovieapp.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -52,30 +53,6 @@ class MoviesActivity : AppCompatActivity(), MoviesAdapter.MovieListener {
         viewModel.listResults.observe(this) {
             adapterMovies.addMovie(it)
         }
-//        when (categoria) {
-//            "Filme" -> {
-//                viewModel.searchMoviesFilter(
-//                    page,
-//                    genero.toString(),
-//                    ano.toString(),
-//                    nota.toString()
-//                )
-//                viewModel.listResults.observe(this) {
-//                    adapterMovies.addMovie(it)
-//                }
-//            }
-//            "Série" -> {
-//                viewModel.searchMoviesFilter(
-//                    page,
-//                    genero.toString(),
-//                    ano.toString(),
-//                    nota.toString()
-//                )
-//                viewModel.listResults.observe(this) {
-//                    adapterMovies.addMovie(it)
-//                }
-//            }
-//        }
 
     }
 
@@ -87,8 +64,11 @@ class MoviesActivity : AppCompatActivity(), MoviesAdapter.MovieListener {
         supportActionBar?.setHomeButtonEnabled(true)
     }
 
-    override fun onClickMovie(item: Int) {
-        TODO("Not yet implemented")
+    override fun onClickMovie(position: Int) {
+        val movie = adapterMovies.listaMovies[position]
+        val intent = Intent(this, DetalhesActivityMovie::class.java)
+        intent.putExtra("idMovie", movie.id)
+        startActivity(intent)
     }
 
     fun primeiroDigitoEhUmNumero(entrada: String): Boolean {

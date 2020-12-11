@@ -1,15 +1,16 @@
 package br.com.digitalhouse.playmovieapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import br.com.digitalhouse.playmovieapp.adapters.MoviesAdapter
 import br.com.digitalhouse.playmovieapp.adapters.SeriesAdapter
 import br.com.digitalhouse.playmovieapp.databinding.ActivitySeriesBinding
 import br.com.digitalhouse.playmovieapp.services.repository
+import br.com.digitalhouse.playmovieapp.ui.DetalhesActivitySerie
 import br.com.digitalhouse.playmovieapp.ui.viewModel.SeriesActivityViewModel
 import kotlinx.android.synthetic.main.app_toolbar.*
 
@@ -64,6 +65,9 @@ class SeriesActivity : AppCompatActivity(), SeriesAdapter.SerieListener {
     }
 
     override fun onClickSerie(position: Int) {
-        TODO("Not yet implemented")
+        val serie = adapterSeries.listaSeries[position]
+        val intent = Intent(this, DetalhesActivitySerie::class.java)
+        intent.putExtra("idSerie", serie.id.toString())
+        startActivity(intent)
     }
 }

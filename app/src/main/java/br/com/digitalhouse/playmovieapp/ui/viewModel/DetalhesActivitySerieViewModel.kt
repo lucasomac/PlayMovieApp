@@ -5,16 +5,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.digitalhouse.playmovieapp.API_KEY
 import br.com.digitalhouse.playmovieapp.LANGUAGE
-import br.com.digitalhouse.playmovieapp.domain.Movie
+import br.com.digitalhouse.playmovieapp.domain.serie.Serie
 import br.com.digitalhouse.playmovieapp.services.Repository
 import kotlinx.coroutines.launch
 
-class DetalhesActivityMovieViewModel(val repository: Repository) : ViewModel() {
-    var movie = MutableLiveData<Movie>()
-    fun searchMovieById(movie_id: Int) {
+class DetalhesActivitySerieViewModel(val repository: Repository) : ViewModel() {
+    var serie = MutableLiveData<Serie>()
+    fun searchSerieById(serie_id: String) {
         viewModelScope.launch {
-            repository.searchMovieDetail(movie_id, API_KEY, LANGUAGE).also {
-                movie.postValue(it)
+            repository.searchSerieDetail(serie_id, API_KEY, LANGUAGE).also {
+                serie.postValue(it)
             }
         }
     }

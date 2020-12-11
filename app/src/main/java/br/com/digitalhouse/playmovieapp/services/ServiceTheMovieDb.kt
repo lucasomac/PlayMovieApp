@@ -1,9 +1,10 @@
 package br.com.digitalhouse.playmovieapp.services
 
 import br.com.digitalhouse.playmovieapp.API_TMDB_URL
-import br.com.digitalhouse.playmovieapp.domain.movie.ListMovie
 import br.com.digitalhouse.playmovieapp.domain.Movie
+import br.com.digitalhouse.playmovieapp.domain.movie.ListMovie
 import br.com.digitalhouse.playmovieapp.domain.serie.ListSerie
+import br.com.digitalhouse.playmovieapp.domain.serie.Serie
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -34,6 +35,16 @@ interface Repository {
         @Query("page")
         page: Int,
     ): ListMovie
+
+    @GET("tv/{tv_id}")
+    suspend fun searchSerieDetail(
+        @Path("tv_id")
+        tv_id: String,
+        @Query("api_key")
+        apikey: String,
+        @Query("language")
+        language: String
+    ): Serie
 
     @GET("movie/{movie_id}")
     suspend fun searchMovieDetail(
