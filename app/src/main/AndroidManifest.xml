@@ -13,6 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PlayMovieApp">
         <activity
+            android:name=".SeriesActivity"
+            android:parentActivityName=".ui.SugestaoActivity"
+            android:theme="@style/Theme.PlayMovieApp" />
+        <activity
             android:name=".ui.MoviesActivity"
             android:parentActivityName=".ui.SugestaoActivity" />
         <activity

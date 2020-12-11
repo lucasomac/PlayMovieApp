@@ -9,6 +9,7 @@ import android.widget.Spinner
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import br.com.digitalhouse.playmovieapp.R
+import br.com.digitalhouse.playmovieapp.SeriesActivity
 import br.com.digitalhouse.playmovieapp.getGenres
 import br.com.digitalhouse.playmovieapp.ui.viewModel.SugestaoViewModel
 import kotlinx.android.synthetic.main.activity_sugestao.*
@@ -33,11 +34,12 @@ class SugestaoActivity : AppCompatActivity() {
                     btnSugestao.setOnClickListener(openMovieDetail())
                 }
                 "Série" -> {
-
+                    btnSugestao.setOnClickListener(openSerieDetail())
                 }
             }
         }
     }
+
 
     fun InitSpinnerAnos() {
 
@@ -132,6 +134,27 @@ class SugestaoActivity : AppCompatActivity() {
         val intent = Intent(
             this,
             MoviesActivity::class.java
+        ).apply {
+            putExtra(
+                "generoSelecionado",
+                viewModel.generoSelecionado.value?.let { it -> retornaId(it).toString() })
+            putExtra(
+                "categoriaSelecionada", viewModel.categoriaSelecionada.value
+            )
+            putExtra(
+                "notaSelecionada", viewModel.notaSelecionada.value
+            )
+            putExtra(
+                "anoSelecionado", viewModel.anoSelecionado.value
+            )
+        }
+        startActivity(intent)
+    }
+
+    private fun openSerieDetail(): View.OnClickListener = View.OnClickListener {
+        val intent = Intent(
+            this,
+            SeriesActivity::class.java
         ).apply {
             putExtra(
                 "generoSelecionado",

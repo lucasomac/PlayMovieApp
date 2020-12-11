@@ -75,12 +75,14 @@ interface Repository {
         apikey: String,
         @Query("language")
         language: String,
+        @Query("page")
+        page: Int,
         @Query("with_genres")
-        with_genres: Int,
-        @Query("year")
-        year: Int,
+        with_genres: String,
+        @Query("first_air_date_year")
+        first_air_date_year: String,
         @Query("vote_average.gte")
-        vote_average: Double,
+        vote_average: String,
     ): ListSerie
 
 }

@@ -11,9 +11,9 @@ import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.domain.movie.Result
 import com.bumptech.glide.Glide
 
-class MovieAdapter(
+class MoviesAdapter(
     val listener: MovieListener
-) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+) : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
     var listaMovies = ArrayList<Result>()
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -27,7 +27,7 @@ class MovieAdapter(
         return MovieViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: MovieAdapter.MovieViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MoviesAdapter.MovieViewHolder, position: Int) {
         val movie = listaMovies[position]
         holder.tvMovieName.text = movie.title
         Glide.with(holder.itemView.context).asBitmap()
