@@ -1,8 +1,9 @@
 package br.com.digitalhouse.playmovieapp.services
 
 import br.com.digitalhouse.playmovieapp.API_TMDB_URL
-import br.com.digitalhouse.playmovieapp.domain.Entities
+import br.com.digitalhouse.playmovieapp.domain.movie.ListMovie
 import br.com.digitalhouse.playmovieapp.domain.Movie
+import br.com.digitalhouse.playmovieapp.domain.serie.ListSerie
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -22,7 +23,7 @@ interface Repository {
         include_adult: Boolean,
         @Query("page")
         page: Int,
-    ): Entities
+    ): ListMovie
 
     @GET("movie/popular")
     suspend fun searchPopularMovies(
@@ -32,7 +33,7 @@ interface Repository {
         language: String,
         @Query("page")
         page: Int,
-    ): Entities
+    ): ListMovie
 
     @GET("movie/{movie_id}")
     suspend fun searchMovieDetail(
@@ -44,13 +45,13 @@ interface Repository {
         language: String
     ): Movie
 
-    @GET("genre/movie/list")
-    suspend fun searchGenre(
-        @Query("api_key")
-        apikey: String,
-        @Query("language")
-        language: String,
-    ): Movie
+//    @GET("genre/movie/list")
+//    suspend fun searchGenre(
+//        @Query("api_key")
+//        apikey: String,
+//        @Query("language")
+//        language: String,
+//    ): Movie
 
     @GET("discover/movie")
     suspend fun searchSugestionMovie(
@@ -66,7 +67,7 @@ interface Repository {
         year: String,
         @Query("vote_average.gte")
         vote_average: String,
-    ): Entities
+    ): ListMovie
 
     @GET("discover/tv")
     suspend fun searchSugestionTv(
@@ -80,7 +81,7 @@ interface Repository {
         year: Int,
         @Query("vote_average.gte")
         vote_average: Double,
-    ): Movie
+    ): ListSerie
 
 }
 

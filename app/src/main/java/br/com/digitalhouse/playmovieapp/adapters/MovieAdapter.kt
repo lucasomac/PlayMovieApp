@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.digitalhouse.playmovieapp.BASE_URL_IMAGE
 import br.com.digitalhouse.playmovieapp.R
-import br.com.digitalhouse.playmovieapp.domain.Result
+import br.com.digitalhouse.playmovieapp.domain.movie.Result
 import com.bumptech.glide.Glide
 
 class MovieAdapter(

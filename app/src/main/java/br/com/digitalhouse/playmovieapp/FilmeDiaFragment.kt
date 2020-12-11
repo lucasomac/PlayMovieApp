@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import br.com.digitalhouse.playmovieapp.databinding.FragmentFilmeDiaHomeBinding
-import br.com.digitalhouse.playmovieapp.domain.Result
+import br.com.digitalhouse.playmovieapp.domain.movie.Result
 import br.com.digitalhouse.playmovieapp.services.repository
 import br.com.digitalhouse.playmovieapp.ui.viewModel.FilmeDiaViewModel
 import com.bumptech.glide.Glide

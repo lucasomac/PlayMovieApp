@@ -34,10 +34,10 @@ class MoviesActivity : AppCompatActivity(), MovieAdapter.MovieListener {
             intent.getStringExtra("generoSelecionado")
         val categoria =
             intent.getStringExtra("categoriaSelecionada")
-        val nota =
-            intent.getStringExtra("notaSelecionada")?.let { it.get(it.length - 1) }
-        val ano =
-            intent.getStringExtra("anoSelecionado")?.let { it.substring(it.length - 4) }
+        val nota = if (intent.getStringExtra("notaSelecionada") != "Qualquer nota")
+            intent.getStringExtra("notaSelecionada")?.let { it.get(it.length - 1) } else "0"
+        val ano = if (intent.getStringExtra("anoSelecionado") != "Qualquer ano")
+            intent.getStringExtra("anoSelecionado")?.let { it.substring(it.length - 4) } else "0"
         adapterMovie = MovieAdapter(this)
         linearLayoutManager = LinearLayoutManager(this)
         binding.rvMovies.adapter = adapterMovie
@@ -45,6 +45,17 @@ class MoviesActivity : AppCompatActivity(), MovieAdapter.MovieListener {
         binding.rvMovies.hasFixedSize()
         when (categoria) {
             "Filme" -> {
+                viewModel.searchMoviesFilter(
+                    page,
+                    genero.toString(),
+                    ano.toString(),
+                    nota.toString()
+                )
+                viewModel.listResults.observe(this) {
+                    adapterMovie.addMovie(it)
+                }
+            }
+            "Série" -> {
                 viewModel.searchMoviesFilter(
                     page,
                     genero.toString(),

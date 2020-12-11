@@ -18,102 +18,110 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="28dp"
         android:text="@string/generos"
         android:textColor="@color/white"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginTop="21dp"
-        android:layout_marginStart="28dp"/>
+        android:textStyle="bold" />
 
     <Spinner
         android:id="@+id/spinnerGeneros"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="7dp"
-        android:spinnerMode="dropdown"
-        android:drawSelectorOnTop="true"/>
+        android:layout_marginEnd="28dp"
+        android:drawSelectorOnTop="true"
+        android:spinnerMode="dropdown" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="28dp"
         android:text="@string/categoria"
         android:textColor="@color/white"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="28dp"/>
+        android:textStyle="bold" />
 
     <Spinner
         android:id="@+id/spinnerCategorias"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="7dp"
-        android:spinnerMode="dropdown"
-        android:drawSelectorOnTop="true" />
+        android:layout_marginEnd="28dp"
+        android:drawSelectorOnTop="true"
+        android:spinnerMode="dropdown" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="28dp"
         android:text="@string/nota_imdb"
         android:textColor="@color/white"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="28dp"/>
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <Spinner
         android:id="@+id/spinnerNota"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="7dp"
-        android:spinnerMode="dropdown"
-        android:drawSelectorOnTop="true"/>
+        android:layout_marginEnd="28dp"
+        android:drawSelectorOnTop="true"
+        android:spinnerMode="dropdown" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="28dp"
         android:text="@string/ano"
         android:textColor="@color/white"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="28dp"/>
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <Spinner
         android:id="@+id/spinnerAno"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="7dp"
-        android:spinnerMode="dropdown"
-        android:drawSelectorOnTop="true"/>
+        android:layout_marginEnd="28dp"
+        android:drawSelectorOnTop="true"
+        android:spinnerMode="dropdown" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="65dp"
-        android:layout_marginTop="132dp"
         android:layout_marginLeft="28dp"
+        android:layout_marginTop="132dp"
         android:layout_marginRight="28dp">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
             android:text="@string/limpar_filtros"
             android:textColor="#8B8B8B"
-            android:textStyle="bold"
-            android:layout_weight="1"
             android:textSize="14sp"
-            android:layout_gravity="bottom"/>
+            android:textStyle="bold" />
 
         <ImageButton
             android:id="@+id/btnSugestao"
             android:layout_width="65dp"
             android:layout_height="match_parent"
             android:background="@drawable/ic_botao_sugestao"
-            android:src="@drawable/ic_random_solid"/>
+            android:src="@drawable/ic_random_solid" />
 
     </LinearLayout>
 

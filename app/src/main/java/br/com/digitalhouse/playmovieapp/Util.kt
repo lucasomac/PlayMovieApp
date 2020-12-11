@@ -24,33 +24,33 @@ fun getNiveis(): ArrayList<Nivel> {
 
 fun getGenres(): ArrayList<Genre> {
     return arrayListOf<Genre>(
-        Genre(28, "Ação"),
-        Genre(12, "Ação"),
-        Genre(10759, "Action & Adventure"),
-        Genre(16, "Animação"),
-        Genre(35, "Comédia"),
-        Genre(80, "Crime"),
-        Genre(99, "Documentário"),
-        Genre(18, "Drama"),
-        Genre(10751, "Família"),
-        Genre(14, "Fantasia"),
-        Genre(36, "História"),
-        Genre(27, "Terror"),
-        Genre(10402, "Música"),
-        Genre(9648, "Mistério"),
-        Genre(10749, "Romance"),
-        Genre(878, "Ficção científica"),
-        Genre(10770, "Cinema TV"),
-        Genre(53, "Thriller"),
-        Genre(10752, "Guerra"),
-        Genre(37, "Faroeste"),
-        Genre(10762, "Kids"),
-        Genre(10763, "News"),
-        Genre(10764, "Reality"),
-        Genre(10765, "Sci-Fi & Fantasy"),
-        Genre(10766, "Soap"),
-        Genre(10767, "Talk"),
-        Genre(10768, "War & Politics")
+        Genre(28, "Ação"),//m
+        Genre(12, "Aventura"),//m
+        Genre(10759, "Action & Adventure"), //s
+        Genre(16, "Animação"), //sm
+        Genre(35, "Comédia"),//sm
+        Genre(80, "Crime"),//sm
+        Genre(99, "Documentário"),//sm
+        Genre(18, "Drama"),//sm
+        Genre(10751, "Família"),//sm
+        Genre(14, "Fantasia"),//m
+        Genre(36, "História"),//m
+        Genre(27, "Terror"),//m
+        Genre(10402, "Música"),//m
+        Genre(9648, "Mistério"),//sm
+        Genre(10749, "Romance"),//m
+        Genre(878, "Ficção científica"),//m
+        Genre(10770, "Cinema TV"),//m
+        Genre(53, "Thriller"),//m
+        Genre(10752, "Guerra"),//m
+        Genre(37, "Faroeste"),//sm
+        Genre(10762, "Kids"),//s
+        Genre(10763, "News"),//s
+        Genre(10764, "Reality"),//s
+        Genre(10765, "Sci-Fi & Fantasy"),//s
+        Genre(10766, "Soap"),//s
+        Genre(10767, "Talk"),//s
+        Genre(10768, "War & Politics")//s
     )
     @Suppress("UNREACHABLE_CODE")
     fun retornaId(genre: String): Int {

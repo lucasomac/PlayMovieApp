@@ -26,18 +26,16 @@ class SugestaoActivity : AppCompatActivity() {
         InitSpinnerGeneros()
         InitSpinnerCategorias()
         InitSpinnerNotas()
-        when (viewModel.categoriaSelecionada.value.toString()) {
-            "Filme" -> {
+        viewModel.categoriaSelecionada.observe(this) {
+            when (viewModel.categoriaSelecionada.value.toString()) {
+                "Filme" -> {
+                    btnSugestao.setOnClickListener(openMovieDetail())
+                }
+                "Série" -> {
 
-
-            }
-            "Série" -> {
-
+                }
             }
         }
-        btnSugestao.setOnClickListener(openMovieDetail())
-
-
     }
 
     fun InitSpinnerAnos() {
@@ -129,26 +127,24 @@ class SugestaoActivity : AppCompatActivity() {
     }
 
     fun openMovieDetail(): View.OnClickListener = View.OnClickListener {
-//        val bundle = Bundle()
+
         val intent = Intent(
             this,
             MoviesActivity::class.java
         ).apply {
-            putExtra("generoSelecionado",
+            putExtra(
+                "generoSelecionado",
                 viewModel.generoSelecionado.value?.let { it -> retornaId(it).toString() })
-            putExtra("categoriaSelecionada", viewModel.categoriaSelecionada.value)
-            putExtra("notaSelecionada", viewModel.notaSelecionada.value)
-            putExtra("anoSelecionado", viewModel.anoSelecionado.value)
+            putExtra(
+                "categoriaSelecionada", viewModel.categoriaSelecionada.value
+            )
+            putExtra(
+                "notaSelecionada", viewModel.notaSelecionada.value
+            )
+            putExtra(
+                "anoSelecionado", viewModel.anoSelecionado.value
+            )
         }
-//        with(bundle) {
-//            putString(
-//                "generoSelecionado",
-//                viewModel.generoSelecionado.value?.let { it -> retornaId(it).toString() }
-//            )
-//            putString("categoriaSelecionada", viewModel.categoriaSelecionada.value)
-//            putString("notaSelecionada", viewModel.notaSelecionada.value)
-//            putString("anoSelecionado", viewModel.anoSelecionado.value)
-//        }
         startActivity(intent)
     }
 

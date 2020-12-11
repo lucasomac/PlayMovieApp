@@ -1,6 +1,6 @@
-package br.com.digitalhouse.playmovieapp.domain
+package br.com.digitalhouse.playmovieapp.domain.movie
 
-data class Entities(
+data class ListMovie(
     val page: Int,
     val results: ArrayList<Result>,
     val total_pages: Int,

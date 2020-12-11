@@ -55,7 +55,6 @@
     <string-array name="categorias">
         <item>Filme</item>
         <item>Série</item>
-        <item>Qualquer categoria</item>
     </string-array>
 
     <string-array name="anos">
