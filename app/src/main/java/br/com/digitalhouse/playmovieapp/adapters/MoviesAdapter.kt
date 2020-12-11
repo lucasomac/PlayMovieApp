@@ -20,7 +20,7 @@ class MoviesAdapter(
         viewType: Int
     ): MovieViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(
-            R.layout.card_movie,
+            R.layout.item_pesquisa,
             parent,
             false
         )
@@ -29,10 +29,14 @@ class MoviesAdapter(
 
     override fun onBindViewHolder(holder: MoviesAdapter.MovieViewHolder, position: Int) {
         val movie = listaMovies[position]
-        holder.tvMovieName.text = movie.title
+        holder.txtNomeFilmePesquisa.text = movie.title
+        holder.txtAnoFilmePesquisa.text = movie.release_date.substring(0, 4)
         Glide.with(holder.itemView.context).asBitmap()
             .load(BASE_URL_IMAGE + "original" + movie.poster_path)
-            .into(holder.ivMoviePoster)
+            .into(holder.imgCapaFilme)
+        Glide.with(holder.itemView.context).asBitmap()
+            .load(BASE_URL_IMAGE + "original" + movie.backdrop_path)
+            .into(holder.imgCapaFilmeBackgroung)
     }
 
     override fun getItemCount(): Int = listaMovies.size
@@ -48,8 +52,10 @@ class MoviesAdapter(
             itemView.setOnClickListener(this)
         }
 
-        var ivMoviePoster: ImageView = itemView.findViewById(R.id.ivMoviePoster)
-        var tvMovieName: TextView = itemView.findViewById(R.id.tvMovieName)
+        var imgCapaFilme: ImageView = itemView.findViewById(R.id.imgCapaFilme)
+        var imgCapaFilmeBackgroung: ImageView = itemView.findViewById(R.id.imgCapaFilmeBackgroung)
+        var txtNomeFilmePesquisa: TextView = itemView.findViewById(R.id.txtNomeFilmePesquisa)
+        var txtAnoFilmePesquisa: TextView = itemView.findViewById(R.id.txtAnoFilmePesquisa)
 
 
         override fun onClick(v: View?) {

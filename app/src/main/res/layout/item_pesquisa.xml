@@ -14,27 +14,27 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/imgCapaFilmeBackgroung"
-            android:layout_width="355dp"
+            android:layout_width="match_parent"
             android:layout_height="141dp"
             android:layout_gravity="center"
+            android:scaleType="fitXY"
             android:background="@drawable/round_outline_pesquisa"
             android:outlineProvider="background"
-            tools:layout_editor_absoluteX="28dp"
-            tools:layout_editor_absoluteY="3dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imgCapaFilme"
             android:layout_width="108dp"
             android:layout_height="108dp"
-            android:layout_marginStart="22dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="17dp"
             app:layout_constraintStart_toStartOf="@+id/imgCapaFilmeBackgroung"
             app:layout_constraintTop_toTopOf="@+id/imgCapaFilmeBackgroung"
@@ -43,28 +43,28 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="48dp"
-            android:layout_marginStart="20dp"
+            android:orientation="vertical"
             app:layout_constraintStart_toEndOf="@+id/imgCapaFilme"
-            app:layout_constraintTop_toTopOf="@+id/imgCapaFilmeBackgroung"
-            android:orientation="vertical">
+            app:layout_constraintTop_toTopOf="@+id/imgCapaFilmeBackgroung">
 
             <TextView
                 android:id="@+id/txtNomeFilmePesquisa"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textSize="20dp"
+                android:layout_height="match_parent"
                 android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 tools:text="Nome do filme" />
 
             <TextView
                 android:id="@+id/txtAnoFilmePesquisa"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textSize="14dp"
                 android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
                 tools:text="Ano" />
 
         </LinearLayout>
@@ -75,8 +75,8 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#1A1A2E"
             android:src="@drawable/ic__561240___horizontal_more_2"
-            tools:layout_editor_absoluteX="335dp"
-            tools:layout_editor_absoluteY="100dp" />
+            app:layout_constraintBottom_toBottomOf="@id/imgCapaFilmeBackgroung"
+            app:layout_constraintEnd_toEndOf="@id/imgCapaFilmeBackgroung" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
