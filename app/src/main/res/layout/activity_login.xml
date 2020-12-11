@@ -1,32 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary"
-    tools:context=".ui.view.LoginActivity">
+    android:fillViewport="true">
 
-    <include
-        layout="@layout/form_login"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:background="@color/primary"
+        android:paddingHorizontal="@dimen/padding_6"
+        android:paddingVertical="@dimen/padding_3"
+        tools:context=".ui.view.LoginActivity">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="@string/varsao"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        <ImageView
+            android:id="@+id/imageView_logo"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginBottom="@dimen/margin_11"
+            android:contentDescription="@string/logo_playmovie"
+            android:src="@drawable/ic_logo"
+            app:layout_constraintBottom_toTopOf="@id/input_email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_email"
+            style="@style/Theme.PlayMovieApp.TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_4"
+            app:layout_constraintBottom_toTopOf="@id/input_passwd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageView_logo">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/text_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/email"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_passwd"
+            style="@style/Theme.PlayMovieApp.TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_4"
+            android:textColorHint="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/button_login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/input_email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/text_password"
+                style="@style/Theme.PlayMovieApp.TextInputEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/senha"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_login"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/height_default_button"
+            android:layout_marginBottom="@dimen/margin_4"
+            android:text="@string/entrar"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_5"
+            app:backgroundTint="@color/secondary"
+            app:cornerRadius="8dp"
+            app:layout_constraintBottom_toTopOf="@id/textView_criar_conta"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/input_passwd"
+            app:layout_constraintWidth_percent="0.6" />
+
+        <TextView
+            android:id="@+id/textView_criar_conta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_11"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:paddingHorizontal="@dimen/padding_4"
+            android:paddingVertical="@dimen/padding_2"
+            android:text="@string/criar_nova_conta"
+            android:textColor="@color/secondary"
+            android:textSize="@dimen/font_size_3"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/linearLayout_redes"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_login" />
+
+        <TextView
+            android:id="@+id/textView_entrar_com"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ou_entrar_com"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_2"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/linearLayout_redes"
+            app:layout_constraintEnd_toEndOf="@id/linearLayout_redes"
+            app:layout_constraintStart_toStartOf="@id/linearLayout_redes" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout_redes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@id/textView_version"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_criar_conta">
+
+            <include
+                layout="@layout/layout_social_networks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_5"
+            android:alpha="0.3"
+            android:text="@string/varsao"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout_redes" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

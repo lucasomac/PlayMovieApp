@@ -3,7 +3,7 @@
     <string name="email">E-mail</string>
     <string name="senha">Senha</string>
     <string name="entrar">Entrar</string>
-    <string name="tv_info">Ou entrar com:</string>
+    <string name="ou_entrar_com">ou entrar com:</string>
     <string name="facebook">facebook</string>
     <string name="twitter">twitter</string>
     <string name="google">google</string>
@@ -89,6 +89,7 @@
     <string name="melhores_s_ries">Melhores Séries</string>
     <string name="sugest_es">Sugestões</string>
     <string name="melhores_filmes">Melhores Filmes</string>
-    <string name="lan_amentos">Lançamentos</string>{
+    <string name="lan_amentos">Lançamentos</string>
+    <string name="logo_playmovie">Logo PlayMovie</string>{
 
 </resources>
