@@ -32,7 +32,7 @@
     </fragment>
     <activity
         android:id="@+id/detalhesActivity"
-        android:name="br.com.digitalhouse.playmovieapp.ui.DetalhesActivity"
+        android:name="br.com.digitalhouse.playmovieapp.ui.DetalhesActivityMovie"
         android:label="DetalhesActivity" >
         <argument
             android:name="idMovie"

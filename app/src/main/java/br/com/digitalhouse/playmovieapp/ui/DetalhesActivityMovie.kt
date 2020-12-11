@@ -12,17 +12,17 @@ import br.com.digitalhouse.playmovieapp.databinding.ActivityDetalhesMovieBinding
 import br.com.digitalhouse.playmovieapp.domain.Movie
 import br.com.digitalhouse.playmovieapp.getGenres
 import br.com.digitalhouse.playmovieapp.services.repository
-import br.com.digitalhouse.playmovieapp.ui.viewModel.DetalhesActivityViewModel
+import br.com.digitalhouse.playmovieapp.ui.viewModel.DetalhesActivityMovieViewModel
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.app_toolbar.*
 
-class DetalhesActivity : AppCompatActivity() {
+class DetalhesActivityMovie : AppCompatActivity() {
     private lateinit var binding: ActivityDetalhesMovieBinding
     private lateinit var movie: Movie
-    val viewModel by viewModels<DetalhesActivityViewModel> {
+    val viewModel by viewModels<DetalhesActivityMovieViewModel> {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-                return DetalhesActivityViewModel(repository) as T
+                return DetalhesActivityMovieViewModel(repository) as T
             }
         }
     }
@@ -33,7 +33,7 @@ class DetalhesActivity : AppCompatActivity() {
         setContentView(binding.root)
         initToolbar()
 //        val movie_id = savedInstanceState?.getInt("idMovie")
-        val args: DetalhesActivityArgs by navArgs()
+        val args: DetalhesActivityMovieArgs by navArgs()
         val movie_id = args.idMovie
         Log.i("TAG", movie_id.toString())
         movie_id.let { viewModel.searchMovieById(it) }

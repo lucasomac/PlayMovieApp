@@ -10,7 +10,7 @@ import br.com.digitalhouse.playmovieapp.domain.Movie
 import br.com.digitalhouse.playmovieapp.services.Repository
 import kotlinx.coroutines.launch
 
-class DetalhesActivityViewModel(val repository: Repository) : ViewModel() {
+class DetalhesActivityMovieViewModel(val repository: Repository) : ViewModel() {
     var movie = MutableLiveData<Movie>()
     fun searchMovieById(movie_id: Int) {
         viewModelScope.launch {
