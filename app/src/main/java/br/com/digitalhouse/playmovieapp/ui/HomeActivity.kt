@@ -19,19 +19,19 @@ class HomeActivity : AppCompatActivity() {
             startActivity(Intent(this, NivelActivity::class.java))
         }
 
-        ivLupa.setOnClickListener {
-            startActivity(Intent(this, SugestaoActivity::class.java))
-        }
-
         ivSugestao.setOnClickListener {
             startActivity(Intent(this, SugestaoActivity::class.java))
         }
 
-        btn_Configs.setOnClickListener{
+        ivLupa.setOnClickListener {
+            startActivity(Intent(this, PesquisaActivity::class.java))
+        }
+
+        btn_Configs.setOnClickListener {
             startActivity(Intent(this, ConfiguracoesActivity::class.java))
         }
 
-        btn_Ajustes.setOnClickListener{
+        btn_Ajustes.setOnClickListener {
             startActivity(Intent(this, InteressesActivity::class.java))
         }
     }

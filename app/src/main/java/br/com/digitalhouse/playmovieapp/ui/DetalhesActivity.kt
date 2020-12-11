@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.navArgs
 import br.com.digitalhouse.playmovieapp.BASE_URL_IMAGE
-import br.com.digitalhouse.playmovieapp.databinding.ActivityDetalhesBinding
+import br.com.digitalhouse.playmovieapp.databinding.ActivityDetalhesMovieBinding
 import br.com.digitalhouse.playmovieapp.domain.Movie
 import br.com.digitalhouse.playmovieapp.getGenres
 import br.com.digitalhouse.playmovieapp.services.repository
@@ -17,7 +17,7 @@ import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.app_toolbar.*
 
 class DetalhesActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityDetalhesBinding
+    private lateinit var binding: ActivityDetalhesMovieBinding
     private lateinit var movie: Movie
     val viewModel by viewModels<DetalhesActivityViewModel> {
         object : ViewModelProvider.Factory {
@@ -29,7 +29,7 @@ class DetalhesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDetalhesBinding.inflate(layoutInflater)
+        binding = ActivityDetalhesMovieBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initToolbar()
 //        val movie_id = savedInstanceState?.getInt("idMovie")

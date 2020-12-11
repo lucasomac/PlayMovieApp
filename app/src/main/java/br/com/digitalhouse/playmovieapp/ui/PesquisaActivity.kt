@@ -14,29 +14,29 @@ import br.com.digitalhouse.playmovieapp.ui.viewModel.SugestaoViewModel
 import kotlinx.android.synthetic.main.activity_sugestao.*
 import kotlinx.android.synthetic.main.app_toolbar.*
 
-class SugestaoActivity : AppCompatActivity() {
+class PesquisaActivity : AppCompatActivity() {
 
     val viewModel: SugestaoViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sugestao)
+        setContentView(R.layout.activity_pesquisa)
         initToolbar()
 
-        InitSpinnerAnos()
-        InitSpinnerGeneros()
-        InitSpinnerCategorias()
-        InitSpinnerNotas()
-        viewModel.categoriaSelecionada.observe(this) {
-            when (viewModel.categoriaSelecionada.value.toString()) {
-                "Filme" -> {
-                    btnSugestao.setOnClickListener(openMovieDetail())
-                }
-                "Série" -> {
-
-                }
-            }
-        }
+//        InitSpinnerAnos()
+//        InitSpinnerGeneros()
+//        InitSpinnerCategorias()
+//        InitSpinnerNotas()
+//        viewModel.categoriaSelecionada.observe(this) {
+//            when (viewModel.categoriaSelecionada.value.toString()) {
+//                "Filme" -> {
+//                    btnSugestao.setOnClickListener(openMovieDetail())
+//                }
+//                "Série" -> {
+//
+//                }
+//            }
+//        }
     }
 
     fun InitSpinnerAnos() {

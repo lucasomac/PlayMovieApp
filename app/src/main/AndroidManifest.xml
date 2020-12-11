@@ -60,6 +60,10 @@
             android:name=".ui.DetalhesActivity"
             android:parentActivityName=".ui.SugestaoActivity"
             android:theme="@style/Theme.PlayMovieApp" />
+        <activity
+            android:name=".ui.PesquisaActivity"
+            android:parentActivityName=".ui.HomeActivity"
+            android:theme="@style/Theme.PlayMovieApp" />
     </application>
 
 </manifest>
