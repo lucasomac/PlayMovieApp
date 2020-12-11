@@ -34,6 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_4"
+            android:theme="@style/Theme.PlayMovieApp.TextInputLayout.Custom"
             app:layout_constraintBottom_toTopOf="@id/input_passwd"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,12 +42,12 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/text_email"
+                style="@style/Theme.PlayMovieApp.TextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/email"
                 android:imeOptions="actionNext"
-                android:inputType="textEmailAddress"
-                android:textColor="@color/white" />
+                android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -56,6 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_4"
             android:textColorHint="@color/white"
+            android:theme="@style/Theme.PlayMovieApp.TextInputLayout.Custom"
             app:layout_constraintBottom_toTopOf="@id/button_login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -98,6 +100,8 @@
             android:paddingHorizontal="@dimen/padding_4"
             android:paddingVertical="@dimen/padding_2"
             android:text="@string/criar_nova_conta"
+            android:includeFontPadding="true"
+            android:paddingBottom="20dp"
             android:textColor="@color/secondary"
             android:textSize="@dimen/font_size_3"
             android:textStyle="bold"
@@ -110,7 +114,7 @@
             android:id="@+id/textView_entrar_com"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/ou_entrar_com"
+            android:text="@string/entrar_com_outra_conta"
             android:textColor="@color/white"
             android:textSize="@dimen/font_size_2"
             android:textStyle="bold"

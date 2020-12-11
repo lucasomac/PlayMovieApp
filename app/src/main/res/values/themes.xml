@@ -59,10 +59,19 @@
         <item name="boxStrokeColor">@color/white</item>
         <item name="hintTextColor">@android:color/white</item>
         <item name="android:textColorHint">@android:color/white</item>
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/teal_200</item>
+        <item name="colorControlHighlight">@color/blue</item>
+    </style>
+
+    <style name="Theme.PlayMovieApp.TextInputLayout.Custom" parent="Widget.Design.TextInputLayout">
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/white</item>
+        <item name="colorControlHighlight">@color/white</item>
     </style>
 
     /* TextInputEditText */
-    <style name="Theme.PlayMovieApp.TextInputEditText" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <style name="Theme.PlayMovieApp.TextInputEditText" parent="Theme.PlayMovieApp">
         <item name="android:textColor">@color/white</item>
     </style>
 
