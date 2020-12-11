@@ -2,6 +2,7 @@ package br.com.digitalhouse.playmovieapp.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -10,33 +11,34 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.getGenres
-import br.com.digitalhouse.playmovieapp.ui.viewModel.SugestaoViewModel
-import kotlinx.android.synthetic.main.activity_sugestao.*
+import br.com.digitalhouse.playmovieapp.ui.viewModel.PesquisaViewModel
+import kotlinx.android.synthetic.main.activity_pesquisa.*
+import kotlinx.android.synthetic.main.activity_sugestao.btnSugestao
 import kotlinx.android.synthetic.main.app_toolbar.*
 
 class PesquisaActivity : AppCompatActivity() {
 
-    val viewModel: SugestaoViewModel by viewModels()
+    val viewModel: PesquisaViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pesquisa)
         initToolbar()
 
-//        InitSpinnerAnos()
-//        InitSpinnerGeneros()
-//        InitSpinnerCategorias()
-//        InitSpinnerNotas()
-//        viewModel.categoriaSelecionada.observe(this) {
-//            when (viewModel.categoriaSelecionada.value.toString()) {
-//                "Filme" -> {
-//                    btnSugestao.setOnClickListener(openMovieDetail())
-//                }
-//                "Série" -> {
-//
-//                }
-//            }
-//        }
+        InitSpinnerAnos()
+        InitSpinnerGeneros()
+        InitSpinnerCategorias()
+        InitSpinnerNotas()
+        viewModel.categoriaSelecionada.observe(this) {
+            when (viewModel.categoriaSelecionada.value.toString()) {
+                "Filme" -> {
+                    btnSugestao.setOnClickListener(openMovieDetail())
+                }
+                "Série" -> {
+                    btnSugestao.setOnClickListener(openSerieDetail())
+                }
+            }
+        }
     }
 
     fun InitSpinnerAnos() {
@@ -145,6 +147,33 @@ class PesquisaActivity : AppCompatActivity() {
             putExtra(
                 "anoSelecionado", viewModel.anoSelecionado.value
             )
+            putExtra(
+                "query", etBusca.text.toString()
+            )
+        }
+        startActivity(intent)
+    }
+
+    private fun openSerieDetail(): View.OnClickListener = View.OnClickListener {
+        val intent = Intent(
+            this,
+            SeriesActivity::class.java
+        ).apply {
+            putExtra(
+                "generoSelecionado",
+                viewModel.generoSelecionado.value?.let { it -> retornaId(it).toString() })
+            putExtra(
+                "categoriaSelecionada", viewModel.categoriaSelecionada.value
+            )
+            putExtra(
+                "notaSelecionada", viewModel.notaSelecionada.value
+            )
+            putExtra(
+                "anoSelecionado", viewModel.anoSelecionado.value
+            )
+            putExtra(
+                "query", etBusca.text.toString()
+            )
         }
         startActivity(intent)
     }
@@ -156,7 +185,7 @@ class PesquisaActivity : AppCompatActivity() {
     private fun initToolbar() {
         val toolbar = material_toolbar
         setSupportActionBar(toolbar)
-        supportActionBar?.setTitle("")
+        supportActionBar?.setTitle("Pesquisa de conteúdo")
         supportActionBar?.setDisplayHomeAsUpEnabled(true); //Mostrar o botão
         supportActionBar?.setHomeButtonEnabled(true)
     }

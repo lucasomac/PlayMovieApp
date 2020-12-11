@@ -39,27 +39,45 @@ class MoviesActivity : AppCompatActivity(), MoviesAdapter.MovieListener {
             intent.getStringExtra("notaSelecionada")?.let { it.get(it.length - 1) } else "0"
         val ano = if (intent.getStringExtra("anoSelecionado") != "Qualquer ano")
             intent.getStringExtra("anoSelecionado")?.let { it.substring(it.length - 4) } else "0"
+        val query = intent.getStringExtra("query")
         adapterMovies = MoviesAdapter(this)
         linearLayoutManager = LinearLayoutManager(this)
         binding.rvMovies.adapter = adapterMovies
         binding.rvMovies.layoutManager = linearLayoutManager
         binding.rvMovies.hasFixedSize()
-        viewModel.searchMoviesFilter(
-            page,
-            genero.toString(),
-            ano.toString(),
-            nota.toString()
-        )
-        viewModel.listResults.observe(this) {
-            adapterMovies.addMovie(it)
+        when {
+            query.isNullOrBlank() -> {
+                viewModel.discoveryMovies(
+                    page,
+                    genero.toString(),
+                    ano.toString(),
+                    nota.toString()
+                )
+                viewModel.listResults.observe(this) {
+                    adapterMovies.addMovie(it)
+                }
+            }
+            else -> {
+                viewModel.searchMovies(
+                    page,
+                    query.toString(),
+                    genero.toString(),
+                    ano.toString(),
+                    nota.toString()
+                )
+                viewModel.listResults.observe(this) {
+                    adapterMovies.addMovie(it)
+                }
+            }
         }
+
 
     }
 
     private fun initToolbar() {
         val toolbar = material_toolbar
         setSupportActionBar(toolbar)
-        supportActionBar?.setTitle("Busca")
+        supportActionBar?.setTitle("Resultado da busca")
         supportActionBar?.setDisplayHomeAsUpEnabled(true); //Mostrar o botão
         supportActionBar?.setHomeButtonEnabled(true)
     }

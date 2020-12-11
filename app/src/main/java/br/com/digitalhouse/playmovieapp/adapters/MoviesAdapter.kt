@@ -34,9 +34,9 @@ class MoviesAdapter(
         Glide.with(holder.itemView.context).asBitmap()
             .load(BASE_URL_IMAGE + "original" + movie.poster_path)
             .into(holder.imgCapaFilme)
-        Glide.with(holder.itemView.context).asBitmap()
-            .load(BASE_URL_IMAGE + "original" + movie.backdrop_path)
-            .into(holder.imgCapaFilmeBackgroung)
+//        Glide.with(holder.itemView.context).asBitmap()
+//            .load(BASE_URL_IMAGE + "original" + movie.backdrop_path)
+//            .into(holder.imgCapaFilmeBackgroung)
     }
 
     override fun getItemCount(): Int = listaMovies.size

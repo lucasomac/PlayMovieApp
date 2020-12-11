@@ -75,11 +75,6 @@ class FilmeDiaFragment : Fragment() {
                 val action =
                     FilmeDiaFragmentDirections.actionFilmeDiaFragmentToDetalhesActivity(filme.id)
                 findNavController().navigate(action)
-//                val bundle = bundleOf("idMovie" to filme.id)
-//                findNavController().navigate(
-//                    R.id.action_filmeDiaFragment_to_detalhesActivity,
-//                    bundle
-//                )
             }
         }
     }

@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 
 class SeriesActivityViewModel(val repository: Repository) : ViewModel() {
     var listResults = MutableLiveData<ArrayList<Result>>()
-    fun searchSeriesFilter(
+    fun discoverySeries(
         page: Int,
         genre: String,
         first_air_date_year: String,
@@ -23,6 +23,31 @@ class SeriesActivityViewModel(val repository: Repository) : ViewModel() {
                 API_KEY,
                 LANGUAGE,
                 page,
+                true,
+                genre,
+                first_air_date_year,
+                vote_average
+            ).also {
+                listResults.postValue(it.results)
+                Log.i("DATATA", listResults.toString())
+            }
+        }
+    }
+
+    fun searchSeries(
+        page: Int,
+        query: String,
+        genre: String,
+        first_air_date_year: String,
+        vote_average: String
+    ) {
+        viewModelScope.launch {
+            repository.searchTv(
+                API_KEY,
+                LANGUAGE,
+                page,
+                query,
+                true,
                 genre,
                 first_air_date_year,
                 vote_average

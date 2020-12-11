@@ -9,7 +9,6 @@ import android.widget.Spinner
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import br.com.digitalhouse.playmovieapp.R
-import br.com.digitalhouse.playmovieapp.SeriesActivity
 import br.com.digitalhouse.playmovieapp.getGenres
 import br.com.digitalhouse.playmovieapp.ui.viewModel.SugestaoViewModel
 import kotlinx.android.synthetic.main.activity_sugestao.*
@@ -179,7 +178,7 @@ class SugestaoActivity : AppCompatActivity() {
     private fun initToolbar() {
         val toolbar = material_toolbar
         setSupportActionBar(toolbar)
-        supportActionBar?.setTitle("")
+        supportActionBar?.setTitle("Buscar sugestão")
         supportActionBar?.setDisplayHomeAsUpEnabled(true); //Mostrar o botão
         supportActionBar?.setHomeButtonEnabled(true)
     }

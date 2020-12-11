@@ -34,9 +34,9 @@ class SeriesAdapter(
         Glide.with(holder.itemView.context).asBitmap()
             .load(BASE_URL_IMAGE + "original" + serie.poster_path)
             .into(holder.imgCapaFilme)
-        Glide.with(holder.itemView.context).asBitmap()
-            .load(BASE_URL_IMAGE + "original" + serie.backdrop_path)
-            .into(holder.imgCapaFilmeBackgroung)
+//        Glide.with(holder.itemView.context).asBitmap()
+//            .load(BASE_URL_IMAGE + "original" + serie.backdrop_path)
+//            .into(holder.imgCapaFilmeBackgroung)
     }
 
     override fun getItemCount(): Int = listaSeries.size

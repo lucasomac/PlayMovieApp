@@ -14,7 +14,7 @@
         android:theme="@style/Theme.PlayMovieApp">
         <activity android:name=".ui.DetalhesActivitySerie"></activity>
         <activity
-            android:name=".SeriesActivity"
+            android:name=".ui.SeriesActivity"
             android:parentActivityName=".ui.SugestaoActivity"
             android:theme="@style/Theme.PlayMovieApp" />
         <activity

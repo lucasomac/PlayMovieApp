@@ -1,4 +1,4 @@
-package br.com.digitalhouse.playmovieapp
+package br.com.digitalhouse.playmovieapp.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.digitalhouse.playmovieapp.adapters.SeriesAdapter
 import br.com.digitalhouse.playmovieapp.databinding.ActivitySeriesBinding
 import br.com.digitalhouse.playmovieapp.services.repository
-import br.com.digitalhouse.playmovieapp.ui.DetalhesActivitySerie
 import br.com.digitalhouse.playmovieapp.ui.viewModel.SeriesActivityViewModel
 import kotlinx.android.synthetic.main.app_toolbar.*
 
@@ -40,26 +39,44 @@ class SeriesActivity : AppCompatActivity(), SeriesAdapter.SerieListener {
             intent.getStringExtra("notaSelecionada")?.let { it.get(it.length - 1) } else "0"
         val ano = if (intent.getStringExtra("anoSelecionado") != "Qualquer ano")
             intent.getStringExtra("anoSelecionado")?.let { it.substring(it.length - 4) } else "0"
+        val query = intent.getStringExtra("query")
         adapterSeries = SeriesAdapter(this)
         linearLayoutManager = LinearLayoutManager(this)
         binding.rvSeries.adapter = adapterSeries
         binding.rvSeries.layoutManager = linearLayoutManager
         binding.rvSeries.hasFixedSize()
-        viewModel.searchSeriesFilter(
-            page,
-            genero.toString(),
-            ano.toString(),
-            nota.toString()
-        )
-        viewModel.listResults.observe(this) {
-            adapterSeries.addSerie(it)
+        when {
+            query.isNullOrBlank() -> {
+                viewModel.discoverySeries(
+                    page,
+                    genero.toString(),
+                    ano.toString(),
+                    nota.toString()
+                )
+                viewModel.listResults.observe(this) {
+                    adapterSeries.addSerie(it)
+                }
+            }
+            else -> {
+                viewModel.searchSeries(
+                    page,
+                    query.toString(),
+                    genero.toString(),
+                    ano.toString(),
+                    nota.toString()
+                )
+                viewModel.listResults.observe(this) {
+                    adapterSeries.addSerie(it)
+                }
+            }
         }
+
     }
 
     private fun initToolbar() {
         val toolbar = material_toolbar
         setSupportActionBar(toolbar)
-        supportActionBar?.setTitle("Busca")
+        supportActionBar?.setTitle("Resultado da busca")
         supportActionBar?.setDisplayHomeAsUpEnabled(true); //Mostrar o botão
         supportActionBar?.setHomeButtonEnabled(true)
     }

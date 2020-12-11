@@ -57,7 +57,7 @@ class DetalhesActivitySerie : AppCompatActivity() {
     private fun initToolbar() {
         val toolbar = material_toolbar
         setSupportActionBar(toolbar)
-        supportActionBar?.setTitle("")
+        supportActionBar?.setTitle("Sinopse da Série")
         supportActionBar?.setDisplayHomeAsUpEnabled(true); //Mostrar o botão
         supportActionBar?.setHomeButtonEnabled(true)
     }
