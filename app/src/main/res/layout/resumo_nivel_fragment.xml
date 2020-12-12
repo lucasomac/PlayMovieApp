@@ -5,7 +5,7 @@
     android:layout_width="350dp"
     android:layout_height="330dp"
     android:background="@drawable/round_outline_filme_dia"
-    tools:context=".ResumoNivelFragment">
+    tools:context=".ui.view.ResumoNivelFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvNiveisResume"

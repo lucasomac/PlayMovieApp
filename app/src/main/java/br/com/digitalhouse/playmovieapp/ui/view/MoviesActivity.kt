@@ -1,4 +1,4 @@
-package br.com.digitalhouse.playmovieapp.ui
+package br.com.digitalhouse.playmovieapp.ui.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,28 +7,28 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import br.com.digitalhouse.playmovieapp.adapters.SeriesAdapter
-import br.com.digitalhouse.playmovieapp.databinding.ActivitySeriesBinding
+import br.com.digitalhouse.playmovieapp.adapters.MoviesAdapter
+import br.com.digitalhouse.playmovieapp.databinding.ActivityMoviesBinding
 import br.com.digitalhouse.playmovieapp.services.repository
-import br.com.digitalhouse.playmovieapp.ui.viewModel.SeriesActivityViewModel
+import br.com.digitalhouse.playmovieapp.ui.viewModel.MoviesActivityViewModel
 import kotlinx.android.synthetic.main.app_toolbar.*
 
-class SeriesActivity : AppCompatActivity(), SeriesAdapter.SerieListener {
-    private lateinit var binding: ActivitySeriesBinding
-    private lateinit var adapterSeries: SeriesAdapter
+class MoviesActivity : AppCompatActivity(), MoviesAdapter.MovieListener {
+    private lateinit var binding: ActivityMoviesBinding
+    private lateinit var adapterMovies: MoviesAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
     var page = 1
-    val viewModel by viewModels<SeriesActivityViewModel> {
+    val viewModel by viewModels<MoviesActivityViewModel> {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-                return SeriesActivityViewModel(repository) as T
+                return MoviesActivityViewModel(repository) as T
             }
         }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySeriesBinding.inflate(layoutInflater)
+        binding = ActivityMoviesBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initToolbar()
         val genero =
@@ -40,25 +40,25 @@ class SeriesActivity : AppCompatActivity(), SeriesAdapter.SerieListener {
         val ano = if (intent.getStringExtra("anoSelecionado") != "Qualquer ano")
             intent.getStringExtra("anoSelecionado")?.let { it.substring(it.length - 4) } else "0"
         val query = intent.getStringExtra("query")
-        adapterSeries = SeriesAdapter(this)
+        adapterMovies = MoviesAdapter(this)
         linearLayoutManager = LinearLayoutManager(this)
-        binding.rvSeries.adapter = adapterSeries
-        binding.rvSeries.layoutManager = linearLayoutManager
-        binding.rvSeries.hasFixedSize()
+        binding.rvMovies.adapter = adapterMovies
+        binding.rvMovies.layoutManager = linearLayoutManager
+        binding.rvMovies.hasFixedSize()
         when {
             query.isNullOrBlank() -> {
-                viewModel.discoverySeries(
+                viewModel.discoveryMovies(
                     page,
                     genero.toString(),
                     ano.toString(),
                     nota.toString()
                 )
                 viewModel.listResults.observe(this) {
-                    adapterSeries.addSerie(it)
+                    adapterMovies.addMovie(it)
                 }
             }
             else -> {
-                viewModel.searchSeries(
+                viewModel.searchMovies(
                     page,
                     query.toString(),
                     genero.toString(),
@@ -66,10 +66,11 @@ class SeriesActivity : AppCompatActivity(), SeriesAdapter.SerieListener {
                     nota.toString()
                 )
                 viewModel.listResults.observe(this) {
-                    adapterSeries.addSerie(it)
+                    adapterMovies.addMovie(it)
                 }
             }
         }
+
 
     }
 
@@ -81,10 +82,20 @@ class SeriesActivity : AppCompatActivity(), SeriesAdapter.SerieListener {
         supportActionBar?.setHomeButtonEnabled(true)
     }
 
-    override fun onClickSerie(position: Int) {
-        val serie = adapterSeries.listaSeries[position]
-        val intent = Intent(this, DetalhesActivitySerie::class.java)
-        intent.putExtra("idSerie", serie.id.toString())
+    override fun onClickMovie(position: Int) {
+        val movie = adapterMovies.listaMovies[position]
+        val intent = Intent(this, DetalhesActivityMovie::class.java)
+        intent.putExtra("idMovie", movie.id)
         startActivity(intent)
+    }
+
+    fun primeiroDigitoEhUmNumero(entrada: String): Boolean {
+        val primeiroDigito = entrada[0].toString() + ""
+        return try {
+            primeiroDigito.toInt()
+            true
+        } catch (e: NumberFormatException) {
+            false
+        }
     }
 }

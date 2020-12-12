@@ -1,4 +1,4 @@
-package br.com.digitalhouse.playmovieapp
+package br.com.digitalhouse.playmovieapp.ui.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.adapters.NivelResumeAdapter
 import br.com.digitalhouse.playmovieapp.databinding.ResumoNivelFragmentBinding
+import br.com.digitalhouse.playmovieapp.getNiveis
 import br.com.digitalhouse.playmovieapp.ui.viewModel.ResumoNivelViewModel
 
 class ResumoNivelFragment : Fragment(), NivelResumeAdapter.NivelResumeListener {

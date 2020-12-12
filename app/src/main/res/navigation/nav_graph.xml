@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/filmeDiaFragment"
-        android:name="br.com.digitalhouse.playmovieapp.FilmeDiaFragment"
+        android:name="br.com.digitalhouse.playmovieapp.ui.view.FilmeDiaFragment"
         android:label="fragment_filme_dia_home"
         tools:layout="@layout/fragment_filme_dia_home" >
         <action
@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/resumoNivelFragment"
-        android:name="br.com.digitalhouse.playmovieapp.ResumoNivelFragment"
+        android:name="br.com.digitalhouse.playmovieapp.ui.view.ResumoNivelFragment"
         android:label="resumo_nivel_fragment"
         tools:layout="@layout/resumo_nivel_fragment" >
         <action
@@ -32,7 +32,7 @@
     </fragment>
     <activity
         android:id="@+id/detalhesActivity"
-        android:name="br.com.digitalhouse.playmovieapp.ui.DetalhesActivityMovie"
+        android:name="br.com.digitalhouse.playmovieapp.ui.view.DetalhesActivityMovie"
         android:label="DetalhesActivity" >
         <argument
             android:name="idMovie"

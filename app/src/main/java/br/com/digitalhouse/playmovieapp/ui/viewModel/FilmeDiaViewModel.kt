@@ -8,13 +8,16 @@ import br.com.digitalhouse.playmovieapp.LANGUAGE
 import br.com.digitalhouse.playmovieapp.domain.movie.Result
 import br.com.digitalhouse.playmovieapp.services.Repository
 import kotlinx.coroutines.launch
-import java.util.*
 
 class FilmeDiaViewModel(val repository: Repository) : ViewModel() {
     var popularMovie = MutableLiveData<Result>()
     fun searchPopularMovie() {
         viewModelScope.launch {
-            repository.searchPopularMovies(API_KEY, LANGUAGE, 1).results.get(6).also {
+            repository.searchPopularMovies(
+                API_KEY,
+                LANGUAGE,
+                1
+            ).results.sortedBy { it.vote_average }.reversed().get(0).also {
                 popularMovie.postValue(it)
             }
         }

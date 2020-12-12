@@ -1,7 +1,8 @@
-package br.com.digitalhouse.playmovieapp
+package br.com.digitalhouse.playmovieapp.ui.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import br.com.digitalhouse.playmovieapp.R
 import kotlinx.android.synthetic.main.app_toolbar.*
 
 class CadastroActivity : AppCompatActivity() {

@@ -1,8 +1,7 @@
-package br.com.digitalhouse.playmovieapp.ui
+package br.com.digitalhouse.playmovieapp.ui.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter

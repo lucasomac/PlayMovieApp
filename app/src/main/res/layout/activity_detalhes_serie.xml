@@ -7,7 +7,7 @@
     android:background="@color/primary"
     android:orientation="vertical"
     app:layout_constraintTop_toBottomOf="@+id/imgCapaSerie"
-    tools:context=".ui.DetalhesActivitySerie">
+    tools:context=".ui.view.DetalhesActivitySerie">
 
     <include
         android:id="@+id/include_config_toolbar"

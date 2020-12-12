@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/primary"
     android:orientation="vertical"
-    tools:context=".ui.PesquisaActivity">
+    tools:context=".ui.view.PesquisaActivity">
 
     <include
         android:id="@+id/toolbar"
@@ -35,6 +35,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="28dp"
         android:hint="Buscar"
+        android:textColor="@color/white"
         android:iconifiedByDefault="false"
         android:queryHint="Pesquise"
         android:textColorHint="@color/white" />
