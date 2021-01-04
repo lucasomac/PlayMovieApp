@@ -29,17 +29,32 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="?android:attr/actionBarSize" />
 
+        <TextView
+            android:id="@+id/textView_descricao"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/padding_5"
+            android:text="Preencha os dados abaixo para criar a sua conta no PlayMove"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:theme="@style/Custom.Body2"
+            app:layout_constraintBottom_toTopOf="@id/linearLayout_fields"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/guideline_appBar"
+            app:layout_constraintVertical_chainStyle="packed" />
+
         <LinearLayout
             android:id="@+id/linearLayout_fields"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8"
             android:orientation="vertical"
             android:paddingHorizontal="@dimen/padding_7"
             app:layout_constraintBottom_toTopOf="@id/button_criar_conta"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/guideline_appBar"
-            app:layout_constraintVertical_chainStyle="packed">
+            app:layout_constraintTop_toBottomOf="@id/textView_descricao">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/input_email"
@@ -47,7 +62,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_6"
-                android:theme="@style/Theme.PlayMovieApp.TextInputLayout.Custom">
+                android:theme="@style/Theme.PlayMovieApp.TextInputLayout.Custom"
+                app:layout_constraintWidth_max="@dimen/max_text_input_layout">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/text_email"
@@ -70,7 +86,8 @@
                 app:layout_constraintBottom_toTopOf="@id/input_passwd_confirm"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/input_email">
+                app:layout_constraintTop_toBottomOf="@id/input_email"
+                app:layout_constraintWidth_max="@dimen/max_text_input_layout">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/text_password"
@@ -87,20 +104,20 @@
                 style="@style/Theme.PlayMovieApp.TextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_6"
                 android:textColorHint="@color/white"
                 android:theme="@style/Theme.PlayMovieApp.TextInputLayout.Custom"
                 app:layout_constraintBottom_toTopOf="@id/button_login"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/input_passwd">
+                app:layout_constraintTop_toBottomOf="@id/input_passwd"
+                app:layout_constraintWidth_max="@dimen/max_text_input_layout">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/text_password_confirm"
                     style="@style/Theme.PlayMovieApp.TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/senha"
+                    android:hint="@string/confirmar_senha"
                     android:imeOptions="actionDone"
                     android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -111,15 +128,29 @@
             android:id="@+id/button_criar_conta"
             style="@style/Theme.PlayMovieApp.MaterialButton.Default"
             android:layout_width="0dp"
-            android:layout_height="@dimen/height_default_button"
-            android:layout_marginTop="@dimen/margin_7"
-            android:text="@string/criar_conta"
-            android:textSize="@dimen/font_size_5"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="@dimen/margin_10"
+            android:layout_marginBottom="@dimen/margin_8"
+            android:text="@string/criar_minha_conta"
+            android:textAllCaps="true"
+            app:layout_constraintBottom_toTopOf="@id/textView_termos"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/linearLayout_fields"
-            app:layout_constraintWidth_percent="0.5" />
+            app:layout_constraintWidth_max="268dp"
+            app:layout_constraintWidth_percent="0.8" />
+
+        <TextView
+            android:id="@+id/textView_termos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/padding_5"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:theme="@style/Custom.Body1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_criar_conta" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

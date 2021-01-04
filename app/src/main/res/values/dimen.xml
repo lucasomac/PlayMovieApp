@@ -37,7 +37,7 @@
     <dimen name="padding_11">38dp</dimen>
     <dimen name="padding_12">40dp</dimen>
 
-    <dimen name="height_default_button">60dp</dimen>
+    <dimen name="height_default_button">62dp</dimen>
 
     <dimen name="font_size_1">12sp</dimen>
     <dimen name="font_size_2">14sp</dimen>
@@ -49,5 +49,10 @@
     <dimen name="font_size_8">28sp</dimen>
     <dimen name="font_size_9">32sp</dimen>
     <dimen name="font_size_10">36sp</dimen>
+
+
+    <dimen name="max_text_input_layout">340dp</dimen>
+
+
 
 </resources>

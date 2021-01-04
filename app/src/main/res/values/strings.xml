@@ -16,7 +16,7 @@
     <string name="todo">TODO</string>
     <string name="politica_de_privacidade"><![CDATA[Termos e Política de Privacidade]]></string>
     <string name="carregando">Carregando…</string>
-    <string name="criar_conta">Criar Conta</string>
+    <string name="criar_minha_conta">Criar minha conta</string>
     <string name="confirmar_senha">Confirmar Senha</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="parabens">Parabéns você passou para o próximo nível!</string>
@@ -91,6 +91,13 @@
     <string name="melhores_filmes">Melhores Filmes</string>
     <string name="lan_amentos">Lançamentos</string>
     <string name="logo_playmovie">Logo PlayMovie</string>
-    <string name="entrar_com_outra_conta">entrar com outra conta</string>{
+    <string name="entrar_com_outra_conta">entrar com outra conta</string>
+
+    <string name="termos_html">
+        <![CDATA[
+        <p>Ao clicar em criar minha conta, eu aceito os <b>Termos de Uso</b> e a <b>Política de Privacidade</b></p>
+        ]]>
+    </string>
+
 
 </resources>
