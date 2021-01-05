@@ -3,11 +3,11 @@
     <string name="email">E-mail</string>
     <string name="senha">Senha</string>
     <string name="entrar">Entrar</string>
-    <string name="tv_info">Ou entrar com:</string>
+    <string name="ou_entrar_com">ou entrar com:</string>
     <string name="facebook">facebook</string>
     <string name="twitter">twitter</string>
     <string name="google">google</string>
-    <string name="criar_nova_conta">Criar nova conta</string>
+    <string name="criar_nova_conta"><u>Criar nova conta</u></string>
     <string name="title_activity_interesses">InteressesActivity</string>
     <string name="varsao">v1.0.0</string>
     <string name="titulo_configuracoes">Configurações</string>
@@ -16,7 +16,7 @@
     <string name="todo">TODO</string>
     <string name="politica_de_privacidade"><![CDATA[Termos e Política de Privacidade]]></string>
     <string name="carregando">Carregando…</string>
-    <string name="criar_conta">Criar Conta</string>
+    <string name="criar_minha_conta">Criar minha conta</string>
     <string name="confirmar_senha">Confirmar Senha</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="parabens">Parabéns você passou para o próximo nível!</string>
@@ -88,6 +88,15 @@
     <string name="melhores_s_ries">Melhores Séries</string>
     <string name="sugest_es">Sugestões</string>
     <string name="melhores_filmes">Melhores Filmes</string>
-    <string name="lan_amentos">Lançamentos</string>{
+    <string name="lan_amentos">Lançamentos</string>
+    <string name="logo_playmovie">Logo PlayMovie</string>
+    <string name="entrar_com_outra_conta">entrar com outra conta</string>
+
+    <string name="termos_html">
+        <![CDATA[
+        <p>Ao clicar em criar minha conta, eu aceito os <b>Termos de Uso</b> e a <b>Política de Privacidade</b></p>
+        ]]>
+    </string>
+
 
 </resources>

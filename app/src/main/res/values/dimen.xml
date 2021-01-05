@@ -4,9 +4,55 @@
     <dimen name="margin_small">16dp</dimen>
     <dimen name="margin_medium">24dp</dimen>
     <dimen name="margin_large">32dp</dimen>
+    <dimen name="margin_xlarge">38dp</dimen>
 
     <dimen name="padding_tiny">8dp</dimen>
     <dimen name="padding_small">16dp</dimen>
     <dimen name="padding_medium">24dp</dimen>
     <dimen name="padding_large">32dp</dimen>
+
+    <dimen name="margin_1">8dp</dimen>
+    <dimen name="margin_2">12dp</dimen>
+    <dimen name="margin_3">16dp</dimen>
+    <dimen name="margin_4">18dp</dimen>
+    <dimen name="margin_5">20dp</dimen>
+    <dimen name="margin_6">22dp</dimen>
+    <dimen name="margin_7">24dp</dimen>
+    <dimen name="margin_8">28dp</dimen>
+    <dimen name="margin_9">32dp</dimen>
+    <dimen name="margin_10">36dp</dimen>
+    <dimen name="margin_11">38dp</dimen>
+    <dimen name="margin_12">40dp</dimen>
+
+    <dimen name="padding_1">8dp</dimen>
+    <dimen name="padding_2">12dp</dimen>
+    <dimen name="padding_3">16dp</dimen>
+    <dimen name="padding_4">18dp</dimen>
+    <dimen name="padding_5">20dp</dimen>
+    <dimen name="padding_6">22dp</dimen>
+    <dimen name="padding_7">24dp</dimen>
+    <dimen name="padding_8">28dp</dimen>
+    <dimen name="padding_9">32dp</dimen>
+    <dimen name="padding_10">36dp</dimen>
+    <dimen name="padding_11">38dp</dimen>
+    <dimen name="padding_12">40dp</dimen>
+
+    <dimen name="height_default_button">62dp</dimen>
+
+    <dimen name="font_size_1">12sp</dimen>
+    <dimen name="font_size_2">14sp</dimen>
+    <dimen name="font_size_3">16sp</dimen>
+    <dimen name="font_size_4">18sp</dimen>
+    <dimen name="font_size_5">20sp</dimen>
+    <dimen name="font_size_6">22sp</dimen>
+    <dimen name="font_size_7">24sp</dimen>
+    <dimen name="font_size_8">28sp</dimen>
+    <dimen name="font_size_9">32sp</dimen>
+    <dimen name="font_size_10">36sp</dimen>
+
+
+    <dimen name="max_text_input_layout">340dp</dimen>
+
+
+
 </resources>

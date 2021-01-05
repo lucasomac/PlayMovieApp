@@ -49,7 +49,11 @@
             android:parentActivityName=".ui.view.HomeActivity" />
         <activity android:name=".ui.view.LoginActivity" />
         <activity
-            android:name=".SplashActivity"
+            android:theme="@style/Theme.PlayMovieApp"
+            android:name=".ui.view.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.view.SplashActivity"
             android:theme="@style/Theme.PlayMovieApp.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

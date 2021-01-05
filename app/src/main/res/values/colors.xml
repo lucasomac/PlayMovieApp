@@ -11,6 +11,7 @@
     <!--    Paleta de cores-->
     <color name="primary">#16213E</color>
     <color name="secondary">#E94560</color>
+    <color name="colorPrimaryDark">#1A1A2E</color>
     <color name="background_filme_dia">#BBBFCA</color>
     <color name="background_filme_dia_opacity">#33FFFFFF</color>
     <color name="background_card_filme">#1A1A2E</color>
@@ -18,4 +19,6 @@
     <color name="gray">#495464</color>
     <color name="gray_acent">#E8E8E8</color>
     <color name="blue">#0F3460</color>
+
+    <color name="mtrl_textinput_default_box_stroke_color">@color/white</color>
 </resources>
