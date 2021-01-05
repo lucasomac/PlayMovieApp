@@ -47,7 +47,6 @@
             android:name=".ui.view.InteressesActivity"
             android:label="@string/title_activity_interesses"
             android:parentActivityName=".ui.view.HomeActivity" />
-        <activity android:name=".ui.view.LoginActivity" />
         <activity
             android:theme="@style/Theme.PlayMovieApp"
             android:name=".ui.view.LoginActivity"
