@@ -16,7 +16,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_appBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="?android:attr/actionBarSize" />
+
     <androidx.recyclerview.widget.RecyclerView
+        android:paddingVertical="@dimen/padding_1"
         android:id="@+id/rv_configuracoes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -25,7 +33,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/include_config_toolbar"
+        app:layout_constraintTop_toBottomOf="@id/guideline_appBar"
         tools:listitem="@layout/item_configuracao" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

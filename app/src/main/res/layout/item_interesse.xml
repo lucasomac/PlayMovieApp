@@ -1,40 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:backgroundTint="@color/primary">
+    android:layout_marginBottom="@dimen/margin_1"
+    android:backgroundTint="@android:color/transparent"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardBackgroundColor="@android:color/transparent"
+    app:cardCornerRadius="0dp"
+    app:cardElevation="0dp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:gravity="center_vertical">
+        android:paddingHorizontal="@dimen/padding_6"
+        android:paddingVertical="@dimen/padding_1">
 
         <ImageView
             android:id="@+id/interesseIcon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/ic_bomb"
-            android:layout_margin="5dp"/>
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_bomb" />
 
         <TextView
             android:id="@+id/interesseDesc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ação"
-            android:textSize="18dp"
-            android:layout_margin="5dp"
-            android:textColor="@color/white"/>
+            android:layout_marginStart="@dimen/margin_3"
+            android:theme="@style/Custom.Body2" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/interesseAtivo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            />
+            android:layout_gravity="right" />
 
     </LinearLayout>
 

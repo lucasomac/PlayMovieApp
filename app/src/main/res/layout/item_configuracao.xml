@@ -16,8 +16,8 @@
         android:id="@+id/constraintLayout_item_config"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="@dimen/padding_medium"
-        android:paddingVertical="@dimen/padding_small">
+        android:paddingHorizontal="@dimen/padding_8"
+        android:paddingVertical="@dimen/padding_2">
 
         <ImageView
             android:id="@+id/imageView_config"

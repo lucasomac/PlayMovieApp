@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PlayMovieApp">
-        <activity android:name=".ui.view.DetalhesActivitySerie"></activity>
+        <activity
+            android:name=".ui.view.DetalhesActivitySerie"
+            android:theme="@style/Theme.PlayMovieApp" />
         <activity
             android:name=".ui.view.SeriesActivity"
             android:parentActivityName=".ui.view.SugestaoActivity"
@@ -25,7 +27,9 @@
             android:theme="@style/Theme.PlayMovieApp" />
         <activity
             android:name=".ui.view.CadastroActivity"
-            android:parentActivityName=".ui.view.HomeActivity" />
+            android:theme="@style/Theme.PlayMovieApp"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".ui.view.LoginActivity" />
         <activity
             android:name=".ui.view.NivelActivity"
             android:parentActivityName=".ui.view.HomeActivity" />
@@ -35,9 +39,11 @@
             android:theme="@style/Theme.PlayMovieApp" />
         <activity
             android:name=".ui.view.HomeActivity"
-            android:parentActivityName=".ui.view.ConfiguracoesActivity" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.view.ConfiguracoesActivity"
+            android:parentActivityName=".ui.view.ConfiguracoesActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.PlayMovieApp" />
         <activity
             android:name=".ui.view.DetalhesDesenvolvedorActivity"
@@ -45,18 +51,19 @@
         <activity android:name=".ui.view.DesenvolvedoresActivity" />
         <activity
             android:name=".ui.view.InteressesActivity"
-            android:label="@string/title_activity_interesses"
-            android:parentActivityName=".ui.view.HomeActivity" />
+            android:parentActivityName=".ui.view.HomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.PlayMovieApp" />
         <activity
-            android:theme="@style/Theme.PlayMovieApp"
             android:name=".ui.view.LoginActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.PlayMovieApp" />
         <activity
             android:name=".ui.view.SplashActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.PlayMovieApp.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
