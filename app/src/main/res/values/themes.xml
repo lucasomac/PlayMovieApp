@@ -94,6 +94,10 @@
         <item name="android:textSize">@dimen/font_size_4</item>
     </style>
 
+    <style name="Theme.PlayMovieApp.MaterialButton.Chip.Filter" parent="Widget.MaterialComponents.Chip.Filter">
+
+    </style>
+
     /*
     MaterialButton - default
     NAME SIZE

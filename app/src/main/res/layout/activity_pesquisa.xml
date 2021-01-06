@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout_config"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/primary"
-    android:orientation="vertical"
-    tools:context=".ui.view.PesquisaActivity">
+    android:layout_height="match_parent">
 
     <include
-        android:id="@+id/toolbar"
+        android:id="@+id/include_config_toolbar"
         layout="@layout/app_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,177 +16,243 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!--    <androidx.appcompat.widget.SearchView-->
-    <!--        android:id="@+id/SearchView"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginStart="28dp"-->
-    <!--        android:layout_marginTop="10dp"-->
-    <!--        android:layout_marginEnd="28dp"-->
-    <!--        android:iconifiedByDefault="false"-->
-    <!--        android:queryHint="Pesquise" />-->
-
-    <EditText
-        android:id="@+id/etBusca"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="28dp"
-        android:hint="Buscar"
-        android:textColor="@color/white"
-        android:iconifiedByDefault="false"
-        android:queryHint="Pesquise"
-        android:textColorHint="@color/white" />
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="21dp"
-        android:text="@string/generos"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <Spinner
-        android:id="@+id/spinnerGeneros"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="7dp"
-        android:drawSelectorOnTop="true"
-        android:spinnerMode="dropdown" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/categoria"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <Spinner
-        android:id="@+id/spinnerCategorias"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="7dp"
-        android:drawSelectorOnTop="true"
-        android:spinnerMode="dropdown" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/nota_imdb"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <Spinner
-        android:id="@+id/spinnerNota"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="7dp"
-        android:drawSelectorOnTop="true"
-        android:spinnerMode="dropdown" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="28dp"
-        android:text="@string/ano"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <Spinner
-        android:id="@+id/spinnerAno"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="7dp"
-        android:drawSelectorOnTop="true"
-        android:spinnerMode="dropdown" />
-
-    <com.google.android.material.chip.ChipGroup
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_appBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="26dp"
-        android:padding="16dp">
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="?android:attr/actionBarSize" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chipLancamentos"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="@string/lan_amentos"
-            android:textAlignment="center" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chipMelhoresFilmes"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="@string/melhores_filmes"
-            android:textAlignment="center" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chipMelhoresSeries"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="@string/melhores_s_ries"
-            android:textAlignment="center" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chipSugestao"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="@string/sugest_es"
-            android:textAlignment="center" />
-
-    </com.google.android.material.chip.ChipGroup>
-
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="28dp">
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@id/textView_limpar_filtros"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline_appBar">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_weight="1"
-            android:text="@string/limpar_filtros"
-            android:textColor="#8B8B8B"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="top"
+            android:paddingHorizontal="@dimen/padding_3"
+            android:paddingVertical="@dimen/padding_2">
 
-        <ImageButton
-            android:id="@+id/btnSugestao"
-            android:layout_width="65dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/ic_botao_sugestao"
-            android:src="@drawable/ic_baseline_check_24" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_busca"
+                style="@style/Theme.PlayMovieApp.TextInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_2"
+                android:theme="@style/Theme.PlayMovieApp.TextInputLayout.Custom"
+                app:layout_constraintBottom_toTopOf="@id/textView_genero"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-    </LinearLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_busca"
+                    style="@style/Theme.PlayMovieApp.TextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_buscar"
+                    android:imeOptions="actionNext"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textView_genero"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/padding_2"
+                android:text="@string/generos"
+                android:theme="@style/Custom.Body1.500"
+                app:layout_constraintBottom_toTopOf="@id/spinnerGeneros"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/input_busca" />
+
+            <Spinner
+                android:id="@+id/spinnerGeneros"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_2"
+                android:drawSelectorOnTop="true"
+                android:spinnerMode="dropdown"
+                app:layout_constraintBottom_toTopOf="@id/textView_categoria"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView_genero" />
+
+            <TextView
+                android:id="@+id/textView_categoria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/padding_2"
+                android:text="@string/categoria"
+                android:theme="@style/Custom.Body1.500"
+                app:layout_constraintBottom_toTopOf="@id/spinnerCategorias"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/spinnerGeneros" />
+
+            <Spinner
+                android:id="@+id/spinnerCategorias"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawSelectorOnTop="true"
+                android:spinnerMode="dropdown"
+                android:layout_marginBottom="@dimen/margin_2"
+                app:layout_constraintBottom_toTopOf="@id/textView_nota"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView_categoria" />
+
+            <TextView
+                android:id="@+id/textView_nota"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/padding_2"
+                android:text="@string/nota_imdb"
+                android:theme="@style/Custom.Body1.500"
+                app:layout_constraintBottom_toTopOf="@id/spinnerNota"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/spinnerCategorias" />
+
+            <Spinner
+                android:id="@+id/spinnerNota"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_2"
+                android:drawSelectorOnTop="true"
+                android:spinnerMode="dropdown"
+                app:layout_constraintBottom_toTopOf="@id/textView_ano"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView_nota" />
+
+            <TextView
+                android:id="@+id/textView_ano"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/padding_2"
+                android:text="@string/ano"
+                android:theme="@style/Custom.Body1.500"
+                app:layout_constraintBottom_toTopOf="@id/spinnerAno"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/spinnerNota" />
+
+            <Spinner
+                android:id="@+id/spinnerAno"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginBottom="@dimen/margin_2"
+                android:drawSelectorOnTop="true"
+                android:spinnerMode="dialog"
+                android:background="@color/gray"
+                android:backgroundTintMode="screen"
+                android:popupBackground="@color/white"
+                android:backgroundTint="@color/purple_700"
+                app:layout_constraintBottom_toTopOf="@id/textView_tags"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView_ano" />
+
+            <TextView
+                android:id="@+id/textView_tags"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_2"
+                android:text="@string/tags"
+                android:theme="@style/Custom.Body1.500"
+                app:layout_constraintBottom_toTopOf="@id/chip_group"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/spinnerAno" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingVertical="@dimen/padding_1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView_tags">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipLancamentos"
+                    style="@style/Theme.PlayMovieApp.MaterialButton.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lan_amentos"
+                    android:textAlignment="center" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipMelhoresFilmes"
+                    style="@style/Theme.PlayMovieApp.MaterialButton.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/melhores_filmes"
+                    android:textAlignment="center" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipMelhoresSeries"
+                    style="@style/Theme.PlayMovieApp.MaterialButton.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/melhores_s_ries"
+                    android:textAlignment="center" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipSugestao"
+                    style="@style/Theme.PlayMovieApp.MaterialButton.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sugest_es"
+                    android:textAlignment="center" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/textView_limpar_filtros"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:gravity="center"
+        android:padding="@dimen/padding_2"
+        android:text="@string/limpar_filtros"
+        android:theme="@style/Custom.Body1.700"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scrollView" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_sugestao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/margin_6"
+        android:backgroundTint="@color/secondary"
+        android:contentDescription="@string/pesquisar"
+        android:tint="@color/white"
+        app:borderWidth="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_search" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</LinearLayout>
+

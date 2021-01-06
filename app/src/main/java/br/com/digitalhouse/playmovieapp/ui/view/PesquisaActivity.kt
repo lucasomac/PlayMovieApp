@@ -12,7 +12,6 @@ import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.getGenres
 import br.com.digitalhouse.playmovieapp.ui.viewModel.PesquisaViewModel
 import kotlinx.android.synthetic.main.activity_pesquisa.*
-import kotlinx.android.synthetic.main.activity_sugestao.btnSugestao
 import kotlinx.android.synthetic.main.app_toolbar.*
 
 class PesquisaActivity : AppCompatActivity() {
@@ -31,10 +30,10 @@ class PesquisaActivity : AppCompatActivity() {
         viewModel.categoriaSelecionada.observe(this) {
             when (viewModel.categoriaSelecionada.value.toString()) {
                 "Filme" -> {
-                    btnSugestao.setOnClickListener(openMovieDetail())
+                    fab_sugestao.setOnClickListener(openMovieDetail())
                 }
                 "Série" -> {
-                    btnSugestao.setOnClickListener(openSerieDetail())
+                    fab_sugestao.setOnClickListener(openSerieDetail())
                 }
             }
         }
@@ -147,7 +146,7 @@ class PesquisaActivity : AppCompatActivity() {
                 "anoSelecionado", viewModel.anoSelecionado.value
             )
             putExtra(
-                "query", etBusca.text.toString()
+                "query", text_busca.text.toString()
             )
         }
         startActivity(intent)
@@ -171,7 +170,7 @@ class PesquisaActivity : AppCompatActivity() {
                 "anoSelecionado", viewModel.anoSelecionado.value
             )
             putExtra(
-                "query", etBusca.text.toString()
+                "query", text_busca.text.toString()
             )
         }
         startActivity(intent)

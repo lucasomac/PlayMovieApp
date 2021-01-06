@@ -97,6 +97,9 @@
         <p>Ao clicar em criar minha conta, eu aceito os <b>Termos de Uso</b> e a <b>Política de Privacidade</b></p>
         ]]>
     </string>
+    <string name="hint_buscar">Buscar</string>
+    <string name="pesquisar">Pesquisar</string>
+    <string name="tags">Tags</string>
 
 
 </resources>
