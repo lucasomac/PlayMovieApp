@@ -7,6 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="white_75">#BFFFFFFF</color>
+    <color name="white_60">#80FFFFFF</color>
+    <color name="white_50">#99FFFFFF</color>
+    <color name="white_20">#33FFFFFF</color>
 
     <!--    Paleta de cores-->
     <color name="primary">#16213E</color>
@@ -22,3 +26,29 @@
 
     <color name="mtrl_textinput_default_box_stroke_color">@color/white</color>
 </resources>
+
+
+
+<!--
+    100% — FF
+    95% — F2
+    90% — E6
+    85% — D9
+    80% — CC
+    75% — BF
+    70% — B3
+    65% — A6
+    60% — 99
+    55% — 8C
+    50% — 80
+    45% — 73
+    40% — 66
+    35% — 59
+    30% — 4D
+    25% — 40
+    20% — 33
+    15% — 26
+    10% — 1A
+    5% — 0D
+    0% — 00
+-->

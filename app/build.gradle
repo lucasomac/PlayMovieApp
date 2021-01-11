@@ -84,4 +84,6 @@ dependencies {
     // Fragment_KTX
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+
+    implementation "com.github.skydoves:powerspinner:1.1.5"
 }

@@ -2,7 +2,6 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraintLayout_config"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -66,45 +65,45 @@
                 android:id="@+id/textView_genero"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingVertical="@dimen/padding_2"
                 android:text="@string/generos"
-                android:theme="@style/Custom.Body1.500"
+                android:theme="@style/Custom.TextView.Labels"
                 app:layout_constraintBottom_toTopOf="@id/spinnerGeneros"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/input_busca" />
 
-            <Spinner
+            <com.skydoves.powerspinner.PowerSpinnerView
                 android:id="@+id/spinnerGeneros"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_2"
-                android:drawSelectorOnTop="true"
-                android:spinnerMode="dropdown"
+                android:hint="@string/selecione_um_genero"
+                android:padding="@dimen/padding_3"
+                android:theme="@style/Custom.Spinner"
                 app:layout_constraintBottom_toTopOf="@id/textView_categoria"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView_genero" />
+                app:layout_constraintTop_toBottomOf="@id/textView_genero"
+                app:spinner_popup_elevation="30dp"
+                app:spinner_popup_height="300dp" />
 
             <TextView
                 android:id="@+id/textView_categoria"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingVertical="@dimen/padding_2"
                 android:text="@string/categoria"
-                android:theme="@style/Custom.Body1.500"
+                android:theme="@style/Custom.TextView.Labels"
                 app:layout_constraintBottom_toTopOf="@id/spinnerCategorias"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/spinnerGeneros" />
 
-            <Spinner
+            <com.skydoves.powerspinner.PowerSpinnerView
                 android:id="@+id/spinnerCategorias"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawSelectorOnTop="true"
-                android:spinnerMode="dropdown"
-                android:layout_marginBottom="@dimen/margin_2"
+                android:hint="@string/selecione_uma_categoria"
+                android:padding="@dimen/padding_3"
+                android:theme="@style/Custom.Spinner"
                 app:layout_constraintBottom_toTopOf="@id/textView_nota"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -114,21 +113,20 @@
                 android:id="@+id/textView_nota"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingVertical="@dimen/padding_2"
                 android:text="@string/nota_imdb"
-                android:theme="@style/Custom.Body1.500"
+                android:theme="@style/Custom.TextView.Labels"
                 app:layout_constraintBottom_toTopOf="@id/spinnerNota"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/spinnerCategorias" />
 
-            <Spinner
+            <com.skydoves.powerspinner.PowerSpinnerView
                 android:id="@+id/spinnerNota"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_2"
-                android:drawSelectorOnTop="true"
-                android:spinnerMode="dropdown"
+                android:hint="@string/selecione_uma_nota"
+                android:padding="@dimen/padding_3"
+                android:theme="@style/Custom.Spinner"
                 app:layout_constraintBottom_toTopOf="@id/textView_ano"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -138,37 +136,32 @@
                 android:id="@+id/textView_ano"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingVertical="@dimen/padding_2"
                 android:text="@string/ano"
-                android:theme="@style/Custom.Body1.500"
+                android:theme="@style/Custom.TextView.Labels"
                 app:layout_constraintBottom_toTopOf="@id/spinnerAno"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/spinnerNota" />
 
-            <Spinner
+            <com.skydoves.powerspinner.PowerSpinnerView
                 android:id="@+id/spinnerAno"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginBottom="@dimen/margin_2"
-                android:drawSelectorOnTop="true"
-                android:spinnerMode="dialog"
-                android:background="@color/gray"
-                android:backgroundTintMode="screen"
-                android:popupBackground="@color/white"
-                android:backgroundTint="@color/purple_700"
+                android:layout_height="wrap_content"
+                android:hint="@string/selecione_um_ano"
+                android:padding="@dimen/padding_3"
+                android:theme="@style/Custom.Spinner"
                 app:layout_constraintBottom_toTopOf="@id/textView_tags"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView_ano" />
+                app:layout_constraintTop_toBottomOf="@id/textView_ano"
+                app:spinner_popup_height="200dp" />
 
             <TextView
                 android:id="@+id/textView_tags"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/padding_2"
                 android:text="@string/tags"
-                android:theme="@style/Custom.Body1.500"
+                android:theme="@style/Custom.TextView.Labels"
                 app:layout_constraintBottom_toTopOf="@id/chip_group"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -179,7 +172,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:paddingVertical="@dimen/padding_1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -190,6 +182,7 @@
                     style="@style/Theme.PlayMovieApp.MaterialButton.Chip.Filter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_5"
                     android:text="@string/lan_amentos"
                     android:textAlignment="center" />
 
@@ -198,6 +191,7 @@
                     style="@style/Theme.PlayMovieApp.MaterialButton.Chip.Filter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_7"
                     android:text="@string/melhores_filmes"
                     android:textAlignment="center" />
 
@@ -228,6 +222,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"
+        android:backgroundTint="@color/white_20"
         android:clickable="true"
         android:gravity="center"
         android:padding="@dimen/padding_2"
@@ -236,7 +231,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/scrollView" />
+        app:layout_constraintTop_toBottomOf="@id/scrollView"
+        android:focusable="true" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_sugestao"
@@ -246,11 +242,11 @@
         android:layout_margin="@dimen/margin_6"
         android:backgroundTint="@color/secondary"
         android:contentDescription="@string/pesquisar"
-        android:tint="@color/white"
         app:borderWidth="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_search" />
+        app:srcCompat="@drawable/ic_search"
+        app:tint="@android:color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

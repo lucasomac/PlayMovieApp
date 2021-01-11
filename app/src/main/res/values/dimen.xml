@@ -52,6 +52,7 @@
 
 
     <dimen name="max_text_input_layout">340dp</dimen>
+    <dimen name="spinner_height">58dp</dimen>
 
 
 

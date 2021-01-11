@@ -70,8 +70,6 @@ class MoviesActivity : AppCompatActivity(), MoviesAdapter.MovieListener {
                 }
             }
         }
-
-
     }
 
     private fun initToolbar() {

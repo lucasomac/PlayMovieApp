@@ -3,14 +3,12 @@ package br.com.digitalhouse.playmovieapp.ui.view
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.getGenres
 import br.com.digitalhouse.playmovieapp.ui.viewModel.PesquisaViewModel
+import com.skydoves.powerspinner.PowerSpinnerView
 import kotlinx.android.synthetic.main.activity_pesquisa.*
 import kotlinx.android.synthetic.main.app_toolbar.*
 
@@ -27,6 +25,7 @@ class PesquisaActivity : AppCompatActivity() {
         InitSpinnerGeneros()
         InitSpinnerCategorias()
         InitSpinnerNotas()
+
         viewModel.categoriaSelecionada.observe(this) {
             when (viewModel.categoriaSelecionada.value.toString()) {
                 "Filme" -> {
@@ -40,90 +39,50 @@ class PesquisaActivity : AppCompatActivity() {
     }
 
     fun InitSpinnerAnos() {
-
-        val view = findViewById<Spinner>(R.id.spinnerAno)
         val anos = resources.getStringArray(R.array.anos)
-        view.adapter =
-            ArrayAdapter(view.context, R.layout.spinner_item, anos)
+        val view = findViewById<PowerSpinnerView>(R.id.spinnerAno)
 
-        view.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                viewModel.setAnoSelecionado(anos[position])
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-            }
+        view.setItems(itemList = anos.toList())
+        view.setOnSpinnerItemSelectedListener<String> { _, item ->
+            viewModel.setAnoSelecionado(
+                item
+            )
         }
     }
 
     fun InitSpinnerGeneros() {
-
-        val view = findViewById<Spinner>(R.id.spinnerGeneros)
         val generos = resources.getStringArray(R.array.generos)
-        view.adapter =
-            ArrayAdapter(view.context, R.layout.spinner_item, generos)
+        val view = findViewById<PowerSpinnerView>(R.id.spinnerGeneros)
 
-        view.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                viewModel.setGeneroSelecionado(generos[position])
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-            }
+        view.setItems(itemList = generos.toList())
+        view.setOnSpinnerItemSelectedListener<String> { _, item ->
+            viewModel.setGeneroSelecionado(
+                item
+            )
         }
     }
 
     fun InitSpinnerCategorias() {
-
-        val view = findViewById<Spinner>(R.id.spinnerCategorias)
         val categorias = resources.getStringArray(R.array.categorias)
-        view.adapter =
-            ArrayAdapter(view.context, R.layout.spinner_item, categorias)
+        val view = findViewById<PowerSpinnerView>(R.id.spinnerCategorias)
 
-        view.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                viewModel.setCategoriaSelecionada(categorias[position])
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-            }
+        view.setItems(itemList = categorias.toList())
+        view.setOnSpinnerItemSelectedListener<String> { _, item ->
+            viewModel.setCategoriaSelecionada(
+                item
+            )
         }
     }
 
     fun InitSpinnerNotas() {
-
-        val view = findViewById<Spinner>(R.id.spinnerNota)
         val notas = resources.getStringArray(R.array.notas)
-        view.adapter =
-            ArrayAdapter(view.context, R.layout.spinner_item, notas)
+        val view = findViewById<PowerSpinnerView>(R.id.spinnerNota)
 
-        view.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                viewModel.setNotaSelecionada(notas[position])
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-            }
+        view.setItems(itemList = notas.toList())
+        view.setOnSpinnerItemSelectedListener<String> { _, item ->
+            viewModel.setNotaSelecionada(
+                item
+            )
         }
     }
 

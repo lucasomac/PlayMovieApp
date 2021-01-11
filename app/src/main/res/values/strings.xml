@@ -100,6 +100,10 @@
     <string name="hint_buscar">Buscar</string>
     <string name="pesquisar">Pesquisar</string>
     <string name="tags">Tags</string>
+    <string name="selecione_um_genero">Selecione um genero</string>
+    <string name="selecione_uma_categoria">Selecione uma categoria</string>
+    <string name="selecione_uma_nota">Selecione uma nota</string>
+    <string name="selecione_um_ano">Selecione um ano</string>
 
 
 </resources>

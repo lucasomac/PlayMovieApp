@@ -62,14 +62,14 @@
     /* TextInputLayout */
 
     <style name="Theme.PlayMovieApp.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="boxStrokeColor">@color/white</item>
+        <item name="boxStrokeColor">@android:color/transparent</item>
         <item name="boxBackgroundColor">@color/colorPrimaryDark</item>
         <item name="hintTextColor">@android:color/white</item>
         <item name="android:textColorHint">@android:color/white</item>
         <item name="colorControlNormal">@color/white</item>
         <item name="colorControlActivated">@color/white</item>
         <item name="colorControlHighlight">@color/white</item>
-        <item name="boxStrokeWidth">2dp</item>
+        <item name="boxStrokeWidth">1dp</item>
     </style>
 
     <style name="Theme.PlayMovieApp.TextInputLayout.Custom" parent="Widget.Design.TextInputLayout">
@@ -95,7 +95,34 @@
     </style>
 
     <style name="Theme.PlayMovieApp.MaterialButton.Chip.Filter" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="chipMinHeight">38dp</item>
+        <item name="chipStartPadding">@dimen/padding_1</item>
+        <item name="chipEndPadding">@dimen/padding_1</item>
+        <item name="checkedIconTint">@color/secondary</item>
+    </style>
 
+    /* labels */
+
+    <style name="Custom.TextView.Labels" parent="Custom.Body1.500">
+        <item name="android:paddingTop">@dimen/padding_2</item>
+        <item name="android:paddingBottom">@dimen/padding_2</item>
+    </style>
+
+    /* PowerSpinnerView */
+
+    <style name="Custom.Spinner" parent="Theme.PlayMovieApp">
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:gravity">left</item>
+        <item name="spinner_divider_color">@android:color/transparent</item>
+        <item name="spinner_divider_show">false</item>
+        <item name="spinner_divider_size">0dp</item>
+        <item name="spinner_popup_background">@android:color/transparent</item>
+        <item name="spinner_popup_animation">fade</item>
+        <item name="spinner_arrow_gravity">end</item>
+        <item name="spinner_arrow_padding">0dp</item>
+        <item name="android:textSize">@dimen/font_size_3</item>
+        <item name="android:textColorHint">@color/white_50</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     /*
