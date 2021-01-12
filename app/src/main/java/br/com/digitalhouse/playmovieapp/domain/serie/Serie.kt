@@ -1,5 +1,7 @@
 package br.com.digitalhouse.playmovieapp.domain.serie
 
+import br.com.digitalhouse.playmovieapp.domain.Genre
+
 data class Serie(
     val backdrop_path: String,
     val created_by: ArrayList<CreatedBy>,
@@ -40,11 +42,6 @@ data class CreatedBy(
     val id: Int,
     val name: String,
     val profile_path: String
-)
-
-data class Genre(
-    val id: Int,
-    val name: String
 )
 
 data class LastEpisodeToAir(

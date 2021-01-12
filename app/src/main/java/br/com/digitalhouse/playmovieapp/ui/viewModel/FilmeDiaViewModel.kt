@@ -17,7 +17,7 @@ class FilmeDiaViewModel(val repository: Repository) : ViewModel() {
                 API_KEY,
                 LANGUAGE,
                 1
-            ).results.sortedBy { it.vote_average }.reversed().get(0).also {
+            ).results.sortedBy { it.vote_average }.reversed().get(2).also {
                 popularMovie.postValue(it)
             }
         }

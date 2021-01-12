@@ -1,4 +1,8 @@
-package br.com.digitalhouse.playmovieapp.domain
+package br.com.digitalhouse.playmovieapp.domain.movie
+
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import br.com.digitalhouse.playmovieapp.domain.Genre
 
 data class Movie(
     val adult: Boolean,
@@ -26,11 +30,6 @@ data class Movie(
     val video: Boolean,
     val vote_average: Double,
     val vote_count: Int
-)
-
-data class Genre(
-    val id: Int,
-    val name: String
 )
 
 data class ProductionCompany(

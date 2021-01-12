@@ -9,10 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.navArgs
 import br.com.digitalhouse.playmovieapp.BASE_URL_IMAGE
 import br.com.digitalhouse.playmovieapp.databinding.ActivityDetalhesMovieBinding
-import br.com.digitalhouse.playmovieapp.domain.Movie
+import br.com.digitalhouse.playmovieapp.domain.movie.Movie
 import br.com.digitalhouse.playmovieapp.getGenres
 import br.com.digitalhouse.playmovieapp.services.repository
-import br.com.digitalhouse.playmovieapp.ui.view.DetalhesActivityMovieArgs
 import br.com.digitalhouse.playmovieapp.ui.viewModel.DetalhesActivityMovieViewModel
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.app_toolbar.*

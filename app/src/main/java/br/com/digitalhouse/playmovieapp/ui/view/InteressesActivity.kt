@@ -8,12 +8,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.adapters.InteresseAdapter
+import br.com.digitalhouse.playmovieapp.database.AppDataBase
+import br.com.digitalhouse.playmovieapp.services.RepositorySqlite
+import br.com.digitalhouse.playmovieapp.services.RepositorySqliteImplementation
 import br.com.digitalhouse.playmovieapp.ui.viewModel.InteressesViewModel
 import kotlinx.android.synthetic.main.activity_interesses.*
 import kotlinx.android.synthetic.main.app_toolbar.*
 
 class InteressesActivity : AppCompatActivity(), InteresseAdapter.InteresseListener {
-
+    private lateinit var db: AppDataBase
+    private lateinit var repository: RepositorySqlite
     val viewModel: InteressesViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +25,8 @@ class InteressesActivity : AppCompatActivity(), InteresseAdapter.InteresseListen
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_interesses)
         initToolbar()
-
+        initBanco()
+        repository = RepositorySqliteImplementation(db.genreDAO())
         val adapter = InteresseAdapter(this)
         rv_interesses.adapter = adapter
 
@@ -41,6 +46,7 @@ class InteressesActivity : AppCompatActivity(), InteresseAdapter.InteresseListen
         if (isChecked) {
             interesseDesc.setTextColor(ContextCompat.getColor(this, R.color.secondary))
             interesseIcon.setColorFilter(ContextCompat.getColor(this, R.color.secondary))
+
         } else {
             interesseDesc.setTextColor(ContextCompat.getColor(this, R.color.white))
             interesseIcon.setColorFilter(ContextCompat.getColor(this, R.color.white))
@@ -59,5 +65,9 @@ class InteressesActivity : AppCompatActivity(), InteresseAdapter.InteresseListen
         supportActionBar?.setTitle("Interesses")
         supportActionBar?.setDisplayHomeAsUpEnabled(true); //Mostrar o botão
         supportActionBar?.setHomeButtonEnabled(true)
+    }
+
+    fun initBanco() {
+        db = AppDataBase.invoke(this)
     }
 }

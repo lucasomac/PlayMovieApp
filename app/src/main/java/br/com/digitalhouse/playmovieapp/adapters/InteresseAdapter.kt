@@ -10,7 +10,8 @@ import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.domain.Interesse
 import com.google.android.material.switchmaterial.SwitchMaterial
 
-class InteresseAdapter(val listener: InteresseListener): RecyclerView.Adapter<InteresseAdapter.InteresseViewHolder>(){
+class InteresseAdapter(val listener: InteresseListener) :
+    RecyclerView.Adapter<InteresseAdapter.InteresseViewHolder>() {
 
     var listaInteresses = arrayListOf<Interesse>()
 
@@ -37,13 +38,13 @@ class InteresseAdapter(val listener: InteresseListener): RecyclerView.Adapter<In
 
         var interesse = listaInteresses.get(position)
         holder.interesseIcon.setImageResource(interesse.icon)
-        holder.interesseDesc.text = interesse.descricao
+        holder.interesseDesc.text = interesse.genre.name
         holder.interesseAtivo.setChecked(interesse.ativo)
-        
+
         if (interesse.ativo) {
             listener.changeColor(holder.interesseIcon, holder.interesseDesc)
         }
-        
+
         holder.interesseAtivo.setOnCheckedChangeListener { buttonView, isChecked ->
             listener.onClickInteresse(isChecked, holder.interesseIcon, holder.interesseDesc)
         }
@@ -52,14 +53,14 @@ class InteresseAdapter(val listener: InteresseListener): RecyclerView.Adapter<In
 
     override fun getItemCount(): Int = listaInteresses.size
 
-    inner class InteresseViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    inner class InteresseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         var interesseIcon: ImageView = itemView.findViewById(R.id.interesseIcon)
         var interesseDesc: TextView = itemView.findViewById(R.id.interesseDesc)
         var interesseAtivo: SwitchMaterial = itemView.findViewById(R.id.interesseAtivo)
     }
 
-    fun addInteresses (interesses: ArrayList<Interesse>) {
+    fun addInteresses(interesses: ArrayList<Interesse>) {
         listaInteresses = interesses
         notifyDataSetChanged()
     }
