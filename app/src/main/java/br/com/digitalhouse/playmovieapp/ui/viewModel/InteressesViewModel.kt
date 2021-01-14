@@ -7,37 +7,57 @@ import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.domain.Interesse
 import br.com.digitalhouse.playmovieapp.domain.Genre
 import br.com.digitalhouse.playmovieapp.getGenres
-import br.com.digitalhouse.playmovieapp.services.RepositorySqlite
+import br.com.digitalhouse.playmovieapp.services.RepositoryRoom
 import kotlinx.coroutines.launch
 
-class InteressesViewModel(val repository: RepositorySqlite) : ViewModel() {
-
-    val interesses = MutableLiveData<ArrayList<Interesse>>()
+class InteressesViewModel(val repository: RepositoryRoom? = null) : ViewModel() {
+    val interesses = MutableLiveData<List<Interesse>>()
+    val genres = MutableLiveData<List<Genre>>()
 
     //Adicionar um novo interesse
     fun addNewGenre(genre: Genre) {
         viewModelScope.launch {
-            repository.insertGenreTask(genre)
+            genres.value = repository?.insertGenreTask(genre)
+        }
+    }
+
+    fun selectGenres() {
+        viewModelScope.launch {
+            genres.value = repository?.selectAllGenreTask()
         }
     }
 
     //Deletar um interesse
     fun delGenre(genre: Genre) {
         viewModelScope.launch {
-            repository.deleteGenreTask(genre)
+            genres.value = repository?.deleteGenreTask(genre)
         }
     }
 
-    fun setInteresses() {
+//    fun activeGenres() {
+//        var genresSel = selectGenres()
+//        if (genresSel.find)
+//            for (interesse in setInteresses()) {
+//                if (genresSel.ma { interesse.genre })
+//            }
+//        interesses.value = setInteresses().map { genresSel }
+//    }
 
-        interesses.value = arrayListOf<Interesse>(
+
+    fun setInteresses() {
+//        return arrayListOf(
+        interesses.value = listOf(
             Interesse(getGenres().filter { it.name == "Ação" }[0], false, R.drawable.ic_bomb),
             Interesse(getGenres().filter { it.name == "Aventura" }[0], false, 0),
             Interesse(getGenres().filter { it.name == "Action & Adventure" }[0], false, 0),
-            Interesse(getGenres().filter { it.name == "Animação" }[0], true, R.drawable.ic_comics),
-            Interesse(getGenres().filter { it.name == "Comédia" }[0], true, 0),
-            Interesse(getGenres().filter { it.name == "Crime" }[0], true, 0),
-            Interesse(getGenres().filter { it.name == "Documentário" }[0], false, R.drawable.ic_book),
+            Interesse(getGenres().filter { it.name == "Animação" }[0], false, R.drawable.ic_comics),
+            Interesse(getGenres().filter { it.name == "Comédia" }[0], false, 0),
+            Interesse(getGenres().filter { it.name == "Crime" }[0], false, 0),
+            Interesse(
+                getGenres().filter { it.name == "Documentário" }[0],
+                false,
+                R.drawable.ic_book
+            ),
             Interesse(getGenres().filter { it.name == "Drama" }[0], false, 0),
             Interesse(getGenres().filter { it.name == "Família" }[0], false, R.drawable.ic_people),
             Interesse(getGenres().filter { it.name == "Fantasia" }[0], false, 0),
@@ -46,7 +66,11 @@ class InteressesViewModel(val repository: RepositorySqlite) : ViewModel() {
             Interesse(getGenres().filter { it.name == "Música" }[0], false, 0),
             Interesse(getGenres().filter { it.name == "Mistério" }[0], false, R.drawable.ic_mask),
             Interesse(getGenres().filter { it.name == "Romance" }[0], false, R.drawable.ic__heart),
-            Interesse(getGenres().filter { it.name == "Ficção científica" }[0], true, R.drawable.ic_robot),
+            Interesse(
+                getGenres().filter { it.name == "Ficção científica" }[0],
+                false,
+                R.drawable.ic_robot
+            ),
             Interesse(getGenres().filter { it.name == "Cinema TV" }[0], false, 0),
             Interesse(getGenres().filter { it.name == "Thriller" }[0], false, 0),
             Interesse(getGenres().filter { it.name == "Guerra" }[0], false, 0),
@@ -60,5 +84,4 @@ class InteressesViewModel(val repository: RepositorySqlite) : ViewModel() {
             Interesse(getGenres().filter { it.name == "War & Politics" }[0], false, 0)
         )
     }
-
 }

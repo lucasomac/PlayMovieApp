@@ -2,7 +2,6 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-android-extensions'
-    //id 'androidx.navigation.safeargs'
     id 'kotlin-kapt'
 }
 apply plugin: "androidx.navigation.safeargs.kotlin"
@@ -45,8 +44,9 @@ android {
 
 dependencies {
     implementation 'androidx.room:room-runtime:2.2.6'
-    annotationProcessor 'androidx.room:room-compiler:2.2.6'
-    implementation "androidx.room:room-runtime:2.2.6"
+    kapt "androidx.room:room-compiler:2.2.6"
+    implementation "androidx.room:room-ktx:2.2.6"
+//    implementation "androidx.room:room-runtime:2.2.6"
 //    def fragment_ktx = "1.2.5"
 //    def material_version = "1.2.1"
 

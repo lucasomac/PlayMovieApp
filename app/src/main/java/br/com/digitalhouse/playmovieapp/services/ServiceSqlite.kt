@@ -1,19 +1,21 @@
 package br.com.digitalhouse.playmovieapp.services
 
+import android.util.Log
 import br.com.digitalhouse.playmovieapp.dao.GenreDAO
 import br.com.digitalhouse.playmovieapp.domain.Genre
 
 
-interface RepositorySqlite {
+interface RepositoryRoom {
     suspend fun insertGenreTask(genre: Genre): List<Genre>
     suspend fun selectAllGenreTask(): List<Genre>
     suspend fun deleteGenreTask(genre: Genre): List<Genre>
 }
 
-class RepositorySqliteImplementation(val genreDAO: GenreDAO) : RepositorySqlite {
+class RepositoryRoomImplementation(val genreDAO: GenreDAO) : RepositoryRoom {
 
     override suspend fun insertGenreTask(genre: Genre): List<Genre> {
         genreDAO.create(genre)
+        Log.i("ROOM", genreDAO.read().toString())
         return genreDAO.read()
     }
 
@@ -23,6 +25,7 @@ class RepositorySqliteImplementation(val genreDAO: GenreDAO) : RepositorySqlite 
 
     override suspend fun deleteGenreTask(genre: Genre): List<Genre> {
         genreDAO.delete(genre)
+        Log.i("ROOM", genreDAO.read().toString())
         return genreDAO.read()
     }
 }

@@ -7,17 +7,24 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.digitalhouse.playmovieapp.R
+import br.com.digitalhouse.playmovieapp.domain.Genre
 import br.com.digitalhouse.playmovieapp.domain.Interesse
 import com.google.android.material.switchmaterial.SwitchMaterial
 
 class InteresseAdapter(val listener: InteresseListener) :
     RecyclerView.Adapter<InteresseAdapter.InteresseViewHolder>() {
 
-    var listaInteresses = arrayListOf<Interesse>()
+    var listaInteresses = listOf<Interesse>()
 
     interface InteresseListener {
 
-        fun onClickInteresse(isChecked: Boolean, interesseIcon: ImageView, interesseDesc: TextView)
+        fun onClickInteresse(
+            isChecked: Boolean,
+            interesseIcon: ImageView,
+            interesseDesc: TextView,
+            genre: Genre
+        )
+
         fun changeColor(interesseIcon: ImageView, interesseDesc: TextView)
     }
 
@@ -36,7 +43,7 @@ class InteresseAdapter(val listener: InteresseListener) :
 
     override fun onBindViewHolder(holder: InteresseAdapter.InteresseViewHolder, position: Int) {
 
-        var interesse = listaInteresses.get(position)
+        val interesse = listaInteresses[position]
         holder.interesseIcon.setImageResource(interesse.icon)
         holder.interesseDesc.text = interesse.genre.name
         holder.interesseAtivo.setChecked(interesse.ativo)
@@ -46,7 +53,12 @@ class InteresseAdapter(val listener: InteresseListener) :
         }
 
         holder.interesseAtivo.setOnCheckedChangeListener { buttonView, isChecked ->
-            listener.onClickInteresse(isChecked, holder.interesseIcon, holder.interesseDesc)
+            listener.onClickInteresse(
+                isChecked,
+                holder.interesseIcon,
+                holder.interesseDesc,
+                interesse.genre
+            )
         }
 
     }
@@ -60,7 +72,7 @@ class InteresseAdapter(val listener: InteresseListener) :
         var interesseAtivo: SwitchMaterial = itemView.findViewById(R.id.interesseAtivo)
     }
 
-    fun addInteresses(interesses: ArrayList<Interesse>) {
+    fun addInteresses(interesses: List<Interesse>) {
         listaInteresses = interesses
         notifyDataSetChanged()
     }
