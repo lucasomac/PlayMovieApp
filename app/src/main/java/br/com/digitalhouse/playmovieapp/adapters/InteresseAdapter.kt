@@ -7,16 +7,24 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.digitalhouse.playmovieapp.R
+import br.com.digitalhouse.playmovieapp.domain.Genre
 import br.com.digitalhouse.playmovieapp.domain.Interesse
 import com.google.android.material.switchmaterial.SwitchMaterial
 
-class InteresseAdapter(val listener: InteresseListener): RecyclerView.Adapter<InteresseAdapter.InteresseViewHolder>(){
+class InteresseAdapter(val listener: InteresseListener) :
+    RecyclerView.Adapter<InteresseAdapter.InteresseViewHolder>() {
 
-    var listaInteresses = arrayListOf<Interesse>()
+    var listaInteresses = listOf<Interesse>()
 
     interface InteresseListener {
 
-        fun onClickInteresse(isChecked: Boolean, interesseIcon: ImageView, interesseDesc: TextView)
+        fun onClickInteresse(
+            isChecked: Boolean,
+            interesseIcon: ImageView,
+            interesseDesc: TextView,
+            genre: Genre
+        )
+
         fun changeColor(interesseIcon: ImageView, interesseDesc: TextView)
     }
 
@@ -35,31 +43,36 @@ class InteresseAdapter(val listener: InteresseListener): RecyclerView.Adapter<In
 
     override fun onBindViewHolder(holder: InteresseAdapter.InteresseViewHolder, position: Int) {
 
-        var interesse = listaInteresses.get(position)
+        val interesse = listaInteresses[position]
         holder.interesseIcon.setImageResource(interesse.icon)
-        holder.interesseDesc.text = interesse.descricao
+        holder.interesseDesc.text = interesse.genre.name
         holder.interesseAtivo.setChecked(interesse.ativo)
-        
+
         if (interesse.ativo) {
             listener.changeColor(holder.interesseIcon, holder.interesseDesc)
         }
-        
+
         holder.interesseAtivo.setOnCheckedChangeListener { buttonView, isChecked ->
-            listener.onClickInteresse(isChecked, holder.interesseIcon, holder.interesseDesc)
+            listener.onClickInteresse(
+                isChecked,
+                holder.interesseIcon,
+                holder.interesseDesc,
+                interesse.genre
+            )
         }
 
     }
 
     override fun getItemCount(): Int = listaInteresses.size
 
-    inner class InteresseViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    inner class InteresseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         var interesseIcon: ImageView = itemView.findViewById(R.id.interesseIcon)
         var interesseDesc: TextView = itemView.findViewById(R.id.interesseDesc)
         var interesseAtivo: SwitchMaterial = itemView.findViewById(R.id.interesseAtivo)
     }
 
-    fun addInteresses (interesses: ArrayList<Interesse>) {
+    fun addInteresses(interesses: List<Interesse>) {
         listaInteresses = interesses
         notifyDataSetChanged()
     }

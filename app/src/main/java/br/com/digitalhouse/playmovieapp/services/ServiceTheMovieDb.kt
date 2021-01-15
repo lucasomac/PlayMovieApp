@@ -1,9 +1,9 @@
 package br.com.digitalhouse.playmovieapp.services
 
 import br.com.digitalhouse.playmovieapp.API_TMDB_URL
-import br.com.digitalhouse.playmovieapp.domain.Movie
+import br.com.digitalhouse.playmovieapp.domain.movie.Movie
 import br.com.digitalhouse.playmovieapp.domain.movie.ListMovie
-import br.com.digitalhouse.playmovieapp.domain.serie.Genre
+import br.com.digitalhouse.playmovieapp.domain.Genre
 import br.com.digitalhouse.playmovieapp.domain.serie.ListSerie
 import br.com.digitalhouse.playmovieapp.domain.serie.Serie
 import retrofit2.Retrofit
