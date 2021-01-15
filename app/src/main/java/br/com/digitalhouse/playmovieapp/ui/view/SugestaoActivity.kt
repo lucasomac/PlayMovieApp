@@ -9,18 +9,18 @@ import android.widget.Spinner
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import br.com.digitalhouse.playmovieapp.R
+import br.com.digitalhouse.playmovieapp.databinding.ActivitySugestaoBinding
 import br.com.digitalhouse.playmovieapp.getGenres
 import br.com.digitalhouse.playmovieapp.ui.viewModel.SugestaoViewModel
-import kotlinx.android.synthetic.main.activity_sugestao.*
-import kotlinx.android.synthetic.main.app_toolbar.*
 
 class SugestaoActivity : AppCompatActivity() {
-
+    private lateinit var binding: ActivitySugestaoBinding
     val viewModel: SugestaoViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sugestao)
+        binding = ActivitySugestaoBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         initToolbar()
 
         InitSpinnerAnos()
@@ -30,10 +30,10 @@ class SugestaoActivity : AppCompatActivity() {
         viewModel.categoriaSelecionada.observe(this) {
             when (viewModel.categoriaSelecionada.value.toString()) {
                 "Filme" -> {
-                    btnSugestao.setOnClickListener(openMovieDetail())
+                    binding.btnSugestao.setOnClickListener(openMovieDetail())
                 }
                 "Série" -> {
-                    btnSugestao.setOnClickListener(openSerieDetail())
+                    binding.btnSugestao.setOnClickListener(openSerieDetail())
                 }
             }
         }
@@ -176,7 +176,7 @@ class SugestaoActivity : AppCompatActivity() {
     }
 
     private fun initToolbar() {
-        val toolbar = material_toolbar
+        val toolbar = binding.includeConfigToolbar.materialToolbar
         setSupportActionBar(toolbar)
         supportActionBar?.setTitle("Buscar sugestão")
         supportActionBar?.setDisplayHomeAsUpEnabled(true); //Mostrar o botão

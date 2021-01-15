@@ -1,20 +1,18 @@
 package br.com.digitalhouse.playmovieapp.ui.view
 
 import android.os.Bundle
-import android.text.Html
-import android.view.View
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
 import br.com.digitalhouse.playmovieapp.R
-import kotlinx.android.synthetic.main.activity_cadastro.*
-import kotlinx.android.synthetic.main.app_toolbar.*
+import br.com.digitalhouse.playmovieapp.databinding.ActivityCadastroBinding
 
 
 class CadastroActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityCadastroBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_cadastro)
+        binding = ActivityCadastroBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         setSupportActionBar(findViewById(R.id.material_toolbar))
         initToolbar()
 
@@ -22,7 +20,7 @@ class CadastroActivity : AppCompatActivity() {
     }
 
     private fun initToolbar() {
-        val toolbar = material_toolbar
+        val toolbar = binding.includeConfigToolbar.materialToolbar
         setSupportActionBar(toolbar)
         supportActionBar?.setTitle("Criar nova conta")
         supportActionBar?.setDisplayHomeAsUpEnabled(true); //Mostrar o botão
@@ -31,6 +29,7 @@ class CadastroActivity : AppCompatActivity() {
 
     private fun init() {
         val htmlAsString = getString(R.string.termos_html)
-        textView_termos.text = HtmlCompat.fromHtml(htmlAsString, HtmlCompat.FROM_HTML_MODE_LEGACY)
+        binding.textViewTermos.text =
+            HtmlCompat.fromHtml(htmlAsString, HtmlCompat.FROM_HTML_MODE_LEGACY)
     }
 }
