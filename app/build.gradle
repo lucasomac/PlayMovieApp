@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
     id 'androidx.navigation.safeargs.kotlin'
 }
 //apply plugin: "androidx.navigation.safeargs.kotlin"
@@ -45,6 +46,7 @@ android {
 
 dependencies {
     implementation 'androidx.room:room-runtime:2.2.6'
+    implementation 'com.google.firebase:firebase-auth:20.0.2'
     kapt "androidx.room:room-compiler:2.2.6"
     implementation "androidx.room:room-ktx:2.2.6"
 //    implementation "androidx.room:room-runtime:2.2.6"
