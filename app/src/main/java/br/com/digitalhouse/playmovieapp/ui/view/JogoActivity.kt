@@ -1,20 +1,22 @@
 package br.com.digitalhouse.playmovieapp.ui.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import br.com.digitalhouse.playmovieapp.R
-import kotlinx.android.synthetic.main.app_toolbar.*
+import br.com.digitalhouse.playmovieapp.databinding.ActivityJogoBinding
 
 class JogoActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityJogoBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_jogo)
+        binding = ActivityJogoBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initToolbar()
     }
 
     private fun initToolbar() {
-        setSupportActionBar(material_toolbar)
+        setSupportActionBar(binding.includeConfigToolbar.materialToolbar)
         setTitle(R.string.titulo_jogo) // TODO provisório
     }
 }

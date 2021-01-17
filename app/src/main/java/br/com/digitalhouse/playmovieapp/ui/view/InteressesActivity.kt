@@ -5,24 +5,22 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.ui.viewinterop.viewModel
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.adapters.InteresseAdapter
 import br.com.digitalhouse.playmovieapp.database.AppDataBase
+import br.com.digitalhouse.playmovieapp.databinding.ActivityInteressesBinding
 import br.com.digitalhouse.playmovieapp.domain.Genre
 import br.com.digitalhouse.playmovieapp.services.RepositoryRoom
 import br.com.digitalhouse.playmovieapp.services.RepositoryRoomImplementation
 import br.com.digitalhouse.playmovieapp.ui.viewModel.InteressesViewModel
-import kotlinx.android.synthetic.main.activity_interesses.*
-import kotlinx.android.synthetic.main.app_toolbar.*
 
 class InteressesActivity : AppCompatActivity(), InteresseAdapter.InteresseListener {
     private lateinit var db: AppDataBase
     private lateinit var repositoryRoom: RepositoryRoom
-
+    private lateinit var binding: ActivityInteressesBinding
     val viewModel by viewModels<InteressesViewModel> {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
@@ -32,15 +30,15 @@ class InteressesActivity : AppCompatActivity(), InteresseAdapter.InteresseListen
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_interesses)
+        binding = ActivityInteressesBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         initBanco()
 //        val viewModel: InteressesViewModel by viewModels()
         repositoryRoom = RepositoryRoomImplementation(db.genreDAO())
         initToolbar()
         val adapter = InteresseAdapter(this)
-        rv_interesses.adapter = adapter
+        binding.rvInteresses.adapter = adapter
 
         viewModel.interesses.observe(this) {
             adapter.addInteresses(it)
@@ -73,7 +71,7 @@ class InteressesActivity : AppCompatActivity(), InteresseAdapter.InteresseListen
     }
 
     private fun initToolbar() {
-        val toolbar = material_toolbar
+        val toolbar = binding.includeConfigToolbar.materialToolbar
         setSupportActionBar(toolbar)
         supportActionBar?.setTitle("Interesses")
         supportActionBar?.setDisplayHomeAsUpEnabled(true); //Mostrar o botão

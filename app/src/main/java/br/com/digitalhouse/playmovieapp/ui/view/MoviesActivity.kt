@@ -11,7 +11,6 @@ import br.com.digitalhouse.playmovieapp.adapters.MoviesAdapter
 import br.com.digitalhouse.playmovieapp.databinding.ActivityMoviesBinding
 import br.com.digitalhouse.playmovieapp.services.repository
 import br.com.digitalhouse.playmovieapp.ui.viewModel.MoviesActivityViewModel
-import kotlinx.android.synthetic.main.app_toolbar.*
 
 class MoviesActivity : AppCompatActivity(), MoviesAdapter.MovieListener {
     private lateinit var binding: ActivityMoviesBinding
@@ -75,7 +74,7 @@ class MoviesActivity : AppCompatActivity(), MoviesAdapter.MovieListener {
     }
 
     private fun initToolbar() {
-        val toolbar = material_toolbar
+        val toolbar =binding.includeConfigToolbar.materialToolbar
         setSupportActionBar(toolbar)
         supportActionBar?.setTitle("Resultado da busca")
         supportActionBar?.setDisplayHomeAsUpEnabled(true); //Mostrar o botão
