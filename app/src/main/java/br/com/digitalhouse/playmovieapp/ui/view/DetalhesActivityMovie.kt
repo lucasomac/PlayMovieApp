@@ -14,6 +14,7 @@ import br.com.digitalhouse.playmovieapp.getGenres
 import br.com.digitalhouse.playmovieapp.services.repository
 import br.com.digitalhouse.playmovieapp.ui.viewModel.DetalhesActivityMovieViewModel
 import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.app_toolbar.*
 
 class DetalhesActivityMovie : AppCompatActivity() {
     private lateinit var binding: ActivityDetalhesMovieBinding
@@ -57,10 +58,13 @@ class DetalhesActivityMovie : AppCompatActivity() {
     }
 
     private fun initToolbar() {
-        val toolbar = binding.includeConfigToolbar.materialToolbar
+        val toolbar = material_toolbar
         setSupportActionBar(toolbar)
         supportActionBar?.setTitle("Sinopse do Filme")
         supportActionBar?.setDisplayHomeAsUpEnabled(true); //Mostrar o botão
         supportActionBar?.setHomeButtonEnabled(true)
     }
 }
+
+//EX.00905.07/2020-P
+//89029208520

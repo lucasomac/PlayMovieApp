@@ -6,19 +6,18 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.adapters.NivelAdapter
-import br.com.digitalhouse.playmovieapp.databinding.ActivityNiveisBinding
 import br.com.digitalhouse.playmovieapp.ui.viewModel.NivelViewModel
+import kotlinx.android.synthetic.main.activity_niveis.*
 
 class NivelActivity : AppCompatActivity(), NivelAdapter.NivelListener {
-    private lateinit var binding: ActivityNiveisBinding
+
     val viewModel: NivelViewModel by viewModels()
     val adapter = NivelAdapter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityNiveisBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        binding.rvNiveis.adapter = adapter
+        setContentView(R.layout.activity_niveis)
+        rvNiveis.adapter = adapter
 
         viewModel.niveis.observe(this) {
             adapter.addNiveis(it)

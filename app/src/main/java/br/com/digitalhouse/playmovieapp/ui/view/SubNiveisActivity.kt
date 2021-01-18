@@ -1,26 +1,26 @@
 package br.com.digitalhouse.playmovieapp.ui.view
 
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.AdapterView
-import androidx.appcompat.app.AppCompatActivity
 import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.adapters.SubNivelAdapter
-import br.com.digitalhouse.playmovieapp.databinding.ActivitySubNiveisBinding
 import br.com.digitalhouse.playmovieapp.domain.SubNivel
+import kotlinx.android.synthetic.main.activity_sub_niveis.*
+import kotlinx.android.synthetic.main.app_toolbar.*
 
 class SubNiveisActivity : AppCompatActivity() {
-    private lateinit var binding: ActivitySubNiveisBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySubNiveisBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_sub_niveis)
+
         initToolbar()
         setValuesGridView()
     }
 
     private fun initToolbar() {
-        val toolbar = binding.includeConfigToolbar.materialToolbar
+        val toolbar = material_toolbar
         setSupportActionBar(toolbar)
         setTitle(R.string.titulo_sub_nivel) // TODO provisório
     }
@@ -40,9 +40,9 @@ class SubNiveisActivity : AppCompatActivity() {
         }
 
         val adapterSubNivel = SubNivelAdapter(this@SubNiveisActivity, listaSubNiveis)
-        binding.gridViewSubNiveis.adapter = adapterSubNivel
+        gridViewSubNiveis.adapter = adapterSubNivel
 
-        binding.gridViewSubNiveis.onItemClickListener =
+        gridViewSubNiveis.onItemClickListener =
             AdapterView.OnItemClickListener { parent, view, position, id ->
                 val intent = Intent(this@SubNiveisActivity, JogoActivity::class.java)
 //                intent.putExtra("EXTRA_DISH", restaurant.dishes[position])
