@@ -44,7 +44,7 @@ class InteressesActivity : AppCompatActivity(), InteresseAdapter.InteresseListen
             adapter.addInteresses(it)
         }
 
-        viewModel.setInteresses()
+        viewModel.activeGenres()
     }
 
     override fun onClickInteresse(
