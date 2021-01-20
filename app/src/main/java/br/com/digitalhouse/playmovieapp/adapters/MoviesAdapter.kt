@@ -10,6 +10,10 @@ import br.com.digitalhouse.playmovieapp.BASE_URL_IMAGE
 import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.domain.movie.Result
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions.withCrossFade
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.transition.DrawableCrossFadeFactory
+
 
 class MoviesAdapter(
     val listener: MovieListener
@@ -31,8 +35,12 @@ class MoviesAdapter(
         val movie = listaMovies[position]
         holder.txtNomeFilmePesquisa.text = movie.title
         holder.txtAnoFilmePesquisa.text = movie.release_date.substring(0, 4)
-        Glide.with(holder.itemView.context).asBitmap()
+        val factory = DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(true).build()
+        Glide.with(holder.itemView.context)
+            .asBitmap()
             .load(BASE_URL_IMAGE + "original" + movie.poster_path)
+            .placeholder(R.mipmap.ic_launcher)
+            .transition(withCrossFade(factory))
             .into(holder.imgCapaFilme)
 //        Glide.with(holder.itemView.context).asBitmap()
 //            .load(BASE_URL_IMAGE + "original" + movie.backdrop_path)

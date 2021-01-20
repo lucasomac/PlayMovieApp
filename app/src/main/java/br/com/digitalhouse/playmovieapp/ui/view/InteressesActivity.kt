@@ -1,6 +1,7 @@
 package br.com.digitalhouse.playmovieapp.ui.view
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.viewModels
@@ -36,7 +37,6 @@ class InteressesActivity : AppCompatActivity(), InteresseAdapter.InteresseListen
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_interesses)
         initBanco()
-//        val viewModel: InteressesViewModel by viewModels()
         repositoryRoom = RepositoryRoomImplementation(db.genreDAO())
         initToolbar()
         val adapter = InteresseAdapter(this)
@@ -46,7 +46,14 @@ class InteressesActivity : AppCompatActivity(), InteresseAdapter.InteresseListen
             adapter.addInteresses(it)
         }
 
-        viewModel.setInteresses()
+        viewModel.genres.observe(this) {
+            viewModel.activeGenres()
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.selectGenres()
     }
 
     override fun onClickInteresse(
@@ -59,11 +66,12 @@ class InteressesActivity : AppCompatActivity(), InteresseAdapter.InteresseListen
             interesseDesc.setTextColor(ContextCompat.getColor(this, R.color.secondary))
             interesseIcon.setColorFilter(ContextCompat.getColor(this, R.color.secondary))
             viewModel.addNewGenre(genre)
-
+//            viewModel.selectGenres()
         } else {
             interesseDesc.setTextColor(ContextCompat.getColor(this, R.color.white))
             interesseIcon.setColorFilter(ContextCompat.getColor(this, R.color.white))
             viewModel.delGenre(genre)
+//            viewModel.selectGenres()
         }
     }
 

@@ -1,5 +1,6 @@
 package br.com.digitalhouse.playmovieapp.ui.viewModel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,44 +10,49 @@ import br.com.digitalhouse.playmovieapp.domain.Genre
 import br.com.digitalhouse.playmovieapp.getGenres
 import br.com.digitalhouse.playmovieapp.services.RepositoryRoom
 import kotlinx.coroutines.launch
+import kotlin.collections.List as List
 
-class InteressesViewModel(val repository: RepositoryRoom? = null) : ViewModel() {
-    val interesses = MutableLiveData<List<Interesse>>()
+class InteressesViewModel(val repositoryRoom: RepositoryRoom? = null) : ViewModel() {
+    val interesses = MutableLiveData(getInteresses())
     val genres = MutableLiveData<List<Genre>>()
+
 
     //Adicionar um novo interesse
     fun addNewGenre(genre: Genre) {
         viewModelScope.launch {
-            genres.value = repository?.insertGenreTask(genre)
+            genres.value = repositoryRoom?.insertGenreTask(genre)
         }
     }
 
     fun selectGenres() {
         viewModelScope.launch {
-            genres.value = repository?.selectAllGenreTask()
+            genres.value = repositoryRoom?.selectAllGenreTask()
         }
     }
 
     //Deletar um interesse
     fun delGenre(genre: Genre) {
         viewModelScope.launch {
-            genres.value = repository?.deleteGenreTask(genre)
+            Log.i("INTER2", genres.value.toString())
+            genres.value = repositoryRoom?.deleteGenreTask(genre)
+            Log.i("INTER4", genres.value.toString())
         }
     }
 
-//    fun activeGenres() {
-//        var genresSel = selectGenres()
-//        if (genresSel.find)
-//            for (interesse in setInteresses()) {
-//                if (genresSel.ma { interesse.genre })
-//            }
-//        interesses.value = setInteresses().map { genresSel }
-//    }
+    fun activeGenres() {
+        viewModelScope.launch {
+            interesses.value?.forEach {
+                if (genres.value!!.contains(it.genre)) {
+                    it.ativo = true
+                }
+            }
+        }
+        Log.i("INTER3", genres.value.toString())
+    }
 
-
-    fun setInteresses() {
-//        return arrayListOf(
-        interesses.value = listOf(
+    fun getInteresses(): List<Interesse> {
+        return listOf(
+//        interesses.value = listOf(
             Interesse(getGenres().filter { it.name == "Ação" }[0], false, R.drawable.ic_bomb),
             Interesse(getGenres().filter { it.name == "Aventura" }[0], false, 0),
             Interesse(getGenres().filter { it.name == "Action & Adventure" }[0], false, 0),
