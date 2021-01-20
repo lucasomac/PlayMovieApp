@@ -34,7 +34,7 @@ class HomeActivityViewModel(
                 LANGUAGE,
                 page,
                 true,
-                genre.trim(' '),
+                genre.trim(' ', '[', ']'),
                 year,
                 vote_average
             ).also {

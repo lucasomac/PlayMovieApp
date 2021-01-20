@@ -45,25 +45,34 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
         binding.btnAjustes.setOnClickListener(this)
 
         viewModel.genres.observe(this) {
-            viewModel.discoveryMovies(1, it.map { it.id }.toString(), "", "")
+            viewModel.discoveryMovies(
+                1,
+                it.map { it.id }.subList(0, it.size / 2).toString(),
+                "",
+                ""
+            )
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        viewModel.selectGenres()
+    }
 
     fun openMovieSugestion() {
-        viewModel.selectGenres()
-        var id = 0
-        Log.i("MID", viewModel.movie.value.toString())
-        if (viewModel.movie.value != null)
-            id = viewModel.movie.value!!.id
-        else
-            id = 405965
+//        viewModel.selectGenres()
+//        var id = 0
+//        Log.i("MID", viewModel.movie.value.toString())
+//        if (viewModel.movie.value != null)
+//            id = viewModel.movie.value!!.id
+//        else
+//            id = 405965
         val intent = Intent(
             this,
             DetalhesActivityMovie::class.java
         ).apply {
-//            putExtra("idMovie", viewModel.movie.value!!.id )
-            putExtra("idMovie", id)
+            putExtra("idMovie", viewModel.movie.value!!.id)
+//            putExtra("idMovie", id)
         }
         startActivity(intent)
     }

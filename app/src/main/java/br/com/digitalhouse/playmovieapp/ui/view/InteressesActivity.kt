@@ -43,10 +43,15 @@ class InteressesActivity : AppCompatActivity(), InteresseAdapter.InteresseListen
         viewModel.interesses.observe(this) {
             adapter.addInteresses(it)
         }
-        viewModel.selectGenres()
+
         viewModel.genres.observe(this) {
             viewModel.activeGenres()
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.selectGenres()
     }
 
     override fun onClickInteresse(
