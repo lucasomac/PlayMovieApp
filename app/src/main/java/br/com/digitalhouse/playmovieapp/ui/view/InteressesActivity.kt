@@ -47,8 +47,6 @@ class InteressesActivity : AppCompatActivity(), InteresseAdapter.InteresseListen
         viewModel.genres.observe(this) {
             viewModel.activeGenres()
         }
-
-//        viewModel.activeGenres()
     }
 
     override fun onClickInteresse(
@@ -61,11 +59,12 @@ class InteressesActivity : AppCompatActivity(), InteresseAdapter.InteresseListen
             interesseDesc.setTextColor(ContextCompat.getColor(this, R.color.secondary))
             interesseIcon.setColorFilter(ContextCompat.getColor(this, R.color.secondary))
             viewModel.addNewGenre(genre)
-
+//            viewModel.selectGenres()
         } else {
             interesseDesc.setTextColor(ContextCompat.getColor(this, R.color.white))
             interesseIcon.setColorFilter(ContextCompat.getColor(this, R.color.white))
             viewModel.delGenre(genre)
+//            viewModel.selectGenres()
         }
     }
 

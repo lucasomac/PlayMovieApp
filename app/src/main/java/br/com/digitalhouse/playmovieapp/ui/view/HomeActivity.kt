@@ -15,12 +15,8 @@ import br.com.digitalhouse.playmovieapp.services.RepositoryRoom
 import br.com.digitalhouse.playmovieapp.services.RepositoryRoomImplementation
 import br.com.digitalhouse.playmovieapp.services.repository
 import br.com.digitalhouse.playmovieapp.ui.viewModel.HomeActivityViewModel
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
-
 
 class HomeActivity : AppCompatActivity(), View.OnClickListener {
-
     private lateinit var db: AppDataBase
     private lateinit var repositoryRoom: RepositoryRoom
     private lateinit var binding: ActivityHomeBinding
@@ -47,32 +43,27 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
         binding.btnConfigs.setOnClickListener(this)
 
         binding.btnAjustes.setOnClickListener(this)
-        viewModel.selectGenres()
+
         viewModel.genres.observe(this) {
-            viewModel.discoveryMovies(1, it.toString().trim('[', ' ', ']'), "", "")
+            viewModel.discoveryMovies(1, it.map { it.id }.toString(), "", "")
         }
     }
 
-    fun callLogin() {
-        val intent = Intent(this, LoginActivity::class.java)
-        logOut()
-        finish()
-        startActivity(intent)
-    }
-
-    fun logOut() {
-        Firebase.auth.signOut()
-    }
 
     fun openMovieSugestion() {
+        viewModel.selectGenres()
+        var id = 0
+        Log.i("MID", viewModel.movie.value.toString())
+        if (viewModel.movie.value != null)
+            id = viewModel.movie.value!!.id
+        else
+            id = 405965
         val intent = Intent(
             this,
             DetalhesActivityMovie::class.java
         ).apply {
-            putExtra("idMovie", 51482)
-//            viewModel.movie.value?.let {
-//                putExtra("idMovie", 51482)
-//            }
+//            putExtra("idMovie", viewModel.movie.value!!.id )
+            putExtra("idMovie", id)
         }
         startActivity(intent)
     }
@@ -90,4 +81,18 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
     fun initBanco() {
         db = AppDataBase.getAppDatabase(this)
     }
+
+    fun updateUI() {
+
+    }
+//    fun callLogin() {
+//        val intent = Intent(this, LoginActivity::class.java)
+//        logOut()
+//        finish()
+//        startActivity(intent)
+//    }
+
+//    fun logOut() {
+//        Firebase.auth.signOut()
+//    }
 }

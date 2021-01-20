@@ -1,5 +1,6 @@
 package br.com.digitalhouse.playmovieapp.ui.viewModel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -25,20 +26,27 @@ class HomeActivityViewModel(
         }
     }
 
-
     fun discoveryMovies(page: Int, genre: String, year: String, vote_average: String) {
         viewModelScope.launch {
+            Log.i("GENRE1", genre)
             repository.searchSugestionMovie(
                 API_KEY,
                 LANGUAGE,
                 page,
                 true,
-                genre,
+                genre.trim(' '),
                 year,
                 vote_average
             ).also {
-                movie.postValue(null)
+                Log.i("RESULTS1", it.results.toString())
+                movie.postValue(
+                    if (it.results.size > 0)
+                        it.results[Random.nextInt(0, it.results.size)]
+                    else
+                        null
+                )
             }
+
         }
     }
 }
