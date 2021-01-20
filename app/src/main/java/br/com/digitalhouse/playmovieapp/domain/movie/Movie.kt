@@ -1,7 +1,5 @@
 package br.com.digitalhouse.playmovieapp.domain.movie
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 import br.com.digitalhouse.playmovieapp.domain.Genre
 
 data class Movie(

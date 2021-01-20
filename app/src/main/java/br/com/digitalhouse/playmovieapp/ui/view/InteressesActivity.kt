@@ -1,6 +1,7 @@
 package br.com.digitalhouse.playmovieapp.ui.view
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.viewModels
@@ -34,7 +35,6 @@ class InteressesActivity : AppCompatActivity(), InteresseAdapter.InteresseListen
         binding = ActivityInteressesBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initBanco()
-//        val viewModel: InteressesViewModel by viewModels()
         repositoryRoom = RepositoryRoomImplementation(db.genreDAO())
         initToolbar()
         val adapter = InteresseAdapter(this)
@@ -43,8 +43,12 @@ class InteressesActivity : AppCompatActivity(), InteresseAdapter.InteresseListen
         viewModel.interesses.observe(this) {
             adapter.addInteresses(it)
         }
+        viewModel.selectGenres()
+        viewModel.genres.observe(this) {
+            viewModel.activeGenres()
+        }
 
-        viewModel.activeGenres()
+//        viewModel.activeGenres()
     }
 
     override fun onClickInteresse(

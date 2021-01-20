@@ -32,9 +32,9 @@ class DetalhesActivityMovie : AppCompatActivity() {
         setContentView(binding.root)
         initToolbar()
         val args: DetalhesActivityMovieArgs by navArgs()
-        val movie_id = args.idMovie
-        Log.i("TAG", movie_id.toString())
-        movie_id.let { viewModel.searchMovieById(it) }
+        val movieId = args.idMovie
+        Log.i("TAG", movieId.toString())
+        movieId.let { viewModel.searchMovieById(it) }
         viewModel.movie.observe(this) {
             movie = it
             Glide.with(this).asBitmap().load(
