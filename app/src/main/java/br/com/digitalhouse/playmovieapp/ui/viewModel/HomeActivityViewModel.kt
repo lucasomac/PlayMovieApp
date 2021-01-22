@@ -40,10 +40,7 @@ class HomeActivityViewModel(
             ).also {
                 Log.i("RESULTS1", it.results.toString())
                 movie.postValue(
-                    if (it.results.size > 0)
-                        it.results[Random.nextInt(0, it.results.size)]
-                    else
-                        null
+                    it.results[Random.nextInt(0, it.results.size)]
                 )
             }
 

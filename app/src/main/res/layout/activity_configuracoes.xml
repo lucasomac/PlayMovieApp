@@ -5,6 +5,7 @@
     android:id="@+id/constraintLayout_config"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary"
     tools:context=".ui.view.ConfiguracoesActivity">
 
     <include
@@ -24,11 +25,11 @@
         app:layout_constraintGuide_begin="?android:attr/actionBarSize" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:paddingVertical="@dimen/padding_1"
         android:id="@+id/rv_configuracoes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:nestedScrollingEnabled="true"
+        android:paddingVertical="@dimen/padding_1"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

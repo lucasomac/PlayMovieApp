@@ -15,11 +15,16 @@ import br.com.digitalhouse.playmovieapp.services.RepositoryRoom
 import br.com.digitalhouse.playmovieapp.services.RepositoryRoomImplementation
 import br.com.digitalhouse.playmovieapp.services.repository
 import br.com.digitalhouse.playmovieapp.ui.viewModel.HomeActivityViewModel
+import com.bumptech.glide.Glide
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.firebase.auth.FirebaseAuth
+import kotlin.random.Random
 
 class HomeActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var db: AppDataBase
     private lateinit var repositoryRoom: RepositoryRoom
     private lateinit var binding: ActivityHomeBinding
+    private lateinit var auth: FirebaseAuth
     val viewModel by viewModels<HomeActivityViewModel> {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
@@ -32,6 +37,7 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        auth = FirebaseAuth.getInstance()
         initBanco()
         repositoryRoom = RepositoryRoomImplementation(db.genreDAO())
         binding.btnPlay.setOnClickListener(this)
@@ -47,7 +53,7 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
         viewModel.genres.observe(this) {
             viewModel.discoveryMovies(
                 1,
-                it.map { it.id }.subList(0, it.size / 2).toString(),
+                it.map { it.id }[Random.nextInt(0, it.size)].toString(),
                 "",
                 ""
             )
@@ -57,6 +63,7 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
     override fun onStart() {
         super.onStart()
         viewModel.selectGenres()
+        updateUI()
     }
 
     fun openMovieSugestion() {
@@ -71,11 +78,11 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
             this,
             DetalhesActivityMovie::class.java
         ).apply {
-            if (viewModel.movie.value != null)
-                putExtra("idMovie", viewModel.movie.value!!.id)
-            else
-                putExtra("idMovie", 0)
-//            putExtra("idMovie", id)
+//            if (viewModel.movie.value != null)
+            putExtra("idMovie", viewModel.movie.value!!.id)
+//            else
+//                putExtra("idMovie", 0)
+////            putExtra("idMovie", id)
         }
         startActivity(intent)
     }
@@ -94,8 +101,22 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
         db = AppDataBase.getAppDatabase(this)
     }
 
-    fun updateUI() {
+    private fun updateUI() {
+        val currentUser = GoogleSignIn.getLastSignedInAccount(this)
+//        if (currentUser == null) {
+//            currentUser = auth.currentUser
+//        }
 
+        if (currentUser!!.photoUrl != null) {
+            Glide.with(this).asBitmap().load(currentUser.photoUrl)
+                .into(binding.includePerfilResume.ivFotoPerfilResumo)
+        }
+
+        if (currentUser.displayName != null) {
+            binding.includePerfilResume.tvNomeTelaHome.text = currentUser.displayName
+        } else {
+            binding.includePerfilResume.tvNomeTelaHome.text = currentUser.email
+        }
     }
 //    fun callLogin() {
 //        val intent = Intent(this, LoginActivity::class.java)
