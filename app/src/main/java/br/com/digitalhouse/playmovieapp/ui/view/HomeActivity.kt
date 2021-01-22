@@ -71,7 +71,10 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
             this,
             DetalhesActivityMovie::class.java
         ).apply {
-            putExtra("idMovie", viewModel.movie.value!!.id)
+            if (viewModel.movie.value != null)
+                putExtra("idMovie", viewModel.movie.value!!.id)
+            else
+                putExtra("idMovie", 0)
 //            putExtra("idMovie", id)
         }
         startActivity(intent)
