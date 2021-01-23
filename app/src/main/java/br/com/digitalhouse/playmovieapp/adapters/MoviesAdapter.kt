@@ -1,5 +1,6 @@
 package br.com.digitalhouse.playmovieapp.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,18 +34,26 @@ class MoviesAdapter(
 
     override fun onBindViewHolder(holder: MoviesAdapter.MovieViewHolder, position: Int) {
         val movie = listaMovies[position]
-        holder.txtNomeFilmePesquisa.text = movie.title
-        holder.txtAnoFilmePesquisa.text = movie.release_date.substring(0, 4)
+        Log.i("MOVIS", listaMovies.size.toString())
+        Log.i("MOVI", movie.toString())
+
+        holder.txtNomeFilmePesquisa.text =
+            if (!movie.title.equals(null)) movie.title else R.string.nodata.toString()
+        holder.txtAnoFilmePesquisa.text =
+            if (!movie.release_date.equals(null)) movie.release_date.substring(
+                0,
+                4
+            ) else R.string.nodate.toString()
         val factory = DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(true).build()
+//        if (movie.poster_path.isNotEmpty() && !movie.poster_path.isNullOrEmpty())
         Glide.with(holder.itemView.context)
             .asBitmap()
             .load(BASE_URL_IMAGE + "original" + movie.poster_path)
             .placeholder(R.mipmap.ic_launcher)
             .transition(withCrossFade(factory))
             .into(holder.imgCapaFilme)
-//        Glide.with(holder.itemView.context).asBitmap()
-//            .load(BASE_URL_IMAGE + "original" + movie.backdrop_path)
-//            .into(holder.imgCapaFilmeBackgroung)
+//        else
+//            holder.imgCapaFilme.setImageResource(R.drawable.ic_robot)
     }
 
     override fun getItemCount(): Int = listaMovies.size

@@ -2,6 +2,7 @@ package br.com.digitalhouse.playmovieapp.ui.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
@@ -44,6 +45,7 @@ class MoviesActivity : AppCompatActivity(), MoviesAdapter.MovieListener {
         binding.rvMovies.adapter = adapterMovies
         binding.rvMovies.layoutManager = linearLayoutManager
         binding.rvMovies.hasFixedSize()
+        Log.i("QUERY", query.toString())
         when {
             query.isNullOrBlank() -> {
                 viewModel.discoveryMovies(
@@ -74,7 +76,7 @@ class MoviesActivity : AppCompatActivity(), MoviesAdapter.MovieListener {
     }
 
     private fun initToolbar() {
-        val toolbar =binding.includeConfigToolbar.materialToolbar
+        val toolbar = binding.includeConfigToolbar.materialToolbar
         setSupportActionBar(toolbar)
         supportActionBar?.setTitle("Resultado da busca")
         supportActionBar?.setDisplayHomeAsUpEnabled(true); //Mostrar o botão

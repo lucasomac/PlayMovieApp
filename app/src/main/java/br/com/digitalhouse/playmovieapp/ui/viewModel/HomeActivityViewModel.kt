@@ -28,7 +28,6 @@ class HomeActivityViewModel(
 
     fun discoveryMovies(page: Int, genre: String, year: String, vote_average: String) {
         viewModelScope.launch {
-            Log.i("GENRE1", genre)
             repository.searchSugestionMovie(
                 API_KEY,
                 LANGUAGE,
@@ -38,7 +37,6 @@ class HomeActivityViewModel(
                 year,
                 vote_average
             ).also {
-                Log.i("RESULTS1", it.results.toString())
                 movie.postValue(
                     it.results[Random.nextInt(0, it.results.size)]
                 )

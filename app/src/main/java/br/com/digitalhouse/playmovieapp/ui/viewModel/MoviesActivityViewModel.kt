@@ -41,16 +41,20 @@ class MoviesActivityViewModel(val repository: Repository) : ViewModel() {
                 year,
                 vote_average
             ).also {
-                with(listResults) {
-                    postValue(it.results
-                        .filter { !it.poster_path.isEmpty() }
-                        .filter { !it.original_title.isEmpty() }
-                        .filter { !it.overview.isEmpty() }
-                        .forEach {
-                            it.release_date = it.release_date.substring(0, 4)
-                        } as ArrayList<Result>?)
-                }
-                Log.i("DATATA", listResults.toString())
+//                with(listResults) {
+//                    Log.i("DATATA23", it.results.toString())
+//                    postValue(it.results
+//                        .filter { !it.poster_path.isEmpty() }
+//                        .filter { !it.original_title.isEmpty() }
+//                        .filter { !it.overview.isEmpty() }
+//                        .forEach {
+//                            it.release_date = it.release_date.substring(0, 4)
+//                        } as ArrayList<Result>?
+//                    )
+//                    Log.i("DATATA22", it.results.toString())
+//                }
+                listResults.postValue(it.results)
+                Log.i("DATATA22", listResults.toString())
             }
         }
     }

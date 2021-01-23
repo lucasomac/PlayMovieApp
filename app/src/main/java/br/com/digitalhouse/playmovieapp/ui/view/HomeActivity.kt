@@ -2,7 +2,6 @@ package br.com.digitalhouse.playmovieapp.ui.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -51,12 +50,13 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
         binding.btnAjustes.setOnClickListener(this)
 
         viewModel.genres.observe(this) {
-            viewModel.discoveryMovies(
-                1,
-                it.map { it.id }[Random.nextInt(0, it.size)].toString(),
-                "",
-                ""
-            )
+            if (it.size > 0)
+                viewModel.discoveryMovies(
+                    1,
+                    it.map { it.id }[Random.nextInt(0, it.size)].toString(),
+                    "",
+                    ""
+                )
         }
     }
 
@@ -67,22 +67,11 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     fun openMovieSugestion() {
-//        viewModel.selectGenres()
-//        var id = 0
-//        Log.i("MID", viewModel.movie.value.toString())
-//        if (viewModel.movie.value != null)
-//            id = viewModel.movie.value!!.id
-//        else
-//            id = 405965
         val intent = Intent(
             this,
             DetalhesActivityMovie::class.java
         ).apply {
-//            if (viewModel.movie.value != null)
             putExtra("idMovie", viewModel.movie.value!!.id)
-//            else
-//                putExtra("idMovie", 0)
-////            putExtra("idMovie", id)
         }
         startActivity(intent)
     }
