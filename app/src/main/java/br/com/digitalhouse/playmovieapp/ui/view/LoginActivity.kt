@@ -7,9 +7,13 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.databinding.ActivityLoginBinding
 import br.com.digitalhouse.playmovieapp.ui.viewModel.LoginViewModel
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.login.LoginResult
+import com.facebook.login.widget.LoginButton
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -27,12 +31,14 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var gso: GoogleSignInOptions
     private lateinit var email: String
     private lateinit var password: String
+    private lateinit var callbackManager: CallbackManager
     val viewModel: LoginViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         connect()
         setContentView(binding.root)
+        callbackManager = CallbackManager.Factory.create()
         binding.buttonLogin.setOnClickListener(this)
         binding.textViewCriarConta.setOnClickListener(this)
         binding.includeSocialNetworksLogin.imageViewGoogle.setOnClickListener(this)
@@ -153,8 +159,28 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
             R.id.imageViewGoogle -> signInGoogle()
+            R.id.imageFace -> signInFacebook()
             R.id.textView_criar_conta -> callRegister()
         }
+    }
+
+    private fun signInFacebook() {
+        // Callback registration
+        binding.includeSocialNetworksLogin.imageFace.registerCallback(
+            callbackManager,
+            object : FacebookCallback<LoginResult?> {
+                override fun onSuccess(loginResult: LoginResult?) {
+                    // App code
+                }
+
+                override fun onCancel() {
+                    // App code
+                }
+
+                override fun onError(exception: FacebookException) {
+                    // App code
+                }
+            })
     }
 
     companion object {

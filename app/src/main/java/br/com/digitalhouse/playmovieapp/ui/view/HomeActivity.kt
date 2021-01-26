@@ -1,7 +1,11 @@
 package br.com.digitalhouse.playmovieapp.ui.view
 
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
+import android.util.Base64
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -15,9 +19,14 @@ import br.com.digitalhouse.playmovieapp.services.RepositoryRoomImplementation
 import br.com.digitalhouse.playmovieapp.services.repository
 import br.com.digitalhouse.playmovieapp.ui.viewModel.HomeActivityViewModel
 import com.bumptech.glide.Glide
+import com.facebook.CallbackManager
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.firebase.auth.FacebookAuthCredential
 import com.google.firebase.auth.FirebaseAuth
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
 import kotlin.random.Random
+
 
 class HomeActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var db: AppDataBase
@@ -38,6 +47,7 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(binding.root)
         auth = FirebaseAuth.getInstance()
         initBanco()
+        gerarHashFacebook()
         repositoryRoom = RepositoryRoomImplementation(db.genreDAO())
         binding.btnPlay.setOnClickListener(this)
 
@@ -64,6 +74,7 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
         super.onStart()
         viewModel.selectGenres()
         updateUI()
+
     }
 
     fun openMovieSugestion() {
@@ -91,20 +102,45 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun updateUI() {
-        val currentUser = GoogleSignIn.getLastSignedInAccount(this)
-//        if (currentUser == null) {
-//            currentUser = auth.currentUser
+//        val currentUserGoogleSignInAccount = GoogleSignIn.getLastSignedInAccount(this)
+//        val currentUser = auth.currentUser
+//        val currentUserFacebookAuthCredential = null
+//        if (currentUserFacebookAuthCredential != null) {
+//            setFields(
+//                currentUserGoogleSignInAccount!!.displayName,
+//                currentUserGoogleSignInAccount.email.toString(),
+//                currentUserGoogleSignInAccount.photoUrl
+//            )
+//        } else {
+//            setFields(currentUser!!.displayName, currentUser.email.toString(), currentUser.photoUrl)
 //        }
+    }
 
-        if (currentUser!!.photoUrl != null) {
-            Glide.with(this).asBitmap().load(currentUser.photoUrl)
+    fun setFields(nome: String? = null, email: String, foto: Uri? = null) {
+        if (foto != null) {
+            Glide.with(this).asBitmap().load(foto)
                 .into(binding.includePerfilResume.ivFotoPerfilResumo)
         }
-
-        if (currentUser.displayName != null) {
-            binding.includePerfilResume.tvNomeTelaHome.text = currentUser.displayName
+        if (nome != null) {
+            binding.includePerfilResume.tvNomeTelaHome.text = nome
         } else {
-            binding.includePerfilResume.tvNomeTelaHome.text = currentUser.email
+            binding.includePerfilResume.tvNomeTelaHome.text = email
+        }
+    }
+
+    fun gerarHashFacebook() {
+        try {
+            val info = packageManager.getPackageInfo(
+                "br.com.digitalhouse.playmovieapp",  //Insert your own package name.
+                PackageManager.GET_SIGNATURES
+            )
+            for (signature in info.signatures) {
+                val md: MessageDigest = MessageDigest.getInstance("SHA")
+                md.update(signature.toByteArray())
+                Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT))
+            }
+        } catch (e: PackageManager.NameNotFoundException) {
+        } catch (e: NoSuchAlgorithmException) {
         }
     }
 //    fun callLogin() {
