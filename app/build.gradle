@@ -85,6 +85,7 @@ dependencies {
     implementation "com.google.android.material:material:1.2.1"
     // Fragment_KTX
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
 
     //Firebase
@@ -99,4 +100,6 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
     //Facebook
     implementation 'com.facebook.android:facebook-android-sdk:9.0.0'
+    //Twitter
+
 }

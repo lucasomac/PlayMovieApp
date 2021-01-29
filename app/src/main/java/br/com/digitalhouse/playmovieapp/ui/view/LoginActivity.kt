@@ -11,8 +11,10 @@ import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.databinding.ActivityLoginBinding
 import br.com.digitalhouse.playmovieapp.ui.viewModel.LoginViewModel
 import com.facebook.CallbackManager
+import com.facebook.CallbackManager.Factory
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
+import com.facebook.FacebookSdk
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -20,9 +22,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.OAuthProvider
 import java.util.*
 
 
@@ -32,11 +37,16 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var gso: GoogleSignInOptions
     private lateinit var email: String
+//    private lateinit var mAuthListener: AuthStateListener
+//    private val mGoogleApiClient: GoogleApiClient? = null
+
+//    private var twitterAuthClient: TwitterAuthClient? = null
     private lateinit var password: String
     private lateinit var callbackManager: CallbackManager
     val viewModel: LoginViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val provider = OAuthProvider.newBuilder("twitter.com")
         binding = ActivityLoginBinding.inflate(layoutInflater)
         connect()
         setContentView(binding.root)
@@ -45,16 +55,14 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         binding.includeSocialNetworksLogin.imageViewGoogle.setOnClickListener(this)
     }
 
-
     public override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
-        updateUI()
+        redirectUI()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        callbackManager.onActivityResult(requestCode, resultCode, data)
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             try {
@@ -65,37 +73,43 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 Log.w(TAG, "Google sign in failed", e)
                 // ...
             }
-        }
-    }
-
-    private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
-        try {
-            val account = completedTask.getResult(ApiException::class.java)
-
-            // Signed in successfully, show authenticated UI.
-            if (account != null) {
-                callMain(account.email.toString())
-            }
-        } catch (e: ApiException) {
-            // The ApiException status code indicates the detailed failure reason.
-            // Please refer to the GoogleSignInStatusCodes class reference for more information.
-            Log.w(TAG, "signInResult:failed code=" + e.statusCode)
-            return
+        } else {
+            callbackManager.onActivityResult(requestCode, resultCode, data)
         }
     }
 
 
     private fun connect() {
-        callbackManager = CallbackManager.Factory.create()
-        auth = FirebaseAuth.getInstance()
+        //Logar Google
         gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
         googleSignInClient = GoogleSignIn.getClient(this, gso)
+        //Logar Facebook
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        callbackManager = Factory.create()
+        LoginManager.getInstance().registerCallback(callbackManager,
+            object : FacebookCallback<LoginResult?> {
+                override fun onSuccess(loginResult: LoginResult?) {
+
+                }
+
+                override fun onCancel() {
+                    // App code
+                }
+
+                override fun onError(exception: FacebookException) {
+                    // App code
+                }
+            })
+        //Logar Twitter
+//        twitterAuthClient = TwitterAuthClient()
+        auth = FirebaseAuth.getInstance()
+//        mAuthListener = getFirebaseAuthResultHandler()
     }
 
-    private fun updateUI() {
+    private fun redirectUI() {
         val account = GoogleSignIn.getLastSignedInAccount(this)
         val currentUser = auth.currentUser
         if (account != null) {
@@ -150,6 +164,34 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 
+
+    private fun signInFacebook() {
+        LoginManager.getInstance().logInWithReadPermissions(
+            this,
+            Arrays.asList("public_profile", "user_friends", "email")
+        );
+    }
+
+    private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
+        try {
+            val account = completedTask.getResult(ApiException::class.java)
+            // Signed in successfully, show authenticated UI.
+            if (account != null) {
+                callMain(account.email.toString())
+            }
+        } catch (e: ApiException) {
+            // The ApiException status code indicates the detailed failure reason.
+            // Please refer to the GoogleSignInStatusCodes class reference for more information.
+            Log.w(TAG, "signInResult:failed code=" + e.statusCode)
+            return
+        }
+    }
+
+    companion object {
+        private const val TAG = "LOGIN_FIRE"
+        private const val RC_SIGN_IN = 9001
+    }
+
     override fun onClick(v: View?) {
         when (v!!.id) {
             R.id.button_login -> {
@@ -164,29 +206,5 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             R.id.imageFace -> signInFacebook()
             R.id.textView_criar_conta -> callRegister()
         }
-    }
-
-    private fun signInFacebook() {
-        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
-        // Callback registration
-//        LoginManager.getInstance().registerCallback(callbackManager,
-//            object : FacebookCallback<LoginResult?> {
-//                override fun onSuccess(loginResult: LoginResult?) {
-//
-//                }
-//
-//                override fun onCancel() {
-//                    // App code
-//                }
-//
-//                override fun onError(exception: FacebookException) {
-//                    // App code
-//                }
-//            })
-    }
-
-    companion object {
-        private const val TAG = "LOGIN_FIRE"
-        private const val RC_SIGN_IN = 9001
     }
 }
