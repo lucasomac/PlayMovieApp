@@ -11,7 +11,6 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.database.AppDataBase
 import br.com.digitalhouse.playmovieapp.databinding.ActivityHomeBinding
@@ -20,18 +19,13 @@ import br.com.digitalhouse.playmovieapp.services.RepositoryRoomImplementation
 import br.com.digitalhouse.playmovieapp.services.repository
 import br.com.digitalhouse.playmovieapp.ui.viewModel.HomeActivityViewModel
 import com.bumptech.glide.Glide
-import com.facebook.CallbackManager
-import com.facebook.login.LoginManager
 import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.firebase.auth.FacebookAuthCredential
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
-import java.util.*
 import kotlin.random.Random
-
 
 class HomeActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var db: AppDataBase

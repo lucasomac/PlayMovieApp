@@ -59,6 +59,18 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.PlayMovieApp" />
         <activity
+            android:name=".ui.novos.Login"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.PlayMovieApp" />
+        <activity
+            android:name=".ui.novos.Home"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.PlayMovieApp" />
+        <activity
+            android:name=".ui.novos.Cadastro"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.PlayMovieApp" />
+        <activity
             android:name=".ui.view.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.PlayMovieApp.Fullscreen">
@@ -99,10 +111,5 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-
     </application>
-
-    <queries>
-        <package android:name="com.facebook.katana" />
-    </queries>
 </manifest>
