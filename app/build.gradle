@@ -72,13 +72,13 @@ dependencies {
     //Dependência Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2-native-mt'
     // Navigation
-    implementation "androidx.navigation:navigation-fragment-ktx:2.3.2"
-    implementation "androidx.navigation:navigation-ui-ktx:2.3.2"
+    implementation "androidx.navigation:navigation-fragment-ktx:2.3.3"
+    implementation "androidx.navigation:navigation-ui-ktx:2.3.3"
     // Feature module Support
-    implementation "androidx.navigation:navigation-dynamic-features-fragment:2.3.2"
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:2.3.3"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     // Testing Navigation
-    androidTestImplementation "androidx.navigation:navigation-testing:2.3.2"
+    androidTestImplementation "androidx.navigation:navigation-testing:2.3.3"
     // Jetpack Compose Integration
     implementation "androidx.navigation:navigation-compose:1.0.0-alpha05"
     // Material
@@ -98,5 +98,5 @@ dependencies {
     // Also declare the dependency for the Google Play services library and specify its version
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
     //Facebook
-    implementation 'com.facebook.android:facebook-android-sdk:8.1.0'
+    implementation 'com.facebook.android:facebook-android-sdk:9.0.0'
 }

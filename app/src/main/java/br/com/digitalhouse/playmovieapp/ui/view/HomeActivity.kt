@@ -11,6 +11,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.database.AppDataBase
 import br.com.digitalhouse.playmovieapp.databinding.ActivityHomeBinding
@@ -20,11 +21,15 @@ import br.com.digitalhouse.playmovieapp.services.repository
 import br.com.digitalhouse.playmovieapp.ui.viewModel.HomeActivityViewModel
 import com.bumptech.glide.Glide
 import com.facebook.CallbackManager
+import com.facebook.login.LoginManager
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.firebase.auth.FacebookAuthCredential
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
+import java.util.*
 import kotlin.random.Random
 
 
@@ -89,10 +94,11 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v!!.id) {
-            R.id.btnPlay -> startActivity(Intent(this, NivelActivity::class.java))
+//            R.id.btnPlay -> startActivity(Intent(this, NivelActivity::class.java))
             R.id.ivSugestao -> openMovieSugestion()
             R.id.ivLupa -> startActivity(Intent(this, PesquisaActivity::class.java))
             R.id.btnConfigs -> startActivity(Intent(this, ConfiguracoesActivity::class.java))
+            R.id.btnPlay -> logOut()
             R.id.btnAjustes -> startActivity(Intent(this, InteressesActivity::class.java))
         }
     }
@@ -102,18 +108,24 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun updateUI() {
-//        val currentUserGoogleSignInAccount = GoogleSignIn.getLastSignedInAccount(this)
-//        val currentUser = auth.currentUser
-//        val currentUserFacebookAuthCredential = null
-//        if (currentUserFacebookAuthCredential != null) {
-//            setFields(
-//                currentUserGoogleSignInAccount!!.displayName,
-//                currentUserGoogleSignInAccount.email.toString(),
-//                currentUserGoogleSignInAccount.photoUrl
-//            )
-//        } else {
-//            setFields(currentUser!!.displayName, currentUser.email.toString(), currentUser.photoUrl)
-//        }
+        val currentUserGoogleSignInAccount = GoogleSignIn.getLastSignedInAccount(this)
+        val currentUser = auth.currentUser
+        val currentUserFacebookAuthCredential = null
+        if (currentUserGoogleSignInAccount != null) {
+            setFields(
+                currentUserGoogleSignInAccount!!.displayName,
+                currentUserGoogleSignInAccount.email.toString(),
+                currentUserGoogleSignInAccount.photoUrl
+            )
+        } else {
+            if (currentUser != null) {
+                setFields(
+                    currentUser!!.displayName,
+                    currentUser.email.toString(),
+                    currentUser.photoUrl
+                )
+            }
+        }
     }
 
     fun setFields(nome: String? = null, email: String, foto: Uri? = null) {
@@ -143,14 +155,9 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
         } catch (e: NoSuchAlgorithmException) {
         }
     }
-//    fun callLogin() {
-//        val intent = Intent(this, LoginActivity::class.java)
-//        logOut()
-//        finish()
-//        startActivity(intent)
-//    }
 
-//    fun logOut() {
-//        Firebase.auth.signOut()
-//    }
+    fun logOut() {
+        Firebase.auth.signOut()
+        startActivity(Intent(this, LoginActivity::class.java))
+    }
 }
