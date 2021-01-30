@@ -9,7 +9,7 @@
     tools:context=".ui.view.PesquisaActivity">
 
     <include
-        android:id="@+id/includeConfigToolbar"
+        android:id="@+id/toolbar"
         layout="@layout/app_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

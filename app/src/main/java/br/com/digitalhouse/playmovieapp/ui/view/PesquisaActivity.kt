@@ -9,18 +9,19 @@ import android.widget.Spinner
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import br.com.digitalhouse.playmovieapp.R
-import br.com.digitalhouse.playmovieapp.databinding.ActivityPesquisaBinding
 import br.com.digitalhouse.playmovieapp.getGenres
 import br.com.digitalhouse.playmovieapp.ui.viewModel.PesquisaViewModel
+import kotlinx.android.synthetic.main.activity_pesquisa.*
+import kotlinx.android.synthetic.main.activity_sugestao.btnSugestao
+import kotlinx.android.synthetic.main.app_toolbar.*
 
 class PesquisaActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityPesquisaBinding
+
     val viewModel: PesquisaViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityPesquisaBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_pesquisa)
         initToolbar()
 
         InitSpinnerAnos()
@@ -30,10 +31,10 @@ class PesquisaActivity : AppCompatActivity() {
         viewModel.categoriaSelecionada.observe(this) {
             when (viewModel.categoriaSelecionada.value.toString()) {
                 "Filme" -> {
-                    binding.btnSugestao.setOnClickListener(openMovieDetail())
+                    btnSugestao.setOnClickListener(openMovieDetail())
                 }
                 "Série" -> {
-                    binding.btnSugestao.setOnClickListener(openSerieDetail())
+                    btnSugestao.setOnClickListener(openSerieDetail())
                 }
             }
         }
@@ -146,7 +147,7 @@ class PesquisaActivity : AppCompatActivity() {
                 "anoSelecionado", viewModel.anoSelecionado.value
             )
             putExtra(
-                "query", binding.etBusca.text.toString()
+                "query", etBusca.text.toString()
             )
         }
         startActivity(intent)
@@ -170,7 +171,7 @@ class PesquisaActivity : AppCompatActivity() {
                 "anoSelecionado", viewModel.anoSelecionado.value
             )
             putExtra(
-                "query", binding.etBusca.text.toString()
+                "query", etBusca.text.toString()
             )
         }
         startActivity(intent)
@@ -181,7 +182,7 @@ class PesquisaActivity : AppCompatActivity() {
     }
 
     private fun initToolbar() {
-        val toolbar = binding.includeConfigToolbar.materialToolbar
+        val toolbar = material_toolbar
         setSupportActionBar(toolbar)
         supportActionBar?.setTitle("Pesquisa de conteúdo")
         supportActionBar?.setDisplayHomeAsUpEnabled(true); //Mostrar o botão
