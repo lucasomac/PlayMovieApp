@@ -15,6 +15,7 @@ import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
@@ -28,6 +29,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         setup()
         session()
     }
@@ -50,6 +52,7 @@ class LoginActivity : AppCompatActivity() {
         }
         binding.buttonLogin.setOnClickListener {
             if (checaCampos()) {
+                FirebaseApp.initializeApp(this)
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(
                     binding.textEmail.text.toString(),
                     binding.textPassword.text.toString()

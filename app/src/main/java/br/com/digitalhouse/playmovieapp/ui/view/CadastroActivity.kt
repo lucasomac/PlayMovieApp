@@ -6,25 +6,19 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import br.com.digitalhouse.playmovieapp.databinding.ActivityCadastroBinding
-import com.google.firebase.auth.FirebaseAuth
-import android.os.Bundle
-import android.text.Html
-import android.view.View
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
 import br.com.digitalhouse.playmovieapp.R
-import kotlinx.android.synthetic.main.activity_cadastro.*
-import kotlinx.android.synthetic.main.app_toolbar.*
+import br.com.digitalhouse.playmovieapp.databinding.ActivityCadastroBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class CadastroActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityCadastroBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCadastroBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setup()
-      setSupportActionBar(findViewById(R.id.material_toolbar))
+        setSupportActionBar(findViewById(R.id.material_toolbar))
         initToolbar()
 
         init()
@@ -81,8 +75,8 @@ class CadastroActivity : AppCompatActivity() {
         startActivity(homeIntent)
     }
 
-   private fun initToolbar() {
-        val toolbar = material_toolbar
+    private fun initToolbar() {
+        val toolbar = binding.includeConfigToolbar.materialToolbar
         setSupportActionBar(toolbar)
         supportActionBar?.setTitle("Criar nova conta")
         supportActionBar?.setDisplayHomeAsUpEnabled(true); //Mostrar o botão
@@ -91,5 +85,7 @@ class CadastroActivity : AppCompatActivity() {
 
     private fun init() {
         val htmlAsString = getString(R.string.termos_html)
-        textView_termos.text = HtmlCompat.fromHtml(htmlAsString, HtmlCompat.FROM_HTML_MODE_LEGACY)}
+        binding.textViewTermos.text =
+            HtmlCompat.fromHtml(htmlAsString, HtmlCompat.FROM_HTML_MODE_LEGACY)
+    }
 }

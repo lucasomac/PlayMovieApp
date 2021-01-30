@@ -12,7 +12,6 @@ import br.com.digitalhouse.playmovieapp.getGenres
 import br.com.digitalhouse.playmovieapp.services.repository
 import br.com.digitalhouse.playmovieapp.ui.viewModel.DetalhesActivitySerieViewModel
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.app_toolbar.*
 
 class DetalhesActivitySerie : AppCompatActivity() {
     private lateinit var binding: ActivityDetalhesSerieBinding
@@ -50,12 +49,14 @@ class DetalhesActivitySerie : AppCompatActivity() {
                     '[',
                     ']'
                 )
-            } - ${serie.episode_run_time[0]}min por epiósdio".also { binding.txtDetalhesSerie.text = it }
+            } - ${serie.episode_run_time[0]}min por epiósdio".also {
+                binding.txtDetalhesSerie.text = it
+            }
         }
     }
 
     private fun initToolbar() {
-        val toolbar = material_toolbar
+        val toolbar = binding.includeConfigToolbar.materialToolbar
         setSupportActionBar(toolbar)
         supportActionBar?.setTitle("Sinopse da Série")
         supportActionBar?.setDisplayHomeAsUpEnabled(true); //Mostrar o botão

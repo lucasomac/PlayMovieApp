@@ -7,17 +7,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.adapters.ConfiguracaoAdapter
+import br.com.digitalhouse.playmovieapp.databinding.ActivityConfiguracoesBinding
 import br.com.digitalhouse.playmovieapp.ui.viewModel.ConfiguracoesViewModel
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_configuracoes.*
-import kotlinx.android.synthetic.main.app_toolbar.*
 
 class ConfiguracoesActivity : AppCompatActivity() {
     private val viewModel: ConfiguracoesViewModel by viewModels()
-
+    private lateinit var binding: ActivityConfiguracoesBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_configuracoes)
+        binding = ActivityConfiguracoesBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initToolbar()
         initRecyclerConfiguracoes()
@@ -26,7 +26,7 @@ class ConfiguracoesActivity : AppCompatActivity() {
 
 
     private fun initToolbar() {
-        val toolbar = material_toolbar
+        val toolbar = binding.includeConfigToolbar.materialToolbar
         setSupportActionBar(toolbar)
         supportActionBar?.setTitle("Configurações")
         supportActionBar?.setDisplayHomeAsUpEnabled(true); //Mostrar o botão
@@ -35,7 +35,7 @@ class ConfiguracoesActivity : AppCompatActivity() {
 
     private fun initRecyclerConfiguracoes() {
         val listaConfiguracoes = viewModel.getConfiguracoes()
-        val recycler = rv_configuracoes
+        val recycler = binding.rvConfiguracoes
         recycler.adapter = ConfiguracaoAdapter(listaConfiguracoes)
 
         recycler.layoutManager = LinearLayoutManager(this)
@@ -44,7 +44,7 @@ class ConfiguracoesActivity : AppCompatActivity() {
 
     private fun initAlertaPoliticaPrivacidade() {
         Snackbar.make(
-            constraintLayout_config,
+            binding.constraintLayoutConfig,
             R.string.politica_de_privacidade,
             Snackbar.LENGTH_INDEFINITE
         )

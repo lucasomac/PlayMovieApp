@@ -5,31 +5,32 @@ import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import br.com.digitalhouse.playmovieapp.R
+import br.com.digitalhouse.playmovieapp.databinding.ActivityDetalhesDesenvolvedorBinding
 import br.com.digitalhouse.playmovieapp.domain.Desenvolvedor
 import br.com.digitalhouse.playmovieapp.ui.viewModel.DetalhesDesenvolvedorViewModel
-import kotlinx.android.synthetic.main.activity_detalhes_desenvolvedor.*
-import java.lang.Exception
 
 class DetalhesDesenvolvedorActivity : AppCompatActivity() {
 
     val viewModel: DetalhesDesenvolvedorViewModel by viewModels()
-
+    private lateinit var binding: ActivityDetalhesDesenvolvedorBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityDetalhesDesenvolvedorBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_detalhes_desenvolvedor)
 
         try {
             viewModel.setDesenvolvedor(intent.extras?.get("desenvolvedor") as Desenvolvedor)
-            desenvolvedorFoto_detalhes.setImageResource(viewModel.desenvolvedor.value!!.foto)
-            desenvolvedorNome_detalhes.text = viewModel.desenvolvedor.value?.nome
-            desenvolvedorIdade_detalhes.text = viewModel.desenvolvedor.value?.idade.toString() + " anos"
-            desenvolvedorMiniCv_detalhes.text = viewModel.desenvolvedor.value?.miniCv
+            binding.desenvolvedorFotoDetalhes.setImageResource(viewModel.desenvolvedor.value!!.foto)
+            binding.desenvolvedorNomeDetalhes.text = viewModel.desenvolvedor.value?.nome
+            binding.desenvolvedorIdadeDetalhes.text =
+                viewModel.desenvolvedor.value?.idade.toString() + " anos"
+            binding.desenvolvedorMiniCvDetalhes.text = viewModel.desenvolvedor.value?.miniCv
 
         } catch (exception: Exception) {
             Log.e("DetalhesDesenvolvedorActivity", exception.toString())
         }
 
-        desenvolvedorAppBar.setNavigationOnClickListener {
+        binding.desenvolvedorAppBar.setNavigationOnClickListener {
             finish()
         }
     }

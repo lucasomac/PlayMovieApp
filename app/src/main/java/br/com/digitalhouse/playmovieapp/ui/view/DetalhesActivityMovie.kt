@@ -15,7 +15,6 @@ import br.com.digitalhouse.playmovieapp.getGenres
 import br.com.digitalhouse.playmovieapp.services.repository
 import br.com.digitalhouse.playmovieapp.ui.viewModel.DetalhesActivityMovieViewModel
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.app_toolbar.*
 
 class DetalhesActivityMovie : AppCompatActivity() {
     private lateinit var binding: ActivityDetalhesMovieBinding
@@ -64,7 +63,7 @@ class DetalhesActivityMovie : AppCompatActivity() {
     }
 
     private fun initToolbar() {
-        val toolbar = material_toolbar
+        val toolbar = binding.includeConfigToolbar.materialToolbar
         setSupportActionBar(toolbar)
         supportActionBar?.setTitle("Sinopse do Filme")
         supportActionBar?.setDisplayHomeAsUpEnabled(true); //Mostrar o botão
