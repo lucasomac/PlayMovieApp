@@ -13,7 +13,7 @@
         android:background="@color/primary"
         android:paddingHorizontal="@dimen/padding_7"
         android:paddingVertical="@dimen/padding_7"
-        tools:context=".ui.novos.Login">
+        tools:context=".ui.view.LoginACtivity">
 
         <ImageView
             android:id="@+id/imageView_logo"

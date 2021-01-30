@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import br.com.digitalhouse.playmovieapp.databinding.ActivitySplashBinding
-import br.com.digitalhouse.playmovieapp.ui.novos.Login
+import br.com.digitalhouse.playmovieapp.ui.view.LoginActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -18,10 +18,9 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun init() {
-        //TODO alterar para finalizar apenas depois do carregamento inicial
         binding.imageViewLogo.alpha = 0f
         binding.imageViewLogo.animate().setDuration(1500).alpha(1f).withEndAction {
-            startActivity(Intent(this@SplashActivity, Login::class.java))
+            startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             finish()
         }
