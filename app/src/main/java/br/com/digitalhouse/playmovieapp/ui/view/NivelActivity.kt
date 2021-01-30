@@ -20,11 +20,11 @@ class NivelActivity : AppCompatActivity(), NivelAdapter.NivelListener {
         setContentView(binding.root)
         binding.rvNiveis.adapter = adapter
 
-        viewModel.niveis.observe(this) {
+        viewModel.allLevels.observe(this) {
             adapter.addNiveis(it)
         }
 
-        viewModel.setNiveis()
+        viewModel.getLevels()
 
         setSupportActionBar(findViewById(R.id.appBarNivel))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

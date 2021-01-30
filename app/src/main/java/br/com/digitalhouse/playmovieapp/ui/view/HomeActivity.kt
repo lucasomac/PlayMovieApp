@@ -35,6 +35,7 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityHomeBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var provider: String
+
     val viewModel by viewModels<HomeActivityViewModel> {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
@@ -84,7 +85,6 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-
     fun setup(email: String, nome: String, urlPhoto: String, provider: String) {
         setFields(email, nome, urlPhoto)
         binding.btnPlay.setOnClickListener(this)
@@ -107,19 +107,20 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v!!.id) {
-            R.id.btnPlay -> {
-                val prefs =
-                    getSharedPreferences(
-                        R.string.prefs_file.toString(),
-                        Context.MODE_PRIVATE
-                    ).edit()
-                prefs.apply()
-                if (provider.equals("facebook", true)) {
-                    LoginManager.getInstance().logOut()
-                }
-                FirebaseAuth.getInstance().signOut()
-                onBackPressed()
-            }
+//            R.id.btnPlay -> {
+//                val prefs =
+//                    getSharedPreferences(
+//                        R.string.prefs_file.toString(),
+//                        Context.MODE_PRIVATE
+//                    ).edit()
+//                prefs.apply()
+//                if (provider.equals("facebook", true)) {
+//                    LoginManager.getInstance().logOut()
+//                }
+//                FirebaseAuth.getInstance().signOut()
+//                onBackPressed()
+//            }
+            R.id.btnPlay -> startActivity(Intent(this, NivelActivity::class.java))
             R.id.ivSugestao -> openMovieSugestion()
             R.id.ivLupa -> startActivity(Intent(this, PesquisaActivity::class.java))
             R.id.btnConfigs -> startActivity(Intent(this, ConfiguracoesActivity::class.java))

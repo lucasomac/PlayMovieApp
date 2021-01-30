@@ -17,16 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!--    <androidx.appcompat.widget.SearchView-->
-    <!--        android:id="@+id/SearchView"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginStart="28dp"-->
-    <!--        android:layout_marginTop="10dp"-->
-    <!--        android:layout_marginEnd="28dp"-->
-    <!--        android:iconifiedByDefault="false"-->
-    <!--        android:queryHint="Pesquise" />-->
-
     <EditText
         android:id="@+id/etBusca"
         android:layout_width="match_parent"
@@ -117,51 +107,6 @@
         android:layout_marginTop="7dp"
         android:drawSelectorOnTop="true"
         android:spinnerMode="dropdown" />
-
-    <com.google.android.material.chip.ChipGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="26dp"
-        android:padding="16dp">
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chipLancamentos"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="@string/lan_amentos"
-            android:textAlignment="center" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chipMelhoresFilmes"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="@string/melhores_filmes"
-            android:textAlignment="center" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chipMelhoresSeries"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="@string/melhores_s_ries"
-            android:textAlignment="center" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chipSugestao"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="@string/sugest_es"
-            android:textAlignment="center" />
-
-    </com.google.android.material.chip.ChipGroup>
 
     <LinearLayout
         android:layout_width="match_parent"
