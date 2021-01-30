@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 class NivelViewModel() : ViewModel() {
     val allLevels = MutableLiveData<ArrayList<Level>>()
     var allQuestions = MutableLiveData<ArrayList<Question>>()
-    var allQuestionsUser = MutableLiveData<ArrayList<Question>>()
+    var allQuestionsUser = MutableLiveData<ArrayList<Answered>>()
 
     fun getAllQuestions() {
         viewModelScope.launch {
@@ -42,33 +42,26 @@ class NivelViewModel() : ViewModel() {
     fun getAllQuestionsUser() {
         viewModelScope.launch {
             collectionUsers
-//                .document("rodrigofelipejr2@gmail.com")
+                .document("rodrigofelipejr2@gmail.com")
+                .collection("answered")
                 .get()
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        val listQuestions = arrayListOf<Answered>()
+                        val listAnswered = arrayListOf<Answered>()
                         for (document in task.result!!) {
-
-                            if (document.id == "rodrigofelipejr2@gmail.com") {
-                                val aa = document.get("answered")
-                                Log.i("XXXX", aa.toString())
-
-//                                if(document.get("city").equals("karachi") || document.get("city").equals("Karachi")){
-//                                    arrayList.add(document.toObject(chatModel::class.java));
-//                                }
-                            }
-//                            val question = Question(
-//                                document.id as String,
-//                                document.data["level"] as Number,
-//                                document.data["title"] as String,
-//                                document.data["image"] as String,
-//                                document.data["overview"] as String,
-//                            )
-//                            listQuestions.add(question)
-//                            Log.i("XXXX", document.data.toString())
+                            val answered = Answered(
+                                document.id as String,
+                                document.data["attempts"] as Number,
+                                document.data["bonus"] as Boolean,
+                                document.data["score"] as Number,
+                                document.data["time"] as Number,
+                            )
+                            listAnswered.add(answered)
                         }
-//                        allQuestions.value = listQuestions
-//                        Log.i("XXX", allQuestions.value!!.size.toString())
+                        Log.i("XXX", listAnswered.toString())
+
+                        allQuestionsUser.value = listAnswered
+                        Log.i("XXX", allQuestionsUser.value!!.size.toString())
                     } else {
                         Log.i("XXX", "ERROR.", task.exception)
                     }
