@@ -10,9 +10,8 @@ import br.com.digitalhouse.playmovieapp.services.*
 import kotlinx.coroutines.launch
 
 class NivelViewModel() : ViewModel() {
-    var allQuestions = MutableLiveData<ArrayList<Question>>()
-
     val allLevels = MutableLiveData<ArrayList<Level>>()
+    var allQuestions = MutableLiveData<ArrayList<Question>>()
     var allQuestionsUser = MutableLiveData<ArrayList<Question>>()
 
     fun getAllQuestions() {
