@@ -13,7 +13,11 @@ class NivelViewModel() : ViewModel() {
     var allQuestions = MutableLiveData<ArrayList<Question>>()
     var allQuestionsAnswered = MutableLiveData<ArrayList<String>>()
 
-    fun getAllQuestions() {
+    fun start() {
+        getAllQuestions()
+    }
+
+    private fun getAllQuestions() {
         viewModelScope.launch {
             collectionQuestions
                 .get()
@@ -31,17 +35,17 @@ class NivelViewModel() : ViewModel() {
                             listQuestions.add(question)
                         }
                         allQuestions.value = listQuestions
-//                        Log.i("XXX (1)", allQuestions.value!!.size.toString())
-//                        Log.i("XXX (1)", allQuestions.value.toString())
-                        getAllQuestionsUser()
+                        Log.i("NivelViewModel (1)", allQuestions.value!!.size.toString())
+                        Log.i("NivelViewModel (1)", allQuestions.value.toString())
+                        getAllQuestionsAnswered()
                     } else {
-                        Log.i("XXX", "ERROR.", task.exception)
+                        Log.i("NivelViewModel", "ERROR.", task.exception)
                     }
                 }
         }
     }
 
-    fun getAllQuestionsUser() {
+    private fun getAllQuestionsAnswered() {
         viewModelScope.launch {
             collectionUsers
                 .document("rodrigofelipejr2@gmail.com")
@@ -51,64 +55,44 @@ class NivelViewModel() : ViewModel() {
                     if (task.isSuccessful) {
                         val listQuestionsAnswered = arrayListOf<String>()
                         for (document in task.result!!) {
-                            listQuestionsAnswered.add(document.id)
+                            listQuestionsAnswered.add(document.id.trim())
                         }
                         allQuestionsAnswered.value = listQuestionsAnswered
-//                        Log.i("XXX (2)", allQuestionsAnswered.value!!.size.toString())
-//                        Log.i("XXX (2)", allQuestionsAnswered.value.toString())
+                        Log.i("NivelViewModel (2)", allQuestionsAnswered.value!!.size.toString())
+                        Log.i("NivelViewModel (2)", allQuestionsAnswered.value.toString())
                         getLevels()
                     } else {
-                        Log.i("XXX", "ERROR.", task.exception)
+                        Log.i("NivelViewModel", "ERROR.", task.exception)
                     }
                 }
         }
     }
 
-    fun start() {
-        getAllQuestions()
-    }
 
-    fun getLevels() {
+    private fun getLevels() {
         var levels: List<Number> = allQuestions.value!!
             .distinctBy { it.level }
             .map { it.level }
 
-        Log.i("XXX levels (3)", levels.size.toString())
-        Log.i("XXX levels (3)", levels.toString())
-
         val listLevels = arrayListOf<Level>()
 
         levels.forEach {
+            // nível atual
             val currentLevel = it.toInt()
 
-//                allQuestions.value!!
-//                    .filter { it.level.toInt() == currentLevel }.size
-
-            val allQuestionsFiltred =  allQuestions.value!!
+            val allQuestionsFiltred = allQuestions.value!!
                 .filter { it.level.toInt() == currentLevel }
 
+            // total de perguntas
             val totalQuestions = allQuestionsFiltred.size
 
-            val totalQuestionsAnswered =
-                allQuestionsFiltred
-                    .filter {
-                        Log.i("XXX (3)", "----------------------")
-                        Log.i("XXX (3) it.id", it.id)
-                        Log.i("XXX (3) allQuestionsAnswered", allQuestionsAnswered.value!!.toString())
-                        Log.i("XXX (3) contains", allQuestionsAnswered.value!!.contains(it.id).toString())
-
-                        allQuestionsFiltred.contains(it.id)
-                    }.size
-
-            Log.i("XXX (3) forEach", totalQuestionsAnswered.toString())
-
+            // total de perguntas respondidas
+            val totalQuestionsAnswered = allQuestionsFiltred
+                .filter { allQuestionsAnswered.value!!.contains(it.id.trim()) }.size
 
             val level = Level(currentLevel, totalQuestions, totalQuestionsAnswered)
             listLevels.add(level)
         }
-
         allLevels.value = listLevels
-        Log.i("XXX (3)", allLevels.value!!.size.toString())
-        Log.i("XXX (3)", allLevels.value.toString())
     }
 }
