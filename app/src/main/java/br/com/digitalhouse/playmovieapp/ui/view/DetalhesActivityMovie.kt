@@ -2,6 +2,7 @@ package br.com.digitalhouse.playmovieapp.ui.view
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
@@ -38,22 +39,27 @@ class DetalhesActivityMovie : AppCompatActivity() {
         movieId.let { viewModel.searchMovieById(it) }
         viewModel.movie.observe(this) {
             movie = it
-            Glide.with(this).asBitmap().load(
-                "${BASE_URL_IMAGE}original${movie.backdrop_path}"
-            ).into(binding.imgCapaFilme)
-            binding.txtSinopseFilme.text = movie.overview
-            binding.txtNomeFilme.text = movie.title
-            binding.txtNotaFilme.text = movie.vote_average.toString()
-            val generos = arrayListOf<String>()
-            for (genre in movie.genres) {
-                generos.add(getGenres().filter { it.id == genre.id }[0].name)
+            if (movie != null) {
+                Glide.with(this).asBitmap().load(
+                    "${BASE_URL_IMAGE}original${movie.backdrop_path}"
+                ).into(binding.imgCapaFilme)
+                binding.txtSinopseFilme.text = movie.overview
+                binding.txtNomeFilme.text = movie.title
+                binding.txtNotaFilme.text = movie.vote_average.toString()
+                val generos = arrayListOf<String>()
+                for (genre in movie.genres) {
+                    generos.add(getGenres().filter { it.id == genre.id }[0].name)
+                }
+                "${movie.release_date.substring(0, 4)} - ${
+                    "$generos".trim(
+                        '[',
+                        ']'
+                    )
+                } - ${movie.runtime}min".also { binding.txtDetalhesFilme.text = it }
+            } else {
+                Toast.makeText(this, "Não hã filmes disponiveis no momento!!", Toast.LENGTH_LONG)
+                    .show()
             }
-            "${movie.release_date.substring(0, 4)} - ${
-                "$generos".trim(
-                    '[',
-                    ']'
-                )
-            } - ${movie.runtime}min".also { binding.txtDetalhesFilme.text = it }
         }
     }
 

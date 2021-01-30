@@ -1,164 +1,177 @@
 package br.com.digitalhouse.playmovieapp.ui.view
 
+import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.databinding.ActivityLoginBinding
-import br.com.digitalhouse.playmovieapp.ui.viewModel.LoginViewModel
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.login.LoginManager
+import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.GoogleAuthProvider
 
 
-class LoginActivity : AppCompatActivity(), View.OnClickListener {
+class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var auth: FirebaseAuth
-    private lateinit var googleSignInClient: GoogleSignInClient
-    private lateinit var gso: GoogleSignInOptions
-    private lateinit var email: String
-    private lateinit var password: String
-    val viewModel: LoginViewModel by viewModels()
+    private val GOOGLE_SIGN_IN = 100
+    private var callbackManager = CallbackManager.Factory.create()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
-        connect()
         setContentView(binding.root)
-        binding.buttonLogin.setOnClickListener(this)
-        binding.textViewCriarConta.setOnClickListener(this)
-        binding.includeSocialNetworksLogin.imageViewGoogle.setOnClickListener(this)
+        setup()
+        session()
     }
 
+    private fun session() {
+        val prefs =
+            getSharedPreferences(R.string.prefs_file.toString(), Context.MODE_PRIVATE)
+        val nome = prefs.getString("nome", null)
+        val email = prefs.getString("email", null)
+        val urlPhoto = prefs.getString("urlPhoto", null)
+        val provider = prefs.getString("provider", null)
+        if (email != null && provider != null) {
+            showHome(email, nome.toString(), urlPhoto.toString(), provider.toString())
+        }
+    }
 
-    public override fun onStart() {
-        super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
-        updateUI()
+    fun setup() {
+        binding.textViewCriarConta.setOnClickListener {
+            showRegister()
+        }
+        binding.buttonLogin.setOnClickListener {
+            if (checaCampos()) {
+                FirebaseAuth.getInstance().signInWithEmailAndPassword(
+                    binding.textEmail.text.toString(),
+                    binding.textPassword.text.toString()
+                ).addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        showHome(
+                            it.result?.user?.email.toString(),
+                            it.result?.user?.displayName.toString(),
+                            it.result?.user?.photoUrl.toString(),
+                            ProviderTypes.BASIC.name
+                        )
+                    } else {
+                        showAlert()
+                    }
+                }
+            }
+        }
+        binding.includeSocialNetworksLogin.imageViewGoogle.setOnClickListener {
+            val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build()
+            val googleClient = GoogleSignIn.getClient(this, googleConf)
+            googleClient.signOut()
+            startActivityForResult(googleClient.signInIntent, GOOGLE_SIGN_IN)
+        }
+        binding.includeSocialNetworksLogin.imageFace.setOnClickListener {
+            LoginManager.getInstance()
+                .logInWithReadPermissions(this, listOf("public_profile", "email"))
+            LoginManager.getInstance()
+                .registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
+                    override fun onSuccess(result: LoginResult?) {
+                        result?.let {
+                            val token = it.accessToken
+                            val credential =
+                                FacebookAuthProvider.getCredential(token.token)
+                            FirebaseAuth.getInstance().signInWithCredential(credential)
+                                .addOnCompleteListener {
+                                    if (it.isSuccessful) {
+                                        showHome(
+                                            it.result?.user?.email.toString(),
+                                            it.result?.user?.displayName.toString(),
+                                            it.result?.user?.photoUrl.toString(),
+                                            ProviderTypes.FACEBOOK.name
+                                        )
+                                    } else {
+                                        showAlert()
+                                    }
+                                }
+                        }
+                    }
+
+                    override fun onCancel() {
+                    }
+
+                    override fun onError(error: FacebookException?) {
+                        showAlert()
+                    }
+
+                })
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
+        callbackManager.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == GOOGLE_SIGN_IN) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
-                val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-                handleSignInResult(task);
+                val account = task.getResult(ApiException::class.java)
+                if (account != null) {
+                    val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+                    FirebaseAuth.getInstance().signInWithCredential(credential)
+                        .addOnCompleteListener {
+                            if (it.isSuccessful) {
+                                showHome(
+                                    account.email.toString(),
+                                    account.displayName.toString(),
+                                    account.photoUrl.toString(),
+                                    ProviderTypes.GOOGLE.name
+                                )
+                            } else {
+                                showAlert()
+                            }
+                        }
+                }
             } catch (e: ApiException) {
-                // Google Sign In failed, update UI appropriately
-                Log.w(TAG, "Google sign in failed", e)
-                // ...
+                showAlert()
             }
         }
     }
 
-    private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
-        try {
-            val account = completedTask.getResult(ApiException::class.java)
+    fun checaCampos(): Boolean {
+        return binding.textEmail.text!!.isNotEmpty()
+                && binding.textPassword.text!!.isNotEmpty()
+    }
 
-            // Signed in successfully, show authenticated UI.
-            if (account != null) {
-                callMain(account.email.toString())
-            }
-        } catch (e: ApiException) {
-            // The ApiException status code indicates the detailed failure reason.
-            // Please refer to the GoogleSignInStatusCodes class reference for more information.
-            Log.w(TAG, "signInResult:failed code=" + e.statusCode)
-            return
+    private fun showAlert() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(
+            "Error"
+        )
+        builder.setMessage("Erro ao tentar logar!")
+        builder.setPositiveButton(
+            "Aceitar", null
+        )
+        val dialog = builder.create()
+        dialog.show()
+    }
+
+    fun showHome(email: String, nome: String, urlPhoto: String, provider: String) {
+        val homeIntent = Intent(this, HomeActivity::class.java).apply {
+            putExtra("email", email)
+            putExtra("nome", nome)
+            putExtra("urlPhoto", urlPhoto)
+            putExtra("provider", provider)
         }
+        startActivity(homeIntent)
     }
 
-
-    private fun connect() {
-        auth = FirebaseAuth.getInstance()
-        gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build()
-        googleSignInClient = GoogleSignIn.getClient(this, gso)
-    }
-
-    private fun updateUI() {
-        val account = GoogleSignIn.getLastSignedInAccount(this)
-        val currentUser = auth.currentUser
-        if (account != null) {
-            callMain(account.email.toString())
-        } else
-            if (currentUser != null) {
-                callMain(currentUser.email.toString())
-            }
-    }
-
-    fun showMsg(msg: String) {
-        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
-    }
-
-    fun callRegister() {
+    fun showRegister() {
         val intent = Intent(this, CadastroActivity::class.java)
         startActivity(intent)
-    }
-
-    fun callMain(email: String) {
-        val intent = Intent(this, HomeActivity::class.java)
-        intent.putExtra("email", email)
-        startActivity(intent)
-    }
-
-    fun getDataFieldsLogin() {
-        email = binding.textEmail.text.toString()
-        password = binding.textPassword.text.toString()
-    }
-
-    private fun checaDados(): Boolean {
-        return email.isNotEmpty() && password.isNotEmpty()
-    }
-
-
-    fun signIn(email: String, password: String) {
-        FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    val firebaseUser: FirebaseUser = task.result?.user!!
-                    val emailAddress = firebaseUser.email
-                    showMsg("Login realizado com sucesso!")
-                    callMain(emailAddress.toString())
-                } else {
-                    showMsg(task.exception.toString())
-                }
-            }
-    }
-
-    private fun signInGoogle() {
-        val signInIntent = googleSignInClient.signInIntent
-        startActivityForResult(signInIntent, RC_SIGN_IN)
-    }
-
-    override fun onClick(v: View?) {
-        when (v!!.id) {
-            R.id.button_login -> {
-                getDataFieldsLogin()
-                if (checaDados()) {
-                    signIn(email, password)
-                } else {
-                    showMsg("Preencha todos os dados")
-                }
-            }
-            R.id.imageViewGoogle -> signInGoogle()
-            R.id.textView_criar_conta -> callRegister()
-        }
-    }
-
-    companion object {
-        private const val TAG = "LOGIN_FIRE"
-        private const val RC_SIGN_IN = 9001
     }
 }

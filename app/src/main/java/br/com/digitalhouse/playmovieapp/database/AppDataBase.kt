@@ -35,20 +35,3 @@ abstract class AppDataBase : RoomDatabase() {
 
     }
 }
-//    operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
-//        instance ?: buildDatabase(context).also { instance = it }
-//    }
-//
-//    private fun buildDatabase(context: Context) = Room.databaseBuilder(
-//        context,
-//        AppDataBase::class.java, "play_movie_app.db"
-//    ).build()
-//        @Synchronized
-//        fun getInstance(context: Context): AppDataBase {
-//            if (instance == null) {
-//                instance = Room.databaseBuilder(
-//                    context.applicationContext, AppDataBase::class.java, "play_movie_app.db"
-//                ).build()
-//            }
-//            return instance as AppDataBase
-//        }

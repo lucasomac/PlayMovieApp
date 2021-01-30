@@ -74,18 +74,32 @@ dependencies {
     //Dependência Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2-native-mt'
     // Navigation
-    implementation "androidx.navigation:navigation-fragment-ktx:2.3.2"
-    implementation "androidx.navigation:navigation-ui-ktx:2.3.2"
+    implementation "androidx.navigation:navigation-fragment-ktx:2.3.3"
+    implementation "androidx.navigation:navigation-ui-ktx:2.3.3"
     // Feature module Support
-    implementation "androidx.navigation:navigation-dynamic-features-fragment:2.3.2"
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:2.3.3"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     // Testing Navigation
-    androidTestImplementation "androidx.navigation:navigation-testing:2.3.2"
+    androidTestImplementation "androidx.navigation:navigation-testing:2.3.3"
     // Jetpack Compose Integration
     implementation "androidx.navigation:navigation-compose:1.0.0-alpha05"
     // Material
     implementation "com.google.android.material:material:1.2.1"
     // Fragment_KTX
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+
+    //Firebase
+    // Import the BoM for the Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:26.2.0')
+
+    // Declare the dependency for the Firebase Authentication library
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation 'com.google.firebase:firebase-auth:20.0.2'
+    // Also declare the dependency for the Google Play services library and specify its version
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+    //Facebook
+    implementation 'com.facebook.android:facebook-login:9.0.0'
 }
