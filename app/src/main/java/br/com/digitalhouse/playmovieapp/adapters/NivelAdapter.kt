@@ -35,12 +35,6 @@ class NivelAdapter(
         holder.nivelTextViewContagem.text = "${nivel.totalQuestionsAnswered}/${nivel.totalQuestions}"
         holder.nivelProgressBar.max = nivel.totalQuestions
         holder.nivelProgressBar.setProgress(nivel.totalQuestionsAnswered)
-
-//        if (listaNiveis.get(position - 1).id != 1) {
-//            if (listaNiveis.get(position - 1).progresso != listaNiveis.get(position - 1).qtdQuestions){
-//
-//            }
-//        }
     }
 
     override fun getItemCount(): Int = listaNiveis.size
@@ -74,5 +68,4 @@ class NivelAdapter(
         listaNiveis = niveis
         notifyDataSetChanged()
     }
-
 }

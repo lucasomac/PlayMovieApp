@@ -11,6 +11,7 @@ import br.com.digitalhouse.playmovieapp.domain.SubNivel
 
 class SubNiveisActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySubNiveisBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySubNiveisBinding.inflate(layoutInflater)
@@ -22,6 +23,7 @@ class SubNiveisActivity : AppCompatActivity() {
     private fun initToolbar() {
         val toolbar = binding.includeConfigToolbar.materialToolbar
         setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         setTitle(R.string.titulo_sub_nivel) // TODO provisório
     }
 

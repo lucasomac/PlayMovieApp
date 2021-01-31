@@ -88,6 +88,7 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
     fun setup(email: String, nome: String, urlPhoto: String, provider: String) {
         setFields(email, nome, urlPhoto)
         binding.btnPlay.setOnClickListener(this)
+        binding.btnLogoff.setOnClickListener(this)
     }
 
     override fun onStart() {
@@ -107,19 +108,19 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v!!.id) {
-//            R.id.btnPlay -> {
-//                val prefs =
-//                    getSharedPreferences(
-//                        R.string.prefs_file.toString(),
-//                        Context.MODE_PRIVATE
-//                    ).edit()
-//                prefs.apply()
-//                if (provider.equals("facebook", true)) {
-//                    LoginManager.getInstance().logOut()
-//                }
-//                FirebaseAuth.getInstance().signOut()
-//                onBackPressed()
-//            }
+            R.id.btnLogoff -> {
+                val prefs =
+                    getSharedPreferences(
+                        R.string.prefs_file.toString(),
+                        Context.MODE_PRIVATE
+                    ).edit()
+                prefs.apply()
+                if (provider.equals("facebook", true)) {
+                    LoginManager.getInstance().logOut()
+                }
+                FirebaseAuth.getInstance().signOut()
+                onBackPressed()
+            }
             R.id.btnPlay -> startActivity(Intent(this, NivelActivity::class.java))
             R.id.ivSugestao -> openMovieSugestion()
             R.id.ivLupa -> startActivity(Intent(this, PesquisaActivity::class.java))

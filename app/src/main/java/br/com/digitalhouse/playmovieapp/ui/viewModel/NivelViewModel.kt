@@ -12,8 +12,10 @@ class NivelViewModel() : ViewModel() {
     val allLevels = MutableLiveData<ArrayList<Level>>()
     var allQuestions = MutableLiveData<ArrayList<Question>>()
     var allQuestionsAnswered = MutableLiveData<ArrayList<String>>()
+    lateinit var email: String
 
-    fun start() {
+    fun start(_email: String) {
+        email = _email
         getAllQuestions()
     }
 
@@ -46,9 +48,14 @@ class NivelViewModel() : ViewModel() {
     }
 
     private fun getAllQuestionsAnswered() {
+        if (email == null)
+            throw IllegalArgumentException("NivelViewModel - email is null")
+
+        Log.i("NivelViewModel (7)", email)
+
         viewModelScope.launch {
             collectionUsers
-                .document("rodrigofelipejr2@gmail.com")
+                .document(email)
                 .collection("answered")
                 .get()
                 .addOnCompleteListener { task ->
