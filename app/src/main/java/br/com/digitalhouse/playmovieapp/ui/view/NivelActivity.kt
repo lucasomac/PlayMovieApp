@@ -40,7 +40,7 @@ class NivelActivity : AppCompatActivity(), NivelAdapter.NivelListener {
 
     override fun onClickNivel(item: Int) {
         val intent = Intent(this, SubNiveisActivity::class.java).apply {
-            putExtra("nivel", 1)
+            putExtra("nivel", adapter.getNivel(item))
         }
         startActivity(intent)
     }

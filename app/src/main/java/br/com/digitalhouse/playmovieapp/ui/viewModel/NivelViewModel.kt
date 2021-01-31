@@ -51,8 +51,6 @@ class NivelViewModel() : ViewModel() {
         if (email == null)
             throw IllegalArgumentException("NivelViewModel - email is null")
 
-        Log.i("NivelViewModel (7)", email)
-
         viewModelScope.launch {
             collectionUsers
                 .document(email)
@@ -79,9 +77,10 @@ class NivelViewModel() : ViewModel() {
     private fun getLevels() {
         var levels: List<Number> = allQuestions.value!!
             .distinctBy { it.level }
+            .sortedBy { it.level.toInt() }
             .map { it.level }
 
-        val listLevels = arrayListOf<Level>()
+        var listLevels = arrayListOf<Level>()
 
         levels.forEach {
             // nível atual
@@ -100,6 +99,7 @@ class NivelViewModel() : ViewModel() {
             val level = Level(currentLevel, totalQuestions, totalQuestionsAnswered)
             listLevels.add(level)
         }
+
         allLevels.value = listLevels
     }
 }

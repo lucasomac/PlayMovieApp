@@ -32,7 +32,8 @@ class NivelAdapter(
     override fun onBindViewHolder(holder: NivelAdapter.NivelViewHolder, position: Int) {
         val nivel = listaNiveis.get(position)
         holder.nivelTextViewNivel.text = "Nível ${nivel.level}"
-        holder.nivelTextViewContagem.text = "${nivel.totalQuestionsAnswered}/${nivel.totalQuestions}"
+        holder.nivelTextViewContagem.text =
+            "${nivel.totalQuestionsAnswered}/${nivel.totalQuestions}"
         holder.nivelProgressBar.max = nivel.totalQuestions
         holder.nivelProgressBar.setProgress(nivel.totalQuestionsAnswered)
     }
@@ -64,8 +65,10 @@ class NivelAdapter(
         }
     }
 
-    fun addNiveis (niveis: ArrayList<Level>) {
+    fun addNiveis(niveis: ArrayList<Level>) {
         listaNiveis = niveis
         notifyDataSetChanged()
     }
+
+    fun getNivel(index: Int): String = listaNiveis[index].level.toString()
 }
