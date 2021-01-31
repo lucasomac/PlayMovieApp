@@ -25,19 +25,23 @@ class NivelActivity : AppCompatActivity(), NivelAdapter.NivelListener {
         email = prefs.getString("email", null).toString()
 
         binding.rvNiveis.adapter = adapter
-
         viewModel.allLevels.observe(this) {
             adapter.addNiveis(it)
         }
 
         viewModel.start(email)
+        initToolbar()
+    }
 
+    private fun initToolbar() {
         setSupportActionBar(findViewById(R.id.appBarNivel))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-
     override fun onClickNivel(item: Int) {
-        startActivity(Intent(this@NivelActivity, SubNiveisActivity::class.java))
+        val intent = Intent(this, SubNiveisActivity::class.java).apply {
+            putExtra("nivel", 1)
+        }
+        startActivity(intent)
     }
 }
