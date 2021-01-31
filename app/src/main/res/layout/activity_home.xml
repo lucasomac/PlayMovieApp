@@ -9,35 +9,49 @@
 
     <ImageView
         android:id="@+id/btnConfigs"
-        android:layout_width="26dp"
-        android:layout_height="26dp"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
         android:layout_marginStart="26dp"
         android:layout_marginTop="16dp"
+        android:scaleType="centerCrop"
         android:src="@drawable/ic_baseline_settings_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
-    <!--    <include-->
-    <!--        layout="@layout/layout_slide_home_filme_dia"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginTop="16dp"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/include" />-->
 
     <ImageView
         android:id="@+id/btnAjustes"
         android:layout_width="26dp"
         android:layout_height="26dp"
+        android:layout_marginStart="22dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="26dp"
         android:src="@drawable/ic_settings_perfil"
+        app:layout_constraintHorizontal_bias="0.983"
+        app:layout_constraintStart_toEndOf="@id/btnConfigs"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/btnLogoff"
+        android:layout_width="28dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="26dp"
+        android:backgroundTint="@color/teal_700"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_exit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.983"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <!--    <include-->
+    <!--    layout="@layout/layout_slide_home_filme_dia"-->
+    <!--    android:layout_width="wrap_content"-->
+    <!--    android:layout_height="wrap_content"-->
+    <!--    android:layout_marginTop="16dp"-->
+    <!--    app:layout_constraintEnd_toEndOf="parent"-->
+    <!--    app:layout_constraintStart_toStartOf="parent"-->
+    <!--    app:layout_constraintTop_toBottomOf="@+id/include" />-->
 
     <include
         android:id="@+id/includePerfilResume"

@@ -9,12 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.domain.Desenvolvedor
 import br.com.digitalhouse.playmovieapp.domain.Nivel
+import br.com.digitalhouse.playmovieapp.domain.nivel.Level
 
 class NivelAdapter(
     val listener: NivelListener
 ) : RecyclerView.Adapter<NivelAdapter.NivelViewHolder>() {
 
-    private var listaNiveis = arrayListOf<Nivel>()
+    private var listaNiveis = arrayListOf<Level>()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -30,15 +31,11 @@ class NivelAdapter(
 
     override fun onBindViewHolder(holder: NivelAdapter.NivelViewHolder, position: Int) {
         val nivel = listaNiveis.get(position)
-        holder.nivelTextViewNivel.text = "Nídel ${nivel.id}"
-        holder.nivelTextViewContagem.text = "${nivel.progresso}/${nivel.qtdQuestions}"
-        holder.nivelProgressBar.max = nivel.qtdQuestions
-        holder.nivelProgressBar.setProgress(nivel.progresso)
-//        if (listaNiveis.get(position - 1).id != 1) {
-//            if (listaNiveis.get(position - 1).progresso != listaNiveis.get(position - 1).qtdQuestions){
-//
-//            }
-//        }
+        holder.nivelTextViewNivel.text = "Nível ${nivel.level}"
+        holder.nivelTextViewContagem.text =
+            "${nivel.totalQuestionsAnswered}/${nivel.totalQuestions}"
+        holder.nivelProgressBar.max = nivel.totalQuestions
+        holder.nivelProgressBar.setProgress(nivel.totalQuestionsAnswered)
     }
 
     override fun getItemCount(): Int = listaNiveis.size
@@ -68,9 +65,10 @@ class NivelAdapter(
         }
     }
 
-    fun addNiveis (niveis: ArrayList<Nivel>) {
+    fun addNiveis(niveis: ArrayList<Level>) {
         listaNiveis = niveis
         notifyDataSetChanged()
     }
 
+    fun getNivel(index: Int): String = listaNiveis[index].level.toString()
 }

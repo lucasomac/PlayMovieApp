@@ -24,6 +24,7 @@
             android:parentActivityName=".ui.view.SugestaoActivity" />
         <activity
             android:name=".ui.view.SubNiveisActivity"
+            android:parentActivityName=".ui.view.NivelActivity"
             android:theme="@style/Theme.PlayMovieApp" />
         <activity
             android:name=".ui.view.CadastroActivity"

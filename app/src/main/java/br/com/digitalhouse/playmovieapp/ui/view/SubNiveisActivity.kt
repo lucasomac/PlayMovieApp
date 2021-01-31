@@ -11,10 +11,16 @@ import br.com.digitalhouse.playmovieapp.domain.SubNivel
 
 class SubNiveisActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySubNiveisBinding
+    private lateinit var nivel : String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySubNiveisBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val bundle = intent.extras
+        nivel = bundle?.get("nivel") as String
+
         initToolbar()
         setValuesGridView()
     }
@@ -22,7 +28,8 @@ class SubNiveisActivity : AppCompatActivity() {
     private fun initToolbar() {
         val toolbar = binding.includeConfigToolbar.materialToolbar
         setSupportActionBar(toolbar)
-        setTitle(R.string.titulo_sub_nivel) // TODO provisório
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        setTitle("Nível $nivel")
     }
 
     private fun setValuesGridView() {
