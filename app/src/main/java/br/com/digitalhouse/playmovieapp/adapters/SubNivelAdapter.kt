@@ -1,69 +1,70 @@
 package br.com.digitalhouse.playmovieapp.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
 import android.widget.ImageView
+import androidx.recyclerview.widget.RecyclerView
+import br.com.digitalhouse.playmovieapp.BASE_URL_IMAGE
 import br.com.digitalhouse.playmovieapp.R
-import br.com.digitalhouse.playmovieapp.domain.SubNivel
+import br.com.digitalhouse.playmovieapp.domain.nivel.Question
+import com.bumptech.glide.Glide
 
-internal class SubNivelAdapter(
-    private val context: Context,
-    private val listSubNiveis: List<SubNivel>,
-) : BaseAdapter() {
+class SubNivelAdapter(
+    val listener: SubNivelListner
+) : RecyclerView.Adapter<SubNivelAdapter.SubNivelViewHolder>() {
+    private var listQuestions = arrayListOf<Question>()
 
-    private var layoutInflater: LayoutInflater? = null
-    private lateinit var imageViewSubNivel: ImageView
-    private lateinit var imageViewSubNivelOverlay: ImageView
-    private lateinit var imageViewSubNivelCheck: ImageView
-
-    override fun getCount(): Int = listSubNiveis.size
-
-    override fun getItem(position: Int): Any? {
-        return null
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): SubNivelAdapter.SubNivelViewHolder {
+        val itemView = LayoutInflater.from(parent.context).inflate(
+            R.layout.item_grid_sub_nivel,
+            parent,
+            false
+        )
+        return SubNivelViewHolder(itemView)
     }
 
-    override fun getItemId(position: Int): Long {
-        return 0
+    override fun onBindViewHolder(holder: SubNivelAdapter.SubNivelViewHolder, position: Int) {
+        val question = listQuestions.get(position)
+        Glide.with(holder.itemView.context).asBitmap().load(
+            "${BASE_URL_IMAGE}/original/${question.image}"
+        ).into(holder.imageViewCapa)
+
+        holder.imageViewOverlay.visibility = View.INVISIBLE
+        holder.imageViewCheck.visibility = View.INVISIBLE
     }
 
-    override fun getView(
-        position: Int,
-        convertView: View?,
-        parent: ViewGroup
-    ): View {
-        var convertView = convertView
-        val subNivel = listSubNiveis[position]
+    override fun getItemCount(): Int = listQuestions.size
 
-        if (layoutInflater == null) {
-            layoutInflater =
-                context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        }
-
-        if (convertView == null) {
-            convertView = layoutInflater!!.inflate(R.layout.item_grid_sub_nivel, null)
-        }
-
-        imageViewSubNivel = convertView!!.findViewById(R.id.imageView_sub_nivel)
-        imageViewSubNivelOverlay = convertView.findViewById(R.id.imageView_sub_nivel_overlay)
-        imageViewSubNivelCheck = convertView.findViewById(R.id.imageView_sub_nivel_check)
-
-        imageViewSubNivel.setImageResource(subNivel.urlImage)
-
-        if (subNivel.isComplete) {
-            imageViewSubNivelOverlay.visibility = View.VISIBLE;
-            imageViewSubNivelCheck.visibility = View.VISIBLE;
-        } else {
-            imageViewSubNivelOverlay.visibility = View.GONE;
-            imageViewSubNivelCheck.visibility = View.GONE;
-        }
-
-//        Glide.with(convertView.context).asBitmap()
-//            .load(listSubNiveis[position].urlImage)
-//            .into(imageViewSubNivel)
-
-        return convertView
+    interface SubNivelListner {
+        fun onClickNivel(item: Int)
     }
+
+    inner class SubNivelViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        View.OnClickListener {
+        var imageViewCapa: ImageView = itemView.findViewById(R.id.imageView_sub_nivel)
+        var imageViewOverlay: ImageView = itemView.findViewById(R.id.imageView_sub_nivel_overlay)
+        var imageViewCheck: ImageView = itemView.findViewById(R.id.imageView_sub_nivel_check)
+
+        init {
+            itemView.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+            val position = adapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                listener.onClickNivel(position)
+            }
+        }
+    }
+
+    fun addQuestion(questions: ArrayList<Question>) {
+        listQuestions = questions
+        notifyDataSetChanged()
+    }
+
+    fun getIdQuestion(index: Int): String = listQuestions[index].id.toString()
 }

@@ -34,3 +34,8 @@ data class Level(val level: Int, val totalQuestions: Int, val totalQuestionsAnsw
         return "Level(livel=$level, totalQuestions=$totalQuestions, totalQuestionsAnswered=$totalQuestionsAnswered)"
     }
 }
+
+data class SubLevel(val id: Int, val totalQuestions: Int, val totalQuestionsAnswered: Int) :
+    Serializable {
+
+}

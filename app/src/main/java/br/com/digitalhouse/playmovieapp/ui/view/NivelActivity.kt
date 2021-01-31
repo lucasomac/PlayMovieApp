@@ -12,9 +12,9 @@ import br.com.digitalhouse.playmovieapp.ui.viewModel.NivelViewModel
 
 class NivelActivity : AppCompatActivity(), NivelAdapter.NivelListener {
     private lateinit var binding: ActivityNiveisBinding
-    val viewModel: NivelViewModel by viewModels()
-    val adapter = NivelAdapter(this)
     lateinit var email: String
+    val adapter = NivelAdapter(this)
+    val viewModel: NivelViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

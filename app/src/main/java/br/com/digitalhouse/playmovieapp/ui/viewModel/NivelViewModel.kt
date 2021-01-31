@@ -14,6 +14,8 @@ class NivelViewModel() : ViewModel() {
     var allQuestionsAnswered = MutableLiveData<ArrayList<String>>()
     lateinit var email: String
 
+    val allQuestionsFiltered = MutableLiveData<ArrayList<Question>>()
+
     fun start(_email: String) {
         email = _email
         getAllQuestions()
@@ -73,7 +75,6 @@ class NivelViewModel() : ViewModel() {
         }
     }
 
-
     private fun getLevels() {
         var levels: List<Number> = allQuestions.value!!
             .distinctBy { it.level }
@@ -102,4 +103,21 @@ class NivelViewModel() : ViewModel() {
 
         allLevels.value = listLevels
     }
+
+    // ========================================
+
+    fun questionsFiltered(level: Int) {
+        val listQuestionsFiltered = arrayListOf<Question>()
+
+        listQuestionsFiltered.addAll(
+            allQuestions.value!!
+                .filter { it.level == level }
+                .sortedBy { it.level.toInt() }
+        )
+
+        Log.i("NivelViewModel (2)", listQuestionsFiltered.toString())
+
+        allQuestionsFiltered.value = listQuestionsFiltered
+    }
+
 }
