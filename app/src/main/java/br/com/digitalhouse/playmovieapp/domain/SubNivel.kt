@@ -2,8 +2,9 @@ package br.com.digitalhouse.playmovieapp.domain
 
 import java.io.Serializable
 
-data class SubNivel(val id: Int, val nivel: Int, val isComplete: Boolean, val urlImage: Int) :
-    Serializable
-
-//data class SubNivel(val id: Int, val nivel: Int, val isComplete: Boolean, val urlImage: String) :
-//    Serializable
+data class SubNivel(val id: String, val image: String, val answered: Boolean) :
+    Serializable {
+    override fun toString(): String {
+        return "SubNivel(id=$id, image='$image', answered=$answered)"
+    }
+}

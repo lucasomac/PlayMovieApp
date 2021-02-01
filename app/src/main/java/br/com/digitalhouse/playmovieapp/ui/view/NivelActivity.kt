@@ -13,7 +13,7 @@ import br.com.digitalhouse.playmovieapp.ui.viewModel.NivelViewModel
 
 class NivelActivity : AppCompatActivity(), NivelAdapter.NivelListener {
     private lateinit var binding: ActivityNiveisBinding
-    lateinit var email: String
+    private lateinit var email: String
     val adapter = NivelAdapter(this)
     val viewModel: NivelViewModel by viewModels()
 

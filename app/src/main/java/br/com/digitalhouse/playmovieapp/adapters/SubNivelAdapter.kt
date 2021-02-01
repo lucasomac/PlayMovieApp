@@ -7,17 +7,18 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.digitalhouse.playmovieapp.BASE_URL_IMAGE
 import br.com.digitalhouse.playmovieapp.R
+import br.com.digitalhouse.playmovieapp.domain.SubNivel
 import br.com.digitalhouse.playmovieapp.domain.nivel.Question
 import com.bumptech.glide.Glide
 
 class SubNivelAdapter(
-    val listener: SubNivelListner
+    val listener: SubNivelListner,
 ) : RecyclerView.Adapter<SubNivelAdapter.SubNivelViewHolder>() {
-    private var listQuestions = arrayListOf<Question>()
+    private var listSubNivel = arrayListOf<SubNivel>()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
-        viewType: Int
+        viewType: Int,
     ): SubNivelAdapter.SubNivelViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(
             R.layout.item_grid_sub_nivel,
@@ -28,16 +29,16 @@ class SubNivelAdapter(
     }
 
     override fun onBindViewHolder(holder: SubNivelAdapter.SubNivelViewHolder, position: Int) {
-        val question = listQuestions.get(position)
+        val subNivel = listSubNivel.get(position)
         Glide.with(holder.itemView.context).asBitmap()
-            .load("${BASE_URL_IMAGE}/original/${question.image}")
+            .load("${BASE_URL_IMAGE}/original/${subNivel.image}")
             .placeholder(R.drawable.progress_animation).into(holder.imageViewCapa)
 
-        holder.imageViewOverlay.visibility = View.INVISIBLE
-        holder.imageViewCheck.visibility = View.INVISIBLE
+        holder.imageViewOverlay.visibility = if (subNivel.answered) View.VISIBLE else View.INVISIBLE
+        holder.imageViewCheck.visibility = if (subNivel.answered) View.VISIBLE else View.INVISIBLE
     }
 
-    override fun getItemCount(): Int = listQuestions.size
+    override fun getItemCount(): Int = listSubNivel.size
 
     interface SubNivelListner {
         fun onClickNivel(item: Int)
@@ -61,10 +62,10 @@ class SubNivelAdapter(
         }
     }
 
-    fun addQuestion(questions: ArrayList<Question>) {
-        listQuestions = questions
+    fun addSubNivel(questions: ArrayList<SubNivel>) {
+        listSubNivel = questions
         notifyDataSetChanged()
     }
 
-    fun getIdQuestion(index: Int): String = listQuestions[index].id.toString()
+    fun getIdSubNivel(index: Int): String = listSubNivel[index].id.toString()
 }

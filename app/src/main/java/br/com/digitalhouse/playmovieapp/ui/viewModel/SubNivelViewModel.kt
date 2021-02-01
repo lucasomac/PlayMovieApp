@@ -4,24 +4,29 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import br.com.digitalhouse.playmovieapp.domain.SubNivel
 import br.com.digitalhouse.playmovieapp.domain.nivel.*
 import br.com.digitalhouse.playmovieapp.services.*
 import kotlinx.coroutines.launch
 
-class NivelViewModel() : ViewModel() {
-    val allLevels = MutableLiveData<ArrayList<Level>>()
+class SubNivelViewModel() : ViewModel() {
     var allQuestions = MutableLiveData<ArrayList<Question>>()
     var allQuestionsAnswered = MutableLiveData<ArrayList<String>>()
-    lateinit var email: String
+    val allQuestionsFiltered = MutableLiveData<ArrayList<SubNivel>>()
 
-    fun start(_email: String) {
-        email = _email
-        getAllQuestions()
+    private lateinit var email: String
+    private lateinit var level: Number
+
+    fun start(_level: String, _email: String) {
+        level = _level.toInt()
+        email = _email;
+        getAllQuestions();
     }
 
     private fun getAllQuestions() {
         viewModelScope.launch {
             collectionQuestions
+                .whereEqualTo("level", level)
                 .get()
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
@@ -37,20 +42,17 @@ class NivelViewModel() : ViewModel() {
                             listQuestions.add(question)
                         }
                         allQuestions.value = listQuestions
-                        Log.i("NivelViewModel (1)", allQuestions.value!!.size.toString())
-                        Log.i("NivelViewModel (1)", allQuestions.value.toString())
+                        Log.i("SubNivelViewModel (1)", allQuestions.value!!.size.toString())
+                        Log.i("SubNivelViewModel (1)", allQuestions.value.toString())
                         getAllQuestionsAnswered()
                     } else {
-                        Log.i("NivelViewModel", "ERROR.", task.exception)
+                        Log.i("SubNivelViewModel", "ERROR.", task.exception)
                     }
                 }
         }
     }
 
     private fun getAllQuestionsAnswered() {
-        if (email == null)
-            throw IllegalArgumentException("NivelViewModel - email is null")
-
         viewModelScope.launch {
             collectionUsers
                 .document(email)
@@ -63,42 +65,29 @@ class NivelViewModel() : ViewModel() {
                             listQuestionsAnswered.add(document.id.trim())
                         }
                         allQuestionsAnswered.value = listQuestionsAnswered
-                        Log.i("NivelViewModel (2)", allQuestionsAnswered.value!!.size.toString())
-                        Log.i("NivelViewModel (2)", allQuestionsAnswered.value.toString())
-                        getLevels()
+                        Log.i("SubNivelViewModel (2)", allQuestionsAnswered.value!!.size.toString())
+                        Log.i("SubNivelViewModel (2)", allQuestionsAnswered.value.toString())
+                        getAllQuestionsFiltered()
                     } else {
-                        Log.i("NivelViewModel", "ERROR.", task.exception)
+                        Log.i("SubNivelViewModel", "ERROR.", task.exception)
                     }
                 }
         }
     }
 
-    private fun getLevels() {
-        var levels: List<Number> = allQuestions.value!!
-            .distinctBy { it.level }
-            .sortedBy { it.level.toInt() }
-            .map { it.level }
+    private fun getAllQuestionsFiltered() {
+        val listAllQuestionsFiltered = arrayListOf<SubNivel>()
+        allQuestions.value!!.forEach {
+            val answered = allQuestionsAnswered.value!!.contains(it.id.trim())
 
-        var listLevels = arrayListOf<Level>()
+            val subLevel = SubNivel(
+                it.id.trim(),
+                it.image,
+                answered,
+            )
 
-        levels.forEach {
-            // nível atual
-            val currentLevel = it.toInt()
-
-            val allQuestionsFiltred = allQuestions.value!!
-                .filter { it.level.toInt() == currentLevel }
-
-            // total de perguntas
-            val totalQuestions = allQuestionsFiltred.size
-
-            // total de perguntas respondidas
-            val totalQuestionsAnswered = allQuestionsFiltred
-                .filter { allQuestionsAnswered.value!!.contains(it.id.trim()) }.size
-
-            val level = Level(currentLevel, totalQuestions, totalQuestionsAnswered)
-            listLevels.add(level)
+            listAllQuestionsFiltered.add(subLevel)
         }
-
-        allLevels.value = listLevels
+        allQuestionsFiltered.value = listAllQuestionsFiltered
     }
 }
