@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.navArgs
 import br.com.digitalhouse.playmovieapp.BASE_URL_IMAGE
+import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.databinding.ActivityDetalhesMovieBinding
 import br.com.digitalhouse.playmovieapp.domain.movie.Movie
 import br.com.digitalhouse.playmovieapp.getGenres
@@ -41,7 +42,7 @@ class DetalhesActivityMovie : AppCompatActivity() {
             if (movie != null) {
                 Glide.with(this).asBitmap().load(
                     "${BASE_URL_IMAGE}original${movie.backdrop_path}"
-                ).into(binding.imgCapaFilme)
+                ).placeholder(R.drawable.progress_animation).into(binding.imgCapaFilme)
                 binding.txtSinopseFilme.text = movie.overview
                 binding.txtNomeFilme.text = movie.title
                 binding.txtNotaFilme.text = movie.vote_average.toString()

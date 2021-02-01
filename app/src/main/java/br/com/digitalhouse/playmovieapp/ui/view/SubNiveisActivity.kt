@@ -1,6 +1,8 @@
 package br.com.digitalhouse.playmovieapp.ui.view
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import br.com.digitalhouse.playmovieapp.adapters.SubNivelAdapter
@@ -9,7 +11,7 @@ import br.com.digitalhouse.playmovieapp.ui.viewModel.NivelViewModel
 
 class SubNiveisActivity : AppCompatActivity(), SubNivelAdapter.SubNivelListner {
     private lateinit var binding: ActivitySubNiveisBinding
-    private lateinit var nivel : String
+    private lateinit var nivel: String
     val adapter = SubNivelAdapter(this)
     val viewModel: NivelViewModel by viewModels()
 
@@ -17,18 +19,16 @@ class SubNiveisActivity : AppCompatActivity(), SubNivelAdapter.SubNivelListner {
         super.onCreate(savedInstanceState)
         binding = ActivitySubNiveisBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         val bundle = intent.extras
-        nivel = bundle?.get("nivel") as String
-
-        initToolbar()
-
+        nivel = bundle?.get("nivel").toString()
+        Log.i("LEVLE", nivel)
         binding.gridViewSubNiveis.adapter = adapter
         viewModel.allQuestionsFiltered.observe(this) {
             adapter.addQuestion(it)
         }
-
-        viewModel.questionsFiltered(nivel.toInt())
+//        viewModel.questionsFiltered(nivel.toInt())
+        viewModel.startSubNivel(nivel.toInt())
+        initToolbar()
     }
 
     private fun initToolbar() {
@@ -38,28 +38,11 @@ class SubNiveisActivity : AppCompatActivity(), SubNivelAdapter.SubNivelListner {
         setTitle("Nível $nivel")
     }
 
-    private fun setValuesGridView() {
-
-//        binding.rvNiveis.adapter = adapter
-//
-//        viewModel.allQuestionsFiltered.observe(this) {
-//            adapter.addNiveis(it)
-//        }
-//
-//        viewModel.questionsFiltered(nivel.toInt())
-//
-//        val adapterSubNivel = SubNivelAdapter(this@SubNiveisActivity, listaSubNiveis)
-//        binding.gridViewSubNiveis.adapter = adapterSubNivel
-//
-//        binding.gridViewSubNiveis.onItemClickListener =
-//            AdapterView.OnItemClickListener { parent, view, position, id ->
-//                val intent = Intent(this@SubNiveisActivity, JogoActivity::class.java)
-////                intent.putExtra("EXTRA_DISH", restaurant.dishes[position])
-//                startActivity(intent)
-//            }
-    }
-
     override fun onClickNivel(item: Int) {
-        TODO("Not yet implemented")
+        val intentGame = Intent(this, JogoActivity::class.java).apply {
+            putExtra("numero", item)
+            putExtra("question", adapter.getIdQuestion(item))
+        }
+        startActivity(intentGame)
     }
 }

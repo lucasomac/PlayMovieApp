@@ -49,7 +49,7 @@ class MoviesAdapter(
         Glide.with(holder.itemView.context)
             .asBitmap()
             .load(BASE_URL_IMAGE + "original" + movie.poster_path)
-            .placeholder(R.mipmap.ic_launcher)
+            .placeholder(R.drawable.progress_animation)
             .transition(withCrossFade(factory))
             .into(holder.imgCapaFilme)
 //        else

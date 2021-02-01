@@ -29,9 +29,9 @@ class SubNivelAdapter(
 
     override fun onBindViewHolder(holder: SubNivelAdapter.SubNivelViewHolder, position: Int) {
         val question = listQuestions.get(position)
-        Glide.with(holder.itemView.context).asBitmap().load(
-            "${BASE_URL_IMAGE}/original/${question.image}"
-        ).into(holder.imageViewCapa)
+        Glide.with(holder.itemView.context).asBitmap()
+            .load("${BASE_URL_IMAGE}/original/${question.image}")
+            .placeholder(R.drawable.progress_animation).into(holder.imageViewCapa)
 
         holder.imageViewOverlay.visibility = View.INVISIBLE
         holder.imageViewCheck.visibility = View.INVISIBLE

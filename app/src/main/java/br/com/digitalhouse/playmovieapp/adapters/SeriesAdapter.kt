@@ -33,6 +33,7 @@ class SeriesAdapter(
         holder.txtAnoFilmePesquisa.text = serie.first_air_date.substring(0, 4)
         Glide.with(holder.itemView.context).asBitmap()
             .load(BASE_URL_IMAGE + "original" + serie.poster_path)
+            .placeholder(R.drawable.progress_animation)
             .into(holder.imgCapaFilme)
 //        Glide.with(holder.itemView.context).asBitmap()
 //            .load(BASE_URL_IMAGE + "original" + serie.backdrop_path)

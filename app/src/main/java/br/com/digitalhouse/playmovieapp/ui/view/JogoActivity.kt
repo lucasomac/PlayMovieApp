@@ -11,7 +11,6 @@ class JogoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityJogoBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         initToolbar()
     }
 

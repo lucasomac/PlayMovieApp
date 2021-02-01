@@ -21,6 +21,10 @@ class NivelViewModel() : ViewModel() {
         getAllQuestions()
     }
 
+    fun startSubNivel(level: Int) {
+        questionsFiltered(level)
+    }
+
     private fun getAllQuestions() {
         viewModelScope.launch {
             collectionQuestions
@@ -108,16 +112,26 @@ class NivelViewModel() : ViewModel() {
 
     fun questionsFiltered(level: Int) {
         val listQuestionsFiltered = arrayListOf<Question>()
-
-        listQuestionsFiltered.addAll(
-            allQuestions.value!!
-                .filter { it.level == level }
-                .sortedBy { it.level.toInt() }
-        )
-
-        Log.i("NivelViewModel (2)", listQuestionsFiltered.toString())
-
-        allQuestionsFiltered.value = listQuestionsFiltered
+        collectionQuestions
+            .get()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    for (document in task.result!!) {
+                        val question = Question(
+                            document.id as String,
+                            document.data["level"] as Number,
+                            document.data["title"] as String,
+                            document.data["image"] as String,
+                            document.data["overview"] as String,
+                        )
+                        listQuestionsFiltered.add(question)
+                    }
+                    var filtradas = listQuestionsFiltered.filter { it.level == level }
+                    Log.i("NVMW", filtradas.toString())
+                    allQuestionsFiltered.value = ArrayList(filtradas)
+                } else {
+                    Log.i("NivelViewModel", "ERROR.", task.exception)
+                }
+            }
     }
-
 }
