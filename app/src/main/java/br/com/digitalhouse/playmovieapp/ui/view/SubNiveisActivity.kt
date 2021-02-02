@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import br.com.digitalhouse.playmovieapp.R
@@ -49,10 +50,19 @@ class SubNiveisActivity : AppCompatActivity(), SubNivelAdapter.SubNivelListner {
     }
 
     override fun onClickNivel(item: Int) {
-        val intentGame = Intent(this, JogoActivity::class.java).apply {
-            putExtra("numero", item)
-            putExtra("question", adapter.getIdSubNivel(item))
+        val id = adapter.getIdSubNivel(item)
+        if (id.isNotEmpty()) {
+            val intentGame = Intent(this, JogoActivity::class.java).apply {
+                putExtra("id", id)
+                putExtra("totalQuestions", viewModel.allQuestions.value!!.size)
+            }
+            startActivity(intentGame)
+        } else {
+            Toast.makeText(
+                applicationContext,
+                "Questão já respondida",
+                Toast.LENGTH_LONG
+            ).show()
         }
-        startActivity(intentGame)
     }
 }

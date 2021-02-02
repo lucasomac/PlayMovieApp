@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.digitalhouse.playmovieapp.BASE_URL_IMAGE
 import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.domain.SubNivel
-import br.com.digitalhouse.playmovieapp.domain.nivel.Question
 import com.bumptech.glide.Glide
 
 class SubNivelAdapter(
@@ -30,6 +29,7 @@ class SubNivelAdapter(
 
     override fun onBindViewHolder(holder: SubNivelAdapter.SubNivelViewHolder, position: Int) {
         val subNivel = listSubNivel.get(position)
+
         Glide.with(holder.itemView.context).asBitmap()
             .load("${BASE_URL_IMAGE}/original/${subNivel.image}")
             .placeholder(R.drawable.progress_animation).into(holder.imageViewCapa)
@@ -67,5 +67,7 @@ class SubNivelAdapter(
         notifyDataSetChanged()
     }
 
-    fun getIdSubNivel(index: Int): String = listSubNivel[index].id.toString()
+    fun getIdSubNivel(index: Int): String {
+        return if (!listSubNivel[index].answered) listSubNivel[index].id else ""
+    }
 }
