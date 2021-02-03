@@ -51,8 +51,10 @@ class SubNiveisActivity : AppCompatActivity(), SubNivelAdapter.SubNivelListner {
 
     override fun onClickNivel(item: Int) {
         val id = adapter.getIdSubNivel(item)
-        if (id.isNotEmpty()) {
+        val idImage = adapter.getImageSubNivel(item)
+        if (idImage.isNotEmpty()) {
             val intentGame = Intent(this, JogoActivity::class.java).apply {
+                putExtra("image", idImage)
                 putExtra("id", id)
                 putExtra("totalQuestions", viewModel.allQuestions.value!!.size)
             }

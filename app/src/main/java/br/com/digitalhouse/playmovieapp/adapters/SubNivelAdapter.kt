@@ -67,7 +67,11 @@ class SubNivelAdapter(
         notifyDataSetChanged()
     }
 
-    fun getIdSubNivel(index: Int): String {
-        return if (!listSubNivel[index].answered) listSubNivel[index].id else ""
+    fun getIdSubNivel(index: Int): Int {
+        return if (!listSubNivel[index].answered) index + 1 else 0
+    }
+
+    fun getImageSubNivel(index: Int): String {
+        return if (!listSubNivel[index].answered) listSubNivel[index].image else ""
     }
 }
