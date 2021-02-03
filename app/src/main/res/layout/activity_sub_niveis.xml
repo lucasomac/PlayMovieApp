@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary"
     tools:context=".ui.view.SubNiveisActivity">
 
     <include
@@ -25,17 +26,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/include_config_toolbar">
 
-        <br.com.digitalhouse.playmovieapp.helpers.WrappingGridView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/gridViewSubNiveis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingVertical="@dimen/padding_medium"
-            android:layout_marginHorizontal="@dimen/margin_tiny"
-            android:gravity="center"
-            android:horizontalSpacing="10dp"
-            android:numColumns="3"
-            android:paddingHorizontal="0dp"
-            android:verticalSpacing="@dimen/margin_tiny" />
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+            app:layout_constraintVertical_bias="0.0"
+            app:spanCount="3"
+            tools:listitem="@layout/item_grid_sub_nivel" />
+
     </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

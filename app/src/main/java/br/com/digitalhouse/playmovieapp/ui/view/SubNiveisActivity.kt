@@ -1,17 +1,24 @@
 package br.com.digitalhouse.playmovieapp.ui.view
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.AdapterView
+import android.util.Log
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.adapters.SubNivelAdapter
 import br.com.digitalhouse.playmovieapp.databinding.ActivitySubNiveisBinding
-import br.com.digitalhouse.playmovieapp.domain.SubNivel
+import br.com.digitalhouse.playmovieapp.ui.viewModel.NivelViewModel
+import br.com.digitalhouse.playmovieapp.ui.viewModel.SubNivelViewModel
 
-class SubNiveisActivity : AppCompatActivity() {
+class SubNiveisActivity : AppCompatActivity(), SubNivelAdapter.SubNivelListner {
     private lateinit var binding: ActivitySubNiveisBinding
-    private lateinit var nivel : String
+    private lateinit var nivel: String
+    private lateinit var email: String
+    val adapter = SubNivelAdapter(this)
+    val viewModel: SubNivelViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,10 +26,20 @@ class SubNiveisActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val bundle = intent.extras
-        nivel = bundle?.get("nivel") as String
+        nivel = bundle?.get("nivel").toString()
 
+        binding.gridViewSubNiveis.adapter = adapter
+        viewModel.allQuestionsFiltered.observe(this) {
+            adapter.addSubNivel(it)
+        }
+
+        //viewModel = ViewModelProvider(this).get(NivelViewModel::class.java)
+
+        val prefs = getSharedPreferences(R.string.prefs_file.toString(), Context.MODE_PRIVATE)
+        email = prefs.getString("email", null).toString()
+
+        viewModel.start(nivel, email)
         initToolbar()
-        setValuesGridView()
     }
 
     private fun initToolbar() {
@@ -32,28 +49,22 @@ class SubNiveisActivity : AppCompatActivity() {
         setTitle("Nível $nivel")
     }
 
-    private fun setValuesGridView() {
-        var listaSubNiveis: ArrayList<SubNivel> = arrayListOf()
-
-        for (i in 1..15) {
-            listaSubNiveis.add(
-                SubNivel(
-                    99,
-                    1,
-                    i % 2 == 0,
-                    R.drawable.sample_filme_cover
-                )
-            )
-        }
-
-        val adapterSubNivel = SubNivelAdapter(this@SubNiveisActivity, listaSubNiveis)
-        binding.gridViewSubNiveis.adapter = adapterSubNivel
-
-        binding.gridViewSubNiveis.onItemClickListener =
-            AdapterView.OnItemClickListener { parent, view, position, id ->
-                val intent = Intent(this@SubNiveisActivity, JogoActivity::class.java)
-//                intent.putExtra("EXTRA_DISH", restaurant.dishes[position])
-                startActivity(intent)
+    override fun onClickNivel(item: Int) {
+        val id = adapter.getIdSubNivel(item)
+        val idImage = adapter.getImageSubNivel(item)
+        if (idImage.isNotEmpty()) {
+            val intentGame = Intent(this, JogoActivity::class.java).apply {
+                putExtra("image", idImage)
+                putExtra("id", id)
+                putExtra("totalQuestions", viewModel.allQuestions.value!!.size)
             }
+            startActivity(intentGame)
+        } else {
+            Toast.makeText(
+                applicationContext,
+                "Questão já respondida",
+                Toast.LENGTH_LONG
+            ).show()
+        }
     }
 }

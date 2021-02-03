@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import br.com.digitalhouse.playmovieapp.BASE_URL_IMAGE
-import br.com.digitalhouse.playmovieapp.ui.view.FilmeDiaFragmentDirections
+import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.databinding.FragmentFilmeDiaHomeBinding
 import br.com.digitalhouse.playmovieapp.domain.movie.Result
 import br.com.digitalhouse.playmovieapp.getGenres
@@ -58,6 +58,7 @@ class FilmeDiaFragment : Fragment() {
             else
                 Glide.with(this).asBitmap()
                     .load(BASE_URL_IMAGE + "original" + filme.poster_path)
+                    .placeholder(R.drawable.progress_animation)
                     .into(binding.filmeImage)
             binding.tvNomeFilme.text = filme.title
             val generos = arrayListOf<String>()
