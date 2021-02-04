@@ -3,6 +3,8 @@ package br.com.digitalhouse.playmovieapp.ui.view
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.ui.window.Dialog
+import androidx.navigation.findNavController
 import br.com.digitalhouse.playmovieapp.BASE_URL_IMAGE
 import br.com.digitalhouse.playmovieapp.R
 import br.com.digitalhouse.playmovieapp.databinding.ActivityJogoBinding
@@ -31,6 +33,11 @@ class JogoActivity : AppCompatActivity() {
                 .placeholder(R.drawable.progress_animation).into(binding.capaImage)
         }
         viewModdel.getQuestion(image)
+        binding.btnResposta.setOnClickListener {
+            if (binding.tvResposta.text.toString().equals(viewModdel.question.value?.title)) {
+
+            }
+        }
     }
 
     private fun initToolbar() {
