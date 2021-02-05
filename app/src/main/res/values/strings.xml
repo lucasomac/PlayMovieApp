@@ -104,4 +104,5 @@
 
     <string name="prefs_file">br.com.digitalhouse.playmovieapp.PREFERENCE.FILEE.KEY</string>
     <string name="responder">RESPOSTA</string>
+    <string name="dica">OBTER DICA</string>
 </resources>
