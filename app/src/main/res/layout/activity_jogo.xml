@@ -16,29 +16,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView_clock"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="@dimen/margin_medium"
-        android:layout_marginRight="@dimen/margin_tiny"
-        app:layout_constraintEnd_toStartOf="@id/textView_time"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/include_config_toolbar"
-        app:srcCompat="@drawable/ic_clock" />
-
-    <TextView
-        android:id="@+id/textView_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0:23s"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@id/imageView_clock"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnDica"
+        style="@style/Theme.PlayMovieApp.MaterialButton.Default"
+        android:layout_width="0dp"
+        android:text="@string/dica"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toTopOf="@id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/imageView_clock"
-        app:layout_constraintTop_toTopOf="@id/imageView_clock" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/include_config_toolbar" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -49,7 +36,7 @@
         app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView_clock">
+        app:layout_constraintTop_toBottomOf="@id/btnDica">
 
         <ImageView
             android:id="@+id/capaImage"
@@ -60,35 +47,48 @@
 
     </androidx.cardview.widget.CardView>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_email"
-        style="@style/Theme.PlayMovieApp.TextInputLayout"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn01"
+        style="@style/Theme.PlayMovieApp.MaterialButton.Default"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:theme="@style/Theme.PlayMovieApp.TextInputLayout.Custom"
+        android:text="@string/responder"
+        android:textAllCaps="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView"
-        app:layout_constraintWidth_max="@dimen/max_text_input_layout">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tvResposta"
-            style="@style/Theme.PlayMovieApp.TextInputEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:imeOptions="actionNext"
-            android:inputType="textCapSentences" />
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintWidth_percent="0.5" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnResposta"
+        android:id="@+id/btn02"
         style="@style/Theme.PlayMovieApp.MaterialButton.Default"
         android:layout_width="0dp"
         android:text="@string/responder"
         android:textAllCaps="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_email"
+        app:layout_constraintTop_toBottomOf="@+id/btn01"
+        app:layout_constraintWidth_percent="0.5" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn03"
+        style="@style/Theme.PlayMovieApp.MaterialButton.Default"
+        android:layout_width="0dp"
+        android:text="@string/responder"
+        android:textAllCaps="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn02"
+        app:layout_constraintWidth_percent="0.5" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn04"
+        style="@style/Theme.PlayMovieApp.MaterialButton.Default"
+        android:layout_width="0dp"
+        android:text="@string/responder"
+        android:textAllCaps="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn03"
         app:layout_constraintWidth_percent="0.5" />
 </androidx.constraintlayout.widget.ConstraintLayout>

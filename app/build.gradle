@@ -82,7 +82,7 @@ dependencies {
     // Testing Navigation
     androidTestImplementation "androidx.navigation:navigation-testing:2.3.3"
     // Jetpack Compose Integration
-    implementation "androidx.navigation:navigation-compose:1.0.0-alpha05"
+    implementation "androidx.navigation:navigation-compose:1.0.0-alpha06"
     // Material
     implementation "com.google.android.material:material:1.2.1"
     // Fragment_KTX

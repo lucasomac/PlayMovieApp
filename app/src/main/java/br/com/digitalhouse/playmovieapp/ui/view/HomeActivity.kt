@@ -114,6 +114,7 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
                         R.string.prefs_file.toString(),
                         Context.MODE_PRIVATE
                     ).edit()
+                prefs.clear()
                 prefs.apply()
                 if (provider.equals("facebook", true)) {
                     LoginManager.getInstance().logOut()

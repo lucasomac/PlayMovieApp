@@ -8,6 +8,9 @@ data class Question(
     val title: String,
     val image: String,
     val overview: String,
+    val optionA: String,
+    val optionB: String,
+    val optionC: String,
 ) :
     Serializable {
     override fun toString(): String {
@@ -20,4 +23,7 @@ data class Level(val level: Int, val totalQuestions: Int, val totalQuestionsAnsw
     override fun toString(): String {
         return "Level(livel=$level, totalQuestions=$totalQuestions, totalQuestionsAnswered=$totalQuestionsAnswered)"
     }
+
 }
+
+data class QuestionAnswered(val attempts: Int, val score: Int) : Serializable

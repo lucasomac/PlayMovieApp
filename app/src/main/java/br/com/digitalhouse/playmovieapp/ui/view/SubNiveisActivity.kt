@@ -32,14 +32,16 @@ class SubNiveisActivity : AppCompatActivity(), SubNivelAdapter.SubNivelListner {
         viewModel.allQuestionsFiltered.observe(this) {
             adapter.addSubNivel(it)
         }
-
-        //viewModel = ViewModelProvider(this).get(NivelViewModel::class.java)
-
         val prefs = getSharedPreferences(R.string.prefs_file.toString(), Context.MODE_PRIVATE)
         email = prefs.getString("email", null).toString()
 
         viewModel.start(nivel, email)
         initToolbar()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.start(nivel, email)
     }
 
     private fun initToolbar() {
@@ -51,11 +53,11 @@ class SubNiveisActivity : AppCompatActivity(), SubNivelAdapter.SubNivelListner {
 
     override fun onClickNivel(item: Int) {
         val id = adapter.getIdSubNivel(item)
-        val idImage = adapter.getImageSubNivel(item)
-        if (idImage.isNotEmpty()) {
+        Log.i("ID", id.toString())
+        if (adapter.isAnswered(item)) {
             val intentGame = Intent(this, JogoActivity::class.java).apply {
-                putExtra("image", idImage)
                 putExtra("id", id)
+                putExtra("number", item)
                 putExtra("totalQuestions", viewModel.allQuestions.value!!.size)
             }
             startActivity(intentGame)

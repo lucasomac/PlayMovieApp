@@ -38,6 +38,9 @@ class SubNivelViewModel() : ViewModel() {
                                 document.data["title"] as String,
                                 document.data["image"] as String,
                                 document.data["overview"] as String,
+                                document.data["optionA"] as String,
+                                document.data["optionB"] as String,
+                                document.data["optionC"] as String
                             )
                             listQuestions.add(question)
                         }
