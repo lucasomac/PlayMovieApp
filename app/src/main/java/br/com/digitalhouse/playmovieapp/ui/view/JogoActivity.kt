@@ -1,11 +1,13 @@
 package br.com.digitalhouse.playmovieapp.ui.view
 
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.ui.window.Dialog
 import androidx.core.content.ContextCompat
@@ -64,6 +66,7 @@ class JogoActivity : AppCompatActivity() {
         }
         binding.btnDica.setOnClickListener {
             tentativas++
+            exibeDialog(viewModdel.question.value!!.overview)
         }
     }
 
@@ -95,5 +98,21 @@ class JogoActivity : AppCompatActivity() {
         setSupportActionBar(binding.includeConfigToolbar.materialToolbar)
         setTitle("Pergunta ${numero} de ${totalQuestions}")
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    fun exibeDialog(msg: String) {
+        val alerta: AlertDialog
+        //Cria o gerador do AlertDialog
+        var builder = AlertDialog.Builder(this);
+        //define o titulo
+        builder.setTitle("DICA");
+        //define a mensagem
+        builder.setMessage(msg)
+            .setPositiveButton("OK", DialogInterface.OnClickListener { dialog, id ->
+                // FIRE ZE MISSILES!
+            })
+        alerta = builder.create();
+        //Exibe
+        alerta.show();
     }
 }
