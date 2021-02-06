@@ -86,6 +86,7 @@ class LoginActivity : AppCompatActivity() {
                         override fun onSuccess(result: LoginResult?) {
                             result?.let {
                                 val token = it.accessToken
+                                val profile = it.accessToken.applicationId
                                 val credential =
                                     FacebookAuthProvider.getCredential(token.token)
                                 FirebaseAuth.getInstance().signInWithCredential(credential)
@@ -115,8 +116,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        callbackManager.onActivityResult(requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)
+        callbackManager.onActivityResult(requestCode, resultCode, data)
         if (requestCode == GOOGLE_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {

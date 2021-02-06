@@ -99,9 +99,11 @@
     </string>
     <string name="nodata">NO DATA</string>
     <string name="nodate">XXXX</string>
-    <string name="facebook_app_id">401441707765801</string>
-    <string name="fb_login_protocol_scheme">fb401441707765801</string>
     <string name="prefs_file">br.com.digitalhouse.playmovieapp.PREFERENCE.FILEE.KEY</string>
     <string name="responder">RESPOSTA</string>
     <string name="dica">OBTER DICA</string>
+
+    <string name="facebook_app_id">2841656516116853</string>
+    <string name="fb_login_protocol_scheme">fb2841656516116853</string>
+
 </resources>
