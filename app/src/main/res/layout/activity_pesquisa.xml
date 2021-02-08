@@ -22,12 +22,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="28dp"
         android:hint="Buscar"
         android:textColor="@color/white"
         android:iconifiedByDefault="false"
-        android:queryHint="Pesquise"
         android:textColorHint="@color/white" />
 
 
@@ -35,7 +34,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginTop="32dp"
         android:text="@string/generos"
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -46,7 +46,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginTop="10dp"
         android:drawSelectorOnTop="true"
         android:spinnerMode="dropdown" />
 
@@ -54,6 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
+        android:layout_marginEnd="28dp"
         android:layout_marginTop="32dp"
         android:text="@string/categoria"
         android:textColor="@color/white"
@@ -65,7 +67,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginTop="10dp"
         android:drawSelectorOnTop="true"
         android:spinnerMode="dropdown" />
 
@@ -73,6 +76,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
+        android:layout_marginEnd="28dp"
         android:layout_marginTop="32dp"
         android:text="@string/nota_imdb"
         android:textColor="@color/white"
@@ -84,7 +88,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginTop="10dp"
         android:drawSelectorOnTop="true"
         android:spinnerMode="dropdown" />
 
@@ -104,16 +109,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginTop="10dp"
         android:drawSelectorOnTop="true"
         android:spinnerMode="dropdown" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="65dp"
+        android:layout_height="match_parent"
         android:layout_marginLeft="28dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="28dp">
+        android:layout_marginBottom="28dp"
+        android:layout_marginRight="28dp"
+        android:gravity="center">
 
         <TextView
             android:layout_width="0dp"
@@ -128,7 +135,8 @@
         <ImageButton
             android:id="@+id/btnSugestao"
             android:layout_width="65dp"
-            android:layout_height="match_parent"
+            android:layout_height="65dp"
+            android:layout_gravity="bottom"
             android:background="@drawable/ic_botao_sugestao"
             android:src="@drawable/ic_baseline_check_24" />
 

@@ -53,7 +53,7 @@
                 android:id="@+id/filme_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="fitXY"
+                android:scaleType="centerCrop"
                 android:src="@drawable/filme_dia" />
         </androidx.cardview.widget.CardView>
 
@@ -62,7 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/pading_car_home"
-            android:paddingTop="16dp"
+            android:paddingTop="20dp"
             android:paddingEnd="@dimen/pading_car_home"
             android:text="Clueless"
             android:textColor="@color/white"
@@ -73,6 +73,8 @@
             android:id="@+id/tvAnoFilme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/gray_acent"
+            android:layout_marginTop="10dp"
             android:paddingStart="@dimen/pading_car_home"
             android:paddingEnd="@dimen/pading_car_home"
             android:text="1995 - Romance/Comédia - 1h 40m"
@@ -87,6 +89,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:paddingStart="@dimen/pading_car_home"
             android:paddingEnd="@dimen/pading_car_home">
 

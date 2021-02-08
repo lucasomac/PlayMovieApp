@@ -75,8 +75,10 @@
         app:defaultNavHost="true"
         app:layout_constraintBottom_toTopOf="@id/bottom_Menu"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.426"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/includePerfilResume"
+        app:layout_constraintVertical_bias="0.504"
         app:navGraph="@navigation/nav_graph" />
 
     <androidx.constraintlayout.widget.ConstraintLayout

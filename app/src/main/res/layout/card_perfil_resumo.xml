@@ -25,7 +25,7 @@
                 android:id="@+id/ivFotoPerfilResumo"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
-                android:src="@drawable/perfil" />
+                android:src="@drawable/ic_baseline_person_24" />
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
@@ -48,7 +48,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="Pedro Silva"
+                    android:text="Player"
                     android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -58,7 +58,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="2131 pontos"
+                    android:text="0 pontos"
                     android:textColor="@color/secondary"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -67,6 +67,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/round_outline_level"
                     android:gravity="center">
 
@@ -74,7 +75,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="LVL 23"
+                        android:text="LVL 1"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textSize="12sp"

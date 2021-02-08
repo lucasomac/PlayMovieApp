@@ -91,7 +91,7 @@
         <item name="backgroundTint">@color/secondary</item>
         <item name="cornerRadius">8dp</item>
         <item name="android:layout_height">@dimen/height_default_button</item>
-        <item name="android:textSize">@dimen/font_size_4</item>
+        <item name="android:textSize">@dimen/font_size_2</item>
     </style>
 
     /*
