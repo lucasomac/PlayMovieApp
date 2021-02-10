@@ -10,19 +10,38 @@ import br.com.digitalhouse.playmovieapp.domain.Genre
 import br.com.digitalhouse.playmovieapp.domain.movie.Result
 import br.com.digitalhouse.playmovieapp.services.Repository
 import br.com.digitalhouse.playmovieapp.services.RepositoryRoom
+import br.com.digitalhouse.playmovieapp.services.collectionUsers
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 
 class HomeActivityViewModel(
     val repositoryRoom: RepositoryRoom? = null,
-    val repository: Repository
+    val repository: Repository,
 ) : ViewModel() {
     val genres = MutableLiveData<List<Genre>>()
     var movie = MutableLiveData<Result>()
+    var pontuacao = MutableLiveData<Int>()
 
     fun selectGenres() {
         viewModelScope.launch {
             genres.value = repositoryRoom?.selectAllGenreTask()
+        }
+    }
+
+    fun getPontuacao(email: String) {
+        viewModelScope.launch {
+            collectionUsers.document(email).collection("answered").get()
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        var pontos = 0
+                        for (document in task.result!!) {
+                            pontos += document.data["score"].toString().toInt()
+                        }
+                        pontuacao.value = pontos
+                    } else {
+                        Log.i("SubNivelViewModel", "ERROR.", task.exception)
+                    }
+                }
         }
     }
 
@@ -41,7 +60,6 @@ class HomeActivityViewModel(
                     it.results[Random.nextInt(0, it.results.size)]
                 )
             }
-
         }
     }
 }

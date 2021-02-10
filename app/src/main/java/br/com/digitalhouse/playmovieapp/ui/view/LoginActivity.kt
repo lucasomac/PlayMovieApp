@@ -23,7 +23,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private val GOOGLE_SIGN_IN = 100
-    private var callbackManager = CallbackManager.Factory.create()
+//    private var callbackManager = CallbackManager.Factory.create()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -76,48 +76,48 @@ class LoginActivity : AppCompatActivity() {
             googleClient.signOut()
             startActivityForResult(googleClient.signInIntent, GOOGLE_SIGN_IN)
         }
-        binding.includeSocialNetworksLogin.imageFace.setOnClickListener {
-            LoginManager.getInstance()
-                .logInWithReadPermissions(this,
-                    listOf("public_profile", "email"))
-            LoginManager.getInstance()
-                .registerCallback(callbackManager,
-                    object : FacebookCallback<LoginResult> {
-                        override fun onSuccess(result: LoginResult?) {
-                            result?.let {
-                                val token = it.accessToken
-                                val profile = it.accessToken.applicationId
-                                val credential =
-                                    FacebookAuthProvider.getCredential(token.token)
-                                FirebaseAuth.getInstance().signInWithCredential(credential)
-                                    .addOnCompleteListener {
-                                        if (it.isSuccessful) {
-                                            showHome(
-                                                it.result?.user?.email.toString(),
-                                                it.result?.user?.displayName.toString(),
-                                                it.result?.user?.photoUrl.toString(),
-                                                ProviderTypes.FACEBOOK.name
-                                            )
-                                        } else {
-                                            showAlert()
-                                        }
-                                    }
-                            }
-                        }
-
-                        override fun onCancel() {
-                        }
-
-                        override fun onError(error: FacebookException?) {
-                            showAlert()
-                        }
-                    })
-        }
+//        binding.includeSocialNetworksLogin.imageFace.setOnClickListener {
+//            LoginManager.getInstance()
+//                .logInWithReadPermissions(this,
+//                    listOf("public_profile", "email"))
+//            LoginManager.getInstance()
+//                .registerCallback(callbackManager,
+//                    object : FacebookCallback<LoginResult> {
+//                        override fun onSuccess(result: LoginResult?) {
+//                            result?.let {
+//                                val token = it.accessToken
+//                                val profile = it.accessToken.applicationId
+//                                val credential =
+//                                    FacebookAuthProvider.getCredential(token.token)
+//                                FirebaseAuth.getInstance().signInWithCredential(credential)
+//                                    .addOnCompleteListener {
+//                                        if (it.isSuccessful) {
+//                                            showHome(
+//                                                it.result?.user?.email.toString(),
+//                                                it.result?.user?.displayName.toString(),
+//                                                it.result?.user?.photoUrl.toString(),
+//                                                ProviderTypes.FACEBOOK.name
+//                                            )
+//                                        } else {
+//                                            showAlert()
+//                                        }
+//                                    }
+//                            }
+//                        }
+//
+//                        override fun onCancel() {
+//                        }
+//
+//                        override fun onError(error: FacebookException?) {
+//                            showAlert()
+//                        }
+//                    })
+//        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        callbackManager.onActivityResult(requestCode, resultCode, data)
+//        callbackManager.onActivityResult(requestCode, resultCode, data)
         if (requestCode == GOOGLE_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {

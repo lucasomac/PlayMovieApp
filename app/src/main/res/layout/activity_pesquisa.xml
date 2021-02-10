@@ -127,6 +127,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_weight="1"
+            android:visibility="invisible"
             android:text="@string/limpar_filtros"
             android:textColor="#8B8B8B"
             android:textSize="14sp"

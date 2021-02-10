@@ -1,9 +1,12 @@
 package br.com.digitalhouse.playmovieapp.ui.view
 
+import android.graphics.text.LineBreaker.JUSTIFICATION_MODE_INTER_WORD
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -28,6 +31,7 @@ class DetalhesActivityMovie : AppCompatActivity() {
         }
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetalhesMovieBinding.inflate(layoutInflater)
@@ -44,6 +48,9 @@ class DetalhesActivityMovie : AppCompatActivity() {
                     "${BASE_URL_IMAGE}original${movie.backdrop_path}"
                 ).placeholder(R.drawable.progress_animation).into(binding.imgCapaFilme)
                 binding.txtSinopseFilme.text = movie.overview
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    binding.txtSinopseFilme.justificationMode = JUSTIFICATION_MODE_INTER_WORD
+                }
                 binding.txtNomeFilme.text = movie.title
                 binding.txtNotaFilme.text = movie.vote_average.toString()
                 val generos = arrayListOf<String>()

@@ -1,5 +1,8 @@
 package br.com.digitalhouse.playmovieapp.ui.view
 
+import android.graphics.text.LineBreaker
+import android.graphics.text.LineBreaker.JUSTIFICATION_MODE_INTER_WORD
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -38,6 +41,9 @@ class DetalhesActivitySerie : AppCompatActivity() {
                 "${BASE_URL_IMAGE}original${serie.backdrop_path}"
             ).into(binding.imgCapaSerie)
             binding.txtSinopseSerie.text = serie.overview
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                binding.txtSinopseSerie.justificationMode = JUSTIFICATION_MODE_INTER_WORD
+            }
             binding.txtNomeSerie.text = serie.name
             binding.txtNotaSerie.text = serie.vote_average.toString()
             val generos = arrayListOf<String>()

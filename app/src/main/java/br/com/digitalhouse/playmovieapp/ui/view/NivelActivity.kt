@@ -32,6 +32,16 @@ class NivelActivity : AppCompatActivity(), NivelAdapter.NivelListener {
         initToolbar()
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.start(email)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.start(email)
+    }
+
     private fun initToolbar() {
         setSupportActionBar(findViewById(R.id.appBarNivel))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

@@ -2,10 +2,7 @@ package br.com.digitalhouse.playmovieapp.ui.view
 
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Bundle
-import android.util.Base64
 import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
@@ -21,21 +18,15 @@ import br.com.digitalhouse.playmovieapp.services.repository
 import br.com.digitalhouse.playmovieapp.ui.viewModel.HomeActivityViewModel
 import com.bumptech.glide.Glide
 import com.facebook.login.LoginManager
-import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
-import java.security.MessageDigest
-import java.security.NoSuchAlgorithmException
 import kotlin.random.Random
 
 class HomeActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var db: AppDataBase
     private lateinit var repositoryRoom: RepositoryRoom
     private lateinit var binding: ActivityHomeBinding
-    private lateinit var auth: FirebaseAuth
     private lateinit var provider: String
-
+    private lateinit var email: String
     val viewModel by viewModels<HomeActivityViewModel> {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
@@ -50,10 +41,10 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(binding.root)
         val bundle = intent.extras
         val nome = bundle?.get("nome").toString()
-        val email = bundle?.get("email").toString()
+        email = bundle?.get("email").toString()
         val urlPhoto = bundle?.get("urlPhoto").toString()
         provider = bundle?.get("provider").toString()
-        setup(email ?: "", nome ?: "", urlPhoto ?: "", provider)
+        setup(nome, email, urlPhoto, provider)
         val prefs =
             getSharedPreferences(R.string.prefs_file.toString(), Context.MODE_PRIVATE).edit()
         prefs.putString("email", email)
@@ -61,19 +52,22 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
         prefs.putString("urlPhoto", urlPhoto)
         prefs.putString("provider", provider)
         prefs.apply()
-        auth = FirebaseAuth.getInstance()
         initBanco()
         repositoryRoom = RepositoryRoomImplementation(db.genreDAO())
+
         binding.btnPlay.setOnClickListener(this)
 
         binding.ivSugestao.setOnClickListener(this)
 
         binding.ivLupa.setOnClickListener(this)
 
-        binding.btnConfigs.setOnClickListener(this)
+//        binding.btnConfigs.setOnClickListener(this)
 
         binding.btnAjustes.setOnClickListener(this)
-
+        viewModel.pontuacao.observe(this) {
+            binding.includePerfilResume.tvPontosTelaHome.text = "${it} pontos"
+        }
+        viewModel.getPontuacao(email)
         viewModel.genres.observe(this) {
             if (it.size > 0)
                 viewModel.discoveryMovies(
@@ -85,7 +79,13 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getPontuacao(email)
+    }
+
     fun setup(email: String, nome: String, urlPhoto: String, provider: String) {
+        Log.i("NOME", nome)
         setFields(email, nome, urlPhoto)
         binding.btnPlay.setOnClickListener(this)
         binding.btnLogoff.setOnClickListener(this)
@@ -125,7 +125,7 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btnPlay -> startActivity(Intent(this, NivelActivity::class.java))
             R.id.ivSugestao -> openMovieSugestion()
             R.id.ivLupa -> startActivity(Intent(this, PesquisaActivity::class.java))
-            R.id.btnConfigs -> startActivity(Intent(this, ConfiguracoesActivity::class.java))
+//            R.id.btnConfigs -> startActivity(Intent(this, ConfiguracoesActivity::class.java))
             R.id.btnAjustes -> startActivity(Intent(this, InteressesActivity::class.java))
         }
     }
@@ -134,15 +134,14 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
         db = AppDataBase.getAppDatabase(this)
     }
 
-    fun setFields(nome: String? = null, email: String, foto: String? = null) {
-        if (foto != null) {
+    fun setFields(nome: String, email: String, foto: String) {
+        Log.i("NOMES", nome)
+        if (foto != "null") {
             Glide.with(this).asBitmap().load(foto)
                 .into(binding.includePerfilResume.ivFotoPerfilResumo)
         }
-        if (nome != null) {
+        if (nome != "null") {
             binding.includePerfilResume.tvNomeTelaHome.text = nome
-        } else {
-            binding.includePerfilResume.tvNomeTelaHome.text = email
         }
     }
 }

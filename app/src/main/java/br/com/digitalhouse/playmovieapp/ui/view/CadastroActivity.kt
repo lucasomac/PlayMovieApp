@@ -31,8 +31,8 @@ class CadastroActivity : AppCompatActivity() {
                     if (it.isSuccessful) {
                         showHome(it.result?.user?.email.toString(), ProviderTypes.BASIC)
                     } else {
-
                         showAlert()
+                        Log.i("TAG",it.exception.toString())
                     }
                 }
             } else {

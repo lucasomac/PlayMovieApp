@@ -16,24 +16,15 @@
         android:contentDescription="@string/google"
         android:src="@drawable/ic_google" />
 
-    <ImageView
-        android:id="@+id/imageFace"
-        android:layout_width="26dp"
-        android:layout_height="26dp"
-        android:layout_marginLeft="@dimen/margin_medium"
-        android:layout_marginRight="@dimen/margin_medium"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:clickable="true"
-        android:contentDescription="@string/twitter"
-        android:src="@drawable/ic_twitter"
-        android:visibility="invisible" />
-
-    <ImageView
-        android:id="@+id/imageViewInsta"
-        android:layout_width="26dp"
-        android:layout_height="26dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:clickable="true"
-        android:contentDescription="@string/facebook"
-        android:src="@drawable/ic_facebook" />
+<!--    <ImageView-->
+<!--        android:id="@+id/imageFace"-->
+<!--        android:layout_width="26dp"-->
+<!--        android:layout_height="26dp"-->
+<!--        android:layout_marginLeft="@dimen/margin_medium"-->
+<!--        android:layout_marginRight="@dimen/margin_medium"-->
+<!--        android:background="?attr/selectableItemBackgroundBorderless"-->
+<!--        android:clickable="true"-->
+<!--        android:contentDescription="@string/twitter"-->
+<!--        android:src="@drawable/ic_twitter"-->
+<!--        android:visibility="invisible" />-->
 </LinearLayout>
