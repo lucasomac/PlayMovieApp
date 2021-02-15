@@ -77,6 +77,7 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
                     ""
                 )
         }
+        viewModel.selectGenres()
     }
 
     override fun onResume() {
@@ -94,6 +95,12 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
     override fun onStart() {
         super.onStart()
         viewModel.selectGenres()
+        viewModel.discoveryMovies(
+            1,
+            "",
+            "",
+            ""
+        )
     }
 
     fun openMovieSugestion() {

@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Switch">
-        <item name="colorOnSurface">@color/white</item>
-        <item name="colorSecondary">@color/secondary</item>
-    </style>
+
 </resources>

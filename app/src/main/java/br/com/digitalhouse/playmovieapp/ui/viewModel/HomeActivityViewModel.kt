@@ -45,21 +45,32 @@ class HomeActivityViewModel(
         }
     }
 
+//    suspend fun latestMovies() {
+//        viewModelScope.launch {
+//            repository.latest(API_KEY, LANGUAGE)
+//        }
+//    }
+
     fun discoveryMovies(page: Int, genre: String, year: String, vote_average: String) {
         viewModelScope.launch {
-            repository.searchSugestionMovie(
-                API_KEY,
-                LANGUAGE,
-                page,
-                true,
-                genre.trim(' ', '[', ']'),
-                year,
-                vote_average
-            ).also {
-                movie.postValue(
-                    it.results[Random.nextInt(0, it.results.size)]
-                )
-            }
+            if (genre.isNotEmpty())
+                repository.searchSugestionMovie(
+                    API_KEY,
+                    LANGUAGE,
+                    page,
+                    true,
+                    genre.trim(' ', '[', ']'),
+                    year,
+                    vote_average
+                ).also {
+                    movie.postValue(
+                        it.results[Random.nextInt(0, it.results.size)]
+                    )
+                }
+            else
+                repository.getTopRated(API_KEY, LANGUAGE).also {
+                    movie.postValue(it.results[Random.nextInt(0, it.results.size)])
+                }
         }
     }
 }
