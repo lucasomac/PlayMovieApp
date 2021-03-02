@@ -34,8 +34,8 @@ class DetalhesActivityMovie : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDetalhesMovieBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding =
+            ActivityDetalhesMovieBinding.inflate(layoutInflater).apply { setContentView(root) }
         initToolbar()
         val args: DetalhesActivityMovieArgs by navArgs()
         val movieId = args.idMovie
