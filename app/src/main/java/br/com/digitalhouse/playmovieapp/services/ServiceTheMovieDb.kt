@@ -129,7 +129,7 @@ interface Repository {
     ): Genre
 }
 
-val retrofit =
+val retrofit: Retrofit =
     Retrofit.Builder().baseUrl(API_TMDB_URL).addConverterFactory(GsonConverterFactory.create())
         .build()
 val repository: Repository = retrofit.create(Repository::class.java)
