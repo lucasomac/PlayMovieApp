@@ -1,5 +1,6 @@
 package br.com.digitalhouse.playmovieapp.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,7 +29,7 @@ class SubNivelAdapter(
     }
 
     override fun onBindViewHolder(holder: SubNivelAdapter.SubNivelViewHolder, position: Int) {
-        val subNivel = listSubNivel.get(position)
+        val subNivel = listSubNivel[position]
 
         Glide.with(holder.itemView.context).asBitmap()
             .load("${BASE_URL_IMAGE}/original/${subNivel.image}")
@@ -62,6 +63,7 @@ class SubNivelAdapter(
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun addSubNivel(questions: ArrayList<SubNivel>) {
         listSubNivel = questions
         notifyDataSetChanged()
@@ -72,6 +74,6 @@ class SubNivelAdapter(
     }
 
     fun isAnswered(index: Int): Boolean {
-        return if (listSubNivel[index].answered) false else true
+        return !listSubNivel[index].answered
     }
 }

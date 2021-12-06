@@ -32,7 +32,7 @@ class ConfiguracaoAdapter(
         position: Int
     ) {
 
-        var configuracao = listaConfiguracoes.get(position)
+        val configuracao = listaConfiguracoes[position]
         holder.configIcone.setImageResource(configuracao.icone)
         holder.configDescricao.text = configuracao.descricao
         holder.configComplemento.text = configuracao.complemento

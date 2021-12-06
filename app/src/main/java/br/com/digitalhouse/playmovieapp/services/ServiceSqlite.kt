@@ -11,7 +11,7 @@ interface RepositoryRoom {
     suspend fun deleteGenreTask(genre: Genre): List<Genre>
 }
 
-class RepositoryRoomImplementation(val genreDAO: GenreDAO) : RepositoryRoom {
+class RepositoryRoomImplementation(private val genreDAO: GenreDAO) : RepositoryRoom {
 
     override suspend fun insertGenreTask(genre: Genre): List<Genre> {
         genreDAO.create(genre)

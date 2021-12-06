@@ -20,7 +20,7 @@ class MoviesActivity : AppCompatActivity(), MoviesAdapter.MovieListener {
     var page = 1
     val viewModel by viewModels<MoviesActivityViewModel> {
         object : ViewModelProvider.Factory {
-            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return MoviesActivityViewModel(repository) as T
             }
         }
@@ -36,7 +36,7 @@ class MoviesActivity : AppCompatActivity(), MoviesAdapter.MovieListener {
         val categoria =
             intent.getStringExtra("categoriaSelecionada")
         val nota = if (intent.getStringExtra("notaSelecionada") != "Qualquer nota")
-            intent.getStringExtra("notaSelecionada")?.let { it.get(it.length - 1) } else "0"
+            intent.getStringExtra("notaSelecionada")?.let { it[it.length - 1] } else "0"
         val ano = if (intent.getStringExtra("anoSelecionado") != "Qualquer ano")
             intent.getStringExtra("anoSelecionado")?.let { it.substring(it.length - 4) } else "0"
         val query = intent.getStringExtra("query")

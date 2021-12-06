@@ -1,5 +1,6 @@
 package br.com.digitalhouse.playmovieapp.adapters
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -83,6 +84,7 @@ class MoviesAdapter(
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun addMovie(list: ArrayList<Result>) {
         listaMovies.addAll(list)
         notifyDataSetChanged()

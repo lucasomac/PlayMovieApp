@@ -1,5 +1,6 @@
 package br.com.digitalhouse.playmovieapp.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -72,6 +73,7 @@ class InteresseAdapter(val listener: InteresseListener) :
         var interesseAtivo: SwitchMaterial = itemView.findViewById(R.id.interesseAtivo)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun addInteresses(interesses: List<Interesse>) {
         listaInteresses = interesses
         notifyDataSetChanged()

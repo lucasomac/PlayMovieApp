@@ -1,5 +1,6 @@
 package br.com.digitalhouse.playmovieapp.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -62,6 +63,7 @@ class NivelAdapter(
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun addNiveis(niveis: ArrayList<Level>) {
         listaNiveis = niveis
         notifyDataSetChanged()

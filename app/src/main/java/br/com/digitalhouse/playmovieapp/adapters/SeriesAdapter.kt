@@ -1,5 +1,6 @@
 package br.com.digitalhouse.playmovieapp.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -67,6 +68,7 @@ class SeriesAdapter(
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun addSerie(list: ArrayList<Result>) {
         listaSeries.addAll(list)
         notifyDataSetChanged()

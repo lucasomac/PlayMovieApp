@@ -38,7 +38,7 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
 
     val viewModel by viewModels<HomeActivityViewModel> {
         object : ViewModelProvider.Factory {
-            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return HomeActivityViewModel(repositoryRoom, repository) as T
             }
         }

@@ -18,7 +18,7 @@ class DetalhesActivitySerie : AppCompatActivity() {
     private lateinit var serie: Serie
     val viewModel by viewModels<DetalhesActivitySerieViewModel> {
         object : ViewModelProvider.Factory {
-            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return DetalhesActivitySerieViewModel(repository) as T
             }
         }

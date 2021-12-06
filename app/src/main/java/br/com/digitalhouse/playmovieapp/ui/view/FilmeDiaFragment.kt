@@ -24,7 +24,7 @@ class FilmeDiaFragment : Fragment() {
     private lateinit var filme: Result
     val viewModel by viewModels<FilmeDiaViewModel> {
         object : ViewModelProvider.Factory {
-            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return FilmeDiaViewModel(repository) as T
             }
         }

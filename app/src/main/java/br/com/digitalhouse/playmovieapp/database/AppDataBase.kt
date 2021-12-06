@@ -17,7 +17,7 @@ abstract class AppDataBase : RoomDatabase() {
         @JvmStatic
         fun getAppDatabase(context: Context) = instance ?: build(context)
         private val LOCK = Any()
-        fun build(context: Context): AppDataBase {
+        private fun build(context: Context): AppDataBase {
             val dataBase = Room.databaseBuilder(
                 context.applicationContext,
                 AppDataBase::class.java, "play_movie_app.db"

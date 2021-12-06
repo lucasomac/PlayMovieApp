@@ -16,10 +16,10 @@ class SeriesActivity : AppCompatActivity(), SeriesAdapter.SerieListener {
     private lateinit var binding: ActivitySeriesBinding
     private lateinit var adapterSeries: SeriesAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
-    var page = 1
+    private var page = 1
     val viewModel by viewModels<SeriesActivityViewModel> {
         object : ViewModelProvider.Factory {
-            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return SeriesActivityViewModel(repository) as T
             }
         }
@@ -35,7 +35,7 @@ class SeriesActivity : AppCompatActivity(), SeriesAdapter.SerieListener {
         val categoria =
             intent.getStringExtra("categoriaSelecionada")
         val nota = if (intent.getStringExtra("notaSelecionada") != "Qualquer nota")
-            intent.getStringExtra("notaSelecionada")?.let { it.get(it.length - 1) } else "0"
+            intent.getStringExtra("notaSelecionada")?.let { it[it.length - 1] } else "0"
         val ano = if (intent.getStringExtra("anoSelecionado") != "Qualquer ano")
             intent.getStringExtra("anoSelecionado")?.let { it.substring(it.length - 4) } else "0"
         val query = intent.getStringExtra("query")
@@ -75,7 +75,7 @@ class SeriesActivity : AppCompatActivity(), SeriesAdapter.SerieListener {
     private fun initToolbar() {
         val toolbar = binding.includeConfigToolbar.materialToolbar
         setSupportActionBar(toolbar)
-        supportActionBar?.setTitle("Resultado da busca")
+        supportActionBar?.title = "Resultado da busca"
         supportActionBar?.setDisplayHomeAsUpEnabled(true); //Mostrar o botão
         supportActionBar?.setHomeButtonEnabled(true)
     }

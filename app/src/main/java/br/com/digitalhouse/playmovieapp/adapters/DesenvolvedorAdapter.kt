@@ -1,5 +1,6 @@
 package br.com.digitalhouse.playmovieapp.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +13,7 @@ import br.com.digitalhouse.playmovieapp.domain.Interesse
 
 class DesenvolvedorAdapter(val listener: DesenvolvedorListener): RecyclerView.Adapter<DesenvolvedorAdapter.DesenvolvedorViewHolder>() {
 
-    var listaDesenvolvedores = arrayListOf<Desenvolvedor>()
+    private var listaDesenvolvedores = arrayListOf<Desenvolvedor>()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -29,7 +30,7 @@ class DesenvolvedorAdapter(val listener: DesenvolvedorListener): RecyclerView.Ad
 
     override fun onBindViewHolder(holder: DesenvolvedorViewHolder, position: Int) {
 
-        var desenvolvedor = listaDesenvolvedores.get(position)
+        val desenvolvedor = listaDesenvolvedores[position]
         holder.desenvolvedorFoto.setImageResource(desenvolvedor.foto)
         holder.desenvolvedorNome.text = desenvolvedor.nome
         holder.desenvolvedorDesc.text = desenvolvedor.descricao
@@ -60,6 +61,7 @@ class DesenvolvedorAdapter(val listener: DesenvolvedorListener): RecyclerView.Ad
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun addDesenvolvedores (desenvolvedores: ArrayList<Desenvolvedor>) {
         listaDesenvolvedores = desenvolvedores
         notifyDataSetChanged()

@@ -83,8 +83,8 @@ class LoginActivity : AppCompatActivity() {
             LoginManager.getInstance()
                 .registerCallback(callbackManager,
                     object : FacebookCallback<LoginResult> {
-                        override fun onSuccess(result: LoginResult?) {
-                            result?.let {
+                        override fun onSuccess(result: LoginResult) {
+                            result.let {
                                 val token = it.accessToken
                                 val credential =
                                     FacebookAuthProvider.getCredential(token.token)
@@ -107,7 +107,7 @@ class LoginActivity : AppCompatActivity() {
                         override fun onCancel() {
                         }
 
-                        override fun onError(error: FacebookException?) {
+                        override fun onError(error: FacebookException) {
                             showAlert()
                         }
                     })
