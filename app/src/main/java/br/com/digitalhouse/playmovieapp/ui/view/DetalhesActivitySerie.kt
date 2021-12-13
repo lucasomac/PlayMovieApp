@@ -1,6 +1,5 @@
 package br.com.digitalhouse.playmovieapp.ui.view
 
-import android.graphics.text.LineBreaker
 import android.graphics.text.LineBreaker.JUSTIFICATION_MODE_INTER_WORD
 import android.os.Build
 import android.os.Bundle
@@ -34,8 +33,8 @@ class DetalhesActivitySerie : AppCompatActivity() {
         setContentView(binding.root)
         initToolbar()
 //        val args: DetalhesActivitySerieArgs by navArgs()
-        val serie_id = intent.getStringExtra("idSerie").toString()
-        serie_id.let { viewModel.searchSerieById(it) }
+        val serieId = intent.getStringExtra("idSerie").toString()
+        serieId.let { viewModel.searchSerieById(it) }
         viewModel.serie.observe(this) {
             serie = it
             Glide.with(this).asBitmap().load(
@@ -65,7 +64,7 @@ class DetalhesActivitySerie : AppCompatActivity() {
     private fun initToolbar() {
         val toolbar = binding.includeConfigToolbar.materialToolbar
         setSupportActionBar(toolbar)
-        supportActionBar?.setTitle("Sinopse da Série")
+        supportActionBar?.title = "Sinopse da Série"
         supportActionBar?.setDisplayHomeAsUpEnabled(true); //Mostrar o botão
         supportActionBar?.setHomeButtonEnabled(true)
     }

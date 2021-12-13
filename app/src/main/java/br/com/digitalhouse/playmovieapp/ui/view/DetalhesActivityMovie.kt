@@ -32,6 +32,7 @@ class DetalhesActivityMovie : AppCompatActivity() {
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding =
@@ -43,37 +44,32 @@ class DetalhesActivityMovie : AppCompatActivity() {
         movieId.let { viewModel.searchMovieById(it) }
         viewModel.movie.observe(this) {
             movie = it
-            if (movie != null) {
-                Glide.with(this).asBitmap().load(
-                    "${BASE_URL_IMAGE}original${movie.backdrop_path}"
-                ).placeholder(R.drawable.progress_animation).into(binding.imgCapaFilme)
-                binding.txtSinopseFilme.text = movie.overview
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    binding.txtSinopseFilme.justificationMode = JUSTIFICATION_MODE_INTER_WORD
-                }
-                binding.txtNomeFilme.text = movie.title
-                binding.txtNotaFilme.text = movie.vote_average.toString()
-                val generos = arrayListOf<String>()
-                for (genre in movie.genres) {
-                    generos.add(getGenres().filter { it.id == genre.id }[0].name)
-                }
-                "${movie.release_date.substring(0, 4)} - ${
-                    "$generos".trim(
-                        '[',
-                        ']'
-                    )
-                } - ${movie.runtime}min".also { binding.txtDetalhesFilme.text = it }
-            } else {
-                Toast.makeText(this, "Não hã filmes disponiveis no momento!!", Toast.LENGTH_LONG)
-                    .show()
+            Glide.with(this).asBitmap().load(
+                "${BASE_URL_IMAGE}original${movie.backdrop_path}"
+            ).placeholder(R.drawable.progress_animation).into(binding.imgCapaFilme)
+            binding.txtSinopseFilme.text = movie.overview
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                binding.txtSinopseFilme.justificationMode = JUSTIFICATION_MODE_INTER_WORD
             }
+            binding.txtNomeFilme.text = movie.title
+            binding.txtNotaFilme.text = movie.vote_average.toString()
+            val generos = arrayListOf<String>()
+            for (genre in movie.genres) {
+                generos.add(getGenres().filter { it.id == genre.id }[0].name)
+            }
+            "${movie.release_date.substring(0, 4)} - ${
+                "$generos".trim(
+                    '[',
+                    ']'
+                )
+            } - ${movie.runtime}min".also { binding.txtDetalhesFilme.text = it }
         }
     }
 
     private fun initToolbar() {
         val toolbar = binding.includeConfigToolbar.materialToolbar
         setSupportActionBar(toolbar)
-        supportActionBar?.setTitle("Sinopse do Filme")
+        supportActionBar?.title = "Sinopse do Filme"
         supportActionBar?.setDisplayHomeAsUpEnabled(true); //Mostrar o botão
         supportActionBar?.setHomeButtonEnabled(true)
     }

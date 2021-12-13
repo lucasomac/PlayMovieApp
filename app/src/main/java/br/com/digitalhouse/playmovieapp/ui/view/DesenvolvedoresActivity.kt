@@ -29,7 +29,7 @@ class DesenvolvedoresActivity : AppCompatActivity(), DesenvolvedorAdapter.Desenv
 
     override fun onClickDesenvolvedor(item: Int) {
 
-        var desenvolvedor = viewModel.desenvolvedores.value?.get(item)
+        val desenvolvedor = viewModel.desenvolvedores.value?.get(item)
         val intent = Intent(this, DetalhesDesenvolvedorActivity::class.java)
         intent.putExtra("desenvolvedor", desenvolvedor)
         startActivity(intent)

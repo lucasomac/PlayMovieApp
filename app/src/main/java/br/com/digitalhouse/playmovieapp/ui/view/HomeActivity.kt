@@ -68,13 +68,14 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
         }
         viewModel.getPontuacao(email)
         viewModel.genres.observe(this) {
-            if (it.size > 0)
+            if (it.isNotEmpty()) {
                 viewModel.discoveryMovies(
                     1,
                     it.map { it.id }[Random.nextInt(0, it.size)].toString(),
                     "",
                     ""
                 )
+            }
         }
         viewModel.selectGenres()
     }
@@ -84,7 +85,7 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
         viewModel.getPontuacao(email)
     }
 
-    fun setup(email: String, nome: String, urlPhoto: String, provider: String) {
+    private fun setup(email: String, nome: String, urlPhoto: String, provider: String) {
         Log.i("NOME", nome)
         setFields(email, nome, urlPhoto)
         binding.btnPlay.setOnClickListener(this)
@@ -102,7 +103,7 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
         )
     }
 
-    fun openMovieSugestion() {
+    private fun openMovieSugestion() {
         val intent = Intent(
             this,
             DetalhesActivityMovie::class.java
@@ -136,11 +137,11 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    fun initBanco() {
+    private fun initBanco() {
         db = AppDataBase.getAppDatabase(this)
     }
 
-    fun setFields(nome: String, email: String, foto: String) {
+    private fun setFields(nome: String, email: String, foto: String) {
         Log.i("NOMES", nome)
         if (foto != "null") {
             Glide.with(this).asBitmap().load(foto)
