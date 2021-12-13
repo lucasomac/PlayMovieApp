@@ -10,15 +10,17 @@ import br.com.digitalhouse.playmovieapp.domain.Genre
 import br.com.digitalhouse.playmovieapp.domain.movie.Result
 import br.com.digitalhouse.playmovieapp.services.Repository
 import br.com.digitalhouse.playmovieapp.services.RepositoryRoom
+import br.com.digitalhouse.playmovieapp.services.collectionUsers
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 
 class HomeActivityViewModel(
     val repositoryRoom: RepositoryRoom? = null,
-    val repository: Repository
+    val repository: Repository,
 ) : ViewModel() {
     val genres = MutableLiveData<List<Genre>>()
     var movie = MutableLiveData<Result>()
+    var pontuacao = MutableLiveData<Int>()
 
     fun selectGenres() {
         viewModelScope.launch {
@@ -26,22 +28,49 @@ class HomeActivityViewModel(
         }
     }
 
+    fun getPontuacao(email: String) {
+        viewModelScope.launch {
+            collectionUsers.document(email).collection("answered").get()
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        var pontos = 0
+                        for (document in task.result!!) {
+                            pontos += document.data["score"].toString().toInt()
+                        }
+                        pontuacao.value = pontos
+                    } else {
+                        Log.i("SubNivelViewModel", "ERROR.", task.exception)
+                    }
+                }
+        }
+    }
+
+//    suspend fun latestMovies() {
+//        viewModelScope.launch {
+//            repository.latest(API_KEY, LANGUAGE)
+//        }
+//    }
+
     fun discoveryMovies(page: Int, genre: String, year: String, vote_average: String) {
         viewModelScope.launch {
-            repository.searchSugestionMovie(
-                API_KEY,
-                LANGUAGE,
-                page,
-                true,
-                genre.trim(' ', '[', ']'),
-                year,
-                vote_average
-            ).also {
-                movie.postValue(
-                    it.results[Random.nextInt(0, it.results.size)]
-                )
-            }
-
+            if (genre.isNotEmpty())
+                repository.searchSugestionMovie(
+                    API_KEY,
+                    LANGUAGE,
+                    page,
+                    true,
+                    genre.trim(' ', '[', ']'),
+                    year,
+                    vote_average
+                ).also {
+                    movie.postValue(
+                        it.results[Random.nextInt(0, it.results.size)]
+                    )
+                }
+            else
+                repository.getTopRated(API_KEY, LANGUAGE).also {
+                    movie.postValue(it.results[Random.nextInt(0, it.results.size)])
+                }
         }
     }
 }

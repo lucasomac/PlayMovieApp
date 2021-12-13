@@ -14,54 +14,67 @@
         android:theme="@style/Theme.PlayMovieApp">
         <activity
             android:name=".ui.view.DetalhesActivitySerie"
+            android:exported="false"
             android:theme="@style/Theme.PlayMovieApp" />
         <activity
             android:name=".ui.view.SeriesActivity"
+            android:exported="false"
             android:parentActivityName=".ui.view.SugestaoActivity"
             android:theme="@style/Theme.PlayMovieApp" />
         <activity
             android:name=".ui.view.MoviesActivity"
+            android:exported="false"
             android:parentActivityName=".ui.view.SugestaoActivity" />
         <activity
             android:name=".ui.view.SubNiveisActivity"
+            android:exported="false"
             android:parentActivityName=".ui.view.NivelActivity"
             android:theme="@style/Theme.PlayMovieApp" />
         <activity
             android:name=".ui.view.CadastroActivity"
+            android:exported="false"
             android:parentActivityName=".ui.view.LoginActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:theme="@style/Theme.PlayMovieApp" />
         <activity
             android:name=".ui.view.NivelActivity"
+            android:exported="false"
             android:parentActivityName=".ui.view.HomeActivity" />
         <activity
             android:name=".ui.view.JogoActivity"
+            android:exported="false"
             android:parentActivityName=".ui.view.SubNiveisActivity"
             android:theme="@style/Theme.PlayMovieApp" />
         <activity
             android:name=".ui.view.HomeActivity"
-            android:screenOrientation="portrait" />
+            android:exported="false"
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".ui.view.ConfiguracoesActivity"
+            android:exported="false"
             android:parentActivityName=".ui.view.ConfiguracoesActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:theme="@style/Theme.PlayMovieApp" />
         <activity
             android:name=".ui.view.DetalhesDesenvolvedorActivity"
+            android:exported="false"
             android:label="@string/title_activity_detalhes_desenvolvedor" />
         <activity android:name=".ui.view.DesenvolvedoresActivity" />
         <activity
             android:name=".ui.view.InteressesActivity"
+            android:exported="false"
             android:parentActivityName=".ui.view.HomeActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:theme="@style/Theme.PlayMovieApp" />
         <activity
             android:name=".ui.view.LoginActivity"
-            android:screenOrientation="portrait"
+            android:exported="false"
+            android:screenOrientation="fullSensor"
             android:theme="@style/Theme.PlayMovieApp" />
         <activity
             android:name=".ui.view.SplashActivity"
-            android:screenOrientation="portrait"
+            android:exported="true"
+            android:screenOrientation="fullSensor"
             android:theme="@style/Theme.PlayMovieApp.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -70,14 +83,17 @@
         </activity>
         <activity
             android:name=".ui.view.SugestaoActivity"
+            android:exported="false"
             android:parentActivityName=".ui.view.HomeActivity"
             android:theme="@style/Theme.PlayMovieApp" />
         <activity
             android:name=".ui.view.DetalhesActivityMovie"
+            android:exported="false"
             android:parentActivityName=".ui.view.MoviesActivity"
             android:theme="@style/Theme.PlayMovieApp" />
         <activity
             android:name=".ui.view.PesquisaActivity"
+            android:exported="false"
             android:parentActivityName=".ui.view.HomeActivity"
             android:theme="@style/Theme.PlayMovieApp" />
         <!--        Facebook-->
@@ -88,6 +104,7 @@
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:exported="true"
             android:label="@string/app_name" />
         <activity
             android:name="com.facebook.CustomTabActivity"
@@ -100,5 +117,8 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
+        <!--        Facebook-->
+
+
     </application>
 </manifest>

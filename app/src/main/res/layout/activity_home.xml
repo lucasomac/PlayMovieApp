@@ -7,16 +7,17 @@
     android:background="@color/primary"
     tools:context=".ui.view.HomeActivity">
 
-    <ImageView
-        android:id="@+id/btnConfigs"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="16dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_baseline_settings_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <ImageView-->
+<!--        android:id="@+id/btnConfigs"-->
+<!--        android:layout_width="28dp"-->
+<!--        android:layout_height="28dp"-->
+<!--        android:layout_marginStart="26dp"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:scaleType="centerCrop"-->
+<!--        android:src="@drawable/ic_baseline_settings_24"-->
+<!--        android:visibility="invisible"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <ImageView
         android:id="@+id/btnAjustes"
@@ -27,13 +28,13 @@
         android:layout_marginEnd="26dp"
         android:src="@drawable/ic_settings_perfil"
         app:layout_constraintHorizontal_bias="0.983"
-        app:layout_constraintStart_toEndOf="@id/btnConfigs"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/btnLogoff"
-        android:layout_width="28dp"
-        android:layout_height="29dp"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="26dp"
         android:backgroundTint="@color/teal_700"
@@ -64,7 +65,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnConfigs" />
+        app:layout_constraintTop_toBottomOf="@+id/btnAjustes" />
 
     <fragment
         android:id="@+id/nav_host_fragment"
@@ -75,8 +76,10 @@
         app:defaultNavHost="true"
         app:layout_constraintBottom_toTopOf="@id/bottom_Menu"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.426"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/includePerfilResume"
+        app:layout_constraintVertical_bias="0.504"
         app:navGraph="@navigation/nav_graph" />
 
     <androidx.constraintlayout.widget.ConstraintLayout

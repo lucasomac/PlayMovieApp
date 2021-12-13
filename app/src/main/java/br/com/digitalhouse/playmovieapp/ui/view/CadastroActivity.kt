@@ -19,7 +19,7 @@ class CadastroActivity : AppCompatActivity() {
         setup()
     }
 
-    fun setup() {
+    private fun setup() {
         binding.buttonCriarConta.setOnClickListener {
             if (checaCampos()) {
                 Log.i("TAG", binding.textEmail.text.toString())
@@ -31,8 +31,8 @@ class CadastroActivity : AppCompatActivity() {
                     if (it.isSuccessful) {
                         showHome(it.result?.user?.email.toString(), ProviderTypes.BASIC)
                     } else {
-
                         showAlert()
+                        Log.i("TAG",it.exception.toString())
                     }
                 }
             } else {
@@ -41,12 +41,11 @@ class CadastroActivity : AppCompatActivity() {
         }
     }
 
-    fun checaCampos(): Boolean {
+    private fun checaCampos(): Boolean {
         return binding.textEmail.text!!.isNotEmpty()
                 && binding.textPassword.text!!.isNotEmpty()
                 && binding.textPasswordConfirm.text!!.isNotEmpty()
-                && (binding.textPassword.text.toString()
-            .equals(binding.textPasswordConfirm.text.toString()))
+                && (binding.textPassword.text.toString() == binding.textPasswordConfirm.text.toString())
     }
 
     private fun showAlert() {
@@ -62,7 +61,7 @@ class CadastroActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    fun showHome(email: String, provider: ProviderTypes) {
+    private fun showHome(email: String, provider: ProviderTypes) {
         val homeIntent = Intent(this, HomeActivity::class.java).apply {
             putExtra("email", email)
             putExtra("provider", provider.name)

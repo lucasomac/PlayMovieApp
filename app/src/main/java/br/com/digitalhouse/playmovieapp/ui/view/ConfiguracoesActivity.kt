@@ -28,7 +28,7 @@ class ConfiguracoesActivity : AppCompatActivity() {
     private fun initToolbar() {
         val toolbar = binding.includeConfigToolbar.materialToolbar
         setSupportActionBar(toolbar)
-        supportActionBar?.setTitle("Configurações")
+        supportActionBar?.title = "Configurações"
         supportActionBar?.setDisplayHomeAsUpEnabled(true); //Mostrar o botão
         supportActionBar?.setHomeButtonEnabled(true)
     }

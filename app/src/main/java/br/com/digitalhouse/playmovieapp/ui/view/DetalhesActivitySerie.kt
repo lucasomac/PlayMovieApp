@@ -1,5 +1,7 @@
 package br.com.digitalhouse.playmovieapp.ui.view
 
+import android.graphics.text.LineBreaker.JUSTIFICATION_MODE_INTER_WORD
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -18,11 +20,12 @@ class DetalhesActivitySerie : AppCompatActivity() {
     private lateinit var serie: Serie
     val viewModel by viewModels<DetalhesActivitySerieViewModel> {
         object : ViewModelProvider.Factory {
-            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return DetalhesActivitySerieViewModel(repository) as T
             }
         }
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,14 +33,17 @@ class DetalhesActivitySerie : AppCompatActivity() {
         setContentView(binding.root)
         initToolbar()
 //        val args: DetalhesActivitySerieArgs by navArgs()
-        val serie_id = intent.getStringExtra("idSerie").toString()
-        serie_id.let { viewModel.searchSerieById(it) }
+        val serieId = intent.getStringExtra("idSerie").toString()
+        serieId.let { viewModel.searchSerieById(it) }
         viewModel.serie.observe(this) {
             serie = it
             Glide.with(this).asBitmap().load(
                 "${BASE_URL_IMAGE}original${serie.backdrop_path}"
             ).into(binding.imgCapaSerie)
             binding.txtSinopseSerie.text = serie.overview
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                binding.txtSinopseSerie.justificationMode = JUSTIFICATION_MODE_INTER_WORD
+            }
             binding.txtNomeSerie.text = serie.name
             binding.txtNotaSerie.text = serie.vote_average.toString()
             val generos = arrayListOf<String>()
@@ -58,7 +64,7 @@ class DetalhesActivitySerie : AppCompatActivity() {
     private fun initToolbar() {
         val toolbar = binding.includeConfigToolbar.materialToolbar
         setSupportActionBar(toolbar)
-        supportActionBar?.setTitle("Sinopse da Série")
+        supportActionBar?.title = "Sinopse da Série"
         supportActionBar?.setDisplayHomeAsUpEnabled(true); //Mostrar o botão
         supportActionBar?.setHomeButtonEnabled(true)
     }

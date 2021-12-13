@@ -24,23 +24,21 @@ class FilmeDiaFragment : Fragment() {
     private lateinit var filme: Result
     val viewModel by viewModels<FilmeDiaViewModel> {
         object : ViewModelProvider.Factory {
-            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return FilmeDiaViewModel(repository) as T
             }
         }
     }
-
     companion object {
         fun newInstance() = FilmeDiaFragment()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentFilmeDiaHomeBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

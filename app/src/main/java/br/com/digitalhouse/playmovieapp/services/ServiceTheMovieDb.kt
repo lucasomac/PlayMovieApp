@@ -33,6 +33,14 @@ interface Repository {
         vote_average: String,
     ): ListMovie
 
+    @GET("movie/top_rated")
+    suspend fun getTopRated(
+        @Query("api_key")
+        apikey: String,
+        @Query("language")
+        language: String,
+    ): ListMovie
+
     @GET("discover/movie")
     suspend fun searchSugestionMovie(
         @Query("api_key")
@@ -58,7 +66,7 @@ interface Repository {
         @Query("api_key")
         apikey: String,
         @Query("language")
-        language: String
+        language: String,
     ): Movie
 
     @GET("search/tv")
@@ -106,7 +114,7 @@ interface Repository {
         @Query("api_key")
         apikey: String,
         @Query("language")
-        language: String
+        language: String,
     ): Serie
 
 

@@ -20,39 +20,40 @@
         <ImageView
             android:id="@+id/imgCapaFilmeBackgroung"
             android:layout_width="match_parent"
-            android:layout_height="141dp"
+            android:layout_height="150dp"
             android:layout_gravity="center"
-            android:scaleType="fitXY"
             android:background="@drawable/round_outline_pesquisa"
             android:outlineProvider="background"
+            android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imgCapaFilme"
-            android:layout_width="108dp"
-            android:layout_height="108dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="17dp"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:scaleType="fitXY"
             app:layout_constraintStart_toStartOf="@+id/imgCapaFilmeBackgroung"
             app:layout_constraintTop_toTopOf="@+id/imgCapaFilmeBackgroung"
+            app:shapeAppearanceOverlay="@style/roundedImageView"
             tools:src="@drawable/ic_logo" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginStart="110dp"
+            android:layout_marginTop="32dp"
             android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="@+id/imgCapaFilmeBackgroung"
             app:layout_constraintStart_toEndOf="@+id/imgCapaFilme"
             app:layout_constraintTop_toTopOf="@+id/imgCapaFilmeBackgroung">
 
             <TextView
                 android:id="@+id/txtNomeFilmePesquisa"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
