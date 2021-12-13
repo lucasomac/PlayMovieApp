@@ -16,10 +16,10 @@ class SeriesActivity : AppCompatActivity(), SeriesAdapter.SerieListener {
     private lateinit var binding: ActivitySeriesBinding
     private lateinit var adapterSeries: SeriesAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
-    var page = 1
+    private var page = 1
     val viewModel by viewModels<SeriesActivityViewModel> {
         object : ViewModelProvider.Factory {
-            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return SeriesActivityViewModel(repository) as T
             }
         }

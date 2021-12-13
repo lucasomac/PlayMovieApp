@@ -25,7 +25,7 @@ class DetalhesActivityMovie : AppCompatActivity() {
     private lateinit var movie: Movie
     val viewModel by viewModels<DetalhesActivityMovieViewModel> {
         object : ViewModelProvider.Factory {
-            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return DetalhesActivityMovieViewModel(repository) as T
             }
         }

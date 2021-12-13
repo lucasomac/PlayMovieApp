@@ -24,7 +24,7 @@ class InteressesActivity : AppCompatActivity(), InteresseAdapter.InteresseListen
     private lateinit var binding: ActivityInteressesBinding
     val viewModel by viewModels<InteressesViewModel> {
         object : ViewModelProvider.Factory {
-            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return InteressesViewModel(repositoryRoom) as T
             }
         }

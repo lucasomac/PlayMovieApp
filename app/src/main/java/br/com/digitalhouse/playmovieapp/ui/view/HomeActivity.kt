@@ -29,12 +29,11 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var email: String
     val viewModel by viewModels<HomeActivityViewModel> {
         object : ViewModelProvider.Factory {
-            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return HomeActivityViewModel(repositoryRoom, repository) as T
             }
         }
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)

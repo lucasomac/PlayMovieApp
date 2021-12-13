@@ -17,10 +17,10 @@ class MoviesActivity : AppCompatActivity(), MoviesAdapter.MovieListener {
     private lateinit var binding: ActivityMoviesBinding
     private lateinit var adapterMovies: MoviesAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
-    var page = 1
+    private var page = 1
     val viewModel by viewModels<MoviesActivityViewModel> {
         object : ViewModelProvider.Factory {
-            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return MoviesActivityViewModel(repository) as T
             }
         }
